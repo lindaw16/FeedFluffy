@@ -32,16 +32,22 @@
 {
     
 	// Create some menu items
-	CCMenuItemImage * menuItem1 = [CCMenuItemImage itemWithNormalImage:@"playbutton.png"
-                                                         selectedImage: @"playbutton.png"
+//	CCMenuItemImage * menuItem1 = [CCMenuItemImage itemWithNormalImage:@"playbutton.png"
+//                                                         selectedImage: @"playbutton.png"
+//                                                                target:self
+//                                                              selector:@selector(goToLevel1:)];
+    CCMenuItemImage * playButton = [CCMenuItemImage itemWithNormalImage:@"play.png"
+                                                         selectedImage: @"play.png"
                                                                 target:self
                                                               selector:@selector(goToLevel1:)];
+    
 	// Create a menu and add your menu items to it
-	CCMenu * myMenu = [CCMenu menuWithItems:menuItem1, nil];
+	CCMenu * myMenu = [CCMenu menuWithItems:playButton, nil];
     
 	// Arrange the menu items vertically
 	//[myMenu alignItemsVertically];
-    menuItem1.position = ccp(240,95);
+    //menuItem1.position = ccp(240,95);
+    playButton.position = ccp(420,150);
     myMenu.position = ccp(0,0);
     
 	// add the menu to your scene
@@ -54,7 +60,8 @@
     if ((self = [super init])){
         //[self scheduleUpdate];
         
-        CCSprite *sprite = [CCSprite spriteWithFile:@"eevee.png"];
+        //CCSprite *sprite = [CCSprite spriteWithFile:@"eevee.png"];
+        CCSprite *sprite = [CCSprite spriteWithFile:@"menuBackground.png"];
         sprite.anchorPoint = CGPointZero;
         [self addChild:sprite z:-1];
         
