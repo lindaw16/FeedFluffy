@@ -107,7 +107,7 @@ const int TILESET_ROWS = 19;
         [self schedule:@selector(tick:)];
         //[self schedule:@selector(kick) interval:5.0];
         [self setTouchEnabled:YES];
-        [self setAccelerometerEnabled:YES];
+        //[self setAccelerometerEnabled:NO];
     }
     return self;
 }
