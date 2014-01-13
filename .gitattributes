@@ -1,0 +1,7 @@
+*.pbxproj merge=union
+*.plist merge=ours
+*.png merge=ours
+*.jpg merge=ours
+*.jpeg merge=ours
+*.mp3 merge=ours
+*.wav merge=ours
