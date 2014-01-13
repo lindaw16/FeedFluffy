@@ -1,12 +1,15 @@
 /*
  * Kobold2D™ --- http://www.kobold2d.org
  *
- * Copyright (c) 2010-2011 Steffen Itterheim. 
+ * Copyright (c) 2010-2011 Steffen Itterheim.
  * Released under MIT License in Germany (LICENSE-Kobold2D.txt).
  */
 
 #import "PhysicsLayer.h"
+#import "Box2D.h"
 #import "Box2DDebugLayer.h"
+#import "cocos2d.h"
+//#import "cocos2d.m"
 
 //Pixel to metres ratio. Box2D uses metres as the unit for measurement.
 //This ratio defines how many pixels correspond to 1 Box2D "metre"
@@ -29,87 +32,182 @@ const int TILESET_ROWS = 19;
 
 @implementation PhysicsLayer
 
--(id) init
-{
-	if ((self = [super init]))
-	{
-		CCLOG(@"%@ init", NSStringFromClass([self class]));
 
-		glClearColor(0.1f, 0.0f, 0.2f, 1.0f);
-		
-		// Construct a world object, which will hold and simulate the rigid bodies.
-		b2Vec2 gravity = b2Vec2(0.0f, -10.0f);
-		world = new b2World(gravity);
-		world->SetAllowSleeping(YES);
-		//world->SetContinuousPhysics(YES);
-		
-		// uncomment this line to draw debug info
-		[self enableBox2dDebugDrawing];
-
-		contactListener = new ContactListener();
-		world->SetContactListener(contactListener);
-		
-		// for the screenBorder body we'll need these values
-		CGSize screenSize = [CCDirector sharedDirector].winSize;
-		float widthInMeters = screenSize.width / PTM_RATIO;
-		float heightInMeters = screenSize.height / PTM_RATIO;
-		b2Vec2 lowerLeftCorner = b2Vec2(0, 0);
-		b2Vec2 lowerRightCorner = b2Vec2(widthInMeters, 0);
-		b2Vec2 upperLeftCorner = b2Vec2(0, heightInMeters);
-		b2Vec2 upperRightCorner = b2Vec2(widthInMeters, heightInMeters);
-		
-		// Define the static container body, which will provide the collisions at screen borders.
-		b2BodyDef screenBorderDef;
-		screenBorderDef.position.Set(0, 0);
-		b2Body* screenBorderBody = world->CreateBody(&screenBorderDef);
-		b2EdgeShape screenBorderShape;
-		
-		// Create fixtures for the four borders (the border shape is re-used)
-		screenBorderShape.Set(lowerLeftCorner, lowerRightCorner);
-		screenBorderBody->CreateFixture(&screenBorderShape, 0);
-		screenBorderShape.Set(lowerRightCorner, upperRightCorner);
-		screenBorderBody->CreateFixture(&screenBorderShape, 0);
-		screenBorderShape.Set(upperRightCorner, upperLeftCorner);
-		screenBorderBody->CreateFixture(&screenBorderShape, 0);
-		screenBorderShape.Set(upperLeftCorner, lowerLeftCorner);
-		screenBorderBody->CreateFixture(&screenBorderShape, 0);
-		
-		NSString* message = @"Tap Screen For More Awesome!";
-		if ([CCDirector sharedDirector].currentPlatformIsMac)
-		{
-			message = @"Click Window For More Awesome!";
-		}
-		
-		CCLabelTTF* label = [CCLabelTTF labelWithString:message fontName:@"Marker Felt" fontSize:32];
-		[self addChild:label];
-		[label setColor:ccc3(222, 222, 255)];
-		label.position = CGPointMake(screenSize.width / 2, screenSize.height - 50);
-		
-		// Use the orthogonal tileset for the little boxes
-		CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"dg_grounds32.png" capacity:TILESET_ROWS * TILESET_COLUMNS];
-		[self addChild:batch z:0 tag:kTagBatchNode];
-		
-		// Add a few objects initially
-		for (int i = 0; i < 9; i++)
-		{
-			[self addNewSpriteAt:CGPointMake(screenSize.width / 2, screenSize.height / 2)];
-		}
-		
-		[self addSomeJoinedBodies:CGPointMake(screenSize.width / 4, screenSize.height - 50)];
-		
-		[self scheduleUpdate];
-		
-		[KKInput sharedInput].accelerometerActive = YES;
-	}
-
-	return self;
++(id) scene {
+    CCScene *scene = [CCScene node];
+    PhysicsLayer *layer = [PhysicsLayer node];
+    [scene addChild:layer];
+    return scene;
 }
+
+
+
+- (id)init {
+    
+    if ((self=[super init])) {
+        CGSize winSize = [CCDirector sharedDirector].winSize;
+        
+        // Create sprite and add it to the layer
+        ball = [CCSprite spriteWithFile:@"ball.png" rect:CGRectMake(0, 0, 52, 52)];
+        ball.position = ccp(0, 0);
+        [self addChild:ball];
+        
+        // Create a world
+        b2Vec2 gravity = b2Vec2(0.0f, -8.0f);
+        world = new b2World(gravity);
+        
+        // Create edges around the entire screen
+        b2BodyDef groundBodyDef;
+        groundBodyDef.position.Set(0,0);
+        
+        b2Body *groundBody = world->CreateBody(&groundBodyDef);
+        b2EdgeShape groundEdge;
+        b2FixtureDef boxShapeDef;
+        boxShapeDef.shape = &groundEdge;
+        
+        //wall definitions
+        groundEdge.Set(b2Vec2(0,0), b2Vec2(winSize.width/PTM_RATIO, 0));
+        groundBody->CreateFixture(&boxShapeDef);
+        
+        groundEdge.Set(b2Vec2(0,0), b2Vec2(0,winSize.height/PTM_RATIO));
+        groundBody->CreateFixture(&boxShapeDef);
+        
+        groundEdge.Set(b2Vec2(0, winSize.height/PTM_RATIO),
+                       b2Vec2(winSize.width/PTM_RATIO, winSize.height/PTM_RATIO));
+        groundBody->CreateFixture(&boxShapeDef);
+        
+        groundEdge.Set(b2Vec2(winSize.width/PTM_RATIO, winSize.height/PTM_RATIO),
+                       b2Vec2(winSize.width/PTM_RATIO, 0));
+        groundBody->CreateFixture(&boxShapeDef);
+        
+        // Create ball body and shape
+        b2BodyDef ballBodyDef;
+        ballBodyDef.userData = (__bridge void*)ball;
+        
+        ballBodyDef.type = b2_dynamicBody;
+        ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
+        
+        _body = world->CreateBody(&ballBodyDef);
+        
+        b2CircleShape circle;
+        circle.m_radius = 26.0/PTM_RATIO;
+        
+        b2FixtureDef ballShapeDef;
+        ballShapeDef.shape = &circle;
+        ballShapeDef.density = 1.0f;
+        ballShapeDef.friction = 0.2f;
+        ballShapeDef.restitution = 1.0f;
+        _body->CreateFixture(&ballShapeDef);
+        
+        [self schedule:@selector(tick:)];
+        //[self schedule:@selector(kick) interval:5.0];
+        [self setTouchEnabled:YES];
+        [self setAccelerometerEnabled:YES];
+    }
+    return self;
+}
+
+- (void)tick:(ccTime) dt {
+    
+    world->Step(dt, 10, 10);
+    for(b2Body *b = world->GetBodyList(); b; b=b->GetNext()) {
+        if (b->GetUserData() != NULL) {
+            CCSprite *ballData = (__bridge CCSprite *)(b->GetUserData());
+            ballData.position = ccp(b->GetPosition().x * PTM_RATIO,
+                                    b->GetPosition().y * PTM_RATIO);
+            ballData.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
+        }
+    }
+    
+}
+
+
+
+
+//	if ((self = [super init]))
+//	{
+//		CCLOG(@"%@ init", NSStringFromClass([self class]));
+//
+//		glClearColor(0.1f, 0.0f, 0.2f, 1.0f);
+//
+//		// Construct a world object, which will hold and simulate the rigid bodies.
+//		b2Vec2 gravity = b2Vec2(0.0f, -10.0f);
+//		world = new b2World(gravity);
+//		world->SetAllowSleeping(YES);
+//		//world->SetContinuousPhysics(YES);
+//
+//		// uncomment this line to draw debug info
+//		[self enableBox2dDebugDrawing];
+//
+//		contactListener = new ContactListener();
+//		world->SetContactListener(contactListener);
+//
+//		// for the screenBorder body we'll need these values
+//		CGSize screenSize = [CCDirector sharedDirector].winSize;
+//		float widthInMeters = screenSize.width / PTM_RATIO;
+//		float heightInMeters = screenSize.height / PTM_RATIO;
+//		b2Vec2 lowerLeftCorner = b2Vec2(0, 0);
+//		b2Vec2 lowerRightCorner = b2Vec2(widthInMeters, 0);
+//		b2Vec2 upperLeftCorner = b2Vec2(0, heightInMeters);
+//		b2Vec2 upperRightCorner = b2Vec2(widthInMeters, heightInMeters);
+//
+//		// Define the static container body, which will provide the collisions at screen borders.
+//		b2BodyDef screenBorderDef;
+//		screenBorderDef.position.Set(0, 0);
+//		b2Body* screenBorderBody = world->CreateBody(&screenBorderDef);
+//		b2EdgeShape screenBorderShape;
+//
+//		// Create fixtures for the four borders (the border shape is re-used)
+//		screenBorderShape.Set(lowerLeftCorner, lowerRightCorner);
+//		screenBorderBody->CreateFixture(&screenBorderShape, 0);
+//		screenBorderShape.Set(lowerRightCorner, upperRightCorner);
+//		screenBorderBody->CreateFixture(&screenBorderShape, 0);
+//		screenBorderShape.Set(upperRightCorner, upperLeftCorner);
+//		screenBorderBody->CreateFixture(&screenBorderShape, 0);
+//		screenBorderShape.Set(upperLeftCorner, lowerLeftCorner);
+//		screenBorderBody->CreateFixture(&screenBorderShape, 0);
+//
+//		NSString* message = @"Tap Screen For More Awesome!";
+//		if ([CCDirector sharedDirector].currentPlatformIsMac)
+//		{
+//			message = @"Click Window For More Awesome!";
+//		}
+//
+//		CCLabelTTF* label = [CCLabelTTF labelWithString:message fontName:@"Marker Felt" fontSize:32];
+//		[self addChild:label];
+//		[label setColor:ccc3(222, 222, 255)];
+//		label.position = CGPointMake(screenSize.width / 2, screenSize.height - 50);
+//
+//		// Use the orthogonal tileset for the little boxes
+//		CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"dg_grounds32.png" capacity:TILESET_ROWS * TILESET_COLUMNS];
+//		[self addChild:batch z:0 tag:kTagBatchNode];
+//
+//		// Add a few objects initially
+//		for (int i = 0; i < 9; i++)
+//		{
+//			[self addNewSpriteAt:CGPointMake(screenSize.width / 2, screenSize.height / 2)];
+//		}
+//
+//		[self addSomeJoinedBodies:CGPointMake(screenSize.width / 4, screenSize.height - 50)];
+//
+//		[self scheduleUpdate];
+//
+//		[KKInput sharedInput].accelerometerActive = YES;
+//	}
+//
+//	return self;
+
+
 
 -(void) dealloc
 {
-	delete contactListener;
 	delete world;
-
+    
+    _body = NULL;
+    world = NULL;
+    //delete contactListener;
+    
+    
 #ifndef KK_ARC_ENABLED
 	[super dealloc];
 #endif
@@ -121,21 +219,21 @@ const int TILESET_ROWS = 19;
 	// The advantage is that it draws the debug information over the normal cocos2d graphics,
 	// so you'll still see the textures of each object.
 	const BOOL useBox2DDebugLayer = YES;
-
+    
 	
 	float debugDrawScaleFactor = 1.0f;
 #if KK_PLATFORM_IOS
 	debugDrawScaleFactor = [[CCDirector sharedDirector] contentScaleFactor];
 #endif
 	debugDrawScaleFactor *= PTM_RATIO;
-
+    
 	UInt32 debugDrawFlags = 0;
 	debugDrawFlags += b2Draw::e_shapeBit;
 	debugDrawFlags += b2Draw::e_jointBit;
 	//debugDrawFlags += b2Draw::e_aabbBit;
 	//debugDrawFlags += b2Draw::e_pairBit;
 	//debugDrawFlags += b2Draw::e_centerOfMassBit;
-
+    
 	if (useBox2DDebugLayer)
 	{
 		Box2DDebugLayer* debugLayer = [Box2DDebugLayer debugLayerWithWorld:world
@@ -178,7 +276,7 @@ const int TILESET_ROWS = 19;
 	
 	// Define the dynamic body fixture.
 	b2FixtureDef fixtureDef;
-	fixtureDef.shape = &dynamicBox;	
+	fixtureDef.shape = &dynamicBox;
 	fixtureDef.density = 0.3f;
 	fixtureDef.friction = 0.5f;
 	fixtureDef.restitution = 0.6f;
@@ -254,7 +352,7 @@ const int TILESET_ROWS = 19;
 			b2Vec2 gravity = 10.0f * b2Vec2(acceleration.rawX, acceleration.rawY);
 			world->SetGravity(gravity);
 		}
-
+        
 		if (input.anyTouchEndedThisFrame)
 		{
 			[self addNewSpriteAt:[input locationOfAnyTouchInPhase:KKTouchPhaseEnded]];
@@ -309,12 +407,12 @@ const int TILESET_ROWS = 19;
 -(void) draw
 {
 	[super draw];
-
+    
 	if (debugDraw)
 	{
 		ccGLEnableVertexAttribs(kCCVertexAttribFlag_Position);
 		kmGLPushMatrix();
-		world->DrawDebugData();	
+		world->DrawDebugData();
 		kmGLPopMatrix();
 	}
 }
