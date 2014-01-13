@@ -68,10 +68,10 @@
 
 /* Begin PBXFileReference section */
 		BF44FB761883935800A97B3D /* FluffyArt */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FluffyArt; sourceTree = "<group>"; };
-		BF44FB78188393B000A97B3D /* StartMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartMenuLayer.h; sourceTree = "<group>"; };
-		BF44FB79188393B000A97B3D /* StartMenuLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StartMenuLayer.mm; sourceTree = "<group>"; };
-		BF44FB7B1883949900A97B3D /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
-		BF44FB7C1883949900A97B3D /* GameLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameLayer.mm; sourceTree = "<group>"; };
+		BF44FB78188393B000A97B3D /* StartMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartMenuLayer.h; path = ../StartMenuLayer.h; sourceTree = "<group>"; };
+		BF44FB79188393B000A97B3D /* StartMenuLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = StartMenuLayer.mm; path = ../StartMenuLayer.mm; sourceTree = "<group>"; };
+		BF44FB7B1883949900A97B3D /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameLayer.h; path = ../GameLayer.h; sourceTree = "<group>"; };
+		BF44FB7C1883949900A97B3D /* GameLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameLayer.mm; path = ../GameLayer.mm; sourceTree = "<group>"; };
 		BF44FB7E188396E500A97B3D /* MITplaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MITplaceholder.png; path = FluffyArt/MITplaceholder.png; sourceTree = "<group>"; };
 		BF44FB7F188396E500A97B3D /* playbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playbutton.png; path = FluffyArt/playbutton.png; sourceTree = "<group>"; };
 		DC193EB213B6872600500B56 /* GLES-Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
@@ -182,10 +182,6 @@
 		DCC1A0D613A94EC0005BD75D = {
 			isa = PBXGroup;
 			children = (
-				BF44FB7B1883949900A97B3D /* GameLayer.h */,
-				BF44FB7C1883949900A97B3D /* GameLayer.mm */,
-				BF44FB78188393B000A97B3D /* StartMenuLayer.h */,
-				BF44FB79188393B000A97B3D /* StartMenuLayer.mm */,
 				DCC1A38C13A94F1A005BD75D /* Projectfiles */,
 				DCC1A0F713A94ED5005BD75D /* Projectfiles-iOS */,
 				DCC1A26413A94EE6005BD75D /* Projectfiles-Mac */,
@@ -270,6 +266,10 @@
 		DCC1A38C13A94F1A005BD75D /* Projectfiles */ = {
 			isa = PBXGroup;
 			children = (
+				BF44FB7B1883949900A97B3D /* GameLayer.h */,
+				BF44FB7C1883949900A97B3D /* GameLayer.mm */,
+				BF44FB78188393B000A97B3D /* StartMenuLayer.h */,
+				BF44FB79188393B000A97B3D /* StartMenuLayer.mm */,
 				DC2A3EC2149A30B400EF78B0 /* Box2DDebugLayer.h */,
 				DC2A3EC3149A30B400EF78B0 /* Box2DDebugLayer.mm */,
 				DCC1A38F13A94F1A005BD75D /* PhysicsLayer.h */,
