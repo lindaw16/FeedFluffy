@@ -54,19 +54,11 @@
     if ((self = [super init])){
         //[self scheduleUpdate];
         
-    
-        /*CCSprite *sprite = [CCSprite spriteWithFile:@"MITplaceholder.png"];
+        CCSprite *sprite = [CCSprite spriteWithFile:@"eevee.png"];
         sprite.anchorPoint = CGPointZero;
-        [self addChild:sprite z:-1];*/
-        
-        /*sprite = [CCSprite spriteWithFile:@"playbutton.png"];
-        sprite.anchorPoint = CGPointZero;
-        sprite.position = CGPointMake(80.0f, 0.0f);
-        [self addChild:sprite z:0 tag:1];*/
-        
+        [self addChild:sprite z:-1];
         
         [self setUpMenus];
-    
         
     }
     return self;
