@@ -19,12 +19,19 @@ enum
 
 @interface PhysicsLayer : CCLayerColor
 {
+    b2Body *_paddleBody;
+    b2Fixture *_bottomFixture;
+    b2Body *_groundBody;
+    b2Fixture *_paddleFixture;
 	b2World* world;
     b2Body *_body;
     CCSprite *ball;
 	//ContactListener* contactListener;
 	GLESDebugDraw* debugDraw;
+    b2MouseJoint *_mouseJoint;
 }
 
 +(id) scene;
+
+
 @end

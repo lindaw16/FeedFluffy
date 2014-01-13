@@ -28,6 +28,7 @@ const int TILESET_ROWS = 19;
 -(void) addNewSpriteAt:(CGPoint)p;
 -(b2Vec2) toMeters:(CGPoint)point;
 -(CGPoint) toPixels:(b2Vec2)vec;
+-(CGSize) winSize;
 @end
 
 @implementation PhysicsLayer
@@ -45,41 +46,71 @@ const int TILESET_ROWS = 19;
 - (id)init {
     
     if ((self = [super initWithColor:ccc4(255,255,255,255)])) {
+        self.touchEnabled = YES;
+        
         CGSize winSize = [CCDirector sharedDirector].winSize;
+        
+        // Create a world
+        b2Vec2 gravity = b2Vec2(0.0f, -8.0f);
+        world = new b2World(gravity);
+        
+
         
         // Create sprite and add it to the layer
         ball = [CCSprite spriteWithFile:@"projectile-hd.png" rect:CGRectMake(0, 0, 52, 52)];
         ball.position = ccp(0, 0);
         [self addChild:ball];
         
-        // Create a world
-        b2Vec2 gravity = b2Vec2(0.0f, -8.0f);
-        world = new b2World(gravity);
+        
+        
+        // Create paddle and add it to the layer
+        CCSprite *paddle = [CCSprite spriteWithFile:@"longblock-hd.png"];
+        paddle.position = ccp(winSize.width/2, 50);
+        [self addChild:paddle];
+        
+        // Create paddle body
+        b2BodyDef paddleBodyDef;
+        paddleBodyDef.type = b2_dynamicBody;
+        paddleBodyDef.position.Set(winSize.width/2/PTM_RATIO, 50/PTM_RATIO);
+        paddleBodyDef.userData = (__bridge void*)paddle;
+        _paddleBody = world->CreateBody(&paddleBodyDef);
+        
+        // Create paddle shape
+        b2PolygonShape paddleShape;
+        paddleShape.SetAsBox(paddle.contentSize.width/PTM_RATIO/2,
+                             paddle.contentSize.height/PTM_RATIO/2);
+        
+        
+        // Create shape definition and add to body
+        b2FixtureDef paddleShapeDef;
+        paddleShapeDef.shape = &paddleShape;
+        paddleShapeDef.density = 10.0f;
+        paddleShapeDef.friction = 0.4f;
+        paddleShapeDef.restitution = 0.1f;
+        _paddleFixture = _paddleBody->CreateFixture(&paddleShapeDef);
         
         // Create edges around the entire screen
         b2BodyDef groundBodyDef;
         groundBodyDef.position.Set(0,0);
+        _groundBody = world->CreateBody(&groundBodyDef);
         
-        b2Body *groundBody = world->CreateBody(&groundBodyDef);
-        b2EdgeShape groundEdge;
-        b2FixtureDef boxShapeDef;
-        boxShapeDef.shape = &groundEdge;
+        b2EdgeShape groundBox;
+        b2FixtureDef groundBoxDef;
+        groundBoxDef.shape = &groundBox;
         
-        //wall definitions
-        groundEdge.Set(b2Vec2(0,0), b2Vec2(winSize.width/PTM_RATIO, 0));
-        groundBody->CreateFixture(&boxShapeDef);
+        groundBox.Set(b2Vec2(0,0), b2Vec2(winSize.width/PTM_RATIO, 0));
+        _bottomFixture = _groundBody->CreateFixture(&groundBoxDef);
         
-        groundEdge.Set(b2Vec2(0,0), b2Vec2(0,winSize.height/PTM_RATIO));
-        groundBody->CreateFixture(&boxShapeDef);
+        groundBox.Set(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
+        _groundBody->CreateFixture(&groundBoxDef);
         
-        groundEdge.Set(b2Vec2(0, winSize.height/PTM_RATIO),
-                       b2Vec2(winSize.width/PTM_RATIO, winSize.height/PTM_RATIO));
-        groundBody->CreateFixture(&boxShapeDef);
+        groundBox.Set(b2Vec2(0, winSize.height/PTM_RATIO), b2Vec2(winSize.width/PTM_RATIO,
+                                                                  winSize.height/PTM_RATIO));
+        _groundBody->CreateFixture(&groundBoxDef);
         
-        groundEdge.Set(b2Vec2(winSize.width/PTM_RATIO, winSize.height/PTM_RATIO),
-                       b2Vec2(winSize.width/PTM_RATIO, 0));
-        groundBody->CreateFixture(&boxShapeDef);
-        
+        groundBox.Set(b2Vec2(winSize.width/PTM_RATIO, winSize.height/PTM_RATIO), 
+                      b2Vec2(winSize.width/PTM_RATIO, 0));
+        _groundBody->CreateFixture(&groundBoxDef);
         // Create ball body and shape
         b2BodyDef ballBodyDef;
         ballBodyDef.userData = (__bridge void*)ball;
@@ -95,14 +126,23 @@ const int TILESET_ROWS = 19;
         b2FixtureDef ballShapeDef;
         ballShapeDef.shape = &circle;
         ballShapeDef.density = 1.0f;
-        ballShapeDef.friction = 0.2f;
+        ballShapeDef.friction = 0.f;
         ballShapeDef.restitution = 1.0f;
         _body->CreateFixture(&ballShapeDef);
-        
-        
+//Make paddle horizontal plane
+        b2PrismaticJointDef jointDef;
+        b2Vec2 worldAxis(1.0f, 0.0f);
+        jointDef.collideConnected = true;
+        jointDef.Initialize(_paddleBody, _groundBody,
+                            _paddleBody->GetWorldCenter(), worldAxis);
+        world->CreateJoint(&jointDef);
+
         
         b2Vec2 force = b2Vec2(10, 10);
         _body->ApplyLinearImpulse(force, ballBodyDef.position);
+        
+        
+        
         
         [self schedule:@selector(tick:)];
         //[self schedule:@selector(kick) interval:5.0];
@@ -121,15 +161,124 @@ const int TILESET_ROWS = 19;
             ballData.position = ccp(b->GetPosition().x * PTM_RATIO,
                                     b->GetPosition().y * PTM_RATIO);
             ballData.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
-        }
+            
+            // if ball is going too fast, turn on damping
+                    }
+    }
+    
+}
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    if (_mouseJoint != NULL) return;
+    
+    UITouch *myTouch = [touches anyObject];
+    CGPoint location = [myTouch locationInView:[myTouch view]];
+    location = [[CCDirector sharedDirector] convertToGL:location];
+    b2Vec2 locationWorld = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
+    
+    if (_paddleFixture->TestPoint(locationWorld)) {
+        b2MouseJointDef md;
+        md.bodyA = _groundBody;
+        md.bodyB = _paddleBody;
+        md.target = locationWorld;
+        md.collideConnected = true;
+        md.maxForce = 500.0f * _paddleBody->GetMass();
+        
+        _mouseJoint = (b2MouseJoint *)world->CreateJoint(&md);
+        _paddleBody->SetAwake(true);
     }
     
 }
 
+-(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    if (_mouseJoint == NULL) return;
+    
+    UITouch *myTouch = [touches anyObject];
+    CGPoint location = [myTouch locationInView:[myTouch view]];
+    location = [[CCDirector sharedDirector] convertToGL:location];
+    b2Vec2 locationWorld = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
+    
+    _mouseJoint->SetTarget(locationWorld);
+    
+}
+-(void)ccTouchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    if (_mouseJoint) {
+        world->DestroyJoint(_mouseJoint);
+        _mouseJoint = NULL;
+    }
+    
+}
 
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (_mouseJoint) {
+        world->DestroyJoint(_mouseJoint);
+        _mouseJoint = NULL;
+    }
+}
 
-
-//	if ((self = [super init]))
+//- ( void ) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    UITouch *touch = [touches anyObject];
+//    locationTouchBegan = [touch locationInView: [touch view]];
+//    //location is The Point Where The User Touched
+//    locationTouchBegan = [[CCDirector sharedDirector] convertToGL:locationTouchBegan];
+//    //Detect the Touch On Ball
+//    if(CGRectContainsPoint([ball boundingBox], locationTouchBegan))
+//    {
+//        isBallTouched=YES;
+//    }
+//    
+//}
+//- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    // Choose one of the touches to work with
+//    UITouch *touch = [touches anyObject];
+//    CGPoint location = [touch locationInView:[touch view]];
+//    location = [[CCDirector sharedDirector] convertToGL:location];
+//    
+//    //  Determine offset of location to projectile
+//    int offX = location.x - ball.position.x;
+//    int offY = location.y - ball.position.y;
+//    
+//    // Bail out if we are shooting down or backwards
+//    if (offX <= 0)
+//        return;
+//    
+//    // Determine where we wish to shoot the projectile to
+//    int realX = winSize.width + (ball.contentSize.height/2);
+//    float ratio = (float) offY / (float) offX;
+//    int realY = (realX * ratio) + ball.position.y;
+//    CGPoint realDest = ccp(realX, realY);
+//    
+//    if(realX>=320)
+//        realX = 320;
+//    if(realY>=480)
+//        realY = 480;
+//    
+//    
+//    //int good = goodBarrel.position.x;
+//    //int bad = badBarrel.position.x;
+//    
+//    int destY = realDest.x;
+//        
+//    realDest.x = destY+10;
+//    
+//    // Determine the length of how far we're shooting
+//    int offRealX = realX - ball.position.x;
+//    int offRealY = realY - ball.position.y;
+//    float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
+//    float velocity = 480/1; // 480pixels/1sec
+//    float realMoveDuration = length/velocity;
+//    
+//    // Move projectile to actual endpoint
+//    [ball runAction:[CCSequence actions:
+//                     [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
+//                     [CCCallFuncN actionWithTarget:self selector:@selector(spriteMoveFinished:)],
+//                     nil]];
+//    [ball runAction:[CCScaleTo actionWithDuration:realMoveDuration scale:0.4f]];
+    //	if ((self = [super init]))
 //	{
 //		CCLOG(@"%@ init", NSStringFromClass([self class]));
 //
@@ -295,6 +444,7 @@ const int TILESET_ROWS = 19;
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
 	
+    
 	// position must be converted to meters
 	bodyDef.position = [self toMeters:pos];
 	bodyDef.position = bodyDef.position + b2Vec2(-1, -1);
