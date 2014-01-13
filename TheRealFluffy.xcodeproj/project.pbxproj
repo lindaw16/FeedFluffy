@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		912F81EF18839C9C00838683 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81EE18839C9C00838683 /* ball.png */; };
+		912F81F118839CA700838683 /* ball-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81F018839CA700838683 /* ball-hd.png */; };
 		BF44FB771883935800A97B3D /* FluffyArt in Resources */ = {isa = PBXBuildFile; fileRef = BF44FB761883935800A97B3D /* FluffyArt */; };
 		BF44FB7A188393B000A97B3D /* StartMenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF44FB79188393B000A97B3D /* StartMenuLayer.mm */; };
 		BF44FB7D1883949900A97B3D /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF44FB7C1883949900A97B3D /* GameLayer.mm */; };
@@ -67,6 +69,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		912F81ED18839C0300838683 /* Box2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box2D.h; sourceTree = "<group>"; };
+		912F81EE18839C9C00838683 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
+		912F81F018839CA700838683 /* ball-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ball-hd.png"; sourceTree = "<group>"; };
 		BF44FB761883935800A97B3D /* FluffyArt */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FluffyArt; sourceTree = "<group>"; };
 		BF44FB78188393B000A97B3D /* StartMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartMenuLayer.h; sourceTree = "<group>"; };
 		BF44FB79188393B000A97B3D /* StartMenuLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StartMenuLayer.mm; sourceTree = "<group>"; };
@@ -270,6 +275,7 @@
 		DCC1A38C13A94F1A005BD75D /* Projectfiles */ = {
 			isa = PBXGroup;
 			children = (
+				912F81ED18839C0300838683 /* Box2D.h */,
 				DC2A3EC2149A30B400EF78B0 /* Box2DDebugLayer.h */,
 				DC2A3EC3149A30B400EF78B0 /* Box2DDebugLayer.mm */,
 				DCC1A38F13A94F1A005BD75D /* PhysicsLayer.h */,
@@ -289,6 +295,8 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				912F81F018839CA700838683 /* ball-hd.png */,
+				912F81EE18839C9C00838683 /* ball.png */,
 				BF44FB7E188396E500A97B3D /* MITplaceholder.png */,
 				BF44FB7F188396E500A97B3D /* playbutton.png */,
 				BF44FB761883935800A97B3D /* FluffyArt */,
@@ -408,6 +416,8 @@
 				DC26D6BE14B9E4D500B6002E /* fps_images-hd.png in Resources */,
 				DC65617D15114BC500E59F8A /* fps_images-ipadhd.png in Resources */,
 				DC2721B1160CB01100D88944 /* Default-568h@2x.png in Resources */,
+				912F81EF18839C9C00838683 /* ball.png in Resources */,
+				912F81F118839CA700838683 /* ball-hd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
