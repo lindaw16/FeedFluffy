@@ -32,6 +32,7 @@ enum
 }
 
 +(id) scene;
-
+//-(void) draw;
+-(void) detectCollisions;
 
 @end

@@ -66,7 +66,7 @@
 
 - (void) goToLevel1: (CCMenuItem  *) menuItem
 {
-	NSLog(@"The first menu was called");
+	//NSLog(@"The first menu was called");
     [[CCDirector sharedDirector] replaceScene: (CCScene*)[[PhysicsLayer alloc] init]];
 }
 
