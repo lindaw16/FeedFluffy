@@ -44,11 +44,11 @@ const int TILESET_ROWS = 19;
 
 - (id)init {
     
-    if ((self=[super init])) {
+    if ((self = [super initWithColor:ccc4(255,255,255,255)])) {
         CGSize winSize = [CCDirector sharedDirector].winSize;
         
         // Create sprite and add it to the layer
-        ball = [CCSprite spriteWithFile:@"ball.png" rect:CGRectMake(0, 0, 52, 52)];
+        ball = [CCSprite spriteWithFile:@"projectile-hd.png" rect:CGRectMake(0, 0, 52, 52)];
         ball.position = ccp(0, 0);
         [self addChild:ball];
         
@@ -98,6 +98,11 @@ const int TILESET_ROWS = 19;
         ballShapeDef.friction = 0.2f;
         ballShapeDef.restitution = 1.0f;
         _body->CreateFixture(&ballShapeDef);
+        
+        
+        
+        b2Vec2 force = b2Vec2(10, 10);
+        _body->ApplyLinearImpulse(force, ballBodyDef.position);
         
         [self schedule:@selector(tick:)];
         //[self schedule:@selector(kick) interval:5.0];

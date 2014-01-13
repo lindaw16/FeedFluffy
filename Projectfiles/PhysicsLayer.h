@@ -17,7 +17,7 @@ enum
 	kTagBatchNode,
 };
 
-@interface PhysicsLayer : CCLayer
+@interface PhysicsLayer : CCLayerColor
 {
 	b2World* world;
     b2Body *_body;

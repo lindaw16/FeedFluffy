@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		912F81EF18839C9C00838683 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81EE18839C9C00838683 /* ball.png */; };
 		912F81F118839CA700838683 /* ball-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81F018839CA700838683 /* ball-hd.png */; };
+		912F81F318839F8A00838683 /* idearoot_color.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81F218839F8A00838683 /* idearoot_color.png */; };
+		912F81F51883A07D00838683 /* ball480icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81F41883A07D00838683 /* ball480icon.png */; };
+		912F81F71883A1F400838683 /* projectile-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81F61883A1F400838683 /* projectile-hd.png */; };
 		BF44FB771883935800A97B3D /* FluffyArt in Resources */ = {isa = PBXBuildFile; fileRef = BF44FB761883935800A97B3D /* FluffyArt */; };
 		BF44FB7A188393B000A97B3D /* StartMenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF44FB79188393B000A97B3D /* StartMenuLayer.mm */; };
 		BF44FB7D1883949900A97B3D /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF44FB7C1883949900A97B3D /* GameLayer.mm */; };
@@ -72,6 +75,9 @@
 		912F81ED18839C0300838683 /* Box2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box2D.h; sourceTree = "<group>"; };
 		912F81EE18839C9C00838683 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
 		912F81F018839CA700838683 /* ball-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ball-hd.png"; sourceTree = "<group>"; };
+		912F81F218839F8A00838683 /* idearoot_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = idearoot_color.png; sourceTree = "<group>"; };
+		912F81F41883A07D00838683 /* ball480icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball480icon.png; sourceTree = "<group>"; };
+		912F81F61883A1F400838683 /* projectile-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "projectile-hd.png"; sourceTree = "<group>"; };
 		BF44FB761883935800A97B3D /* FluffyArt */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FluffyArt; sourceTree = "<group>"; };
 		BF44FB78188393B000A97B3D /* StartMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartMenuLayer.h; path = ../StartMenuLayer.h; sourceTree = "<group>"; };
 		BF44FB79188393B000A97B3D /* StartMenuLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = StartMenuLayer.mm; path = ../StartMenuLayer.mm; sourceTree = "<group>"; };
@@ -295,6 +301,9 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				912F81F61883A1F400838683 /* projectile-hd.png */,
+				912F81F41883A07D00838683 /* ball480icon.png */,
+				912F81F218839F8A00838683 /* idearoot_color.png */,
 				912F81F018839CA700838683 /* ball-hd.png */,
 				912F81EE18839C9C00838683 /* ball.png */,
 				BF44FB7E188396E500A97B3D /* MITplaceholder.png */,
@@ -418,6 +427,9 @@
 				DC2721B1160CB01100D88944 /* Default-568h@2x.png in Resources */,
 				912F81EF18839C9C00838683 /* ball.png in Resources */,
 				912F81F118839CA700838683 /* ball-hd.png in Resources */,
+				912F81F318839F8A00838683 /* idearoot_color.png in Resources */,
+				912F81F51883A07D00838683 /* ball480icon.png in Resources */,
+				912F81F71883A1F400838683 /* projectile-hd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
