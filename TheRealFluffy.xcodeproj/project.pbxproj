@@ -16,6 +16,7 @@
 		912F81FD18845C0900838683 /* paddle.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81FC18845C0900838683 /* paddle.png */; };
 		912F820018845CD800838683 /* taperedblock.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81FE18845CD700838683 /* taperedblock.png */; };
 		912F820118845CD800838683 /* longblock.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81FF18845CD700838683 /* longblock.png */; };
+		ABC639A11884E86A007A46F2 /* apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ABC639A01884E86A007A46F2 /* apple.jpg */; };
 		BF22E3D5188472C9007E26DF /* hungryEevee.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D4188472C9007E26DF /* hungryEevee.png */; };
 		BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */; };
 		BF44FB7A188393B000A97B3D /* StartMenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF44FB79188393B000A97B3D /* StartMenuLayer.mm */; };
@@ -90,6 +91,7 @@
 		912F81FC18845C0900838683 /* paddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paddle.png; sourceTree = "<group>"; };
 		912F81FE18845CD700838683 /* taperedblock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taperedblock.png; sourceTree = "<group>"; };
 		912F81FF18845CD700838683 /* longblock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = longblock.png; sourceTree = "<group>"; };
+		ABC639A01884E86A007A46F2 /* apple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpg; sourceTree = "<group>"; };
 		BF22E3D4188472C9007E26DF /* hungryEevee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEevee.png; sourceTree = "<group>"; };
 		BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEeveeMouth.png; sourceTree = "<group>"; };
 		BF44FB78188393B000A97B3D /* StartMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartMenuLayer.h; path = ../StartMenuLayer.h; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ABC639A01884E86A007A46F2 /* apple.jpg */,
 				912F81FE18845CD700838683 /* taperedblock.png */,
 				912F81FF18845CD700838683 /* longblock.png */,
 				912F81FC18845C0900838683 /* paddle.png */,
@@ -441,6 +444,7 @@
 				DCC1A10613A94ED5005BD75D /* Icon.png in Resources */,
 				DCC1A10813A94ED5005BD75D /* Icon@2x.png in Resources */,
 				DCC1A10B13A94ED5005BD75D /* iTunesArtwork in Resources */,
+				ABC639A11884E86A007A46F2 /* apple.jpg in Resources */,
 				BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */,
 				BF44FB81188396E500A97B3D /* playbutton.png in Resources */,
 				BF63D6EA18848AD100F3D3F3 /* eevee.png in Resources */,
