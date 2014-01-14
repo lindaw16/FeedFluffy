@@ -13,4 +13,5 @@
 
 @interface GameLayer : CCLayer
 
+//-(void) draw;
 @end

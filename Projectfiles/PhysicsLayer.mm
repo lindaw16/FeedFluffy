@@ -14,7 +14,6 @@
 #import "Box2D.h"
 #import "Box2DDebugLayer.h"
 #import "cocos2d.h"
-#import "StartMenuLayer.h"
 //#import "cocos2d.m"
 
 //Pixel to metres ratio. Box2D uses metres as the unit for measurement.
