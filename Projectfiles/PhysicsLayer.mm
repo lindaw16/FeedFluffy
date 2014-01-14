@@ -151,12 +151,12 @@ const int TILESET_ROWS = 19;
         //Make paddle horizontal plane
 
 
-        b2PrismaticJointDef jointDef;
-        b2Vec2 worldAxis(0.0f, 1.0f);
-        jointDef.collideConnected = true;
-        jointDef.Initialize(_paddleBody, _groundBody, _paddleBody->GetWorldCenter(), worldAxis);
-
-        world->CreateJoint(&jointDef);
+//        b2PrismaticJointDef jointDef;
+//        b2Vec2 worldAxis(0.0f, 1.0f);
+//        jointDef.collideConnected = true;
+//        jointDef.Initialize(_paddleBody, _groundBody, _paddleBody->GetWorldCenter(), worldAxis);
+//
+//        world->CreateJoint(&jointDef);
 
         
 //        b2Vec2 force = b2Vec2(10, 10);
