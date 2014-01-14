@@ -26,9 +26,14 @@ enum
 	b2World* world;
     b2Body *_body;
     CCSprite *ball;
+    //to help with cannon to rotate smoothly 
+    CCSprite *_nextProjectile;
+    
+   
 	//ContactListener* contactListener;
 	GLESDebugDraw* debugDraw;
     b2MouseJoint *_mouseJoint;
+    CCSprite *_player;
 }
 
 +(id) scene;
