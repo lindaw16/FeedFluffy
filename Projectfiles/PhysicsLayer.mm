@@ -27,6 +27,13 @@ const int TILESIZE = 32;
 const int TILESET_COLUMNS = 9;
 const int TILESET_ROWS = 19;
 
+NSMutableArray *foodObjects = [[NSMutableArray alloc] init];
+NSMutableArray *balls = [[NSMutableArray alloc] init];
+CCSprite *ball;
+CCSprite *food;
+CGRect firstrect;
+CGRect secondrect;
+
 
 @interface PhysicsLayer (PrivateMethods)
 -(void) enableBox2dDebugDrawing;
@@ -68,6 +75,9 @@ const int TILESET_ROWS = 19;
         // Create sprite and add it to the layer
         ball = [CCSprite spriteWithFile:@"projectile.png" rect:CGRectMake(0, 0, 52, 52)];
         ball.position = ccp(0, 0);
+        
+        [balls addObject:ball];
+        
         [self addChild:ball z:1 tag:1];
 
         // Create paddle and add it to the left side of the screen
@@ -85,7 +95,6 @@ const int TILESET_ROWS = 19;
         CCSprite *hungryEeveeMouth = [CCSprite spriteWithFile: @"hungryEeveeMouth.png"];
         hungryEeveeMouth.position = ccp(450, 148);
         [self addChild:hungryEeveeMouth z:-1 tag:1];
-        
         
         // Create paddle body
         b2BodyDef paddleBodyDef;
@@ -168,9 +177,74 @@ const int TILESET_ROWS = 19;
         //[self schedule:@selector(kick) interval:5.0];
         [self setTouchEnabled:YES];
         //[self setAccelerometerEnabled:NO];
+        
+        // add foods!
+        CCSprite *sprite = [CCSprite spriteWithFile:@"apple.jpg"];
+        sprite.position = CGPointMake(250.0f, 250.0f);
+        [foodObjects addObject:sprite];
+        [self addChild:sprite z:0];
+        
         [self scheduleUpdate];
     }
     return self;
+}
+
+// DETECT COLLISIONS BETWEEN BALL AND FOOD!
+-(void) detectCollisions
+{
+    NSLog(@"foodObjects Count");
+    NSLog(@"%d",[foodObjects count]);
+    for(int i = 0; i < [balls count]; i++)
+    {
+        for(int j = 0; j < [foodObjects count]; j++)
+        {
+            if([balls count]>0)
+            {
+                NSInteger first = i;
+                NSInteger second = j;
+                food = [foodObjects objectAtIndex:second];
+                ball = [balls objectAtIndex:first];
+                
+                firstrect = [ball textureRect];
+                secondrect = [food textureRect];
+                //check if their x coordinates match
+                //if(ball.position.x == food.position.x)
+                if(ball.position.x < (food.position.x + 50.0f) && ball.position.x > (food.position.x - 50.0f))
+                {
+                    //check if their y coordinates are within the height of the block
+                    if(ball.position.y < (food.position.y + 50.0f) && ball.position.y > food.position.y - 50.0f)
+                    {
+                        
+                        /*if([block isKindOfClass:[Seal class]]) {
+                         if (((Seal*)block).health==1)
+                         {
+                         [self removeChild:block cleanup:YES];
+                         [self removeChild:projectile cleanup:YES];
+                         [blocksList removeObjectAtIndex:second];
+                         [bullets removeObjectAtIndex:first];
+                         [[SimpleAudioEngine sharedEngine] playEffect:@"explo2.wav"];
+                         }
+                         else
+                         {
+                         ((Seal*)block).health--;
+                         [self removeChild:projectile cleanup:YES];
+                         [bullets removeObjectAtIndex:first];
+                         }
+                         }*/
+                        //else {
+                        NSLog(@"FOOD COLLECTED!");
+                        [self removeChild:food cleanup:YES];
+                        //[self removeChild:ball cleanup:YES];
+                        [foodObjects removeObjectAtIndex:second];
+                        //[bullets removeObjectAtIndex:first];
+                        //[[SimpleAudioEngine sharedEngine] playEffect:@"explo2.wav"];
+                        //}
+                        
+                    }
+                }
+            }
+        }
+    }
 }
 
 - (void)tick:(ccTime) dt {
@@ -477,7 +551,7 @@ const int TILESET_ROWS = 19;
 */
 
 
--(void) detectCollisions
+/*-(void) detectCollisions
 {
     CCSprite *projectile = [self getChildByTag:1];
     CCSprite *mouth = [self getChildByTag:2];
@@ -492,7 +566,7 @@ const int TILESET_ROWS = 19;
             [[CCDirector sharedDirector] replaceScene: (CCScene*)[[StartMenuLayer alloc] init]];
         }
     }
-}
+}*/
 
 
 @end
