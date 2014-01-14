@@ -36,8 +36,25 @@ enum
     CCSprite *_player;
 }
 
+//TODO: fix this list
+//Currently these are all public.. decide which ones we want public, private
+//Also maybe change to a more sensical order
 +(id) scene;
-//-(void) draw;
 -(void) detectCollisions;
+-(void)tick:(ccTime)dt;
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+-(void) dealloc;
+-(void) enableBox2dDebugDrawing;
+-(CCSprite*) addRandomSpriteAt:(CGPoint)pos;
+-(void) bodyCreateFixture:(b2Body*)body;
+-(void) addSomeJoinedBodies:(CGPoint)pos;
+-(void) addNewSpriteAt:(CGPoint)pos;
+-(void) update:(ccTime)delta;
+-(b2Vec2) toMeters:(CGPoint)point;
+-(CGPoint) toPixels:(b2Vec2)vec;
+//-(void) draw;
+
 
 @end

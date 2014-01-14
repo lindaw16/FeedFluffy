@@ -14,7 +14,18 @@
 #import "Box2D.h"
 #import "Box2DDebugLayer.h"
 #import "cocos2d.h"
+#import "GameLayer.h"
 //#import "cocos2d.m"
+
+
+/*
+ * Sprite Tags
+ * 1: hungry eevee
+ * 2: hungry eevee mouth
+ *
+ *
+ *
+ */
 
 //Pixel to metres ratio. Box2D uses metres as the unit for measurement.
 //This ratio defines how many pixels correspond to 1 Box2D "metre"
@@ -67,17 +78,13 @@ CGRect secondrect;
         
         CGSize winSize = [CCDirector sharedDirector].winSize;
         
-        // Create a world
-        //b2Vec2 gravity = b2Vec2(0.0f, -8.0f);
-        
-//horizontal gravity
-        //b2Vec2 gravity = b2Vec2(-8.0f, 0.0f);
-        //world = new b2World(gravity);
-//no gravity
+
+        //no gravity -- Do we still need this then?
         b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
         world = new b2World(gravity);
         
-        _player = [CCSprite spriteWithFile:@"player2.png"];
+//okay player2 was kinda confusing. I'm going to change this to "cannon"
+        _player = [CCSprite spriteWithFile:@"cannon.png"];
         _player.position = ccp(_player.contentSize.width/2, winSize.height/2);
         
         
@@ -89,19 +96,11 @@ CGRect secondrect;
         poMaxX = _player.size.width - _player.boundingBox.size.width * 0.5;
         
         
-        // Create sprite and add it to the layer
+//will be removing this later right?
+        // Create the ball and add it to the layer
         ball = [CCSprite spriteWithFile:@"projectile.png" rect:CGRectMake(0, 0, 52, 52)];
         ball.position = ccp(0, 0);
-        
         [balls addObject:ball];
-        
-        [self addChild:ball z:1 tag:1];
-
-//        // Create paddle and add it to the left side of the screen
-//        CCSprite *paddle = [CCSprite spriteWithFile:@"longblock.png" rect:CGRectMake(0, 0, 25, 180)];
-//        paddle.position = ccp(10, winSize.height/2);
-//        [self addChild:paddle z:1];
-        
 
         
         //Create a hungry eevee and add it to layer
@@ -109,35 +108,15 @@ CGRect secondrect;
         hungryEevee.position = ccp(winSize.width - 10, winSize.height/2);
         [self addChild:hungryEevee z:0 tag:2];
         
-        //Create the hungry eevee
+        //Create the hungry eevee mouth -- useful to detect collision
+        
         CCSprite *hungryEeveeMouth = [CCSprite spriteWithFile: @"hungryEeveeMouth.png"];
         hungryEeveeMouth.position = ccp(450, 148);
         [self addChild:hungryEeveeMouth z:-1 tag:1];
         
-//        // Create paddle body
-//        b2BodyDef paddleBodyDef;
-//        paddleBodyDef.type = b2_dynamicBody;
-//        //paddleBodyDef.position.Set(winSize.width/2/PTM_RATIO, winSize.height/2/PTM_RATIO);
-//        paddleBodyDef.position.Set(10/PTM_RATIO, winSize.height/2/PTM_RATIO);
-//        paddleBodyDef.userData = (__bridge void*)paddle;
-//        _paddleBody = world->CreateBody(&paddleBodyDef);
-//
+
         
-        // Create paddle shape
-//        b2PolygonShape paddleShape;
-//        paddleShape.SetAsBox(_player.contentSize.width/PTM_RATIO/2,
-//                             _player.contentSize.height/PTM_RATIO/2);
-//        
-//        // Create shape definition and add to body
-//        b2FixtureDef paddleShapeDef;
-//        paddleShapeDef.shape = &paddleShape;
-//        paddleShapeDef.density = 10.0f;
-//        paddleShapeDef.friction = 0.4f;
-//        paddleShapeDef.restitution = 0.1f;
-//        _paddleFixture = _paddleBody->CreateFixture(&paddleShapeDef);
-        
-        // Create edges around the entire screen
-//removing the edge on the right of the screen
+        // Create edges around the entire screen except the one on the left
         b2BodyDef groundBodyDef;
         groundBodyDef.position.Set(0,0);
         _groundBody = world->CreateBody(&groundBodyDef);
@@ -149,7 +128,9 @@ CGRect secondrect;
         groundBox.Set(b2Vec2(0,0), b2Vec2(winSize.width/PTM_RATIO, 0));
         _bottomFixture = _groundBody->CreateFixture(&groundBoxDef);
         
-
+//adding this back in in case we need it later
+        //groundBox.Set(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
+        //_groundBody->CreateFixture(&groundBoxDef);
         
         groundBox.Set(b2Vec2(0, winSize.height/PTM_RATIO), b2Vec2(winSize.width/PTM_RATIO, winSize.height/PTM_RATIO));
         _groundBody->CreateFixture(&groundBoxDef);
@@ -175,20 +156,8 @@ CGRect secondrect;
         ballShapeDef.restitution = 1.0f;
         _body->CreateFixture(&ballShapeDef);
         
-        //Make paddle horizontal plane
-
-
-//        b2PrismaticJointDef jointDef;
-//        b2Vec2 worldAxis(0.0f, 1.0f);
-//        jointDef.collideConnected = true;
-//        jointDef.Initialize(_paddleBody, _groundBody, _paddleBody->GetWorldCenter(), worldAxis);
-//
-//        world->CreateJoint(&jointDef);
-
-        
-//        b2Vec2 force = b2Vec2(10, 10);
-        
-        
+       
+        //this determines the speed of the ball projectile
         b2Vec2 force = b2Vec2(1,1);
         _body->ApplyLinearImpulse(force, ballBodyDef.position);
     
@@ -198,6 +167,8 @@ CGRect secondrect;
         [self setTouchEnabled:YES];
         //[self setAccelerometerEnabled:NO];
         
+        
+//make this a spritelist later
         // add foods!
         CCSprite *sprite = [CCSprite spriteWithFile:@"apple.jpg"];
         sprite.position = CGPointMake(250.0f, 250.0f);
@@ -212,18 +183,21 @@ CGRect secondrect;
 // DETECT COLLISIONS BETWEEN BALL AND FOOD!
 -(void) detectCollisions
 {
+//balls in this case is still the projectile, which we will be removing/replacing
     NSLog(@"foodObjects Count");
     NSLog(@"%d",[foodObjects count]);
+    
+    //First check if the ball hit a food
     for(int i = 0; i < [balls count]; i++)
     {
         for(int j = 0; j < [foodObjects count]; j++)
         {
             if([balls count]>0)
             {
-                NSInteger first = i;
-                NSInteger second = j;
-                food = [foodObjects objectAtIndex:second];
-                ball = [balls objectAtIndex:first];
+                NSInteger ballIndex = i;
+                NSInteger foodIndex = j;
+                food = [foodObjects objectAtIndex:foodIndex];
+                ball = [balls objectAtIndex:ballIndex];
                 
                 firstrect = [ball textureRect];
                 secondrect = [food textureRect];
@@ -234,28 +208,10 @@ CGRect secondrect;
                     //check if their y coordinates are within the height of the block
                     if(ball.position.y < (food.position.y + 50.0f) && ball.position.y > food.position.y - 50.0f)
                     {
-                        
-                        /*if([block isKindOfClass:[Seal class]]) {
-                         if (((Seal*)block).health==1)
-                         {
-                         [self removeChild:block cleanup:YES];
-                         [self removeChild:projectile cleanup:YES];
-                         [blocksList removeObjectAtIndex:second];
-                         [bullets removeObjectAtIndex:first];
-                         [[SimpleAudioEngine sharedEngine] playEffect:@"explo2.wav"];
-                         }
-                         else
-                         {
-                         ((Seal*)block).health--;
-                         [self removeChild:projectile cleanup:YES];
-                         [bullets removeObjectAtIndex:first];
-                         }
-                         }*/
-                        //else {
                         NSLog(@"FOOD COLLECTED!");
                         [self removeChild:food cleanup:YES];
                         //[self removeChild:ball cleanup:YES];
-                        [foodObjects removeObjectAtIndex:second];
+                        [foodObjects removeObjectAtIndex:foodIndex];
                         //[bullets removeObjectAtIndex:first];
                         //[[SimpleAudioEngine sharedEngine] playEffect:@"explo2.wav"];
                         //}
@@ -265,6 +221,23 @@ CGRect secondrect;
             }
         }
     }
+    
+//add this back after I find where the projectile went
+ /*
+    //check if the ball hit the target
+    CCSprite *mouth = [self getChildByTag:1];
+    
+    //check if their x coordinates are close enough
+    if(ball.position.x < (mouth.position.x + 10.0f) && ball.position.y < (mouth.position.x - 10.0f))
+    {
+        //check if their y coordinates are close enough
+        if(ball.position.y < (mouth.position.y + 10.0f) && ball.position.y > mouth.position.y - 10.0f)
+        {
+            [self removeChild:ball cleanup: YES];
+            //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[GameLayer alloc] init]];
+        }
+    }
+ */
 }
 
 - (void)tick:(ccTime) dt {
@@ -312,10 +285,6 @@ CGRect secondrect;
     CGPoint newPos = ccpAdd(_player.position, translation);
     _player.position = newPos;
 
-
-    
-    //CGPoint translation = CGPointMake(touchLocation.x - oldTouchLocation.x, oldTouchLocation.y - oldTouchLocation.y);
-    //_player.position = CGPointMake(_player.position.x, _player.position.y + translation.y);
 }
 
 
@@ -656,7 +625,9 @@ CGRect secondrect;
 #endif
 */
 
-/*
+
+
+/* //keep this for debuggin
  -(void) draw
 {
     ccColor4F buttonColor = ccc4f(0, 0.5, 0.5, 0.5);
@@ -667,23 +638,6 @@ CGRect secondrect;
 }
 */
 
-
-/*-(void) detectCollisions
-{
-    CCSprite *projectile = [self getChildByTag:1];
-    CCSprite *mouth = [self getChildByTag:2];
-    
-    //check if their x coordinates are close enough
-    if(projectile.position.x < (mouth.position.x + 5.0f) && projectile.position.y < (mouth.position.x - 5.0f))
-    {
-        //check if their y coordinates are close enough
-        if(projectile.position.y < (mouth.position.y + 5.0f) && projectile.position.y > mouth.position.y - 5.0f)
-        {
-            [self removeChild:projectile cleanup: YES];
-            [[CCDirector sharedDirector] replaceScene: (CCScene*)[[StartMenuLayer alloc] init]];
-        }
-    }
-}*/
 
 
 @end
@@ -699,138 +653,3 @@ CGRect secondrect;
 
 
 
-
-
-
-//- ( void ) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    UITouch *touch = [touches anyObject];
-//    locationTouchBegan = [touch locationInView: [touch view]];
-//    //location is The Point Where The User Touched
-//    locationTouchBegan = [[CCDirector sharedDirector] convertToGL:locationTouchBegan];
-//    //Detect the Touch On Ball
-//    if(CGRectContainsPoint([ball boundingBox], locationTouchBegan))
-//    {
-//        isBallTouched=YES;
-//    }
-//
-//}
-//- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    // Choose one of the touches to work with
-//    UITouch *touch = [touches anyObject];
-//    CGPoint location = [touch locationInView:[touch view]];
-//    location = [[CCDirector sharedDirector] convertToGL:location];
-//
-//    //  Determine offset of location to projectile
-//    int offX = location.x - ball.position.x;
-//    int offY = location.y - ball.position.y;
-//
-//    // Bail out if we are shooting down or backwards
-//    if (offX <= 0)
-//        return;
-//
-//    // Determine where we wish to shoot the projectile to
-//    int realX = winSize.width + (ball.contentSize.height/2);
-//    float ratio = (float) offY / (float) offX;
-//    int realY = (realX * ratio) + ball.position.y;
-//    CGPoint realDest = ccp(realX, realY);
-//
-//    if(realX>=320)
-//        realX = 320;
-//    if(realY>=480)
-//        realY = 480;
-//
-//
-//    //int good = goodBarrel.position.x;
-//    //int bad = badBarrel.position.x;
-//
-//    int destY = realDest.x;
-//
-//    realDest.x = destY+10;
-//
-//    // Determine the length of how far we're shooting
-//    int offRealX = realX - ball.position.x;
-//    int offRealY = realY - ball.position.y;
-//    float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
-//    float velocity = 480/1; // 480pixels/1sec
-//    float realMoveDuration = length/velocity;
-//
-//    // Move projectile to actual endpoint
-//    [ball runAction:[CCSequence actions:
-//                     [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
-//                     [CCCallFuncN actionWithTarget:self selector:@selector(spriteMoveFinished:)],
-//                     nil]];
-//    [ball runAction:[CCScaleTo actionWithDuration:realMoveDuration scale:0.4f]];
-//	if ((self = [super init]))
-//	{
-//		CCLOG(@"%@ init", NSStringFromClass([self class]));
-//
-//		glClearColor(0.1f, 0.0f, 0.2f, 1.0f);
-//
-//		// Construct a world object, which will hold and simulate the rigid bodies.
-//		b2Vec2 gravity = b2Vec2(0.0f, -10.0f);
-//		world = new b2World(gravity);
-//		world->SetAllowSleeping(YES);
-//		//world->SetContinuousPhysics(YES);
-//
-//		// uncomment this line to draw debug info
-//		[self enableBox2dDebugDrawing];
-//
-//		contactListener = new ContactListener();
-//		world->SetContactListener(contactListener);
-//
-//		// for the screenBorder body we'll need these values
-//		CGSize screenSize = [CCDirector sharedDirector].winSize;
-//		float widthInMeters = screenSize.width / PTM_RATIO;
-//		float heightInMeters = screenSize.height / PTM_RATIO;
-//		b2Vec2 lowerLeftCorner = b2Vec2(0, 0);
-//		b2Vec2 lowerRightCorner = b2Vec2(widthInMeters, 0);
-//		b2Vec2 upperLeftCorner = b2Vec2(0, heightInMeters);
-//		b2Vec2 upperRightCorner = b2Vec2(widthInMeters, heightInMeters);
-//
-//		// Define the static container body, which will provide the collisions at screen borders.
-//		b2BodyDef screenBorderDef;
-//		screenBorderDef.position.Set(0, 0);
-//		b2Body* screenBorderBody = world->CreateBody(&screenBorderDef);
-//		b2EdgeShape screenBorderShape;
-//
-//		// Create fixtures for the four borders (the border shape is re-used)
-//		screenBorderShape.Set(lowerLeftCorner, lowerRightCorner);
-//		screenBorderBody->CreateFixture(&screenBorderShape, 0);
-//		screenBorderShape.Set(lowerRightCorner, upperRightCorner);
-//		screenBorderBody->CreateFixture(&screenBorderShape, 0);
-//		screenBorderShape.Set(upperRightCorner, upperLeftCorner);
-//		screenBorderBody->CreateFixture(&screenBorderShape, 0);
-//		screenBorderShape.Set(upperLeftCorner, lowerLeftCorner);
-//		screenBorderBody->CreateFixture(&screenBorderShape, 0);
-//
-//		NSString* message = @"Tap Screen For More Awesome!";
-//		if ([CCDirector sharedDirector].currentPlatformIsMac)
-//		{
-//			message = @"Click Window For More Awesome!";
-//		}
-//
-//		CCLabelTTF* label = [CCLabelTTF labelWithString:message fontName:@"Marker Felt" fontSize:32];
-//		[self addChild:label];
-//		[label setColor:ccc3(222, 222, 255)];
-//		label.position = CGPointMake(screenSize.width / 2, screenSize.height - 50);
-//
-//		// Use the orthogonal tileset for the little boxes
-//		CCSpriteBatchNode* batch = [CCSpriteBatchNode batchNodeWithFile:@"dg_grounds32.png" capacity:TILESET_ROWS * TILESET_COLUMNS];
-//		[self addChild:batch z:0 tag:kTagBatchNode];
-//
-//		// Add a few objects initially
-//		for (int i = 0; i < 9; i++)
-//		{
-//			[self addNewSpriteAt:CGPointMake(screenSize.width / 2, screenSize.height / 2)];
-//		}
-//
-//		[self addSomeJoinedBodies:CGPointMake(screenSize.width / 4, screenSize.height - 50)];
-//
-//		[self scheduleUpdate];
-//
-//		[KKInput sharedInput].accelerometerActive = YES;
-//	}
-//
-//	return self;
