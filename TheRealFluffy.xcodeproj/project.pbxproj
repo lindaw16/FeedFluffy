@@ -16,6 +16,11 @@
 		912F81FD18845C0900838683 /* paddle.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81FC18845C0900838683 /* paddle.png */; };
 		912F820018845CD800838683 /* taperedblock.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81FE18845CD700838683 /* taperedblock.png */; };
 		912F820118845CD800838683 /* longblock.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81FF18845CD700838683 /* longblock.png */; };
+		913C74071885818B00587021 /* projectile2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 913C74031885818B00587021 /* projectile2-hd.png */; };
+		913C74081885818B00587021 /* projectile2.png in Resources */ = {isa = PBXBuildFile; fileRef = 913C74041885818B00587021 /* projectile2.png */; };
+		913C74091885818B00587021 /* player2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 913C74051885818B00587021 /* player2-hd.png */; };
+		913C740A1885818B00587021 /* player2.png in Resources */ = {isa = PBXBuildFile; fileRef = 913C74061885818B00587021 /* player2.png */; };
+		913C740C1885D12B00587021 /* Military-Cannon-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 913C740B1885D12A00587021 /* Military-Cannon-icon.png */; };
 		ABC639A11884E86A007A46F2 /* apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ABC639A01884E86A007A46F2 /* apple.jpg */; };
 		BF22E3D5188472C9007E26DF /* hungryEevee.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D4188472C9007E26DF /* hungryEevee.png */; };
 		BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */; };
@@ -91,6 +96,11 @@
 		912F81FC18845C0900838683 /* paddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paddle.png; sourceTree = "<group>"; };
 		912F81FE18845CD700838683 /* taperedblock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taperedblock.png; sourceTree = "<group>"; };
 		912F81FF18845CD700838683 /* longblock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = longblock.png; sourceTree = "<group>"; };
+		913C74031885818B00587021 /* projectile2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "projectile2-hd.png"; sourceTree = "<group>"; };
+		913C74041885818B00587021 /* projectile2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectile2.png; sourceTree = "<group>"; };
+		913C74051885818B00587021 /* player2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player2-hd.png"; sourceTree = "<group>"; };
+		913C74061885818B00587021 /* player2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player2.png; sourceTree = "<group>"; };
+		913C740B1885D12A00587021 /* Military-Cannon-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Military-Cannon-icon.png"; sourceTree = "<group>"; };
 		ABC639A01884E86A007A46F2 /* apple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpg; sourceTree = "<group>"; };
 		BF22E3D4188472C9007E26DF /* hungryEevee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEevee.png; sourceTree = "<group>"; };
 		BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEeveeMouth.png; sourceTree = "<group>"; };
@@ -319,6 +329,11 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				913C740B1885D12A00587021 /* Military-Cannon-icon.png */,
+				913C74031885818B00587021 /* projectile2-hd.png */,
+				913C74041885818B00587021 /* projectile2.png */,
+				913C74051885818B00587021 /* player2-hd.png */,
+				913C74061885818B00587021 /* player2.png */,
 				ABC639A01884E86A007A46F2 /* apple.jpg */,
 				912F81FE18845CD700838683 /* taperedblock.png */,
 				912F81FF18845CD700838683 /* longblock.png */,
@@ -466,6 +481,11 @@
 				912F81FD18845C0900838683 /* paddle.png in Resources */,
 				912F820018845CD800838683 /* taperedblock.png in Resources */,
 				912F820118845CD800838683 /* longblock.png in Resources */,
+				913C74071885818B00587021 /* projectile2-hd.png in Resources */,
+				913C74081885818B00587021 /* projectile2.png in Resources */,
+				913C74091885818B00587021 /* player2-hd.png in Resources */,
+				913C740A1885818B00587021 /* player2.png in Resources */,
+				913C740C1885D12B00587021 /* Military-Cannon-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

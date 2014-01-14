@@ -45,7 +45,12 @@ CGRect secondrect;
 @end
 
 @implementation PhysicsLayer
-
+{
+    //Used these variables when trying to drag cannon along y-axis - but unforunately didn't work :(
+    CGPoint po;
+    CGFloat poMinX;
+    CGFloat poMaxX;
+}
 
 +(id) scene {
     CCScene *scene = [CCScene node];
@@ -57,6 +62,8 @@ CGRect secondrect;
 - (id)init {
     
     if ((self = [super initWithColor:ccc4(255,255,255,255)])) {
+        
+        
         self.touchEnabled = YES;
         
         CGSize winSize = [CCDirector sharedDirector].winSize;
@@ -71,7 +78,18 @@ CGRect secondrect;
         b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
         world = new b2World(gravity);
         
-
+        _player = [CCSprite spriteWithFile:@"player2.png"];
+        _player.position = ccp(_player.contentSize.width/2, winSize.height/2);
+        
+        
+        [self addChild:_player];
+        
+        //Setting some variables for tracking cannon location
+        po = ccp(-999, -999);
+        poMinX = _player.boundingBox.size.width * 0.5;
+        poMaxX = _player.size.width - _player.boundingBox.size.width * 0.5;
+        
+        
         // Create sprite and add it to the layer
         ball = [CCSprite spriteWithFile:@"projectile.png" rect:CGRectMake(0, 0, 52, 52)];
         ball.position = ccp(0, 0);
@@ -80,10 +98,11 @@ CGRect secondrect;
         
         [self addChild:ball z:1 tag:1];
 
-        // Create paddle and add it to the left side of the screen
-        CCSprite *paddle = [CCSprite spriteWithFile:@"longblock.png" rect:CGRectMake(0, 0, 25, 180)];
-        paddle.position = ccp(10, winSize.height/2);
-        [self addChild:paddle z:1];
+//        // Create paddle and add it to the left side of the screen
+//        CCSprite *paddle = [CCSprite spriteWithFile:@"longblock.png" rect:CGRectMake(0, 0, 25, 180)];
+//        paddle.position = ccp(10, winSize.height/2);
+//        [self addChild:paddle z:1];
+        
 
         
         //Create a hungry eevee and add it to layer
@@ -96,26 +115,27 @@ CGRect secondrect;
         hungryEeveeMouth.position = ccp(450, 148);
         [self addChild:hungryEeveeMouth z:-1 tag:1];
         
-        // Create paddle body
-        b2BodyDef paddleBodyDef;
-        paddleBodyDef.type = b2_dynamicBody;
-        //paddleBodyDef.position.Set(winSize.width/2/PTM_RATIO, winSize.height/2/PTM_RATIO);
-        paddleBodyDef.position.Set(10/PTM_RATIO, winSize.height/2/PTM_RATIO);
-        paddleBodyDef.userData = (__bridge void*)paddle;
-        _paddleBody = world->CreateBody(&paddleBodyDef);
+//        // Create paddle body
+//        b2BodyDef paddleBodyDef;
+//        paddleBodyDef.type = b2_dynamicBody;
+//        //paddleBodyDef.position.Set(winSize.width/2/PTM_RATIO, winSize.height/2/PTM_RATIO);
+//        paddleBodyDef.position.Set(10/PTM_RATIO, winSize.height/2/PTM_RATIO);
+//        paddleBodyDef.userData = (__bridge void*)paddle;
+//        _paddleBody = world->CreateBody(&paddleBodyDef);
+//
         
         // Create paddle shape
-        b2PolygonShape paddleShape;
-        paddleShape.SetAsBox(paddle.contentSize.width/PTM_RATIO/2,
-                             paddle.contentSize.height/PTM_RATIO/2);
-        
-        // Create shape definition and add to body
-        b2FixtureDef paddleShapeDef;
-        paddleShapeDef.shape = &paddleShape;
-        paddleShapeDef.density = 10.0f;
-        paddleShapeDef.friction = 0.4f;
-        paddleShapeDef.restitution = 0.1f;
-        _paddleFixture = _paddleBody->CreateFixture(&paddleShapeDef);
+//        b2PolygonShape paddleShape;
+//        paddleShape.SetAsBox(_player.contentSize.width/PTM_RATIO/2,
+//                             _player.contentSize.height/PTM_RATIO/2);
+//        
+//        // Create shape definition and add to body
+//        b2FixtureDef paddleShapeDef;
+//        paddleShapeDef.shape = &paddleShape;
+//        paddleShapeDef.density = 10.0f;
+//        paddleShapeDef.friction = 0.4f;
+//        paddleShapeDef.restitution = 0.1f;
+//        _paddleFixture = _paddleBody->CreateFixture(&paddleShapeDef);
         
         // Create edges around the entire screen
 //removing the edge on the right of the screen
@@ -130,8 +150,7 @@ CGRect secondrect;
         groundBox.Set(b2Vec2(0,0), b2Vec2(winSize.width/PTM_RATIO, 0));
         _bottomFixture = _groundBody->CreateFixture(&groundBoxDef);
         
-//        groundBox.Set(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
-//        _groundBody->CreateFixture(&groundBoxDef);
+
         
         groundBox.Set(b2Vec2(0, winSize.height/PTM_RATIO), b2Vec2(winSize.width/PTM_RATIO, winSize.height/PTM_RATIO));
         _groundBody->CreateFixture(&groundBoxDef);
@@ -169,6 +188,8 @@ CGRect secondrect;
 
         
 //        b2Vec2 force = b2Vec2(10, 10);
+        
+        
         b2Vec2 force = b2Vec2(1,1);
         _body->ApplyLinearImpulse(force, ballBodyDef.position);
     
@@ -263,55 +284,152 @@ CGRect secondrect;
     }
 }
 
-- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    printf("HERERER");
+    UITouch *touch = [touches anyObject];
+    CGPoint poBefore = [touch locationInView:[touch view]];
+    poBefore = [[CCDirector sharedDirector] convertToGL:poBefore];
     
-    if (_mouseJoint != NULL) return;
-    
-    UITouch *myTouch = [touches anyObject];
-    CGPoint location = [myTouch locationInView:[myTouch view]];
-    location = [[CCDirector sharedDirector] convertToGL:location];
-    b2Vec2 locationWorld = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
-    
-    if (_paddleFixture->TestPoint(locationWorld)) {
-        b2MouseJointDef md;
-        md.bodyA = _groundBody;
-        md.bodyB = _paddleBody;
-        md.target = locationWorld;
-        md.collideConnected = true;
-        md.maxForce = 500.0f * _paddleBody->GetMass();
-        
-        _mouseJoint = (b2MouseJoint *)world->CreateJoint(&md);
-        _paddleBody->SetAwake(true);
+    if (CGRectContainsPoint(_player.boundingBox, poBefore))
+    {
+        printf("*** ccTouchesBegan (x:%f, y:%f)\n", poBefore.x, poBefore.y);
+        po = poBefore;
     }
-    
 }
 
--(void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+
+    CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
     
-    if (_mouseJoint == NULL) return;
+    CGPoint oldTouchLocation = [touch previousLocationInView:touch.view];
+    oldTouchLocation = [[CCDirector sharedDirector] convertToGL:oldTouchLocation];
+    oldTouchLocation = [self convertToNodeSpace:oldTouchLocation];
     
-    UITouch *myTouch = [touches anyObject];
-    CGPoint location = [myTouch locationInView:[myTouch view]];
-    location = [[CCDirector sharedDirector] convertToGL:location];
-    b2Vec2 locationWorld = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
+    CGPoint translation = ccpSub(touchLocation, oldTouchLocation);
+    CGPoint newPos = ccpAdd(_player.position, translation);
+    _player.position = newPos;
+
+
     
-    _mouseJoint->SetTarget(locationWorld);
-    
+    //CGPoint translation = CGPointMake(touchLocation.x - oldTouchLocation.x, oldTouchLocation.y - oldTouchLocation.y);
+    //_player.position = CGPointMake(_player.position.x, _player.position.y + translation.y);
 }
--(void)ccTouchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    if (_mouseJoint) {
-        world->DestroyJoint(_mouseJoint);
-        _mouseJoint = NULL;
-    }
-}
+
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (_mouseJoint) {
-        world->DestroyJoint(_mouseJoint);
-        _mouseJoint = NULL;
+    
+    if (_nextProjectile != nil) return;
+    
+    
+    // Choose one of the touches to work with
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [self convertTouchToNodeSpace:touch];
+    
+    
+    // Set up initial location of projectile
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    _nextProjectile = [CCSprite spriteWithFile:@"projectile2.png"];
+    _nextProjectile.position = ccp(20, winSize.height/2);
+    
+    
+    
+    // Determine offset of location to projectile
+    CGPoint offset = ccpSub(location, _nextProjectile.position);
+    // Bail out if you are shooting down or backwards
+    if (offset.x <= 0) return;
+    
+    // Determine where you wish to shoot the projectile to
+    int realX = winSize.width + (_nextProjectile.contentSize.width/2);
+    float ratio = (float) offset.y / (float) offset.x;
+    int realY = (realX * ratio) + _nextProjectile.position.y;
+    CGPoint realDest = ccp(realX, realY);
+    
+    // Determine the length of how far you're shooting
+    int offRealX = realX - _nextProjectile.position.x;
+    int offRealY = realY - _nextProjectile.position.y;
+    float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
+    float velocity = 480/1; // 480pixels/1sec
+    float realMoveDuration = length/velocity;
+    // Determine angle to face
+    float angleRadians = atanf((float)offRealY / (float)offRealX);
+    float angleDegrees = CC_RADIANS_TO_DEGREES(angleRadians);
+    float cocosAngle = -1 * angleDegrees;
+    float rotateDegreesPerSecond = 180 / 0.5; // Would take 0.5 seconds to rotate 180 degrees, or half a circle
+    float degreesDiff = _player.rotation - cocosAngle;
+    float rotateDuration = fabs(degreesDiff / rotateDegreesPerSecond);
+    [_player runAction:
+     [CCSequence actions:
+      [CCRotateTo actionWithDuration:rotateDuration angle:cocosAngle],
+      [CCCallBlock actionWithBlock:^{
+         // OK to add now - rotation is finished!
+         [self addChild:_nextProjectile];
+         
+         
+         // Release
+         
+         _nextProjectile = nil;
+     }],
+      nil]];
+    
+    // Move projectile to actual endpoint
+    [_nextProjectile runAction:
+     [CCSequence actions:
+      [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
+      [CCCallBlockN actionWithBlock:^(CCNode *node) {
+         
+         [node removeFromParentAndCleanup:YES];
+     }],
+      nil]];
+    
+    _nextProjectile.tag = 2;
+    
+    //Extra bit for setting po variable again - not used currently since it doesn't exactly work :(
+    if (po.x >= 0)
+    {
+        printf("ccTouchesEnded:\n\n");
+        po = ccp(-999, -999);
     }
-}
+//    
+//    // Ok to add now - we've double checked position
+//    [self addChild:projectile];
+//    
+//    int realX = winSize.width + (projectile.contentSize.width/2);
+//    float ratio = (float) offset.y / (float) offset.x;
+//    int realY = (realX * ratio) + projectile.position.y;
+//    CGPoint realDest = ccp(realX, realY);
+//    
+//    // Determine the length of how far you're shooting
+//    int offRealX = realX - projectile.position.x;
+//    int offRealY = realY - projectile.position.y;
+//    float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
+//    float velocity = 480/1; // 480pixels/1sec
+//    float realMoveDuration = length/velocity;
+//    
+//    // Move projectile to actual endpoint
+//    [projectile runAction:
+//     [CCSequence actions:
+//      [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
+//      [CCCallBlockN actionWithBlock:^(CCNode *node) {
+//         [node removeFromParentAndCleanup:YES];
+//     }],
+//      nil]];
+//    
+//   
+//    
+//        // Determine angle to face
+//    float angleRadians = atanf((float)offRealY / (float)offRealX);
+//    float angleDegrees = CC_RADIANS_TO_DEGREES(angleRadians);
+//    float cocosAngle = -1 * angleDegrees;
+//    _player.rotation = cocosAngle;
+//    if (_mouseJoint) {
+//        world->DestroyJoint(_mouseJoint);
+//        _mouseJoint = NULL;
+    }
+
 
 -(void) dealloc
 {
