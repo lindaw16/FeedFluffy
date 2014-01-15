@@ -27,15 +27,15 @@ enum
     b2Body *_body;
     CCSprite *ball;
     //to help with cannon to rotate smoothly 
-//    CCSprite *_nextProjectile; //I'm replacing nextProjectile with "bullet"
-    CCSprite *_bullet;
+    CCSprite *_nextProjectile; //I'm replacing nextProjectile with "bullet"
+//    CCSprite *_bullet;
     
    
 	//ContactListener* contactListener;
 	GLESDebugDraw* debugDraw;
     b2MouseJoint *_mouseJoint;
-//    CCSprite *_player;    //Also replacing _player with "cannon"
-    CCSprite *_cannon;
+    CCSprite *_player;    //Also replacing _player with "cannon"
+//    CCSprite *_cannon;
 }
 
 //TODO: fix this list
@@ -60,7 +60,7 @@ enum
 -(void) update:(ccTime)delta;
 -(b2Vec2) toMeters:(CGPoint)point;
 -(CGPoint) toPixels:(b2Vec2)vec;
--(void) draw;
+//-(void) draw;
 
 
 @end
