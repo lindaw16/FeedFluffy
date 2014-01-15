@@ -10,6 +10,9 @@
 #import "PhysicsLayer.h"
 #import "OopsDNE.h"
 
+float priorX = 1000;
+float priorY = 1000;
+
 @implementation LevelSelectLayer
 
 +(id) scene
@@ -70,6 +73,7 @@
         [self addChild:sprite z:-1];
         
         [self setUpMenus];
+        [self scheduleUpdate];
         
     }
     return self;
@@ -84,6 +88,69 @@
 -(void) goToLevel4: (CCMenuItem *) menuItem
 {
     [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+}
+
+
+-(void) update:(ccTime)delta
+{
+    KKInput * input = [KKInput sharedInput];
+    CGPoint pos = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
+
+    float x1 = pos.x;
+    float y1 = pos.y;
+    
+//    NSLog(@"HIIIIIIIIIIIIIIIIIII %f ", x1, @"%f", y1);
+    
+    if (input.anyTouchBeganThisFrame)
+    {
+        //derp
+    }
+    
+    else if  (input.anyTouchEndedThisFrame)
+    {
+//        priorX = 1000;
+//        priorY = 1000;
+//        self.position = ccp(self.position.x - 1, self.position.y);
+    }
+    
+    else if (input.touchesAvailable)
+    {
+//        float x2 = x1;
+//        float y2 = y1;
+//         NSLog(@"%f ", x2, @"%f", y2);
+//        
+//        if (priorX != 1000 && x2 < x1)
+//        {
+//            self.position = ccp(self.position.x - 1, self.position.y);
+//        }
+//        else if (priorX != 1000 && x2 > x1)
+//        {
+//            self.position = ccp(self.position.x + 1, self.position.y);
+//        }
+//        else
+//        {
+//            //um do nothing?
+//        }
+//        priorX = x2;
+//        priorY = y2;
+//        NSLog(@"new %f ", x2, @"%f", y2);
+//    }
+    
+//    if (priorX != 1000 && priorY != 1000)
+//    {
+//        self.position = ccp(self.position.x - 1, self.position.y);
+        
+        if (y1 > 150)
+        {
+            self.position = ccp(self.position.x - 1, self.position.y);
+        }
+        else
+        {
+            self.position = ccp(self.position.x + 1, self.position.y);
+        }
+        
+        
+    }
 }
 
 @end
