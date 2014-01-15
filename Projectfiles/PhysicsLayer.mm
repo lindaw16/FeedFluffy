@@ -75,14 +75,25 @@ CGRect secondrect;
     CGFloat poMaxX;
 }
 
-+(id) scene {
+/*+(id) scene {
     CCScene *scene = [CCScene node];
     PhysicsLayer *layer = [PhysicsLayer node];
     [scene addChild:layer];
     return scene;
+}*/
+
++(id) sceneWithLevel:(int)level
+{
+	// 'scene' is an autorelease object.
+	CCScene *scene = [CCScene node];
+    
+	// 'layer' is an autorelease object.
+    PhysicsLayer *layer = [[PhysicsLayer alloc] initWithLevel:level];
+	[scene addChild: layer];
+	return scene;
 }
 
-- (id)init {
+- (id)initWithLevel: (int) level {
     
     if ((self = [super initWithColor:ccc4(255,255,255,255)])) {
         
@@ -166,9 +177,9 @@ CGRect secondrect;
         
 
         
-        //NSString* levelString = [NSString stringWithFormat:@"%i", level];
-        //NSString *levelName = [@"level" stringByAppendingString:levelString];
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"level1" ofType:@"plist"];
+        NSString* levelString = [NSString stringWithFormat:@"%i", level];
+        NSString *levelName = [@"level" stringByAppendingString:levelString];
+        NSString *path = [[NSBundle mainBundle] pathForResource:levelName ofType:@"plist"];
         NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:path];
         
         NSArray *fruits = [level objectForKey:@"Fruits"];

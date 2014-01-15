@@ -16,6 +16,8 @@
 		ABB719CF18871CCA004D2FCA /* Fluffy.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB719CE18871CCA004D2FCA /* Fluffy.m */; };
 		ABB719D118872333004D2FCA /* cannon2.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719D018872333004D2FCA /* cannon2.png */; };
 		ABB719D318872546004D2FCA /* level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABB719D218872546004D2FCA /* level1.plist */; };
+		ABB719D518872D0A004D2FCA /* level2.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABB719D418872D0A004D2FCA /* level2.plist */; };
+		ABB719DA18873FBF004D2FCA /* Obstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB719D918873FBF004D2FCA /* Obstacle.m */; };
 		BF22E3D5188472C9007E26DF /* hungryEevee.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D4188472C9007E26DF /* hungryEevee.png */; };
 		BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */; };
 		BF63D6EC1884ADF600F3D3F3 /* menuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */; };
@@ -104,6 +106,9 @@
 		ABB719CE18871CCA004D2FCA /* Fluffy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fluffy.m; sourceTree = "<group>"; };
 		ABB719D018872333004D2FCA /* cannon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cannon2.png; sourceTree = "<group>"; };
 		ABB719D218872546004D2FCA /* level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level1.plist; sourceTree = "<group>"; };
+		ABB719D418872D0A004D2FCA /* level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level2.plist; sourceTree = "<group>"; };
+		ABB719D818873FBF004D2FCA /* Obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obstacle.h; sourceTree = "<group>"; };
+		ABB719D918873FBF004D2FCA /* Obstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Obstacle.m; sourceTree = "<group>"; };
 		BF22E3D4188472C9007E26DF /* hungryEevee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEevee.png; sourceTree = "<group>"; };
 		BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEeveeMouth.png; sourceTree = "<group>"; };
 		BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackground.png; sourceTree = "<group>"; };
@@ -344,6 +349,8 @@
 				BFC2DCE31885FE3200A1D673 /* comments */,
 				ABB719CD18871CCA004D2FCA /* Fluffy.h */,
 				ABB719CE18871CCA004D2FCA /* Fluffy.m */,
+				ABB719D818873FBF004D2FCA /* Obstacle.h */,
+				ABB719D918873FBF004D2FCA /* Obstacle.m */,
 				DCC1A39413A94F1A005BD75D /* Resources */,
 				DCC1A3CF13A94F2C005BD75D /* Supporting Files */,
 			);
@@ -355,6 +362,7 @@
 			children = (
 				BFB425B518872304002DD826 /* Achievements.png */,
 				ABB719D218872546004D2FCA /* level1.plist */,
+				ABB719D418872D0A004D2FCA /* level2.plist */,
 				BFB425B7188727AA002DD826 /* Bonus.png */,
 				ABB719D018872333004D2FCA /* cannon2.png */,
 				91A67ECF1886EC7000AB4C14 /* small-red-cannon.png */,
@@ -506,6 +514,7 @@
 				BFC2DCE8188609E900A1D673 /* apple.png in Resources */,
 				BFB425B618872304002DD826 /* Achievements.png in Resources */,
 				BFB425AA1886600F002DD826 /* levelSelectBackground.png in Resources */,
+				ABB719D518872D0A004D2FCA /* level2.plist in Resources */,
 				BFB4259B18862CFA002DD826 /* tutorials.png in Resources */,
 				BFB425A618865B93002DD826 /* Easy.png in Resources */,
 				BFB425A818865B99002DD826 /* OopsDNE.png in Resources */,
@@ -552,6 +561,7 @@
 				DC193EB813B692D100500B56 /* GLES-Render.mm in Sources */,
 				DC193EBC13B6956F00500B56 /* ContactListener.mm in Sources */,
 				BFB425A118862DDE002DD826 /* StartMenuLayer.mm in Sources */,
+				ABB719DA18873FBF004D2FCA /* Obstacle.m in Sources */,
 				DC2A3EC4149A30B400EF78B0 /* Box2DDebugLayer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

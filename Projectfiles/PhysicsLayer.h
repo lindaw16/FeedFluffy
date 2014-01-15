@@ -53,7 +53,8 @@ enum
 //TODO: fix this list
 //Currently these are all public.. decide which ones we want public, private
 //Also maybe change to a more sensical order
-+(id) scene;
+//+(id) scene;
++(id) sceneWithLevel:(int)level;
 -(void) detectCollisions;
 -(void)tick:(ccTime)dt;
 
