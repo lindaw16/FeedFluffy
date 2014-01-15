@@ -10,6 +10,8 @@
 #import "PhysicsLayer.h"
 #import "OopsDNE.h"
 
+CCMenuItemImage * left;
+CCMenuItemImage * right;
 float priorX = 1000;
 float priorY = 1000;
 
@@ -39,6 +41,12 @@ float priorY = 1000;
     //                                                         selectedImage: @"playbutton.png"
     //                                                                target:self
     //                                                              selector:@selector(goToLevel1:)];
+    
+    left = [CCMenuItemImage itemWithNormalImage:@"goLeft.png" selectedImage: @"goLeft.png" target:self selector:@selector(goLeft:)];
+    
+    right = [CCMenuItemImage itemWithNormalImage:@"goRight.png" selectedImage: @"goRight.png" target:self selector:@selector(goRight:)];
+    
+    
     CCMenuItemImage * tutorials = [CCMenuItemImage itemWithNormalImage:@"tutorials.png"
                                                           selectedImage: @"tutorials.png"
                                                                  target:self
@@ -47,13 +55,16 @@ float priorY = 1000;
     CCMenuItemImage * easy = [CCMenuItemImage itemWithNormalImage:@"Easy.png" selectedImage: @"Easy.png" target:self selector:@selector(goToLevel4:)];
     
 	// Create a menu and add your menu items to it
-	CCMenu * myMenu = [CCMenu menuWithItems:tutorials, easy, nil];
+	CCMenu * myMenu = [CCMenu menuWithItems:tutorials, easy, left, right, nil];
     
 	// Arrange the menu items vertically
 	//[myMenu alignItemsVertically];
     //menuItem1.position = ccp(240,95);
-    tutorials.position = ccp(180,150);
-    easy.position = ccp(450, 150);
+    tutorials.position = ccp(170,170);
+    easy.position = ccp(480, 170);
+    left.position = ccp(40, 30);
+    right.position = ccp(440, 30);
+    
     
     myMenu.position = ccp(0,0);
     
@@ -79,6 +90,29 @@ float priorY = 1000;
     return self;
 }
 
+
+
+-(void) goLeft: (CCMenuItem *) menuItem
+{
+//TODO check to not go offscreen
+    if (left.position.x >= 45)
+    {
+        self.position = ccp(self.position.x + 100, self.position.y);
+        left.position = ccp(left.position.x - 100, left.position.y);
+        right.position = ccp(right.position.x - 100, right.position.y);
+    }
+}
+
+-(void) goRight: (CCMenuItem *) menuItem
+{
+//TODO check to not go offscreen
+    self.position = ccp(self.position.x - 100, self.position.y);
+    left.position = ccp(left.position.x + 100, left.position.y);
+    right.position = ccp(right.position.x + 100, right.position.y);
+}
+
+
+
 - (void) goToTutorials: (CCMenuItem  *) menuItem
 {
 	//NSLog(@"The first menu was called");
@@ -91,6 +125,10 @@ float priorY = 1000;
 }
 
 
+
+
+
+/*
 -(void) update:(ccTime)delta
 {
     KKInput * input = [KKInput sharedInput];
@@ -148,9 +186,9 @@ float priorY = 1000;
         {
             self.position = ccp(self.position.x + 1, self.position.y);
         }
-        
-        
     }
 }
+*/
+
 
 @end
