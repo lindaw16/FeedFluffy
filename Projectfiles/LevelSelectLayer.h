@@ -9,5 +9,8 @@
 #import "CCLayer.h"
 
 @interface LevelSelectLayer : CCLayer
+{
+}
 
+-(void) update:(ccTime)delta;
 @end
