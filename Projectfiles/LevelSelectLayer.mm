@@ -50,20 +50,29 @@ float priorY = 1000;
     CCMenuItemImage * tutorials = [CCMenuItemImage itemWithNormalImage:@"tutorials.png"
                                                           selectedImage: @"tutorials.png"
                                                                  target:self
-                                                               selector:@selector(goToTutorials:)];
+                                                               selector:@selector(goToLevel1:)];
+    
+    CCMenuItemImage * level1 = [CCMenuItemImage itemWithNormalImage:@"level1.png" selectedImage: @"level1.png" target:self selector:@selector(goToLevel1:)];
+    
+    
+    CCMenuItemImage * level2 = [CCMenuItemImage itemWithNormalImage:@"level2.png" selectedImage: @"level2.png" target:self selector:@selector(goToLevel2:)];
+    
     
     CCMenuItemImage * easy = [CCMenuItemImage itemWithNormalImage:@"Easy.png" selectedImage: @"Easy.png" target:self selector:@selector(goToLevel4:)];
     
 	// Create a menu and add your menu items to it
-	CCMenu * myMenu = [CCMenu menuWithItems:tutorials, easy, left, right, nil];
+	CCMenu * myMenu = [CCMenu menuWithItems: left, right, tutorials, level1, level2, easy, nil];
     
 	// Arrange the menu items vertically
 	//[myMenu alignItemsVertically];
     //menuItem1.position = ccp(240,95);
-    tutorials.position = ccp(170,170);
-    easy.position = ccp(480, 170);
     left.position = ccp(40, 30);
     right.position = ccp(440, 30);
+    tutorials.position = ccp(170,170);
+    level1.position = ccp(180, 200);
+    level2.position = ccp(200, 200);
+    easy.position = ccp(480, 170);
+
     
     
     myMenu.position = ccp(0,0);
@@ -94,7 +103,6 @@ float priorY = 1000;
 
 -(void) goLeft: (CCMenuItem *) menuItem
 {
-//TODO check to not go offscreen
     if (left.position.x >= 45)
     {
         self.position = ccp(self.position.x + 100, self.position.y);
@@ -113,10 +121,15 @@ float priorY = 1000;
 
 
 
-- (void) goToTutorials: (CCMenuItem  *) menuItem
+- (void) goToLevel1: (CCMenuItem  *) menuItem
 {
 	//NSLog(@"The first menu was called");
     [[CCDirector sharedDirector] replaceScene: (CCScene*)[[PhysicsLayer alloc] init]];
+}
+
+-(void) goToLevel2: (CCMenuItem *) menuItem
+{
+    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
 }
 
 -(void) goToLevel4: (CCMenuItem *) menuItem
