@@ -22,7 +22,7 @@
  * Sprite Tags
  * 1: hungry eevee
  * 2: hungry eevee mouth
- *
+ * 3: the cannon
  *
  *
  */
@@ -37,8 +37,8 @@ const int TILESIZE = 32;
 const int TILESET_COLUMNS = 9;
 const int TILESET_ROWS = 19;
 
-NSMutableArray *foodObjects = [[NSMutableArray alloc] init];
-NSMutableArray *balls = [[NSMutableArray alloc] init];
+NSMutableArray *foodObjects = [[NSMutableArray alloc] init]; //This is the array of food objects we need to collect
+NSMutableArray *balls = [[NSMutableArray alloc] init]; //this is an array of the balls we will be using
 CCSprite *ball;
 CCSprite *food;
 CGRect firstrect;
@@ -87,8 +87,7 @@ CGRect secondrect;
         _player = [CCSprite spriteWithFile:@"cannon.png"];
         _player.position = ccp(_player.contentSize.width/2, winSize.height/2);
         
-        
-        [self addChild:_player];
+        [self addChild:_player z:1 tag:3];
         
         //Setting some variables for tracking cannon location
         po = ccp(-999, -999);
@@ -101,6 +100,10 @@ CGRect secondrect;
         ball = [CCSprite spriteWithFile:@"projectile.png" rect:CGRectMake(0, 0, 52, 52)];
         ball.position = ccp(0, 0);
         [balls addObject:ball];
+        
+        CCSprite *meep = [CCSprite spriteWithFile:@"gameBackground.png"];
+        meep.anchorPoint = CGPointZero;
+        [self addChild:meep z:-1];
 
         
         //Create a hungry eevee and add it to layer
@@ -299,9 +302,11 @@ CGRect secondrect;
     
     
     // Set up initial location of projectile
+//this projectile is the bullet/ball right?
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     _nextProjectile = [CCSprite spriteWithFile:@"projectile2.png"];
-    _nextProjectile.position = ccp(20, winSize.height/2);
+//  _nextProjectile.position = ccp(20, winSize.height/2);
+    _nextProjectile.position = ccp(_player.position.x, _player.position.y);
     
     
     
@@ -546,6 +551,54 @@ CGRect secondrect;
 {
    
 	CCDirector* director = [CCDirector sharedDirector];
+    
+//do we have to check the current platform stuff?
+    
+    //Create an instance called input of Kobold2D's built-in super easy to use touch processor
+    KKInput* input = [KKInput sharedInput];
+    
+    //Create a point, pos, by asking input, our touch processor, where there has been a touch
+    CGPoint pos = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
+    
+    int x = pos.x;
+    int y = pos.y;
+    
+    if (input.anyTouchBeganThisFrame) //someone's touching the screen!! :O
+    {
+        bool touchCannonBody = false;
+        bool touchCannonHead = false;
+        
+        if( (pos.y < _player.position.y + 20) && (pos.y > _player.position.y - 20) ) //touch somewhere in the cannon
+        {
+            //check if touched cannon body
+            if ( (pos.x < _player.position.x + 10) && (pos.x > _player.position.x - 30) )
+            {
+                //shoot cannon
+                //codecodecodeee
+                touchCannonBody = true;
+            }
+        
+            //check if touched cannon head
+            if ( (pos.x < _player.position.x + 20) && !touchCannonBody)
+            {
+                //rotate cannon
+                //should probably break out of this and then find the rotate somewhere..
+                touchCannonHead = true;
+            }
+        }
+        
+        //outside the cage, move the cannon
+        if (pos.x < 60 && !touchCannonBody && !touchCannonHead)
+        {
+            _player.position = ccp(x, y);
+        }
+        
+    }
+    
+    
+    
+    
+ /*
 	if (director.currentPlatformIsIOS)
 	{
 		KKInput* input = [KKInput sharedInput];
@@ -570,7 +623,8 @@ CGRect secondrect;
 			[self addNewSpriteAt:input.mouseLocation];
 		}
 	}
-	
+*/
+    
 	// The number of iterations influence the accuracy of the physics simulation. With higher values the
 	// body's velocity and position are more accurately tracked but at the cost of speed.
 	// Usually for games only 1 position iteration is necessary to achieve good results.
@@ -627,16 +681,17 @@ CGRect secondrect;
 
 
 
-/* //keep this for debuggin
  -(void) draw
 {
+    //draw the cage
     ccColor4F buttonColor = ccc4f(0, 0.5, 0.5, 0.5);
   
-    int x = 390;
-    int y = 70;
-    ccDrawSolidRect( ccp(x, y), ccp(x + 40, y + 40), buttonColor);
+    int x = 60;
+    int y = 0;
+//why can't I use winSize here?
+    ccDrawSolidRect( ccp(x, y), ccp(x + 10, y+ 350) , buttonColor);
 }
-*/
+
 
 
 
