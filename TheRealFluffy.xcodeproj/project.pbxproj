@@ -28,6 +28,7 @@
 		BF63D6EE1884AFAC00F3D3F3 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = BF63D6ED1884AFAC00F3D3F3 /* play.png */; };
 		BFC2DCE41885FE3200A1D673 /* comments in Resources */ = {isa = PBXBuildFile; fileRef = BFC2DCE31885FE3200A1D673 /* comments */; };
 		BFC2DCE61886021600A1D673 /* gameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BFC2DCE51886021600A1D673 /* gameBackground.png */; };
+		BFC2DCE8188609E900A1D673 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = BFC2DCE7188609E900A1D673 /* apple.png */; };
 		DC193EB713B692D100500B56 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC193EB313B6872600500B56 /* GLES-Render.mm */; };
 		DC193EB813B692D100500B56 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC193EB313B6872600500B56 /* GLES-Render.mm */; };
 		DC193EBC13B6956F00500B56 /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC193EBB13B6956F00500B56 /* ContactListener.mm */; };
@@ -107,6 +108,7 @@
 		BF63D6ED1884AFAC00F3D3F3 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		BFC2DCE31885FE3200A1D673 /* comments */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = comments; sourceTree = "<group>"; };
 		BFC2DCE51886021600A1D673 /* gameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground.png; sourceTree = "<group>"; };
+		BFC2DCE7188609E900A1D673 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
 		DC193EB213B6872600500B56 /* GLES-Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
 		DC193EB313B6872600500B56 /* GLES-Render.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
 		DC193EBA13B6956F00500B56 /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				913C740B1885D12A00587021 /* Military-Cannon-icon.png */,
+				BFC2DCE7188609E900A1D673 /* apple.png */,
 				ABC639A01884E86A007A46F2 /* apple.jpg */,
 				913C74051885818B00587021 /* cannon-hd.png */,
 				913C74061885818B00587021 /* cannon.png */,
@@ -464,6 +467,7 @@
 				BF63D6EE1884AFAC00F3D3F3 /* play.png in Resources */,
 				DC2721B1160CB01100D88944 /* Default-568h@2x.png in Resources */,
 				912F81EF18839C9C00838683 /* ball.png in Resources */,
+				BFC2DCE8188609E900A1D673 /* apple.png in Resources */,
 				912F81F118839CA700838683 /* ball-hd.png in Resources */,
 				912F81F318839F8A00838683 /* idearoot_color.png in Resources */,
 				912F81F51883A07D00838683 /* ball480icon.png in Resources */,

@@ -27,13 +27,15 @@ enum
     b2Body *_body;
     CCSprite *ball;
     //to help with cannon to rotate smoothly 
-    CCSprite *_nextProjectile;
+//    CCSprite *_nextProjectile; //I'm replacing nextProjectile with "bullet"
+    CCSprite *_bullet;
     
    
 	//ContactListener* contactListener;
 	GLESDebugDraw* debugDraw;
     b2MouseJoint *_mouseJoint;
-    CCSprite *_player;
+//    CCSprite *_player;    //Also replacing _player with "cannon"
+    CCSprite *_cannon;
 }
 
 //TODO: fix this list
@@ -42,6 +44,10 @@ enum
 +(id) scene;
 -(void) detectCollisions;
 -(void)tick:(ccTime)dt;
+
+-(void)launchBullet:(CGPoint)location;
+
+
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;

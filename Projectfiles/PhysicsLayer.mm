@@ -23,6 +23,13 @@
  * 1: hungry eevee
  * 2: hungry eevee mouth
  * 3: the cannon
+ * 4: the bullet
+ */
+
+/* BUG LIST
+ * you can drag the cannon off the screen!
+ * the bullets dont bounce off the sides..
+ *
  *
  *
  */
@@ -36,10 +43,13 @@ const float PTM_RATIO = 32.0f;
 const int TILESIZE = 32;
 const int TILESET_COLUMNS = 9;
 const int TILESET_ROWS = 19;
+const int cageLeft = 40;
+
 
 NSMutableArray *foodObjects = [[NSMutableArray alloc] init]; //This is the array of food objects we need to collect
 NSMutableArray *balls = [[NSMutableArray alloc] init]; //this is an array of the balls we will be using
 CCSprite *ball;
+
 CCSprite *food;
 CGRect firstrect;
 CGRect secondrect;
@@ -84,22 +94,27 @@ CGRect secondrect;
         world = new b2World(gravity);
         
 //okay player2 was kinda confusing. I'm going to change this to "cannon"
-        _player = [CCSprite spriteWithFile:@"cannon.png"];
-        _player.position = ccp(_player.contentSize.width/2, winSize.height/2);
+//        _player = [CCSprite spriteWithFile:@"cannon.png"];
+//        _player.position = ccp(_player.contentSize.width/2, winSize.height/2);
+        _cannon = [CCSprite spriteWithFile:@"cannon.png"];
+        _cannon.position = ccp(_cannon.contentSize.width/2, winSize.height/2);
         
-        [self addChild:_player z:1 tag:3];
+//        [self addChild:_player z:1 tag:3];
+        [self addChild: _cannon z:1 tag:3];
         
         //Setting some variables for tracking cannon location
         po = ccp(-999, -999);
-        poMinX = _player.boundingBox.size.width * 0.5;
-        poMaxX = _player.size.width - _player.boundingBox.size.width * 0.5;
+//        poMinX = _player.boundingBox.size.width * 0.5;
+//        poMaxX = _player.size.width - _player.boundingBox.size.width * 0.5;
+        poMinX = _cannon.boundingBox.size.width * 0.5;
+        poMaxX = _cannon.size.width - _cannon.boundingBox.size.width * 0.5;
         
         
-//will be removing this later right?
+//will be removing this later right? --edit: i removed it :P
         // Create the ball and add it to the layer
-        ball = [CCSprite spriteWithFile:@"projectile.png" rect:CGRectMake(0, 0, 52, 52)];
-        ball.position = ccp(0, 0);
-        [balls addObject:ball];
+//        ball = [CCSprite spriteWithFile:@"projectile.png" rect:CGRectMake(0, 0, 52, 52)];
+//        ball.position = ccp(0, 0);
+//        [balls addObject:ball];
         
         CCSprite *meep = [CCSprite spriteWithFile:@"gameBackground.png"];
         meep.anchorPoint = CGPointZero;
@@ -118,7 +133,6 @@ CGRect secondrect;
         [self addChild:hungryEeveeMouth z:-1 tag:1];
         
 
-        
         // Create edges around the entire screen except the one on the left
         b2BodyDef groundBodyDef;
         groundBodyDef.position.Set(0,0);
@@ -131,7 +145,7 @@ CGRect secondrect;
         groundBox.Set(b2Vec2(0,0), b2Vec2(winSize.width/PTM_RATIO, 0));
         _bottomFixture = _groundBody->CreateFixture(&groundBoxDef);
         
-//adding this back in in case we need it later
+//adding this back in case we need it later
         //groundBox.Set(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
         //_groundBody->CreateFixture(&groundBoxDef);
         
@@ -173,7 +187,7 @@ CGRect secondrect;
         
 //make this a spritelist later
         // add foods!
-        CCSprite *sprite = [CCSprite spriteWithFile:@"apple.jpg"];
+        CCSprite *sprite = [CCSprite spriteWithFile:@"apple.png"];
         sprite.position = CGPointMake(250.0f, 250.0f);
         [foodObjects addObject:sprite];
         [self addChild:sprite z:0];
@@ -184,11 +198,14 @@ CGRect secondrect;
 }
 
 // DETECT COLLISIONS BETWEEN BALL AND FOOD!
+//I'm going to update this to just one bullet
+
+/*
 -(void) detectCollisions
 {
 //balls in this case is still the projectile, which we will be removing/replacing
-    NSLog(@"foodObjects Count");
-    NSLog(@"%d",[foodObjects count]);
+    //NSLog(@"foodObjects Count");
+    //NSLog(@"%d",[foodObjects count]);
     
     //First check if the ball hit a food
     for(int i = 0; i < [balls count]; i++)
@@ -211,7 +228,7 @@ CGRect secondrect;
                     //check if their y coordinates are within the height of the block
                     if(ball.position.y < (food.position.y + 50.0f) && ball.position.y > food.position.y - 50.0f)
                     {
-                        NSLog(@"FOOD COLLECTED!");
+                        //NSLog(@"FOOD COLLECTED!");
                         [self removeChild:food cleanup:YES];
                         //[self removeChild:ball cleanup:YES];
                         [foodObjects removeObjectAtIndex:foodIndex];
@@ -226,22 +243,86 @@ CGRect secondrect;
     }
     
 //add this back after I find where the projectile went
- /*
-    //check if the ball hit the target
-    CCSprite *mouth = [self getChildByTag:1];
+ 
+//    //check if the ball hit the target
+//    CCSprite *mouth = [self getChildByTag:1];
+//    
+//    //check if their x coordinates are close enough
+//    if(ball.position.x < (mouth.position.x + 10.0f) && ball.position.y < (mouth.position.x - 10.0f))
+//    {
+//        //check if their y coordinates are close enough
+//        if(ball.position.y < (mouth.position.y + 10.0f) && ball.position.y > mouth.position.y - 10.0f)
+//        {
+//            [self removeChild:ball cleanup: YES];
+//            //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[GameLayer alloc] init]];
+//        }
+//    }
+
+}
+*/
+
+
+
+-(void) detectCollisions
+{
+    //balls in this case is still the projectile, which we will be removing/replacing
+    //NSLog(@"foodObjects Count");
+    //NSLog(@"%d",[foodObjects count]);
     
-    //check if their x coordinates are close enough
-    if(ball.position.x < (mouth.position.x + 10.0f) && ball.position.y < (mouth.position.x - 10.0f))
+    //First check if the ball hit a food
+    for(int j = 0; j < [foodObjects count]; j++)
     {
-        //check if their y coordinates are close enough
-        if(ball.position.y < (mouth.position.y + 10.0f) && ball.position.y > mouth.position.y - 10.0f)
+        if(_bullet != nil) //not sure if this is right :P
         {
-            [self removeChild:ball cleanup: YES];
-            //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[GameLayer alloc] init]];
+            NSInteger foodIndex = j;
+            food = [foodObjects objectAtIndex:foodIndex];
+            
+            firstrect = [ball textureRect];
+            secondrect = [food textureRect];
+            //check if their x coordinates match
+            //if(ball.position.x == food.position.x)
+            if(_bullet.position.x < (food.position.x + 50.0f) && _bullet.position.x > (food.position.x - 50.0f))
+            {
+                //check if their y coordinates are within the height of the block
+                if(_bullet.position.y < (food.position.y + 50.0f) && _bullet.position.y > food.position.y - 50.0f)
+                {
+                    //NSLog(@"FOOD COLLECTED!");
+                    [self removeChild:food cleanup:YES];
+                    //[self removeChild:ball cleanup:YES];
+                    [foodObjects removeObjectAtIndex:foodIndex];
+                    //[bullets removeObjectAtIndex:first];
+                    //[[SimpleAudioEngine sharedEngine] playEffect:@"explo2.wav"];
+                    //}
+                    
+                }
+            }
         }
     }
- */
+    
+    //add this back after I find where the projectile went
+    
+    //    //check if the ball hit the target
+    //    CCSprite *mouth = [self getChildByTag:1];
+    //
+    //    //check if their x coordinates are close enough
+    //    if(_bullet.position.x < (mouth.position.x + 10.0f) && _bullet.position.y < (mouth.position.x - 10.0f))
+    //    {
+    //        //check if their y coordinates are close enough
+    //        if(_bullet.position.y < (mouth.position.y + 10.0f) && _bullet.position.y > mouth.position.y - 10.0f)
+    //        {
+    //            [self removeChild:_bullet cleanup: YES];
+    //            //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[GameLayer alloc] init]];
+    //        }
+    //    }
+    
 }
+
+
+
+
+
+
+
 
 - (void)tick:(ccTime) dt {
     
@@ -260,6 +341,98 @@ CGRect secondrect;
 }
 
 
+/*
+-(void)launchBullet:(CGPoint)location{
+    //As mentioned in the header file, I'm replacing nextprojectile with bullet because that makes more sense
+    
+    
+//    if (_nextProjectile != nil) return;
+    if (_bullet != nil) return;
+    //Choose one of the touches to work with
+    //UITouch *touch = [touches anyObject];
+    //CGPoint location = [self convertTouchToNodeSpace:touch];
+    
+    //set up initial location of bullets
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+//    _nextProjectile = [CCSprite spriteWithFile:@"projectile2.png"];
+    _bullet = [CCSprite spriteWithFile:@"projectile2.png"];
+
+//    _nextProjectile.position = ccp(_player.position.x, _player.position.y);
+    _bullet.position = ccp(_cannon.position.x, _cannon.position.y);
+    
+    // Determine offset of location to projectile
+//    CGPoint offset = ccpSub(location, _nextProjectile.position);
+    CGPoint offset = ccpSub(location, _bullet.position);
+    
+    //Bail out if you are shooting down or backwards
+    if (offset.x <= 0) return;
+    
+    // Determine where you wish to shoot the projectile to
+//    int realX = winSize.width + (_nextProjectile.contentSize.width/2);
+    int realX = winSize.width + (_bullet.contentSize.width/2);
+    float ratio = (float) offset.y / (float) offset.x;
+    //int realY = (realX * ratio) + _nextProjectile.position.y;
+    int realY = (realX * ratio) + _bullet.position.y;
+    CGPoint realDest = ccp(realX, realY);
+    
+    
+    // Determine the length of how far you're shooting
+    //int offRealX = realX - _nextProjectile.position.x;
+    int offRealX = realX - _bullet.position.x;
+    //int offRealY = realY - _nextProjectile.position.y;
+    int offRealY = realY - _bullet.position.y;
+    float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
+    float velocity = 480/1; // 480pixels/1sec
+    float realMoveDuration = length/velocity;
+    
+    
+    // Determine angle to face
+    float angleRadians = atanf((float)offRealY / (float)offRealX);
+    float angleDegrees = CC_RADIANS_TO_DEGREES(angleRadians);
+    float cocosAngle = -1 * angleDegrees;
+    float rotateDegreesPerSecond = 180 / 0.5; // Would take 0.5 seconds to rotate 180 degrees, or half a circle
+//    float degreesDiff = _player.rotation - cocosAngle;
+    float degreesDiff = _cannon.rotation - cocosAngle;
+    float rotateDuration = fabs(degreesDiff / rotateDegreesPerSecond);
+//    [_player runAction:
+    [_cannon runAction:
+     [CCSequence actions:
+      [CCRotateTo actionWithDuration:rotateDuration angle:cocosAngle],
+      [CCCallBlock actionWithBlock:^{
+         // OK to add now - rotation is finished!
+//         [self addChild:_nextProjectile];
+         [self addChild:_bullet];
+         
+         
+         // Release
+         
+        // _nextProjectile = nil;
+         _bullet = nil;
+     }],
+      nil]];
+}
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+//srinidhi's bullet code
+
+
+
+
+
+
+
+
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     printf("HERERER");
@@ -267,7 +440,7 @@ CGRect secondrect;
     CGPoint poBefore = [touch locationInView:[touch view]];
     poBefore = [[CCDirector sharedDirector] convertToGL:poBefore];
     
-    if (CGRectContainsPoint(_player.boundingBox, poBefore))
+    if (CGRectContainsPoint(_cannon.boundingBox, poBefore))
     {
         printf("*** ccTouchesBegan (x:%f, y:%f)\n", poBefore.x, poBefore.y);
         po = poBefore;
@@ -285,17 +458,22 @@ CGRect secondrect;
     oldTouchLocation = [self convertToNodeSpace:oldTouchLocation];
     
     CGPoint translation = ccpSub(touchLocation, oldTouchLocation);
-    CGPoint newPos = ccpAdd(_player.position, translation);
-    _player.position = newPos;
+//    CGPoint newPos = ccpAdd(_player.position, translation);
+//    _player.position = newPos;
+    
+    CGPoint newPos = ccpAdd(_cannon.position, translation);
+    _cannon.position = newPos;
 
 }
 
 
+
+
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    if (_nextProjectile != nil) return;
-    
-    
+//    
+//    if (_nextProjectile != nil) return;
+        if (_bullet != nil) return;
+
     // Choose one of the touches to work with
     UITouch *touch = [touches anyObject];
     CGPoint location = [self convertTouchToNodeSpace:touch];
@@ -304,26 +482,33 @@ CGRect secondrect;
     // Set up initial location of projectile
 //this projectile is the bullet/ball right?
     CGSize winSize = [[CCDirector sharedDirector] winSize];
-    _nextProjectile = [CCSprite spriteWithFile:@"projectile2.png"];
+    //_nextProjectile = [CCSprite spriteWithFile:@"projectile2.png"];
+    _cannon = [CCSprite spriteWithFile:@"cannon.png"];
 //  _nextProjectile.position = ccp(20, winSize.height/2);
-    _nextProjectile.position = ccp(_player.position.x, _player.position.y);
-    
+//    _nextProjectile.position = ccp(_player.position.x, _player.position.y);
+    _bullet.position = ccp(_cannon.position.x, _cannon.position.y);
     
     
     // Determine offset of location to projectile
-    CGPoint offset = ccpSub(location, _nextProjectile.position);
+//    CGPoint offset = ccpSub(location, _nextProjectile.position);
+    CGPoint offset = ccpSub(location, _bullet.position);
     // Bail out if you are shooting down or backwards
     if (offset.x <= 0) return;
     
     // Determine where you wish to shoot the projectile to
-    int realX = winSize.width + (_nextProjectile.contentSize.width/2);
+//    int realX = winSize.width + (_nextProjectile.contentSize.width/2);
+    int realX = winSize.width + (_bullet.contentSize.width/2);
     float ratio = (float) offset.y / (float) offset.x;
-    int realY = (realX * ratio) + _nextProjectile.position.y;
+//    int realY = (realX * ratio) + _nextProjectile.position.y;
+    int realY = (realX * ratio) + _bullet.position.y;
     CGPoint realDest = ccp(realX, realY);
     
     // Determine the length of how far you're shooting
-    int offRealX = realX - _nextProjectile.position.x;
-    int offRealY = realY - _nextProjectile.position.y;
+//    int offRealX = realX - _nextProjectile.position.x;
+//    int offRealY = realY - _nextProjectile.position.y;
+    
+    int offRealX = realX - _bullet.position.x;
+    int offRealY = realY - _bullet.position.y;
     float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
     float velocity = 480/1; // 480pixels/1sec
     float realMoveDuration = length/velocity;
@@ -332,24 +517,27 @@ CGRect secondrect;
     float angleDegrees = CC_RADIANS_TO_DEGREES(angleRadians);
     float cocosAngle = -1 * angleDegrees;
     float rotateDegreesPerSecond = 180 / 0.5; // Would take 0.5 seconds to rotate 180 degrees, or half a circle
-    float degreesDiff = _player.rotation - cocosAngle;
+//    float degreesDiff = _player.rotation - cocosAngle;
+    float degreesDiff = _cannon.rotation - cocosAngle;
     float rotateDuration = fabs(degreesDiff / rotateDegreesPerSecond);
-    [_player runAction:
+    [_cannon runAction:
      [CCSequence actions:
       [CCRotateTo actionWithDuration:rotateDuration angle:cocosAngle],
       [CCCallBlock actionWithBlock:^{
          // OK to add now - rotation is finished!
-         [self addChild:_nextProjectile];
+//         [self addChild:_nextProjectile];
+         [self addChild:_bullet];
          
          
          // Release
          
-         _nextProjectile = nil;
+//         _nextProjectile = nil;
+         _bullet = nil;
      }],
       nil]];
-    
+
     // Move projectile to actual endpoint
-    [_nextProjectile runAction:
+    [_bullet runAction:
      [CCSequence actions:
       [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
       [CCCallBlockN actionWithBlock:^(CCNode *node) {
@@ -358,7 +546,7 @@ CGRect secondrect;
      }],
       nil]];
     
-    _nextProjectile.tag = 2;
+    _bullet.tag = 4;
     
     //Extra bit for setting po variable again - not used currently since it doesn't exactly work :(
     if (po.x >= 0)
@@ -366,11 +554,11 @@ CGRect secondrect;
         printf("ccTouchesEnded:\n\n");
         po = ccp(-999, -999);
     }
-//    
+    
 //    // Ok to add now - we've double checked position
-//    [self addChild:projectile];
+//    [self addChild:_bullet];
 //    
-//    int realX = winSize.width + (projectile.contentSize.width/2);
+//    int realX = winSize.width + (_bullet.contentSize.width/2);
 //    float ratio = (float) offset.y / (float) offset.x;
 //    int realY = (realX * ratio) + projectile.position.y;
 //    CGPoint realDest = ccp(realX, realY);
@@ -381,7 +569,7 @@ CGRect secondrect;
 //    float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
 //    float velocity = 480/1; // 480pixels/1sec
 //    float realMoveDuration = length/velocity;
-//    
+//
 //    // Move projectile to actual endpoint
 //    [projectile runAction:
 //     [CCSequence actions:
@@ -401,7 +589,21 @@ CGRect secondrect;
 //    if (_mouseJoint) {
 //        world->DestroyJoint(_mouseJoint);
 //        _mouseJoint = NULL;
-    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 -(void) dealloc
@@ -568,18 +770,19 @@ CGRect secondrect;
         bool touchCannonBody = false;
         bool touchCannonHead = false;
         
-        if( (pos.y < _player.position.y + 20) && (pos.y > _player.position.y - 20) ) //touch somewhere in the cannon
+        if( (pos.y < _cannon.position.y + 20) && (pos.y > _cannon.position.y - 20) ) //touch somewhere in the cannon
         {
             //check if touched cannon body
-            if ( (pos.x < _player.position.x + 10) && (pos.x > _player.position.x - 30) )
+            if ( (pos.x < _cannon.position.x + 10) && (pos.x > _cannon.position.x - 30) )
             {
                 //shoot cannon
                 //codecodecodeee
+                //[self launchBullet:pos];
                 touchCannonBody = true;
             }
         
             //check if touched cannon head
-            if ( (pos.x < _player.position.x + 20) && !touchCannonBody)
+            if ( (pos.x < _cannon.position.x + 20) && !touchCannonBody)
             {
                 //rotate cannon
                 //should probably break out of this and then find the rotate somewhere..
@@ -588,9 +791,9 @@ CGRect secondrect;
         }
         
         //outside the cage, move the cannon
-        if (pos.x < 60 && !touchCannonBody && !touchCannonHead)
+        if (pos.x < cageLeft && !touchCannonBody && !touchCannonHead)
         {
-            _player.position = ccp(x, y);
+            _cannon.position = ccp(x, y);
         }
         
     }
@@ -686,7 +889,7 @@ CGRect secondrect;
     //draw the cage
     ccColor4F buttonColor = ccc4f(0, 0.5, 0.5, 0.5);
   
-    int x = 60;
+    int x = cageLeft;
     int y = 0;
 //why can't I use winSize here?
     ccDrawSolidRect( ccp(x, y), ccp(x + 10, y+ 350) , buttonColor);
