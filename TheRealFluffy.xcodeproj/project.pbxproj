@@ -21,6 +21,8 @@
 		91A67ED01886EC7000AB4C14 /* small-red-cannon.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A67ECF1886EC7000AB4C14 /* small-red-cannon.png */; };
 		91E0D9A51886EFE300C0905A /* smaller-red-cannon.png in Resources */ = {isa = PBXBuildFile; fileRef = 91E0D9A41886EFE300C0905A /* smaller-red-cannon.png */; };
 		ABA2151C18862C0E0011BE0B /* gameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA2151B18862C0E0011BE0B /* gameBackground.png */; };
+		ABB719CF18871CCA004D2FCA /* Fluffy.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB719CE18871CCA004D2FCA /* Fluffy.m */; };
+		ABB719D118872333004D2FCA /* cannon2.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719D018872333004D2FCA /* cannon2.png */; };
 		ABC639A11884E86A007A46F2 /* apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ABC639A01884E86A007A46F2 /* apple.jpg */; };
 		BF22E3D5188472C9007E26DF /* hungryEevee.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D4188472C9007E26DF /* hungryEevee.png */; };
 		BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */; };
@@ -112,6 +114,9 @@
 		91A67ECF1886EC7000AB4C14 /* small-red-cannon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "small-red-cannon.png"; path = "../small-red-cannon.png"; sourceTree = "<group>"; };
 		91E0D9A41886EFE300C0905A /* smaller-red-cannon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smaller-red-cannon.png"; sourceTree = "<group>"; };
 		ABA2151B18862C0E0011BE0B /* gameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground.png; sourceTree = "<group>"; };
+		ABB719CD18871CCA004D2FCA /* Fluffy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fluffy.h; sourceTree = "<group>"; };
+		ABB719CE18871CCA004D2FCA /* Fluffy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fluffy.m; sourceTree = "<group>"; };
+		ABB719D018872333004D2FCA /* cannon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cannon2.png; sourceTree = "<group>"; };
 		ABC639A01884E86A007A46F2 /* apple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpg; sourceTree = "<group>"; };
 		BF22E3D4188472C9007E26DF /* hungryEevee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEevee.png; sourceTree = "<group>"; };
 		BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEeveeMouth.png; sourceTree = "<group>"; };
@@ -349,6 +354,8 @@
 				DCC1A38D13A94F1A005BD75D /* AppDelegate.h */,
 				DCC1A38E13A94F1A005BD75D /* AppDelegate.m */,
 				BFC2DCE31885FE3200A1D673 /* comments */,
+				ABB719CD18871CCA004D2FCA /* Fluffy.h */,
+				ABB719CE18871CCA004D2FCA /* Fluffy.m */,
 				DCC1A39413A94F1A005BD75D /* Resources */,
 				DCC1A3CF13A94F2C005BD75D /* Supporting Files */,
 			);
@@ -358,6 +365,7 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ABB719D018872333004D2FCA /* cannon2.png */,
 				91A67ECF1886EC7000AB4C14 /* small-red-cannon.png */,
 				913C740B1885D12A00587021 /* Military-Cannon-icon.png */,
 				BFB425AB1886FB5D002DD826 /* goLeft.png */,
@@ -493,6 +501,7 @@
 				DCC1A0FE13A94ED5005BD75D /* Icon-72.png in Resources */,
 				DCC1A10013A94ED5005BD75D /* Icon-Small-50.png in Resources */,
 				DCC1A10213A94ED5005BD75D /* Icon-Small.png in Resources */,
+				ABB719D118872333004D2FCA /* cannon2.png in Resources */,
 				DCC1A10413A94ED5005BD75D /* Icon-Small@2x.png in Resources */,
 				DCC1A10613A94ED5005BD75D /* Icon.png in Resources */,
 				DCC1A10813A94ED5005BD75D /* Icon@2x.png in Resources */,
@@ -558,6 +567,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCC1A3A913A94F1A005BD75D /* AppDelegate.m in Sources */,
+				ABB719CF18871CCA004D2FCA /* Fluffy.m in Sources */,
 				DCC1A3AB13A94F1A005BD75D /* PhysicsLayer.mm in Sources */,
 				BFB4259718862C92002DD826 /* LevelSelectLayer.mm in Sources */,
 				BFB4259E18862DD3002DD826 /* GameLayer.mm in Sources */,

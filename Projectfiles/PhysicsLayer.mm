@@ -15,6 +15,8 @@
 #import "Box2DDebugLayer.h"
 #import "cocos2d.h"
 #import "GameLayer.h"
+#import "Fluffy.h"
+#import "OopsDNE.h"
 
 //#import "cocos2d.m"
 
@@ -129,7 +131,7 @@ CGRect secondrect;
         
         
 //okay player2 was kinda confusing. I'm going to change this to "cannon"
-        _player = [CCSprite spriteWithFile:@"smaller-red-cannon.png"];
+        _player = [CCSprite spriteWithFile:@"cannon2.png"];
         _player.position = ccp(_player.contentSize.width/2, winSize.height/2);
         
         
@@ -152,7 +154,7 @@ CGRect secondrect;
         
         
         //Create a hungry eevee and add it to layer
-        CCSprite *hungryEevee = [CCSprite spriteWithFile: @"hungryEevee.png"];
+        /*CCSprite *hungryEevee = [CCSprite spriteWithFile: @"hungryEevee.png"];
         hungryEevee.position = ccp(winSize.width - 10, winSize.height/2);
         [self addChild:hungryEevee z:0 tag:2];
         
@@ -160,7 +162,13 @@ CGRect secondrect;
         
         CCSprite *hungryEeveeMouth = [CCSprite spriteWithFile: @"hungryEeveeMouth.png"];
         hungryEeveeMouth.position = ccp(450, 148);
-        [self addChild:hungryEeveeMouth z:-1 tag:1];
+        [self addChild:hungryEeveeMouth z:-1 tag:1];*/
+        
+        Fluffy *fluffy = [[Fluffy alloc] initWithFluffyImage];
+        fluffy.position = ccp(winSize.width - 10, winSize.height/2);
+        [self addChild: fluffy z:0];
+        [foodObjects addObject:fluffy];
+        
         
 
                
@@ -233,9 +241,15 @@ CGRect secondrect;
                 //if(ball.position.x == food.position.x)
                 if(ball.position.x < (food.position.x + 50.0f) && ball.position.x > (food.position.x - 50.0f))
                 {
+
                     //check if their y coordinates are within the height of the block
                     if(ball.position.y < (food.position.y + 50.0f) && ball.position.y > food.position.y - 50.0f)
                     {
+                        if([food isKindOfClass:[Fluffy class]]) {
+                            NSLog(@"YOU BEAT THE LEVEL!");
+                            [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+                        }
+                        else {
                         NSLog(@"FOOD COLLECTED!");
                         [self removeChild:food cleanup:YES];
                         //[self removeChild:ball cleanup:YES];
@@ -243,6 +257,7 @@ CGRect secondrect;
                         //[bullets removeObjectAtIndex:first];
                         //[[SimpleAudioEngine sharedEngine] playEffect:@"explo2.wav"];
                         //}
+                        }
                         
                     }
                 }
