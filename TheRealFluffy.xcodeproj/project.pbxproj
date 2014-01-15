@@ -21,13 +21,15 @@
 		ABC639A11884E86A007A46F2 /* apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ABC639A01884E86A007A46F2 /* apple.jpg */; };
 		BF22E3D5188472C9007E26DF /* hungryEevee.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D4188472C9007E26DF /* hungryEevee.png */; };
 		BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */; };
-		BF44FB7A188393B000A97B3D /* StartMenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF44FB79188393B000A97B3D /* StartMenuLayer.mm */; };
-		BF44FB7D1883949900A97B3D /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF44FB7C1883949900A97B3D /* GameLayer.mm */; };
 		BF63D6EA18848AD100F3D3F3 /* eevee.png in Resources */ = {isa = PBXBuildFile; fileRef = BF63D6E918848AD100F3D3F3 /* eevee.png */; };
 		BF63D6EC1884ADF600F3D3F3 /* menuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */; };
 		BF63D6EE1884AFAC00F3D3F3 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = BF63D6ED1884AFAC00F3D3F3 /* play.png */; };
+		BFB4259718862C92002DD826 /* LevelSelectLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB4259618862C92002DD826 /* LevelSelectLayer.mm */; };
+		BFB4259918862CF2002DD826 /* gameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB4259818862CF2002DD826 /* gameBackground.png */; };
+		BFB4259B18862CFA002DD826 /* tutorials.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB4259A18862CFA002DD826 /* tutorials.png */; };
+		BFB4259E18862DD3002DD826 /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB4259D18862DD3002DD826 /* GameLayer.mm */; };
+		BFB425A118862DDE002DD826 /* StartMenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB425A018862DDE002DD826 /* StartMenuLayer.mm */; };
 		BFC2DCE41885FE3200A1D673 /* comments in Resources */ = {isa = PBXBuildFile; fileRef = BFC2DCE31885FE3200A1D673 /* comments */; };
-		BFC2DCE61886021600A1D673 /* gameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BFC2DCE51886021600A1D673 /* gameBackground.png */; };
 		BFC2DCE8188609E900A1D673 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = BFC2DCE7188609E900A1D673 /* apple.png */; };
 		DC193EB713B692D100500B56 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC193EB313B6872600500B56 /* GLES-Render.mm */; };
 		DC193EB813B692D100500B56 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC193EB313B6872600500B56 /* GLES-Render.mm */; };
@@ -99,15 +101,18 @@
 		ABC639A01884E86A007A46F2 /* apple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpg; sourceTree = "<group>"; };
 		BF22E3D4188472C9007E26DF /* hungryEevee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEevee.png; sourceTree = "<group>"; };
 		BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEeveeMouth.png; sourceTree = "<group>"; };
-		BF44FB78188393B000A97B3D /* StartMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartMenuLayer.h; path = ../StartMenuLayer.h; sourceTree = "<group>"; };
-		BF44FB79188393B000A97B3D /* StartMenuLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = StartMenuLayer.mm; path = ../StartMenuLayer.mm; sourceTree = "<group>"; };
-		BF44FB7B1883949900A97B3D /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameLayer.h; path = ../GameLayer.h; sourceTree = "<group>"; };
-		BF44FB7C1883949900A97B3D /* GameLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameLayer.mm; path = ../GameLayer.mm; sourceTree = "<group>"; };
 		BF63D6E918848AD100F3D3F3 /* eevee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eevee.png; sourceTree = "<group>"; };
 		BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackground.png; sourceTree = "<group>"; };
 		BF63D6ED1884AFAC00F3D3F3 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		BFB4259518862C92002DD826 /* LevelSelectLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSelectLayer.h; sourceTree = "<group>"; };
+		BFB4259618862C92002DD826 /* LevelSelectLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LevelSelectLayer.mm; sourceTree = "<group>"; };
+		BFB4259818862CF2002DD826 /* gameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground.png; sourceTree = "<group>"; };
+		BFB4259A18862CFA002DD826 /* tutorials.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorials.png; sourceTree = "<group>"; };
+		BFB4259C18862DD3002DD826 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
+		BFB4259D18862DD3002DD826 /* GameLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameLayer.mm; sourceTree = "<group>"; };
+		BFB4259F18862DDE002DD826 /* StartMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartMenuLayer.h; sourceTree = "<group>"; };
+		BFB425A018862DDE002DD826 /* StartMenuLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StartMenuLayer.mm; sourceTree = "<group>"; };
 		BFC2DCE31885FE3200A1D673 /* comments */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = comments; sourceTree = "<group>"; };
-		BFC2DCE51886021600A1D673 /* gameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground.png; sourceTree = "<group>"; };
 		BFC2DCE7188609E900A1D673 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
 		DC193EB213B6872600500B56 /* GLES-Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
 		DC193EB313B6872600500B56 /* GLES-Render.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
@@ -302,10 +307,12 @@
 			isa = PBXGroup;
 			children = (
 				912F81ED18839C0300838683 /* Box2D.h */,
-				BF44FB7B1883949900A97B3D /* GameLayer.h */,
-				BF44FB7C1883949900A97B3D /* GameLayer.mm */,
-				BF44FB78188393B000A97B3D /* StartMenuLayer.h */,
-				BF44FB79188393B000A97B3D /* StartMenuLayer.mm */,
+				BFB4259C18862DD3002DD826 /* GameLayer.h */,
+				BFB4259D18862DD3002DD826 /* GameLayer.mm */,
+				BFB4259F18862DDE002DD826 /* StartMenuLayer.h */,
+				BFB425A018862DDE002DD826 /* StartMenuLayer.mm */,
+				BFB4259518862C92002DD826 /* LevelSelectLayer.h */,
+				BFB4259618862C92002DD826 /* LevelSelectLayer.mm */,
 				DC2A3EC2149A30B400EF78B0 /* Box2DDebugLayer.h */,
 				DC2A3EC3149A30B400EF78B0 /* Box2DDebugLayer.mm */,
 				DCC1A38F13A94F1A005BD75D /* PhysicsLayer.h */,
@@ -332,9 +339,11 @@
 				913C74051885818B00587021 /* cannon-hd.png */,
 				913C74061885818B00587021 /* cannon.png */,
 				912F81FC18845C0900838683 /* paddle.png */,
+				BFB4259818862CF2002DD826 /* gameBackground.png */,
 				BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */,
 				BF63D6ED1884AFAC00F3D3F3 /* play.png */,
 				BF63D6E918848AD100F3D3F3 /* eevee.png */,
+				BFB4259A18862CFA002DD826 /* tutorials.png */,
 				BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */,
 				BF22E3D4188472C9007E26DF /* hungryEevee.png */,
 				912F81F61883A1F400838683 /* projectile.png */,
@@ -460,6 +469,7 @@
 				DC193EC113B6969B00500B56 /* Author&License.txt in Resources */,
 				DC193EC313B6969B00500B56 /* dg_grounds32.png in Resources */,
 				BFC2DCE41885FE3200A1D673 /* comments in Resources */,
+				BFB4259918862CF2002DD826 /* gameBackground.png in Resources */,
 				DC26D6BE14B9E4D500B6002E /* fps_images-hd.png in Resources */,
 				DC65617D15114BC500E59F8A /* fps_images-ipadhd.png in Resources */,
 				BF63D6EE1884AFAC00F3D3F3 /* play.png in Resources */,
@@ -468,6 +478,7 @@
 				BFC2DCE8188609E900A1D673 /* apple.png in Resources */,
 				912F81F118839CA700838683 /* ball-hd.png in Resources */,
 				912F81F318839F8A00838683 /* idearoot_color.png in Resources */,
+				BFB4259B18862CFA002DD826 /* tutorials.png in Resources */,
 				912F81F51883A07D00838683 /* ball480icon.png in Resources */,
 				912F81F71883A1F400838683 /* projectile.png in Resources */,
 				912F81FD18845C0900838683 /* paddle.png in Resources */,
@@ -503,11 +514,12 @@
 			files = (
 				DCC1A3A913A94F1A005BD75D /* AppDelegate.m in Sources */,
 				DCC1A3AB13A94F1A005BD75D /* PhysicsLayer.mm in Sources */,
-				BF44FB7A188393B000A97B3D /* StartMenuLayer.mm in Sources */,
+				BFB4259718862C92002DD826 /* LevelSelectLayer.mm in Sources */,
+				BFB4259E18862DD3002DD826 /* GameLayer.mm in Sources */,
 				DCC1A3AD13A94F1A005BD75D /* main.m in Sources */,
 				DC193EB813B692D100500B56 /* GLES-Render.mm in Sources */,
-				BF44FB7D1883949900A97B3D /* GameLayer.mm in Sources */,
 				DC193EBC13B6956F00500B56 /* ContactListener.mm in Sources */,
+				BFB425A118862DDE002DD826 /* StartMenuLayer.mm in Sources */,
 				DC2A3EC4149A30B400EF78B0 /* Box2DDebugLayer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
