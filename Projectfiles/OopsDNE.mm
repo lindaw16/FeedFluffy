@@ -41,7 +41,7 @@
 	// Arrange the menu items vertically
 	[myMenu alignItemsVertically];
     //menuItem1.position = ccp(240,95);
-    apple.position = ccp(300,10);
+    apple.position = ccp(300,30);
     myMenu.position = ccp(0,0);
     
 	// add the menu to your scene
