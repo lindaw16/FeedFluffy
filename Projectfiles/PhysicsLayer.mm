@@ -129,7 +129,7 @@ CGRect secondrect;
         
         
 //okay player2 was kinda confusing. I'm going to change this to "cannon"
-        _player = [CCSprite spriteWithFile:@"smaller-red-cannon.png"];
+        _player = [CCSprite spriteWithFile:@"cannon2.png"];
         _player.position = ccp(_player.contentSize.width/2, winSize.height/2);
         
         
