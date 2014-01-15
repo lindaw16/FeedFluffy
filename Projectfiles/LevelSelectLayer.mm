@@ -46,12 +46,9 @@ float priorY = 1000;
     
     right = [CCMenuItemImage itemWithNormalImage:@"goRight.png" selectedImage: @"goRight.png" target:self selector:@selector(goRight:)];
     
-    
-    CCMenuItemImage * tutorials = [CCMenuItemImage itemWithNormalImage:@"tutorials.png"
-                                                          selectedImage: @"tutorials.png"
-                                                                 target:self
-                                                               selector:@selector(goToLevel1:)];
-    
+
+    CCMenuItemImage * tutorials = [CCMenuItemImage itemWithNormalImage:@"tutorials.png" selectedImage: @"tutorials.png" target:self selector:@selector(goToLevel1:)];
+
     CCMenuItemImage * level1 = [CCMenuItemImage itemWithNormalImage:@"level1.png" selectedImage: @"level1.png" target:self selector:@selector(goToLevel1:)];
     
     
@@ -69,8 +66,8 @@ float priorY = 1000;
     left.position = ccp(40, 30);
     right.position = ccp(440, 30);
     tutorials.position = ccp(170,170);
-    level1.position = ccp(180, 200);
-    level2.position = ccp(200, 200);
+    level1.position = ccp(130, 150);
+    level2.position = ccp(200, 150);
     easy.position = ccp(480, 170);
 
     
@@ -136,7 +133,6 @@ float priorY = 1000;
 {
     [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
 }
-
 
 
 
