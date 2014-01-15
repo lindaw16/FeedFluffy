@@ -10,6 +10,7 @@
 #import "GameLayer.h"
 #import "PhysicsLayer.h"
 #import "LevelSelectLayer.h"
+#import "OopsDNE.h"
 
 @implementation StartMenuLayer
 
@@ -41,14 +42,16 @@
                                                          selectedImage: @"play.png"
                                                                 target:self
                                                               selector:@selector(goToLevelSelect:)];
+    CCMenuItemImage * achievements = [CCMenuItemImage itemWithNormalImage:@"Achievements.png" selectedImage: @"Achievements.png" target:self selector:@selector(goToAchievements:)];
     
 	// Create a menu and add your menu items to it
-	CCMenu * myMenu = [CCMenu menuWithItems:playButton, nil];
+	CCMenu * myMenu = [CCMenu menuWithItems:playButton, achievements, nil];
     
 	// Arrange the menu items vertically
 	//[myMenu alignItemsVertically];
     //menuItem1.position = ccp(240,95);
     playButton.position = ccp(400,250);
+    achievements.position = ccp(375, 80);
     myMenu.position = ccp(0,0);
     
 	// add the menu to your scene
@@ -78,5 +81,10 @@
     [[CCDirector sharedDirector] replaceScene: (CCScene*)[[LevelSelectLayer alloc] init]];
 }
 
+
+- (void) goToAchievements: (CCMenuItemImage *) menuItem
+{
+    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+}
 
 @end
