@@ -193,6 +193,8 @@ CGRect secondrect;
 }
 
 // DETECT COLLISIONS BETWEEN BALL AND FOOD!
+
+/*
 -(void) detectCollisions
 {
 //balls in this case is still the projectile, which we will be removing/replacing
@@ -252,9 +254,9 @@ CGRect secondrect;
 
 }
 
+*/
 
 
-/*
 -(void) detectCollisions
 {
     //balls in this case is still the projectile, which we will be removing/replacing
@@ -264,21 +266,24 @@ CGRect secondrect;
     //First check if the ball hit a food
     for(int j = 0; j < [foodObjects count]; j++)
     {
-        if(_bullet != nil) //not sure if this is right :P
+        if(_nextProjectile != nil) //not sure if this is right :P
         {
+            //NSLog(@"HIHIHI");
             NSInteger foodIndex = j;
             food = [foodObjects objectAtIndex:foodIndex];
             
-            firstrect = [ball textureRect];
+            NSLog(@"foooooood %f", food.position.x);
+            NSLog(@"food %f", food.position.y);
+            firstrect = [_nextProjectile textureRect];
             secondrect = [food textureRect];
             //check if their x coordinates match
             //if(ball.position.x == food.position.x)
-            if(_bullet.position.x < (food.position.x + 50.0f) && _bullet.position.x > (food.position.x - 50.0f))
+            if(_nextProjectile.position.x < (food.position.x + 50.0f) && _nextProjectile.position.x > (food.position.x - 50.0f))
             {
                 //check if their y coordinates are within the height of the block
-                if(_bullet.position.y < (food.position.y + 50.0f) && _bullet.position.y > food.position.y - 50.0f)
+                if(_nextProjectile.position.y < (food.position.y + 50.0f) && _nextProjectile.position.y > food.position.y - 50.0f)
                 {
-                    //NSLog(@"FOOD COLLECTED!");
+                    NSLog(@"DOES IT EVER GO HERE HUHHHH!");
                     [self removeChild:food cleanup:YES];
                     //[self removeChild:ball cleanup:YES];
                     [foodObjects removeObjectAtIndex:foodIndex];
@@ -293,22 +298,21 @@ CGRect secondrect;
     
     //add this back after I find where the projectile went
     
-    //    //check if the ball hit the target
-    //    CCSprite *mouth = [self getChildByTag:1];
-    //
-    //    //check if their x coordinates are close enough
-    //    if(_bullet.position.x < (mouth.position.x + 10.0f) && _bullet.position.y < (mouth.position.x - 10.0f))
-    //    {
-    //        //check if their y coordinates are close enough
-    //        if(_bullet.position.y < (mouth.position.y + 10.0f) && _bullet.position.y > mouth.position.y - 10.0f)
-    //        {
-    //            [self removeChild:_bullet cleanup: YES];
-    //            //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[GameLayer alloc] init]];
-    //        }
-    //    }
+       //check if the ball hit the target
+        CCSprite *mouth = [self getChildByTag:1];
+    
+        //check if their x coordinates are close enough
+        if(_nextProjectile.position.x < (mouth.position.x + 10.0f) && _nextProjectile.position.y < (mouth.position.x - 10.0f))
+      {
+            //check if their y coordinates are close enough
+            if(_nextProjectile.position.y < (mouth.position.y + 10.0f) && _nextProjectile.position.y > mouth.position.y - 10.0f)
+           {
+            [self removeChild:_nextProjectile cleanup: YES];
+               //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[GameLayer alloc] init]];
+            }
+       }
     
 }
-*/
 
 
 
