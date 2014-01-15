@@ -194,7 +194,7 @@ CGRect secondrect;
 
 // DETECT COLLISIONS BETWEEN BALL AND FOOD!
 
-/*
+
 -(void) detectCollisions
 {
 //balls in this case is still the projectile, which we will be removing/replacing
@@ -252,12 +252,12 @@ CGRect secondrect;
 //        }
 //    }
 
-}
-
-*/
+//}
 
 
--(void) detectCollisions
+
+
+/*-(void) detectCollisions
 {
     //balls in this case is still the projectile, which we will be removing/replacing
     //NSLog(@"foodObjects Count");
@@ -294,7 +294,7 @@ CGRect secondrect;
                 }
             }
         }
-    }
+    }*/
     
     //add this back after I find where the projectile went
     
@@ -382,7 +382,7 @@ CGRect secondrect;
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     _nextProjectile = [CCSprite spriteWithFile:@"projectile2.png"];
     _nextProjectile.position = ccp(20, winSize.height/2);
-    
+    [balls addObject: _nextProjectile];
     
     
     // Determine offset of location to projectile
