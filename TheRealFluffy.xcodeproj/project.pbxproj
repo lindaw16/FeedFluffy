@@ -34,6 +34,7 @@
 		BFB425B2188702D4002DD826 /* level2.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB425B0188702D4002DD826 /* level2.png */; };
 		BFB425B418870FD7002DD826 /* cannon2.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB425B318870FD7002DD826 /* cannon2.png */; };
 		BFB425B618872304002DD826 /* Achievements.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB425B518872304002DD826 /* Achievements.png */; };
+		BFB425B8188727AA002DD826 /* Bonus.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB425B7188727AA002DD826 /* Bonus.png */; };
 		BFC2DCE41885FE3200A1D673 /* comments in Resources */ = {isa = PBXBuildFile; fileRef = BFC2DCE31885FE3200A1D673 /* comments */; };
 		BFC2DCE8188609E900A1D673 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = BFC2DCE7188609E900A1D673 /* apple.png */; };
 		DC193EB713B692D100500B56 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC193EB313B6872600500B56 /* GLES-Render.mm */; };
@@ -124,6 +125,7 @@
 		BFB425B0188702D4002DD826 /* level2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = level2.png; sourceTree = "<group>"; };
 		BFB425B318870FD7002DD826 /* cannon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cannon2.png; sourceTree = "<group>"; };
 		BFB425B518872304002DD826 /* Achievements.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Achievements.png; sourceTree = "<group>"; };
+		BFB425B7188727AA002DD826 /* Bonus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bonus.png; sourceTree = "<group>"; };
 		BFC2DCE31885FE3200A1D673 /* comments */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = comments; sourceTree = "<group>"; };
 		BFC2DCE7188609E900A1D673 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
 		DC193EB213B6872600500B56 /* GLES-Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				BFB425B518872304002DD826 /* Achievements.png */,
+				BFB425B7188727AA002DD826 /* Bonus.png */,
 				ABB719D018872333004D2FCA /* cannon2.png */,
 				91A67ECF1886EC7000AB4C14 /* small-red-cannon.png */,
 				913C740B1885D12A00587021 /* Military-Cannon-icon.png */,
@@ -505,6 +508,7 @@
 				BFB425AE1886FB5D002DD826 /* goRight.png in Resources */,
 				913C74091885818B00587021 /* cannon-hd.png in Resources */,
 				BFB425B1188702D4002DD826 /* level1.png in Resources */,
+				BFB425B8188727AA002DD826 /* Bonus.png in Resources */,
 				913C740A1885818B00587021 /* cannon.png in Resources */,
 				913C740C1885D12B00587021 /* Military-Cannon-icon.png in Resources */,
 				91A67ED01886EC7000AB4C14 /* small-red-cannon.png in Resources */,

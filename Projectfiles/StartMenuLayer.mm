@@ -42,15 +42,18 @@
                                                          selectedImage: @"play.png"
                                                                 target:self
                                                               selector:@selector(goToLevelSelect:)];
+    CCMenuItemImage * bonus = [CCMenuItemImage itemWithNormalImage:@"Bonus.png" selectedImage: @"Bonus.png" target:self selector:@selector(goToBonus:)];
+    
     CCMenuItemImage * achievements = [CCMenuItemImage itemWithNormalImage:@"Achievements.png" selectedImage: @"Achievements.png" target:self selector:@selector(goToAchievements:)];
     
 	// Create a menu and add your menu items to it
-	CCMenu * myMenu = [CCMenu menuWithItems:playButton, achievements, nil];
+	CCMenu * myMenu = [CCMenu menuWithItems:playButton, bonus,achievements, nil];
     
 	// Arrange the menu items vertically
 	//[myMenu alignItemsVertically];
     //menuItem1.position = ccp(240,95);
     playButton.position = ccp(400,250);
+    bonus.position = ccp(100, 80);
     achievements.position = ccp(375, 80);
     myMenu.position = ccp(0,0);
     
@@ -83,6 +86,11 @@
 
 
 - (void) goToAchievements: (CCMenuItemImage *) menuItem
+{
+    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+}
+
+- (void) goToBonus: (CCMenuItemImage *) menuItem
 {
     [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
 }
