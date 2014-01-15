@@ -164,14 +164,37 @@ CGRect secondrect;
         hungryEeveeMouth.position = ccp(450, 148);
         [self addChild:hungryEeveeMouth z:-1 tag:1];*/
         
-        Fluffy *fluffy = [[Fluffy alloc] initWithFluffyImage];
-        fluffy.position = ccp(winSize.width - 10, winSize.height/2);
-        [self addChild: fluffy z:0];
-        [foodObjects addObject:fluffy];
-        
-        
 
-               
+        
+        //NSString* levelString = [NSString stringWithFormat:@"%i", level];
+        //NSString *levelName = [@"level" stringByAppendingString:levelString];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"level1" ofType:@"plist"];
+        NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:path];
+        
+        NSArray *fruits = [level objectForKey:@"Fruits"];
+        
+        NSDictionary *fluffy = [level objectForKey:@"Fluffy"];
+        Fluffy *fluffy2 = [[Fluffy alloc] initWithFluffyImage];
+        NSNumber *x = [fluffy objectForKey:@"x"];
+        NSNumber *y = [fluffy objectForKey:@"y"];
+        fluffy2.position = CGPointMake([x floatValue], [y floatValue]);
+        [foodObjects addObject:fluffy2];
+        [self addChild:fluffy2 z:0];
+        
+        
+        for (NSDictionary *fruit in fruits){
+            NSString *sName = [fruit objectForKey:@"spriteName"];
+            NSString *spriteName = [sName stringByAppendingString:@".png"];
+            NSNumber *x = [fruit objectForKey:@"x"];
+            NSNumber *y = [fruit objectForKey:@"y"];
+
+            CCSprite *sprite = [CCSprite spriteWithFile:spriteName];
+            sprite.position = CGPointMake([x floatValue], [y floatValue]);
+            [foodObjects addObject:sprite];
+            [self addChild:sprite z:0];
+        }
+
+        
         // Create ball body and shape
         b2BodyDef ballBodyDef;
         ballBodyDef.userData = (__bridge void*)_nextProjectile;
@@ -200,14 +223,6 @@ CGRect secondrect;
         //[self schedule:@selector(kick) interval:5.0];
         [self setTouchEnabled:YES];
         //[self setAccelerometerEnabled:NO];
-        
-        
-//make this a spritelist later
-        // add foods!
-        CCSprite *sprite = [CCSprite spriteWithFile:@"apple.png"];
-        sprite.position = CGPointMake(250.0f, 250.0f);
-        [foodObjects addObject:sprite];
-        [self addChild:sprite z:0];
         
         [self scheduleUpdate];
     }

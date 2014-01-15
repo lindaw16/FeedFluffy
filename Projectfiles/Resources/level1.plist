@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Fluffy</key>
+	<dict>
+		<key>x</key>
+		<integer>400</integer>
+		<key>y</key>
+		<integer>300</integer>
+	</dict>
+	<key>Fruits</key>
+	<array>
+		<dict>
+			<key>x</key>
+			<integer>250</integer>
+			<key>y</key>
+			<integer>250</integer>
+			<key>spriteName</key>
+			<string>apple</string>
+		</dict>
+	</array>
+</dict>
+</plist>
