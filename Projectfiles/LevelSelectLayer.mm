@@ -8,6 +8,7 @@
 
 #import "LevelSelectLayer.h"
 #import "PhysicsLayer.h"
+#import "OopsDNE.h"
 
 @implementation LevelSelectLayer
 
@@ -40,13 +41,17 @@
                                                                  target:self
                                                                selector:@selector(goToTutorials:)];
     
+    CCMenuItemImage * easy = [CCMenuItemImage itemWithNormalImage:@"Easy.png" selectedImage: @"Easy.png" target:self selector:@selector(goToLevel4:)];
+    
 	// Create a menu and add your menu items to it
-	CCMenu * myMenu = [CCMenu menuWithItems:tutorials, nil];
+	CCMenu * myMenu = [CCMenu menuWithItems:tutorials, easy, nil];
     
 	// Arrange the menu items vertically
 	//[myMenu alignItemsVertically];
     //menuItem1.position = ccp(240,95);
-    tutorials.position = ccp(200,150);
+    tutorials.position = ccp(180,150);
+    easy.position = ccp(450, 150);
+    
     myMenu.position = ccp(0,0);
     
 	// add the menu to your scene
@@ -60,7 +65,7 @@
         //[self scheduleUpdate];
         
         //CCSprite *sprite = [CCSprite spriteWithFile:@"eevee.png"];
-        CCSprite *sprite = [CCSprite spriteWithFile:@"gameBackground.png"];
+        CCSprite *sprite = [CCSprite spriteWithFile:@"levelSelectBackground.png"];
         sprite.anchorPoint = CGPointZero;
         [self addChild:sprite z:-1];
         
@@ -76,5 +81,9 @@
     [[CCDirector sharedDirector] replaceScene: (CCScene*)[[PhysicsLayer alloc] init]];
 }
 
+-(void) goToLevel4: (CCMenuItem *) menuItem
+{
+    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+}
 
 @end
