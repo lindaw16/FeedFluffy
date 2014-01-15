@@ -99,10 +99,6 @@ CGRect secondrect;
         
         [self addChild:_player];
         
-        //Setting some variables for tracking cannon location
-        po = ccp(-999, -999);
-        poMinX = _player.boundingBox.size.width * 0.5;
-        poMaxX = _player.size.width - _player.boundingBox.size.width * 0.5;
         
         
 //will be removing this later right? --edit: i removed it :P
@@ -152,7 +148,7 @@ CGRect secondrect;
         
         // Create ball body and shape
         b2BodyDef ballBodyDef;
-        ballBodyDef.userData = (__bridge void*)ball;
+        ballBodyDef.userData = (__bridge void*)_nextProjectile;
         ballBodyDef.type = b2_dynamicBody;
         ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
         
@@ -339,7 +335,7 @@ CGRect secondrect;
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    printf("HERERER");
+ 
     UITouch *touch = [touches anyObject];
     CGPoint poBefore = [touch locationInView:[touch view]];
     poBefore = [[CCDirector sharedDirector] convertToGL:poBefore];
@@ -363,7 +359,8 @@ CGRect secondrect;
     
     CGPoint translation = ccpSub(touchLocation, oldTouchLocation);
     CGPoint newPos = ccpAdd(_player.position, translation);
-    _player.position = newPos;
+    //_player.position = newPos;
+    _player.position = ccp(_player.position.x, newPos.y);
 
 }
 
@@ -382,6 +379,7 @@ CGRect secondrect;
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     _nextProjectile = [CCSprite spriteWithFile:@"projectile2.png"];
     _nextProjectile.position = ccp(20, winSize.height/2);
+//      _nextProjectile.position = _player.position;
     [balls addObject: _nextProjectile];
     
     
