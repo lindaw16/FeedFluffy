@@ -7,14 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		912F81EF18839C9C00838683 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81EE18839C9C00838683 /* ball.png */; };
-		912F81F118839CA700838683 /* ball-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81F018839CA700838683 /* ball-hd.png */; };
-		912F81F318839F8A00838683 /* idearoot_color.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81F218839F8A00838683 /* idearoot_color.png */; };
-		912F81F51883A07D00838683 /* ball480icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81F41883A07D00838683 /* ball480icon.png */; };
-		912F81F71883A1F400838683 /* projectile.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81F61883A1F400838683 /* projectile.png */; };
-		912F81FD18845C0900838683 /* paddle.png in Resources */ = {isa = PBXBuildFile; fileRef = 912F81FC18845C0900838683 /* paddle.png */; };
-		913C74071885818B00587021 /* projectile2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 913C74031885818B00587021 /* projectile2-hd.png */; };
-		913C74081885818B00587021 /* projectile2.png in Resources */ = {isa = PBXBuildFile; fileRef = 913C74041885818B00587021 /* projectile2.png */; };
 		913C74091885818B00587021 /* cannon-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 913C74051885818B00587021 /* cannon-hd.png */; };
 		913C740A1885818B00587021 /* cannon.png in Resources */ = {isa = PBXBuildFile; fileRef = 913C74061885818B00587021 /* cannon.png */; };
 		913C740C1885D12B00587021 /* Military-Cannon-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 913C740B1885D12A00587021 /* Military-Cannon-icon.png */; };
@@ -23,10 +15,8 @@
 		ABA2151C18862C0E0011BE0B /* gameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA2151B18862C0E0011BE0B /* gameBackground.png */; };
 		ABB719CF18871CCA004D2FCA /* Fluffy.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB719CE18871CCA004D2FCA /* Fluffy.m */; };
 		ABB719D118872333004D2FCA /* cannon2.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719D018872333004D2FCA /* cannon2.png */; };
-		ABC639A11884E86A007A46F2 /* apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ABC639A01884E86A007A46F2 /* apple.jpg */; };
 		BF22E3D5188472C9007E26DF /* hungryEevee.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D4188472C9007E26DF /* hungryEevee.png */; };
 		BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */; };
-		BF63D6EA18848AD100F3D3F3 /* eevee.png in Resources */ = {isa = PBXBuildFile; fileRef = BF63D6E918848AD100F3D3F3 /* eevee.png */; };
 		BF63D6EC1884ADF600F3D3F3 /* menuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */; };
 		BF63D6EE1884AFAC00F3D3F3 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = BF63D6ED1884AFAC00F3D3F3 /* play.png */; };
 		BFB4259718862C92002DD826 /* LevelSelectLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB4259618862C92002DD826 /* LevelSelectLayer.mm */; };
@@ -102,14 +92,6 @@
 
 /* Begin PBXFileReference section */
 		912F81ED18839C0300838683 /* Box2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box2D.h; sourceTree = "<group>"; };
-		912F81EE18839C9C00838683 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
-		912F81F018839CA700838683 /* ball-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ball-hd.png"; sourceTree = "<group>"; };
-		912F81F218839F8A00838683 /* idearoot_color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = idearoot_color.png; sourceTree = "<group>"; };
-		912F81F41883A07D00838683 /* ball480icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball480icon.png; sourceTree = "<group>"; };
-		912F81F61883A1F400838683 /* projectile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectile.png; sourceTree = "<group>"; };
-		912F81FC18845C0900838683 /* paddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paddle.png; sourceTree = "<group>"; };
-		913C74031885818B00587021 /* projectile2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "projectile2-hd.png"; sourceTree = "<group>"; };
-		913C74041885818B00587021 /* projectile2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectile2.png; sourceTree = "<group>"; };
 		913C74051885818B00587021 /* cannon-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cannon-hd.png"; sourceTree = "<group>"; };
 		913C74061885818B00587021 /* cannon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cannon.png; sourceTree = "<group>"; };
 		913C740B1885D12A00587021 /* Military-Cannon-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Military-Cannon-icon.png"; sourceTree = "<group>"; };
@@ -119,10 +101,8 @@
 		ABB719CD18871CCA004D2FCA /* Fluffy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fluffy.h; sourceTree = "<group>"; };
 		ABB719CE18871CCA004D2FCA /* Fluffy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fluffy.m; sourceTree = "<group>"; };
 		ABB719D018872333004D2FCA /* cannon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cannon2.png; sourceTree = "<group>"; };
-		ABC639A01884E86A007A46F2 /* apple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpg; sourceTree = "<group>"; };
 		BF22E3D4188472C9007E26DF /* hungryEevee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEevee.png; sourceTree = "<group>"; };
 		BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEeveeMouth.png; sourceTree = "<group>"; };
-		BF63D6E918848AD100F3D3F3 /* eevee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eevee.png; sourceTree = "<group>"; };
 		BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackground.png; sourceTree = "<group>"; };
 		BF63D6ED1884AFAC00F3D3F3 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		BFB4259518862C92002DD826 /* LevelSelectLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSelectLayer.h; sourceTree = "<group>"; };
@@ -377,31 +357,21 @@
 				BFB425B318870FD7002DD826 /* cannon2.png */,
 				BFB425AC1886FB5D002DD826 /* goRight.png */,
 				BFC2DCE7188609E900A1D673 /* apple.png */,
-				ABC639A01884E86A007A46F2 /* apple.jpg */,
 				BFB425AF188702D4002DD826 /* level1.png */,
 				BFB425B0188702D4002DD826 /* level2.png */,
 				913C74051885818B00587021 /* cannon-hd.png */,
 				913C74061885818B00587021 /* cannon.png */,
 				91E0D9A41886EFE300C0905A /* smaller-red-cannon.png */,
-				912F81FC18845C0900838683 /* paddle.png */,
 				BFB4259818862CF2002DD826 /* gameBackground.png */,
 				BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */,
 				BF63D6ED1884AFAC00F3D3F3 /* play.png */,
 				ABA2151B18862C0E0011BE0B /* gameBackground.png */,
-				BF63D6E918848AD100F3D3F3 /* eevee.png */,
 				BFB4259A18862CFA002DD826 /* tutorials.png */,
 				BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */,
 				BFB425A91886600F002DD826 /* levelSelectBackground.png */,
 				BF22E3D4188472C9007E26DF /* hungryEevee.png */,
-				912F81F61883A1F400838683 /* projectile.png */,
 				BFB425A718865B99002DD826 /* OopsDNE.png */,
-				913C74031885818B00587021 /* projectile2-hd.png */,
 				BFB425A518865B93002DD826 /* Easy.png */,
-				913C74041885818B00587021 /* projectile2.png */,
-				912F81F41883A07D00838683 /* ball480icon.png */,
-				912F81F218839F8A00838683 /* idearoot_color.png */,
-				912F81F018839CA700838683 /* ball-hd.png */,
-				912F81EE18839C9C00838683 /* ball.png */,
 				DC193EBE13B6969B00500B56 /* David Gervais Tilesets */,
 				DCC1A39513A94F1A005BD75D /* config.lua */,
 			);
@@ -513,9 +483,7 @@
 				DCC1A10613A94ED5005BD75D /* Icon.png in Resources */,
 				DCC1A10813A94ED5005BD75D /* Icon@2x.png in Resources */,
 				DCC1A10B13A94ED5005BD75D /* iTunesArtwork in Resources */,
-				ABC639A11884E86A007A46F2 /* apple.jpg in Resources */,
 				BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */,
-				BF63D6EA18848AD100F3D3F3 /* eevee.png in Resources */,
 				DCC1A3AF13A94F1A005BD75D /* config.lua in Resources */,
 				BFB425B2188702D4002DD826 /* level2.png in Resources */,
 				BF63D6EC1884ADF600F3D3F3 /* menuBackground.png in Resources */,
@@ -528,21 +496,13 @@
 				DC65617D15114BC500E59F8A /* fps_images-ipadhd.png in Resources */,
 				BF63D6EE1884AFAC00F3D3F3 /* play.png in Resources */,
 				DC2721B1160CB01100D88944 /* Default-568h@2x.png in Resources */,
-				912F81EF18839C9C00838683 /* ball.png in Resources */,
 				BFC2DCE8188609E900A1D673 /* apple.png in Resources */,
-				912F81F118839CA700838683 /* ball-hd.png in Resources */,
-				912F81F318839F8A00838683 /* idearoot_color.png in Resources */,
 				BFB425B618872304002DD826 /* Achievements.png in Resources */,
 				BFB425AA1886600F002DD826 /* levelSelectBackground.png in Resources */,
 				BFB4259B18862CFA002DD826 /* tutorials.png in Resources */,
 				BFB425A618865B93002DD826 /* Easy.png in Resources */,
-				912F81F51883A07D00838683 /* ball480icon.png in Resources */,
 				BFB425A818865B99002DD826 /* OopsDNE.png in Resources */,
 				BFB425AE1886FB5D002DD826 /* goRight.png in Resources */,
-				912F81F71883A1F400838683 /* projectile.png in Resources */,
-				912F81FD18845C0900838683 /* paddle.png in Resources */,
-				913C74071885818B00587021 /* projectile2-hd.png in Resources */,
-				913C74081885818B00587021 /* projectile2.png in Resources */,
 				913C74091885818B00587021 /* cannon-hd.png in Resources */,
 				BFB425B1188702D4002DD826 /* level1.png in Resources */,
 				913C740A1885818B00587021 /* cannon.png in Resources */,
