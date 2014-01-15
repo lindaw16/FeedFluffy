@@ -18,6 +18,8 @@
 		913C74091885818B00587021 /* cannon-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 913C74051885818B00587021 /* cannon-hd.png */; };
 		913C740A1885818B00587021 /* cannon.png in Resources */ = {isa = PBXBuildFile; fileRef = 913C74061885818B00587021 /* cannon.png */; };
 		913C740C1885D12B00587021 /* Military-Cannon-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 913C740B1885D12A00587021 /* Military-Cannon-icon.png */; };
+		91A67ED01886EC7000AB4C14 /* small-red-cannon.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A67ECF1886EC7000AB4C14 /* small-red-cannon.png */; };
+		91E0D9A51886EFE300C0905A /* smaller-red-cannon.png in Resources */ = {isa = PBXBuildFile; fileRef = 91E0D9A41886EFE300C0905A /* smaller-red-cannon.png */; };
 		ABA2151C18862C0E0011BE0B /* gameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA2151B18862C0E0011BE0B /* gameBackground.png */; };
 		ABC639A11884E86A007A46F2 /* apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ABC639A01884E86A007A46F2 /* apple.jpg */; };
 		BF22E3D5188472C9007E26DF /* hungryEevee.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D4188472C9007E26DF /* hungryEevee.png */; };
@@ -103,6 +105,8 @@
 		913C74051885818B00587021 /* cannon-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cannon-hd.png"; sourceTree = "<group>"; };
 		913C74061885818B00587021 /* cannon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cannon.png; sourceTree = "<group>"; };
 		913C740B1885D12A00587021 /* Military-Cannon-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Military-Cannon-icon.png"; sourceTree = "<group>"; };
+		91A67ECF1886EC7000AB4C14 /* small-red-cannon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "small-red-cannon.png"; path = "../small-red-cannon.png"; sourceTree = "<group>"; };
+		91E0D9A41886EFE300C0905A /* smaller-red-cannon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smaller-red-cannon.png"; sourceTree = "<group>"; };
 		ABA2151B18862C0E0011BE0B /* gameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground.png; sourceTree = "<group>"; };
 		ABC639A01884E86A007A46F2 /* apple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apple.jpg; sourceTree = "<group>"; };
 		BF22E3D4188472C9007E26DF /* hungryEevee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEevee.png; sourceTree = "<group>"; };
@@ -346,11 +350,13 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				91A67ECF1886EC7000AB4C14 /* small-red-cannon.png */,
 				913C740B1885D12A00587021 /* Military-Cannon-icon.png */,
 				BFC2DCE7188609E900A1D673 /* apple.png */,
 				ABC639A01884E86A007A46F2 /* apple.jpg */,
 				913C74051885818B00587021 /* cannon-hd.png */,
 				913C74061885818B00587021 /* cannon.png */,
+				91E0D9A41886EFE300C0905A /* smaller-red-cannon.png */,
 				912F81FC18845C0900838683 /* paddle.png */,
 				BFB4259818862CF2002DD826 /* gameBackground.png */,
 				BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */,
@@ -508,6 +514,8 @@
 				913C74091885818B00587021 /* cannon-hd.png in Resources */,
 				913C740A1885818B00587021 /* cannon.png in Resources */,
 				913C740C1885D12B00587021 /* Military-Cannon-icon.png in Resources */,
+				91A67ED01886EC7000AB4C14 /* small-red-cannon.png in Resources */,
+				91E0D9A51886EFE300C0905A /* smaller-red-cannon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +605,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DCFA90EF13B4F6F7009DD35A /* BuildSettings-Debug-iOS.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CLANG_ENABLE_OBJC_ARC[arch=*]" = YES;
 			};
 			name = Debug;
 		};
@@ -604,6 +614,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DCFA90F013B4F811009DD35A /* BuildSettings-Release-iOS.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 			};
 			name = Release;
 		};

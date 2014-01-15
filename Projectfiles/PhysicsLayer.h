@@ -19,6 +19,9 @@ enum
 
 @interface PhysicsLayer : CCLayerColor
 {
+    
+    
+    
     b2Body *_paddleBody;
     b2Fixture *_bottomFixture;
     b2Body *_groundBody;
@@ -36,7 +39,16 @@ enum
     b2MouseJoint *_mouseJoint;
     CCSprite *_player;    //Also replacing _player with "cannon"
 //    CCSprite *_cannon;
+    
+    
+    //To keep track of selected sprite
+    CCSprite *selSprite;
+    NSMutableArray *movableSprites;
+    CCSprite *meep;
+    bool _MoveableSpriteTouch;
+    
 }
+
 
 //TODO: fix this list
 //Currently these are all public.. decide which ones we want public, private
