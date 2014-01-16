@@ -50,13 +50,16 @@ float priorY = 1000;
     //CCMenuItemImage * tutorials = [CCMenuItemImage itemWithNormalImage:@"tutorials.png" selectedImage: @"tutorials.png" target:self selector:@selector(goToLevel1:)];
     CCMenuItemImage * tutorials = [CCMenuItemImage itemWithNormalImage:@"tutorials.png" selectedImage:@"tutorials.png"];
 
-    CCMenuItemImage * level1 = [CCMenuItemImage itemWithNormalImage:@"level1.png" selectedImage: @"level1.png" target:self selector:@selector(goToLevel1:)];
+    CCMenuItemImage * level1 = [CCMenuItemImage itemWithNormalImage:@"level1.png" selectedImage: @"level1.png" target:self selector:@selector(goToLevel:)];
+    level1.tag = 1;
+
+    
+    CCMenuItemImage * level2 = [CCMenuItemImage itemWithNormalImage:@"level2.png" selectedImage: @"level2.png" target:self selector:@selector(goToLevel:)];
+    level2.tag = 2;
     
     
-    CCMenuItemImage * level2 = [CCMenuItemImage itemWithNormalImage:@"level2.png" selectedImage: @"level2.png" target:self selector:@selector(goToLevel2:)];
-    
-    
-    CCMenuItemImage * easy = [CCMenuItemImage itemWithNormalImage:@"Easy.png" selectedImage: @"Easy.png" target:self selector:@selector(goToLevel4:)];
+    CCMenuItemImage * easy = [CCMenuItemImage itemWithNormalImage:@"Easy.png" selectedImage: @"Easy.png" target:self selector:@selector(goToLevel:)];
+    easy.tag = 4;
     
 	// Create a menu and add your menu items to it
 	//CCMenu * myMenu = [CCMenu menuWithItems: left, right, tutorials, level1, level2, easy, nil];
@@ -121,25 +124,11 @@ float priorY = 1000;
 }
 
 
+- (void) goToLevel: (CCMenuItem *) menuItem  {
 
-- (void) goToLevel1: (CCMenuItem  *) menuItem
-{
-	//NSLog(@"The first menu was called");
-    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[PhysicsLayer alloc] init]];
+    int level = menuItem.tag;
+    [[CCDirector sharedDirector] replaceScene: (CCScene*)[PhysicsLayer sceneWithLevel:level]];
 }
-
--(void) goToLevel2: (CCMenuItem *) menuItem
-{
-    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
-}
-
--(void) goToLevel4: (CCMenuItem *) menuItem
-{
-    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
-}
-
-
-
 
 /*
 -(void) update:(ccTime)delta

@@ -15,6 +15,20 @@
 		ABA2151C18862C0E0011BE0B /* gameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA2151B18862C0E0011BE0B /* gameBackground.png */; };
 		ABB719CF18871CCA004D2FCA /* Fluffy.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB719CE18871CCA004D2FCA /* Fluffy.m */; };
 		ABB719D118872333004D2FCA /* cannon2.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719D018872333004D2FCA /* cannon2.png */; };
+		ABB719D318872546004D2FCA /* level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABB719D218872546004D2FCA /* level1.plist */; };
+		ABB719D518872D0A004D2FCA /* level2.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABB719D418872D0A004D2FCA /* level2.plist */; };
+		ABB719DA18873FBF004D2FCA /* Obstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB719D918873FBF004D2FCA /* Obstacle.m */; };
+		ABB719DD188744B9004D2FCA /* Fruit.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB719DC188744B9004D2FCA /* Fruit.m */; };
+		ABB719E01887565E004D2FCA /* banana-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719DE1887565E004D2FCA /* banana-hd.png */; };
+		ABB719E11887565E004D2FCA /* banana.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719DF1887565E004D2FCA /* banana.png */; };
+		ABB719E41887566E004D2FCA /* grapes-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719E21887566E004D2FCA /* grapes-hd.png */; };
+		ABB719E51887566E004D2FCA /* grapes.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719E31887566E004D2FCA /* grapes.png */; };
+		ABB719E81887567B004D2FCA /* pineapple-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719E61887567B004D2FCA /* pineapple-hd.png */; };
+		ABB719E91887567B004D2FCA /* pineapple.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719E71887567B004D2FCA /* pineapple.png */; };
+		ABB719EC18875684004D2FCA /* strawberry-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719EA18875684004D2FCA /* strawberry-hd.png */; };
+		ABB719ED18875684004D2FCA /* strawberry.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719EB18875684004D2FCA /* strawberry.png */; };
+		ABB719F01887568D004D2FCA /* watermelon-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719EE1887568D004D2FCA /* watermelon-hd.png */; };
+		ABB719F11887568D004D2FCA /* watermelon.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719EF1887568D004D2FCA /* watermelon.png */; };
 		BF22E3D5188472C9007E26DF /* hungryEevee.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D4188472C9007E26DF /* hungryEevee.png */; };
 		BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */; };
 		BF63D6EC1884ADF600F3D3F3 /* menuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */; };
@@ -103,6 +117,22 @@
 		ABB719CD18871CCA004D2FCA /* Fluffy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fluffy.h; sourceTree = "<group>"; };
 		ABB719CE18871CCA004D2FCA /* Fluffy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fluffy.m; sourceTree = "<group>"; };
 		ABB719D018872333004D2FCA /* cannon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cannon2.png; sourceTree = "<group>"; };
+		ABB719D218872546004D2FCA /* level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level1.plist; sourceTree = "<group>"; };
+		ABB719D418872D0A004D2FCA /* level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level2.plist; sourceTree = "<group>"; };
+		ABB719D818873FBF004D2FCA /* Obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obstacle.h; sourceTree = "<group>"; };
+		ABB719D918873FBF004D2FCA /* Obstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Obstacle.m; sourceTree = "<group>"; };
+		ABB719DB188744B9004D2FCA /* Fruit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fruit.h; sourceTree = "<group>"; };
+		ABB719DC188744B9004D2FCA /* Fruit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fruit.m; sourceTree = "<group>"; };
+		ABB719DE1887565E004D2FCA /* banana-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banana-hd.png"; sourceTree = "<group>"; };
+		ABB719DF1887565E004D2FCA /* banana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banana.png; sourceTree = "<group>"; };
+		ABB719E21887566E004D2FCA /* grapes-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grapes-hd.png"; sourceTree = "<group>"; };
+		ABB719E31887566E004D2FCA /* grapes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grapes.png; sourceTree = "<group>"; };
+		ABB719E61887567B004D2FCA /* pineapple-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pineapple-hd.png"; sourceTree = "<group>"; };
+		ABB719E71887567B004D2FCA /* pineapple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pineapple.png; sourceTree = "<group>"; };
+		ABB719EA18875684004D2FCA /* strawberry-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "strawberry-hd.png"; sourceTree = "<group>"; };
+		ABB719EB18875684004D2FCA /* strawberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberry.png; sourceTree = "<group>"; };
+		ABB719EE1887568D004D2FCA /* watermelon-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "watermelon-hd.png"; sourceTree = "<group>"; };
+		ABB719EF1887568D004D2FCA /* watermelon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermelon.png; sourceTree = "<group>"; };
 		BF22E3D4188472C9007E26DF /* hungryEevee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEevee.png; sourceTree = "<group>"; };
 		BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEeveeMouth.png; sourceTree = "<group>"; };
 		BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackground.png; sourceTree = "<group>"; };
@@ -344,6 +374,10 @@
 				BFC2DCE31885FE3200A1D673 /* comments */,
 				ABB719CD18871CCA004D2FCA /* Fluffy.h */,
 				ABB719CE18871CCA004D2FCA /* Fluffy.m */,
+				ABB719DB188744B9004D2FCA /* Fruit.h */,
+				ABB719DC188744B9004D2FCA /* Fruit.m */,
+				ABB719D818873FBF004D2FCA /* Obstacle.h */,
+				ABB719D918873FBF004D2FCA /* Obstacle.m */,
 				DCC1A39413A94F1A005BD75D /* Resources */,
 				DCC1A3CF13A94F2C005BD75D /* Supporting Files */,
 			);
@@ -355,6 +389,18 @@
 			children = (
 				BFB425B518872304002DD826 /* Achievements.png */,
 				BFB425B9188783EB002DD826 /* gameBar.png */,
+				ABB719DE1887565E004D2FCA /* banana-hd.png */,
+				ABB719DF1887565E004D2FCA /* banana.png */,
+				ABB719E21887566E004D2FCA /* grapes-hd.png */,
+				ABB719E31887566E004D2FCA /* grapes.png */,
+				ABB719E61887567B004D2FCA /* pineapple-hd.png */,
+				ABB719E71887567B004D2FCA /* pineapple.png */,
+				ABB719EA18875684004D2FCA /* strawberry-hd.png */,
+				ABB719EB18875684004D2FCA /* strawberry.png */,
+				ABB719EE1887568D004D2FCA /* watermelon-hd.png */,
+				ABB719EF1887568D004D2FCA /* watermelon.png */,
+				ABB719D218872546004D2FCA /* level1.plist */,
+				ABB719D418872D0A004D2FCA /* level2.plist */,
 				BFB425B7188727AA002DD826 /* Bonus.png */,
 				ABB719D018872333004D2FCA /* cannon2.png */,
 				91A67ECF1886EC7000AB4C14 /* small-red-cannon.png */,
@@ -483,15 +529,19 @@
 				DCC1A0FE13A94ED5005BD75D /* Icon-72.png in Resources */,
 				DCC1A10013A94ED5005BD75D /* Icon-Small-50.png in Resources */,
 				DCC1A10213A94ED5005BD75D /* Icon-Small.png in Resources */,
+				ABB719D318872546004D2FCA /* level1.plist in Resources */,
 				ABB719D118872333004D2FCA /* cannon2.png in Resources */,
 				BFB425B418870FD7002DD826 /* cannon2.png in Resources */,
 				DCC1A10413A94ED5005BD75D /* Icon-Small@2x.png in Resources */,
 				DCC1A10613A94ED5005BD75D /* Icon.png in Resources */,
 				DCC1A10813A94ED5005BD75D /* Icon@2x.png in Resources */,
 				DCC1A10B13A94ED5005BD75D /* iTunesArtwork in Resources */,
+				ABB719E91887567B004D2FCA /* pineapple.png in Resources */,
 				BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */,
 				DCC1A3AF13A94F1A005BD75D /* config.lua in Resources */,
 				BFB425B2188702D4002DD826 /* level2.png in Resources */,
+				ABB719ED18875684004D2FCA /* strawberry.png in Resources */,
+				ABB719E41887566E004D2FCA /* grapes-hd.png in Resources */,
 				BF63D6EC1884ADF600F3D3F3 /* menuBackground.png in Resources */,
 				DC193EC113B6969B00500B56 /* Author&License.txt in Resources */,
 				DC193EC313B6969B00500B56 /* dg_grounds32.png in Resources */,
@@ -506,16 +556,24 @@
 				BFB425B618872304002DD826 /* Achievements.png in Resources */,
 				BFB425BA188783EB002DD826 /* gameBar.png in Resources */,
 				BFB425AA1886600F002DD826 /* levelSelectBackground.png in Resources */,
+				ABB719D518872D0A004D2FCA /* level2.plist in Resources */,
 				BFB4259B18862CFA002DD826 /* tutorials.png in Resources */,
 				BFB425A618865B93002DD826 /* Easy.png in Resources */,
+				ABB719E01887565E004D2FCA /* banana-hd.png in Resources */,
 				BFB425A818865B99002DD826 /* OopsDNE.png in Resources */,
 				BFB425AE1886FB5D002DD826 /* goRight.png in Resources */,
+				ABB719F11887568D004D2FCA /* watermelon.png in Resources */,
 				913C74091885818B00587021 /* cannon-hd.png in Resources */,
 				BFB425B1188702D4002DD826 /* level1.png in Resources */,
+				ABB719E81887567B004D2FCA /* pineapple-hd.png in Resources */,
+				ABB719EC18875684004D2FCA /* strawberry-hd.png in Resources */,
 				BFB425B8188727AA002DD826 /* Bonus.png in Resources */,
 				913C740A1885818B00587021 /* cannon.png in Resources */,
+				ABB719F01887568D004D2FCA /* watermelon-hd.png in Resources */,
+				ABB719E51887566E004D2FCA /* grapes.png in Resources */,
 				913C740C1885D12B00587021 /* Military-Cannon-icon.png in Resources */,
 				91A67ED01886EC7000AB4C14 /* small-red-cannon.png in Resources */,
+				ABB719E11887565E004D2FCA /* banana.png in Resources */,
 				91E0D9A51886EFE300C0905A /* smaller-red-cannon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -546,12 +604,14 @@
 				ABB719CF18871CCA004D2FCA /* Fluffy.m in Sources */,
 				DCC1A3AB13A94F1A005BD75D /* PhysicsLayer.mm in Sources */,
 				BFB4259718862C92002DD826 /* LevelSelectLayer.mm in Sources */,
+				ABB719DD188744B9004D2FCA /* Fruit.m in Sources */,
 				BFB4259E18862DD3002DD826 /* GameLayer.mm in Sources */,
 				BFB425A418865A9C002DD826 /* OopsDNE.mm in Sources */,
 				DCC1A3AD13A94F1A005BD75D /* main.m in Sources */,
 				DC193EB813B692D100500B56 /* GLES-Render.mm in Sources */,
 				DC193EBC13B6956F00500B56 /* ContactListener.mm in Sources */,
 				BFB425A118862DDE002DD826 /* StartMenuLayer.mm in Sources */,
+				ABB719DA18873FBF004D2FCA /* Obstacle.m in Sources */,
 				DC2A3EC4149A30B400EF78B0 /* Box2DDebugLayer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
