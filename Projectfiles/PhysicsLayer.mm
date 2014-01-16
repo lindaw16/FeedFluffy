@@ -718,7 +718,9 @@ CGFloat arrowRotation = 180;
             
             b2BodyDef ballBodyDef;
             ballBodyDef.type = b2_dynamicBody;
-            ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
+//            ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
+            printf("in Position.SET\n");
+            ballBodyDef.position.Set(_player.position.x/PTM_RATIO,_player.position.y/PTM_RATIO);
             ballBodyDef.userData = (__bridge void*)_nextProjectile;
             
             b2Body *_body = world->CreateBody(&ballBodyDef);
@@ -737,7 +739,7 @@ CGFloat arrowRotation = 180;
             
             
             //this determines the speed of the ball projectile
-            b2Vec2 force = b2Vec2(1,1);
+            b2Vec2 force = b2Vec2(0.5,0.5);
             _body->ApplyLinearImpulse(force, ballBodyDef.position);
             
             // Determine offset of location to projectile
