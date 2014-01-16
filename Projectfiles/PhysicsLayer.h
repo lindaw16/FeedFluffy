@@ -46,6 +46,8 @@ enum
     
     b2Fixture *_ballFixture;
     
+    //Launch Button Label Button
+    CCLabelTTF *_launchLabel;
     
 }
 

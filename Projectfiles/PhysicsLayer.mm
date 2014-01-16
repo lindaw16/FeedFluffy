@@ -48,6 +48,13 @@ const int cageLeft = 30;
 const int cageBottom = 60;
 int bulletCounter = 300;
 int cannonRadius = 5.0/PTM_RATIO;
+bool ButtonTapped = false;
+
+float angleRadians;
+float realMoveDuration;
+b2BodyDef ballBodyDef;
+b2Body *_body;
+CGPoint realDest;
 
 NSMutableArray *objects = [[NSMutableArray alloc] init];
 NSMutableArray *balls = [[NSMutableArray alloc] init];
@@ -105,7 +112,6 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         b2BodyDef groundBodyDef;
         groundBodyDef.position.Set(0,0);
         
-        
         _groundBody = world->CreateBody(&groundBodyDef);
         b2EdgeShape groundBox;
         b2FixtureDef groundBoxDef;
@@ -113,6 +119,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
         groundBox.Set(b2Vec2(0,0), b2Vec2(winSize.width/PTM_RATIO, 0));
         _groundBody->CreateFixture(&groundBoxDef);
+        
         
         groundBox.Set(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
         _groundBody->CreateFixture(&groundBoxDef);
@@ -133,9 +140,18 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         _player = [CCSprite spriteWithFile:@"cannon2.png"];
         _player.position = ccp(_player.contentSize.width/2 - 5, winSize.height/2);
         
-        
         [self addChild:_player];
         
+        //Adding "Launch" button so player can click on it to launch bullet/projectile
+        
+        // Standard method to create a button
+        CCMenuItem *starMenuItem = [CCMenuItemImage
+                                    itemFromNormalImage:@"ButtonStar.png" selectedImage:@"ButtonStarSel.png"
+                                    target:self selector:@selector(starButtonTapped:)];
+        starMenuItem.position = ccp(80, 80);
+        CCMenu *starMenu = [CCMenu menuWithItems:starMenuItem, nil];
+        starMenu.position = CGPointZero;
+        [self addChild:starMenu];
         
         CCSprite *meep = [CCSprite spriteWithFile:@"gameBackground.png"];
         meep.anchorPoint = CGPointZero;
@@ -198,7 +214,31 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 
 // DETECT COLLISIONS BETWEEN BALL AND FOOD!
 
+- (void)starButtonTapped:(id)sender {
+    printf("Button tapped!!!!!!\n");
+    
+    
+    [_player runAction:[CCSequence actions:[CCCallBlock actionWithBlock:^{[self addChild:_nextProjectile];_nextProjectile = nil;}],nil]];
+    //this determines the speed of the ball projectile
+    b2Vec2 force = b2Vec2(cos(angleRadians), sin(angleRadians));
+    
+    //_body->ApplyLinearImpulse(force, ballBodyDef.position);
+    printf("Applying Linear Impulse!");
+    _body->ApplyLinearImpulse(force, ballBodyDef.position);
+    
+    // Move projectile to actual endpoint
+    [_nextProjectile runAction:
+     [CCSequence actions:
+      [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
+      [CCCallBlockN actionWithBlock:^(CCNode *node) {
+         [node removeFromParentAndCleanup:YES];
+     }],
+      nil]];
+    bulletCounter--;
+    ButtonTapped = false;
 
+    
+}
 -(void) detectCollisions
 {
 //balls in this case is still the projectile, which we will be removing/replacing
@@ -310,7 +350,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 -(void) dealloc
 {
 	delete world;
-    
+    _launchLabel = nil;
     //_body = NULL;
     _groundBody = NULL;
     //world = NULL;
@@ -495,14 +535,14 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             [balls addObject: _nextProjectile];
             
             // Create ball body and shape
-            b2BodyDef ballBodyDef;
+            
             ballBodyDef.type = b2_dynamicBody;
 //            ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
             NSLog(@"in Position.SET\n");
             ballBodyDef.position.Set(_player.position.x/PTM_RATIO,_player.position.y/PTM_RATIO);
             ballBodyDef.userData = (__bridge void*)_nextProjectile;
             
-            b2Body *_body = world->CreateBody(&ballBodyDef);
+            _body = world->CreateBody(&ballBodyDef);
             
             b2CircleShape circle;
             //circle.m_radius = 26.0/PTM_RATIO;
@@ -511,7 +551,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             
             b2FixtureDef ballShapeDef;
             ballShapeDef.shape = &circle;
-            ballShapeDef.density = 1.0f;
+            ballShapeDef.density = 0.5f;
             ballShapeDef.friction = 0.0f;
             ballShapeDef.restitution = 1.0f;
             _body->CreateFixture(&ballShapeDef);
@@ -527,16 +567,16 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             int realX = winSize.width + (_nextProjectile.contentSize.width/2);
             float ratio = (float) offset.y / (float) offset.x;
             int realY = (realX * ratio) + _nextProjectile.position.y;
-            CGPoint realDest = ccp(realX, realY);
+            realDest = ccp(realX, realY);
             
             // Determine the length of how far you're shooting
             int offRealX = realX - _nextProjectile.position.x;
             int offRealY = realY - _nextProjectile.position.y;
             float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
             float velocity = 480/1; // 480pixels/1sec
-            float realMoveDuration = length/velocity;
+            realMoveDuration = length/velocity;
             // Determine angle to face
-            float angleRadians = atanf((float)offRealY / (float)offRealX);
+            angleRadians = atanf((float)offRealY / (float)offRealX);
             float angleDegrees = CC_RADIANS_TO_DEGREES(angleRadians);
             float cocosAngle = -1 * angleDegrees;
             float rotateDegreesPerSecond = 180 / 0.5; // Would take 0.5 seconds to rotate 180 degrees, or half a circle
@@ -545,34 +585,30 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             float degreesDiff = _player.rotation - cocosAngle;
             float rotateDuration = fabs(degreesDiff / rotateDegreesPerSecond);
             
-            [_player runAction:
-             [CCSequence actions:
-              [CCRotateTo actionWithDuration:rotateDuration angle:cocosAngle],
-              [CCCallBlock actionWithBlock:^{
-                 // OK to add now - rotation is finished!
-                 [self addChild:_nextProjectile];
-                 // Release
-                 _nextProjectile = nil;
-             }],
-              nil]];
-            //this determines the speed of the ball projectile
-            b2Vec2 force = b2Vec2(cos(angleRadians), sin(angleRadians));
+            [_player runAction:[CCSequence actions:[CCRotateTo actionWithDuration:rotateDuration angle:cocosAngle],nil]];
 
-            //_body->ApplyLinearImpulse(force, ballBodyDef.position);
-            printf("Applying Linear Impulse!");
-            _body->ApplyLinearImpulse(force, ballBodyDef.position);
             
-            // Move projectile to actual endpoint
-            [_nextProjectile runAction:
-             [CCSequence actions:
-              [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
-              [CCCallBlockN actionWithBlock:^(CCNode *node) {
-                 [node removeFromParentAndCleanup:YES];
-             }],
-              nil]];
-            bulletCounter--;
-            
-            _player.tag = 4;
+//            if (ButtonTapped) {
+//             [_player runAction:[CCSequence actions:[CCCallBlock actionWithBlock:^{[self addChild:_nextProjectile];_nextProjectile = nil;}],nil]];
+//            //this determines the speed of the ball projectile
+//            b2Vec2 force = b2Vec2(cos(angleRadians), sin(angleRadians));
+//
+//            //_body->ApplyLinearImpulse(force, ballBodyDef.position);
+//            printf("Applying Linear Impulse!");
+//            _body->ApplyLinearImpulse(force, ballBodyDef.position);
+//            
+//            // Move projectile to actual endpoint
+//            [_nextProjectile runAction:
+//             [CCSequence actions:
+//              [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
+//              [CCCallBlockN actionWithBlock:^(CCNode *node) {
+//                 [node removeFromParentAndCleanup:YES];
+//             }],
+//              nil]];
+//            bulletCounter--;
+//                ButtonTapped = false;
+//            _player.tag = 4;
+//            }
             
         }
         else{

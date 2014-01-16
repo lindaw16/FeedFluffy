@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		911975BA1888618F0070C1AE /* ButtonStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 911975B81888618F0070C1AE /* ButtonStar.png */; };
+		911975BB1888618F0070C1AE /* ButtonStarSel.png in Resources */ = {isa = PBXBuildFile; fileRef = 911975B91888618F0070C1AE /* ButtonStarSel.png */; };
 		ABA2151C18862C0E0011BE0B /* gameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA2151B18862C0E0011BE0B /* gameBackground.png */; };
 		ABB719CF18871CCA004D2FCA /* Fluffy.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB719CE18871CCA004D2FCA /* Fluffy.m */; };
 		ABB719D118872333004D2FCA /* cannon2.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719D018872333004D2FCA /* cannon2.png */; };
@@ -103,6 +105,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		911975B81888618F0070C1AE /* ButtonStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonStar.png; sourceTree = "<group>"; };
+		911975B91888618F0070C1AE /* ButtonStarSel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonStarSel.png; sourceTree = "<group>"; };
 		912F81ED18839C0300838683 /* Box2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box2D.h; sourceTree = "<group>"; };
 		ABA2151B18862C0E0011BE0B /* gameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground.png; sourceTree = "<group>"; };
 		ABB719CD18871CCA004D2FCA /* Fluffy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fluffy.h; sourceTree = "<group>"; };
@@ -285,6 +289,8 @@
 		BF39176A18878CE000EF99E6 /* additional buttons */ = {
 			isa = PBXGroup;
 			children = (
+				911975B81888618F0070C1AE /* ButtonStar.png */,
+				911975B91888618F0070C1AE /* ButtonStarSel.png */,
 				BF63D6ED1884AFAC00F3D3F3 /* play.png */,
 				BFB425B7188727AA002DD826 /* Bonus.png */,
 				BFB425B518872304002DD826 /* Achievements.png */,
@@ -582,6 +588,8 @@
 				ABB719E51887566E004D2FCA /* grapes.png in Resources */,
 				BF39176C18879F5C00EF99E6 /* projectile2.png in Resources */,
 				ABB719E11887565E004D2FCA /* banana.png in Resources */,
+				911975BA1888618F0070C1AE /* ButtonStar.png in Resources */,
+				911975BB1888618F0070C1AE /* ButtonStarSel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
