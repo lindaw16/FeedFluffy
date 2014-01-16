@@ -163,18 +163,6 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         movableSprites = [[NSMutableArray alloc] init];
         NSArray *images = [NSArray arrayWithObjects:@"hungryEevee.png", @"hungryEeveeMouth.png", @"dog.png", @"turtle.png", nil];
         
-        
-        //Create a hungry eevee and add it to layer
-        /*CCSprite *hungryEevee = [CCSprite spriteWithFile: @"hungryEevee.png"];
-        hungryEevee.position = ccp(winSize.width - 10, winSize.height/2);
-        [self addChild:hungryEevee z:0 tag:2];
-        
-        //Create the hungry eevee mouth -- useful to detect collision
-        
-        CCSprite *hungryEeveeMouth = [CCSprite spriteWithFile: @"hungryEeveeMouth.png"];
-        hungryEeveeMouth.position = ccp(450, 148);
-        [self addChild:hungryEeveeMouth z:-1 tag:1];*/
-        
         // plist level creation stuff
         
         NSString* levelString = [NSString stringWithFormat:@"%i", level];
@@ -214,11 +202,11 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
         // Create ball body and shape
         b2BodyDef ballBodyDef;
-        ballBodyDef.userData = (__bridge void*)_nextProjectile;
         ballBodyDef.type = b2_dynamicBody;
         ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
+        ballBodyDef.userData = (__bridge void*)_nextProjectile;
         
-        _body = world->CreateBody(&ballBodyDef);
+        b2Body *_body = world->CreateBody(&ballBodyDef);
         
         b2CircleShape circle;
         circle.m_radius = 26.0/PTM_RATIO;
@@ -228,7 +216,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         ballShapeDef.density = 1.0f;
         ballShapeDef.friction = 0.f;
         ballShapeDef.restitution = 1.0f;
-        _body->CreateFixture(&ballShapeDef);
+        _ballFixture=_body->CreateFixture(&ballShapeDef);
         
        
         //this determines the speed of the ball projectile
@@ -535,8 +523,9 @@ CGFloat arrowRotation = 180;
 {
 	delete world;
     
-    _body = NULL;
-    world = NULL;
+    //_body = NULL;
+    _groundBody = NULL;
+    //world = NULL;
     //delete contactListener;
     
 #ifndef KK_ARC_ENABLED
