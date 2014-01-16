@@ -14,7 +14,6 @@
 #import "Box2D.h"
 #import "Box2DDebugLayer.h"
 #import "cocos2d.h"
-#import "GameLayer.h"
 #import "Fluffy.h"
 #import "OopsDNE.h"
 #import "Fruit.h"

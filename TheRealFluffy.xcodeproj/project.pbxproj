@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		913C74091885818B00587021 /* cannon-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 913C74051885818B00587021 /* cannon-hd.png */; };
-		913C740A1885818B00587021 /* cannon.png in Resources */ = {isa = PBXBuildFile; fileRef = 913C74061885818B00587021 /* cannon.png */; };
-		913C740C1885D12B00587021 /* Military-Cannon-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 913C740B1885D12A00587021 /* Military-Cannon-icon.png */; };
-		91A67ED01886EC7000AB4C14 /* small-red-cannon.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A67ECF1886EC7000AB4C14 /* small-red-cannon.png */; };
-		91E0D9A51886EFE300C0905A /* smaller-red-cannon.png in Resources */ = {isa = PBXBuildFile; fileRef = 91E0D9A41886EFE300C0905A /* smaller-red-cannon.png */; };
 		ABA2151C18862C0E0011BE0B /* gameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA2151B18862C0E0011BE0B /* gameBackground.png */; };
 		ABB719CF18871CCA004D2FCA /* Fluffy.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB719CE18871CCA004D2FCA /* Fluffy.m */; };
 		ABB719D118872333004D2FCA /* cannon2.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719D018872333004D2FCA /* cannon2.png */; };
@@ -36,7 +31,6 @@
 		BFB4259718862C92002DD826 /* LevelSelectLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB4259618862C92002DD826 /* LevelSelectLayer.mm */; };
 		BFB4259918862CF2002DD826 /* gameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB4259818862CF2002DD826 /* gameBackground.png */; };
 		BFB4259B18862CFA002DD826 /* tutorials.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB4259A18862CFA002DD826 /* tutorials.png */; };
-		BFB4259E18862DD3002DD826 /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB4259D18862DD3002DD826 /* GameLayer.mm */; };
 		BFB425A118862DDE002DD826 /* StartMenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB425A018862DDE002DD826 /* StartMenuLayer.mm */; };
 		BFB425A418865A9C002DD826 /* OopsDNE.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB425A318865A9C002DD826 /* OopsDNE.mm */; };
 		BFB425A618865B93002DD826 /* Easy.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB425A518865B93002DD826 /* Easy.png */; };
@@ -108,11 +102,6 @@
 
 /* Begin PBXFileReference section */
 		912F81ED18839C0300838683 /* Box2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box2D.h; sourceTree = "<group>"; };
-		913C74051885818B00587021 /* cannon-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cannon-hd.png"; sourceTree = "<group>"; };
-		913C74061885818B00587021 /* cannon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cannon.png; sourceTree = "<group>"; };
-		913C740B1885D12A00587021 /* Military-Cannon-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Military-Cannon-icon.png"; sourceTree = "<group>"; };
-		91A67ECF1886EC7000AB4C14 /* small-red-cannon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "small-red-cannon.png"; path = "../small-red-cannon.png"; sourceTree = "<group>"; };
-		91E0D9A41886EFE300C0905A /* smaller-red-cannon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smaller-red-cannon.png"; sourceTree = "<group>"; };
 		ABA2151B18862C0E0011BE0B /* gameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground.png; sourceTree = "<group>"; };
 		ABB719CD18871CCA004D2FCA /* Fluffy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fluffy.h; sourceTree = "<group>"; };
 		ABB719CE18871CCA004D2FCA /* Fluffy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fluffy.m; sourceTree = "<group>"; };
@@ -141,8 +130,6 @@
 		BFB4259618862C92002DD826 /* LevelSelectLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LevelSelectLayer.mm; sourceTree = "<group>"; };
 		BFB4259818862CF2002DD826 /* gameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground.png; sourceTree = "<group>"; };
 		BFB4259A18862CFA002DD826 /* tutorials.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorials.png; sourceTree = "<group>"; };
-		BFB4259C18862DD3002DD826 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
-		BFB4259D18862DD3002DD826 /* GameLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameLayer.mm; sourceTree = "<group>"; };
 		BFB4259F18862DDE002DD826 /* StartMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartMenuLayer.h; sourceTree = "<group>"; };
 		BFB425A018862DDE002DD826 /* StartMenuLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StartMenuLayer.mm; sourceTree = "<group>"; };
 		BFB425A218865A9C002DD826 /* OopsDNE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OopsDNE.h; sourceTree = "<group>"; };
@@ -256,6 +243,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF39176818878C9200EF99E6 /* backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */,
+				BFB425B9188783EB002DD826 /* gameBar.png */,
+				ABA2151B18862C0E0011BE0B /* gameBackground.png */,
+				BFB425A91886600F002DD826 /* levelSelectBackground.png */,
+				BFB4259A18862CFA002DD826 /* tutorials.png */,
+				BFB425AF188702D4002DD826 /* level1.png */,
+				BFB425B0188702D4002DD826 /* level2.png */,
+				BFB425A518865B93002DD826 /* Easy.png */,
+				BFB425A718865B99002DD826 /* OopsDNE.png */,
+				BFB4259818862CF2002DD826 /* gameBackground.png */,
+			);
+			name = backgrounds;
+			sourceTree = "<group>";
+		};
+		BF39176918878CA400EF99E6 /* fruits */ = {
+			isa = PBXGroup;
+			children = (
+				BFC2DCE7188609E900A1D673 /* apple.png */,
+				ABB719DE1887565E004D2FCA /* banana-hd.png */,
+				ABB719DF1887565E004D2FCA /* banana.png */,
+				ABB719E21887566E004D2FCA /* grapes-hd.png */,
+				ABB719E31887566E004D2FCA /* grapes.png */,
+				ABB719E61887567B004D2FCA /* pineapple-hd.png */,
+				ABB719E71887567B004D2FCA /* pineapple.png */,
+				ABB719EA18875684004D2FCA /* strawberry-hd.png */,
+				ABB719EB18875684004D2FCA /* strawberry.png */,
+				ABB719EE1887568D004D2FCA /* watermelon-hd.png */,
+				ABB719EF1887568D004D2FCA /* watermelon.png */,
+			);
+			name = fruits;
+			sourceTree = "<group>";
+		};
+		BF39176A18878CE000EF99E6 /* additional buttons */ = {
+			isa = PBXGroup;
+			children = (
+				BF63D6ED1884AFAC00F3D3F3 /* play.png */,
+				BFB425B7188727AA002DD826 /* Bonus.png */,
+				BFB425B518872304002DD826 /* Achievements.png */,
+				BFB425AB1886FB5D002DD826 /* goLeft.png */,
+				BFB425AC1886FB5D002DD826 /* goRight.png */,
+				ABB719D018872333004D2FCA /* cannon2.png */,
+				BFB425B318870FD7002DD826 /* cannon2.png */,
+			);
+			name = "additional buttons";
+			sourceTree = "<group>";
+		};
 		DC193EBE13B6969B00500B56 /* David Gervais Tilesets */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,32 +388,30 @@
 		DCC1A38C13A94F1A005BD75D /* Projectfiles */ = {
 			isa = PBXGroup;
 			children = (
-				912F81ED18839C0300838683 /* Box2D.h */,
-				BFB4259C18862DD3002DD826 /* GameLayer.h */,
-				BFB4259D18862DD3002DD826 /* GameLayer.mm */,
 				BFB4259F18862DDE002DD826 /* StartMenuLayer.h */,
 				BFB425A018862DDE002DD826 /* StartMenuLayer.mm */,
 				BFB4259518862C92002DD826 /* LevelSelectLayer.h */,
 				BFB4259618862C92002DD826 /* LevelSelectLayer.mm */,
-				DC2A3EC2149A30B400EF78B0 /* Box2DDebugLayer.h */,
-				DC2A3EC3149A30B400EF78B0 /* Box2DDebugLayer.mm */,
-				BFB425A218865A9C002DD826 /* OopsDNE.h */,
-				BFB425A318865A9C002DD826 /* OopsDNE.mm */,
 				DCC1A38F13A94F1A005BD75D /* PhysicsLayer.h */,
 				DCC1A39013A94F1A005BD75D /* PhysicsLayer.mm */,
-				DC193EBA13B6956F00500B56 /* ContactListener.h */,
-				DC193EBB13B6956F00500B56 /* ContactListener.mm */,
-				DC193EB213B6872600500B56 /* GLES-Render.h */,
-				DC193EB313B6872600500B56 /* GLES-Render.mm */,
-				DCC1A38D13A94F1A005BD75D /* AppDelegate.h */,
-				DCC1A38E13A94F1A005BD75D /* AppDelegate.m */,
-				BFC2DCE31885FE3200A1D673 /* comments */,
+				BFB425A218865A9C002DD826 /* OopsDNE.h */,
+				BFB425A318865A9C002DD826 /* OopsDNE.mm */,
 				ABB719CD18871CCA004D2FCA /* Fluffy.h */,
 				ABB719CE18871CCA004D2FCA /* Fluffy.m */,
 				ABB719DB188744B9004D2FCA /* Fruit.h */,
 				ABB719DC188744B9004D2FCA /* Fruit.m */,
+				DCC1A38D13A94F1A005BD75D /* AppDelegate.h */,
+				DCC1A38E13A94F1A005BD75D /* AppDelegate.m */,
+				912F81ED18839C0300838683 /* Box2D.h */,
+				DC2A3EC2149A30B400EF78B0 /* Box2DDebugLayer.h */,
+				DC2A3EC3149A30B400EF78B0 /* Box2DDebugLayer.mm */,
+				DC193EBA13B6956F00500B56 /* ContactListener.h */,
+				DC193EBB13B6956F00500B56 /* ContactListener.mm */,
+				DC193EB213B6872600500B56 /* GLES-Render.h */,
+				DC193EB313B6872600500B56 /* GLES-Render.mm */,
 				ABB719D818873FBF004D2FCA /* Obstacle.h */,
 				ABB719D918873FBF004D2FCA /* Obstacle.m */,
+				BFC2DCE31885FE3200A1D673 /* comments */,
 				DCC1A39413A94F1A005BD75D /* Resources */,
 				DCC1A3CF13A94F2C005BD75D /* Supporting Files */,
 			);
@@ -387,43 +421,13 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BFB425B518872304002DD826 /* Achievements.png */,
-				BFB425B9188783EB002DD826 /* gameBar.png */,
-				ABB719DE1887565E004D2FCA /* banana-hd.png */,
-				ABB719DF1887565E004D2FCA /* banana.png */,
-				ABB719E21887566E004D2FCA /* grapes-hd.png */,
-				ABB719E31887566E004D2FCA /* grapes.png */,
-				ABB719E61887567B004D2FCA /* pineapple-hd.png */,
-				ABB719E71887567B004D2FCA /* pineapple.png */,
-				ABB719EA18875684004D2FCA /* strawberry-hd.png */,
-				ABB719EB18875684004D2FCA /* strawberry.png */,
-				ABB719EE1887568D004D2FCA /* watermelon-hd.png */,
-				ABB719EF1887568D004D2FCA /* watermelon.png */,
+				BF39176A18878CE000EF99E6 /* additional buttons */,
+				BF39176918878CA400EF99E6 /* fruits */,
+				BF39176818878C9200EF99E6 /* backgrounds */,
 				ABB719D218872546004D2FCA /* level1.plist */,
 				ABB719D418872D0A004D2FCA /* level2.plist */,
-				BFB425B7188727AA002DD826 /* Bonus.png */,
-				ABB719D018872333004D2FCA /* cannon2.png */,
-				91A67ECF1886EC7000AB4C14 /* small-red-cannon.png */,
-				913C740B1885D12A00587021 /* Military-Cannon-icon.png */,
-				BFB425AB1886FB5D002DD826 /* goLeft.png */,
-				BFB425B318870FD7002DD826 /* cannon2.png */,
-				BFB425AC1886FB5D002DD826 /* goRight.png */,
-				BFC2DCE7188609E900A1D673 /* apple.png */,
-				BFB425AF188702D4002DD826 /* level1.png */,
-				BFB425B0188702D4002DD826 /* level2.png */,
-				913C74051885818B00587021 /* cannon-hd.png */,
-				913C74061885818B00587021 /* cannon.png */,
-				91E0D9A41886EFE300C0905A /* smaller-red-cannon.png */,
-				BFB4259818862CF2002DD826 /* gameBackground.png */,
-				BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */,
-				BF63D6ED1884AFAC00F3D3F3 /* play.png */,
-				ABA2151B18862C0E0011BE0B /* gameBackground.png */,
-				BFB4259A18862CFA002DD826 /* tutorials.png */,
 				BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */,
-				BFB425A91886600F002DD826 /* levelSelectBackground.png */,
 				BF22E3D4188472C9007E26DF /* hungryEevee.png */,
-				BFB425A718865B99002DD826 /* OopsDNE.png */,
-				BFB425A518865B93002DD826 /* Easy.png */,
 				DC193EBE13B6969B00500B56 /* David Gervais Tilesets */,
 				DCC1A39513A94F1A005BD75D /* config.lua */,
 			);
@@ -563,18 +567,13 @@
 				BFB425A818865B99002DD826 /* OopsDNE.png in Resources */,
 				BFB425AE1886FB5D002DD826 /* goRight.png in Resources */,
 				ABB719F11887568D004D2FCA /* watermelon.png in Resources */,
-				913C74091885818B00587021 /* cannon-hd.png in Resources */,
 				BFB425B1188702D4002DD826 /* level1.png in Resources */,
 				ABB719E81887567B004D2FCA /* pineapple-hd.png in Resources */,
 				ABB719EC18875684004D2FCA /* strawberry-hd.png in Resources */,
 				BFB425B8188727AA002DD826 /* Bonus.png in Resources */,
-				913C740A1885818B00587021 /* cannon.png in Resources */,
 				ABB719F01887568D004D2FCA /* watermelon-hd.png in Resources */,
 				ABB719E51887566E004D2FCA /* grapes.png in Resources */,
-				913C740C1885D12B00587021 /* Military-Cannon-icon.png in Resources */,
-				91A67ED01886EC7000AB4C14 /* small-red-cannon.png in Resources */,
 				ABB719E11887565E004D2FCA /* banana.png in Resources */,
-				91E0D9A51886EFE300C0905A /* smaller-red-cannon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,7 +604,6 @@
 				DCC1A3AB13A94F1A005BD75D /* PhysicsLayer.mm in Sources */,
 				BFB4259718862C92002DD826 /* LevelSelectLayer.mm in Sources */,
 				ABB719DD188744B9004D2FCA /* Fruit.m in Sources */,
-				BFB4259E18862DD3002DD826 /* GameLayer.mm in Sources */,
 				BFB425A418865A9C002DD826 /* OopsDNE.mm in Sources */,
 				DCC1A3AD13A94F1A005BD75D /* main.m in Sources */,
 				DC193EB813B692D100500B56 /* GLES-Render.mm in Sources */,
