@@ -47,6 +47,7 @@ const int TILESIZE = 32;
 const int TILESET_COLUMNS = 9;
 const int TILESET_ROWS = 19;
 const int cageLeft = 30;
+const int cageBottom = 50;
 int bulletCounter = 300;
 
 NSMutableArray *foodObjects = [[NSMutableArray alloc] init];
@@ -148,6 +149,10 @@ CGRect secondrect;
         CCSprite *meep = [CCSprite spriteWithFile:@"gameBackground.png"];
         meep.anchorPoint = CGPointZero;
         [self addChild:meep z:-1];
+        
+        CCSprite *bar = [CCSprite spriteWithFile: @"gameBar.png"];
+        bar.position = ccp(winSize.width / 2, 20);
+        [self addChild:bar z:1];
 
         movableSprites = [[NSMutableArray alloc] init];
         NSArray *images = [NSArray arrayWithObjects:@"hungryEevee.png", @"hungryEeveeMouth.png", @"dog.png", @"turtle.png", nil];
@@ -816,7 +821,12 @@ CGFloat arrowRotation = 180;
     int y = 0;
 //why can't I use winSize here?
     ccDrawSolidRect( ccp(x, y), ccp(x + 10, y+ 350) , buttonColor);
-
+    
+    int barx = 0;
+    int bary = cageBottom;
+    
+    ccColor4F bottomColor = ccc4f(0, 0, 0, 0);
+    ccDrawSolidRect( ccp(barx, bary), ccp(480, bary + 5), bottomColor);
 }
 
 
