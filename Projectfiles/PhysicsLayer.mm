@@ -49,7 +49,7 @@ const int TILESET_ROWS = 19;
 const int cageLeft = 30;
 const int cageBottom = 60;
 int bulletCounter = 300;
-int cannonRadius = 10;
+int cannonRadius = 5.0/PTM_RATIO;
 
 NSMutableArray *objects = [[NSMutableArray alloc] init];
 NSMutableArray *balls = [[NSMutableArray alloc] init];
@@ -711,7 +711,7 @@ CGFloat arrowRotation = 180;
             
             // Set up initial location of projectile
             CGSize winSize = [[CCDirector sharedDirector] winSize];
-            _nextProjectile = [CCSprite spriteWithFile:@"projectile2.png"];
+            _nextProjectile = [CCSprite spriteWithFile:@"bullet.png"];
             
             _nextProjectile.position = _player.position;
             [balls addObject: _nextProjectile];
@@ -725,7 +725,8 @@ CGFloat arrowRotation = 180;
             
             b2CircleShape circle;
             //circle.m_radius = 26.0/PTM_RATIO;
-            circle.m_radius = 9.0/PTM_RATIO;
+            //circle.m_radius = 9.0/PTM_RATIO;
+            circle.m_radius = 20.0/PTM_RATIO;
             
             b2FixtureDef ballShapeDef;
             ballShapeDef.shape = &circle;
