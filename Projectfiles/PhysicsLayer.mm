@@ -201,7 +201,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 
         
         // Create ball body and shape
-        b2BodyDef ballBodyDef;
+        /*b2BodyDef ballBodyDef;
         ballBodyDef.type = b2_dynamicBody;
         ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
         ballBodyDef.userData = (__bridge void*)_nextProjectile;
@@ -221,7 +221,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
        
         //this determines the speed of the ball projectile
         b2Vec2 force = b2Vec2(1,1);
-        _body->ApplyLinearImpulse(force, ballBodyDef.position);
+        _body->ApplyLinearImpulse(force, ballBodyDef.position);*/
     
         
         [self schedule:@selector(tick:)];
@@ -704,6 +704,28 @@ CGFloat arrowRotation = 180;
             _nextProjectile.position = _player.position;
             //_nextProjectile.position = ccp(_player.position.x, _player.position.y+12.5); //so that ball exits out of cannon arm and not center of wheel
             [balls addObject: _nextProjectile];
+            
+            b2BodyDef ballBodyDef;
+            ballBodyDef.type = b2_dynamicBody;
+            ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
+            ballBodyDef.userData = (__bridge void*)_nextProjectile;
+            
+            b2Body *_body = world->CreateBody(&ballBodyDef);
+            
+            b2CircleShape circle;
+            circle.m_radius = 26.0/PTM_RATIO;
+            
+            b2FixtureDef ballShapeDef;
+            ballShapeDef.shape = &circle;
+            ballShapeDef.density = 1.0f;
+            ballShapeDef.friction = 0.f;
+            ballShapeDef.restitution = 1.0f;
+            _ballFixture=_body->CreateFixture(&ballShapeDef);
+            
+            
+            //this determines the speed of the ball projectile
+            b2Vec2 force = b2Vec2(10,10);
+            _body->ApplyLinearImpulse(force, ballBodyDef.position);
             
             // Determine offset of location to projectile
             CGPoint offset = ccpSub(location, _nextProjectile.position);
