@@ -49,6 +49,7 @@ const int TILESET_ROWS = 19;
 const int cageLeft = 30;
 const int cageBottom = 60;
 int bulletCounter = 300;
+int cannonRadius = 10;
 
 NSMutableArray *objects = [[NSMutableArray alloc] init];
 NSMutableArray *balls = [[NSMutableArray alloc] init];
@@ -265,31 +266,37 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
                     //check if their y coordinates are within the height of the block
                     if(ball.position.y < (object.position.y + 50.0f) && ball.position.y > object.position.y - 50.0f)
                     {
-                        NSLog(@"COLLISION!!!");
+                        //NSLog(@"COLLISION!!!");
                         if([object isKindOfClass:[Fluffy class]]) {
 
                             BOOL levelCompleted = [self checkLevelCompleted];
-                            NSLog(@"BOOLEAN VALUE");
-                            NSLog(@"%d", levelCompleted);
+                            //NSLog(@"BOOLEAN VALUE");
+                            //NSLog(@"%d", levelCompleted);
+                            
+                            
+                            
                             if (levelCompleted){
-                                [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+//                                [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
                             }
+                            
+                            
+                            
                             else {
-                                NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
+                                //NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
                             }
                         }
                         else {
                             Fruit *fruit = (Fruit*) object;
                             NSString *fruitName = fruit.fruitName;
-                            NSLog(fruitName);
+                            //NSLog(fruitName);
                             int num = [[goal objectForKey:fruitName] intValue];
-                            NSLog(@"%d", num);
+                            //NSLog(@"%d", num);
                             int fruitNum = [[goalProgress objectForKey:fruitName] intValue];
-                            NSLog(@"%d", fruitNum);
+                            //NSLog(@"%d", fruitNum);
                             fruitNum++;
                             [goalProgress setObject:[NSNumber numberWithInt: fruitNum] forKey:fruitName];
                             int fruitNum2 = [[goalProgress objectForKey:fruitName] intValue];
-                            NSLog(@"%d", fruitNum2);
+                            //NSLog(@"%d", fruitNum2);
                             
                             [self removeChild:object cleanup:YES];
                             //[self removeChild:ball cleanup:YES];
@@ -306,13 +313,15 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     }
 }
 
+
+
 -(BOOL) checkLevelCompleted {
-    NSLog(@"CHECKING IF LEVEL IS COMPLETED");
+    //NSLog(@"CHECKING IF LEVEL IS COMPLETED");
     for (NSString *key in goal){
         int goalValue = [[goal objectForKey:key] intValue];
         int goalProgressValue = [[goalProgress objectForKey:key] intValue];
-        NSLog(@"GOAL VALUE");
-        NSLog(@"%d", goalValue);
+        //NSLog(@"GOAL VALUE");
+        //NSLog(@"%d", goalValue);
         if (goalProgressValue < goalValue) {
             return NO;
         }
@@ -682,27 +691,29 @@ CGFloat arrowRotation = 180;
     
     if (input.anyTouchBeganThisFrame) //someone's touching the screen!! :O
     {
-        printf("ANY-TOUCH-ENDED-THIS-FRAME");
+        //printf("ANY-TOUCH-BEGAN-THIS-FRAME");
         //Checking if 3 bullets have already been used - if so, then no more bullet are thrown.
         if (_nextProjectile != nil or bulletCounter<=0) return;
         
-        _MoveableSpriteTouch=FALSE;
+        _MoveableSpriteTouch = FALSE;
         
         // Choose one of the touches to work with
         
         
         CGPoint location = [self convertToNodeSpace:pos];
-        CGRect leftBorder = CGRectMake(cageLeft, 0, cageLeft+10, 350);
+        //CGRect leftBorder = CGRectMake(cageLeft, 0, cageLeft+10, 350);
         
         
-        if (CGRectContainsPoint(leftBorder, location)) {
+        //if (CGRectContainsPoint(leftBorder, location)) {
+        if (ccpDistance(pos, _player.position) > cannonRadius) {
+            
+            NSLog(@"SDFJDS:FJSDKFJ");
             
             // Set up initial location of projectile
             CGSize winSize = [[CCDirector sharedDirector] winSize];
             _nextProjectile = [CCSprite spriteWithFile:@"projectile2.png"];
-            //_nextProjectile.position = ccp(20, winSize.height/2);
+            
             _nextProjectile.position = _player.position;
-            //_nextProjectile.position = ccp(_player.position.x, _player.position.y+12.5); //so that ball exits out of cannon arm and not center of wheel
             [balls addObject: _nextProjectile];
             
             b2BodyDef ballBodyDef;
@@ -713,7 +724,8 @@ CGFloat arrowRotation = 180;
             b2Body *_body = world->CreateBody(&ballBodyDef);
             
             b2CircleShape circle;
-            circle.m_radius = 26.0/PTM_RATIO;
+            //circle.m_radius = 26.0/PTM_RATIO;
+            circle.m_radius = 9.0/PTM_RATIO;
             
             b2FixtureDef ballShapeDef;
             ballShapeDef.shape = &circle;
@@ -724,7 +736,7 @@ CGFloat arrowRotation = 180;
             
             
             //this determines the speed of the ball projectile
-            b2Vec2 force = b2Vec2(10,10);
+            b2Vec2 force = b2Vec2(1,1);
             _body->ApplyLinearImpulse(force, ballBodyDef.position);
             
             // Determine offset of location to projectile
@@ -792,6 +804,7 @@ CGFloat arrowRotation = 180;
         {
             printf("CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
             _player.position = ccp(_player.position.x, y+5);
+            _nextProjectile.position = _player.position;
         }
     }
     
@@ -899,9 +912,6 @@ CGFloat arrowRotation = 180;
     ccColor4F bottomColor = ccc4f(0, 0, 0, 1);
     ccDrawSolidRect( ccp(barx, bary), ccp(480, bary + 5), bottomColor);
 }
-
-
-
 
 @end
 

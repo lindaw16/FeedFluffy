@@ -26,6 +26,7 @@
 		ABB719F11887568D004D2FCA /* watermelon.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719EF1887568D004D2FCA /* watermelon.png */; };
 		BF22E3D5188472C9007E26DF /* hungryEevee.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D4188472C9007E26DF /* hungryEevee.png */; };
 		BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */; };
+		BF39176C18879F5C00EF99E6 /* projectile2.png in Resources */ = {isa = PBXBuildFile; fileRef = BF39176B18879F5C00EF99E6 /* projectile2.png */; };
 		BF63D6EC1884ADF600F3D3F3 /* menuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */; };
 		BF63D6EE1884AFAC00F3D3F3 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = BF63D6ED1884AFAC00F3D3F3 /* play.png */; };
 		BFB4259718862C92002DD826 /* LevelSelectLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB4259618862C92002DD826 /* LevelSelectLayer.mm */; };
@@ -124,6 +125,7 @@
 		ABB719EF1887568D004D2FCA /* watermelon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermelon.png; sourceTree = "<group>"; };
 		BF22E3D4188472C9007E26DF /* hungryEevee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEevee.png; sourceTree = "<group>"; };
 		BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEeveeMouth.png; sourceTree = "<group>"; };
+		BF39176B18879F5C00EF99E6 /* projectile2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectile2.png; sourceTree = "<group>"; };
 		BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackground.png; sourceTree = "<group>"; };
 		BF63D6ED1884AFAC00F3D3F3 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		BFB4259518862C92002DD826 /* LevelSelectLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSelectLayer.h; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				BFB425AC1886FB5D002DD826 /* goRight.png */,
 				ABB719D018872333004D2FCA /* cannon2.png */,
 				BFB425B318870FD7002DD826 /* cannon2.png */,
+				BF39176B18879F5C00EF99E6 /* projectile2.png */,
 			);
 			name = "additional buttons";
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				BFB425B8188727AA002DD826 /* Bonus.png in Resources */,
 				ABB719F01887568D004D2FCA /* watermelon-hd.png in Resources */,
 				ABB719E51887566E004D2FCA /* grapes.png in Resources */,
+				BF39176C18879F5C00EF99E6 /* projectile2.png in Resources */,
 				ABB719E11887565E004D2FCA /* banana.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
