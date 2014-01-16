@@ -438,85 +438,85 @@ CGFloat arrowRotation = 180;
 }
 
 
-- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    //Checking if 3 bullets have already been used - if so, then no more bullet are thrown.
-    if (_nextProjectile != nil or bulletCounter<=0) return;
-
-    _MoveableSpriteTouch=FALSE;
-    
-    // Choose one of the touches to work with
-    UITouch *touch = [touches anyObject];
-    CGPoint location = [self convertTouchToNodeSpace:touch];
-    CGRect leftBorder = CGRectMake(cageLeft, 0, cageLeft+10, 350);
-   
-    
-    if (CGRectContainsPoint(leftBorder, location)) {
-        
-    // Set up initial location of projectile
-    CGSize winSize = [[CCDirector sharedDirector] winSize];
-    _nextProjectile = [CCSprite spriteWithFile:@"projectile2.png"];
-    //_nextProjectile.position = ccp(20, winSize.height/2);
-    //_nextProjectile.position = _player.position;
-    _nextProjectile.position = ccp(_player.position.x, _player.position.y+12.5); //so that ball exits out of cannon arm and not center of wheel
-    [balls addObject: _nextProjectile];
-    
-    // Determine offset of location to projectile
-    CGPoint offset = ccpSub(location, _nextProjectile.position);
-    // Bail out if you are shooting down or backwards
-    if (offset.x <= 0) return;
- 
-    // Determine where you wish to shoot the projectile to
-    int realX = winSize.width + (_nextProjectile.contentSize.width/2);
-    float ratio = (float) offset.y / (float) offset.x;
-    int realY = (realX * ratio) + _nextProjectile.position.y;
-    CGPoint realDest = ccp(realX, realY);
-    
-    // Determine the length of how far you're shooting
-    int offRealX = realX - _nextProjectile.position.x;
-    int offRealY = realY - _nextProjectile.position.y;
-    float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
-    float velocity = 480/1; // 480pixels/1sec
-    float realMoveDuration = length/velocity;
-    // Determine angle to face
-    float angleRadians = atanf((float)offRealY / (float)offRealX);
-    float angleDegrees = CC_RADIANS_TO_DEGREES(angleRadians);
-    float cocosAngle = -1 * angleDegrees;
-    float rotateDegreesPerSecond = 180 / 0.5; // Would take 0.5 seconds to rotate 180 degrees, or half a circle
-    //_player.anchorPoint = ccp(0.5, 0.5);
-    
-    float degreesDiff = _player.rotation - cocosAngle;
-    float rotateDuration = fabs(degreesDiff / rotateDegreesPerSecond);
-         
-        [_player runAction:
-         [CCSequence actions:
-          [CCRotateTo actionWithDuration:rotateDuration angle:cocosAngle],
-          [CCCallBlock actionWithBlock:^{
-             // OK to add now - rotation is finished!
-             [self addChild:_nextProjectile];
-             // Release
-             _nextProjectile = nil;
-         }],
-          nil]];
-    // Move projectile to actual endpoint
-    [_nextProjectile runAction:
-     [CCSequence actions:
-      [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
-      [CCCallBlockN actionWithBlock:^(CCNode *node) {
-         [node removeFromParentAndCleanup:YES];
-     }],
-      nil]];
-        bulletCounter--;
-        
-    _player.tag = 4;
-    
-}
-    else{
-    
-        printf("FAILURE!!!!!!!!!!!!!\n");
-    
-    }
-    }
+//- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+//    
+//    //Checking if 3 bullets have already been used - if so, then no more bullet are thrown.
+//    if (_nextProjectile != nil or bulletCounter<=0) return;
+//
+//    _MoveableSpriteTouch=FALSE;
+//    
+//    // Choose one of the touches to work with
+//    UITouch *touch = [touches anyObject];
+//    CGPoint location = [self convertTouchToNodeSpace:touch];
+//    CGRect leftBorder = CGRectMake(cageLeft, 0, cageLeft+10, 350);
+//   
+//    
+//    if (CGRectContainsPoint(leftBorder, location)) {
+//        
+//    // Set up initial location of projectile
+//    CGSize winSize = [[CCDirector sharedDirector] winSize];
+//    _nextProjectile = [CCSprite spriteWithFile:@"projectile2.png"];
+//    //_nextProjectile.position = ccp(20, winSize.height/2);
+//    //_nextProjectile.position = _player.position;
+//    _nextProjectile.position = ccp(_player.position.x, _player.position.y+12.5); //so that ball exits out of cannon arm and not center of wheel
+//    [balls addObject: _nextProjectile];
+//    
+//    // Determine offset of location to projectile
+//    CGPoint offset = ccpSub(location, _nextProjectile.position);
+//    // Bail out if you are shooting down or backwards
+//    if (offset.x <= 0) return;
+// 
+//    // Determine where you wish to shoot the projectile to
+//    int realX = winSize.width + (_nextProjectile.contentSize.width/2);
+//    float ratio = (float) offset.y / (float) offset.x;
+//    int realY = (realX * ratio) + _nextProjectile.position.y;
+//    CGPoint realDest = ccp(realX, realY);
+//    
+//    // Determine the length of how far you're shooting
+//    int offRealX = realX - _nextProjectile.position.x;
+//    int offRealY = realY - _nextProjectile.position.y;
+//    float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
+//    float velocity = 480/1; // 480pixels/1sec
+//    float realMoveDuration = length/velocity;
+//    // Determine angle to face
+//    float angleRadians = atanf((float)offRealY / (float)offRealX);
+//    float angleDegrees = CC_RADIANS_TO_DEGREES(angleRadians);
+//    float cocosAngle = -1 * angleDegrees;
+//    float rotateDegreesPerSecond = 180 / 0.5; // Would take 0.5 seconds to rotate 180 degrees, or half a circle
+//    //_player.anchorPoint = ccp(0.5, 0.5);
+//    
+//    float degreesDiff = _player.rotation - cocosAngle;
+//    float rotateDuration = fabs(degreesDiff / rotateDegreesPerSecond);
+//         
+//        [_player runAction:
+//         [CCSequence actions:
+//          [CCRotateTo actionWithDuration:rotateDuration angle:cocosAngle],
+//          [CCCallBlock actionWithBlock:^{
+//             // OK to add now - rotation is finished!
+//             [self addChild:_nextProjectile];
+//             // Release
+//             _nextProjectile = nil;
+//         }],
+//          nil]];
+//    // Move projectile to actual endpoint
+//    [_nextProjectile runAction:
+//     [CCSequence actions:
+//      [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
+//      [CCCallBlockN actionWithBlock:^(CCNode *node) {
+//         [node removeFromParentAndCleanup:YES];
+//     }],
+//      nil]];
+//        bulletCounter--;
+//        
+//    _player.tag = 4;
+//    
+//}
+//    else{
+//    
+//        printf("FAILURE!!!!!!!!!!!!!\n");
+//    
+//    }
+//    }
 
 
 -(void) dealloc
@@ -718,7 +718,85 @@ CGFloat arrowRotation = 180;
     
     else if (input.anyTouchEndedThisFrame)
     {
-        //derp
+        printf("ANY-TOUCH-ENDED-THIS-FRAME");
+        //Checking if 3 bullets have already been used - if so, then no more bullet are thrown.
+        if (_nextProjectile != nil or bulletCounter<=0) return;
+        
+        _MoveableSpriteTouch=FALSE;
+        
+        // Choose one of the touches to work with
+        
+        
+        CGPoint location = [self convertToNodeSpace:pos];
+        CGRect leftBorder = CGRectMake(cageLeft, 0, cageLeft+10, 350);
+        
+        
+        if (CGRectContainsPoint(leftBorder, location)) {
+            
+            // Set up initial location of projectile
+            CGSize winSize = [[CCDirector sharedDirector] winSize];
+            _nextProjectile = [CCSprite spriteWithFile:@"projectile2.png"];
+            //_nextProjectile.position = ccp(20, winSize.height/2);
+            //_nextProjectile.position = _player.position;
+            _nextProjectile.position = ccp(_player.position.x, _player.position.y+12.5); //so that ball exits out of cannon arm and not center of wheel
+            [balls addObject: _nextProjectile];
+            
+            // Determine offset of location to projectile
+            CGPoint offset = ccpSub(location, _nextProjectile.position);
+            // Bail out if you are shooting down or backwards
+            if (offset.x <= 0) return;
+            
+            // Determine where you wish to shoot the projectile to
+            int realX = winSize.width + (_nextProjectile.contentSize.width/2);
+            float ratio = (float) offset.y / (float) offset.x;
+            int realY = (realX * ratio) + _nextProjectile.position.y;
+            CGPoint realDest = ccp(realX, realY);
+            
+            // Determine the length of how far you're shooting
+            int offRealX = realX - _nextProjectile.position.x;
+            int offRealY = realY - _nextProjectile.position.y;
+            float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
+            float velocity = 480/1; // 480pixels/1sec
+            float realMoveDuration = length/velocity;
+            // Determine angle to face
+            float angleRadians = atanf((float)offRealY / (float)offRealX);
+            float angleDegrees = CC_RADIANS_TO_DEGREES(angleRadians);
+            float cocosAngle = -1 * angleDegrees;
+            float rotateDegreesPerSecond = 180 / 0.5; // Would take 0.5 seconds to rotate 180 degrees, or half a circle
+            //_player.anchorPoint = ccp(0.5, 0.5);
+            
+            float degreesDiff = _player.rotation - cocosAngle;
+            float rotateDuration = fabs(degreesDiff / rotateDegreesPerSecond);
+            
+            [_player runAction:
+             [CCSequence actions:
+              [CCRotateTo actionWithDuration:rotateDuration angle:cocosAngle],
+              [CCCallBlock actionWithBlock:^{
+                 // OK to add now - rotation is finished!
+                 [self addChild:_nextProjectile];
+                 // Release
+                 _nextProjectile = nil;
+             }],
+              nil]];
+            // Move projectile to actual endpoint
+            [_nextProjectile runAction:
+             [CCSequence actions:
+              [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
+              [CCCallBlockN actionWithBlock:^(CCNode *node) {
+                 [node removeFromParentAndCleanup:YES];
+             }],
+              nil]];
+            bulletCounter--;
+            
+            _player.tag = 4;
+            
+        }
+        else{
+            
+            printf("FAILURE!!!!!!!!!!!!!\n");
+            
+        }
+
     }
     
     
