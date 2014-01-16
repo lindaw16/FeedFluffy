@@ -48,7 +48,7 @@ const int TILESIZE = 32;
 const int TILESET_COLUMNS = 9;
 const int TILESET_ROWS = 19;
 const int cageLeft = 30;
-const int cageBottom = 50;
+const int cageBottom = 60;
 int bulletCounter = 300;
 
 NSMutableArray *objects = [[NSMutableArray alloc] init];
@@ -823,7 +823,7 @@ CGFloat arrowRotation = 180;
     int barx = 0;
     int bary = cageBottom;
     
-    ccColor4F bottomColor = ccc4f(0, 0, 0, 0);
+    ccColor4F bottomColor = ccc4f(0, 0, 0, 1);
     ccDrawSolidRect( ccp(barx, bary), ccp(480, bary + 5), bottomColor);
 }
 
