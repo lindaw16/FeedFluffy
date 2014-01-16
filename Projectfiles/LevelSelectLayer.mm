@@ -47,7 +47,8 @@ float priorY = 1000;
     right = [CCMenuItemImage itemWithNormalImage:@"goRight.png" selectedImage: @"goRight.png" target:self selector:@selector(goRight:)];
     
 
-    CCMenuItemImage * tutorials = [CCMenuItemImage itemWithNormalImage:@"tutorials.png" selectedImage: @"tutorials.png" target:self selector:@selector(goToLevel1:)];
+    //CCMenuItemImage * tutorials = [CCMenuItemImage itemWithNormalImage:@"tutorials.png" selectedImage: @"tutorials.png" target:self selector:@selector(goToLevel1:)];
+    CCMenuItemImage * tutorials = [CCMenuItemImage itemWithNormalImage:@"tutorials.png" selectedImage:@"tutorials.png"];
 
     CCMenuItemImage * level1 = [CCMenuItemImage itemWithNormalImage:@"level1.png" selectedImage: @"level1.png" target:self selector:@selector(goToLevel1:)];
     
@@ -58,7 +59,9 @@ float priorY = 1000;
     CCMenuItemImage * easy = [CCMenuItemImage itemWithNormalImage:@"Easy.png" selectedImage: @"Easy.png" target:self selector:@selector(goToLevel4:)];
     
 	// Create a menu and add your menu items to it
-	CCMenu * myMenu = [CCMenu menuWithItems: left, right, tutorials, level1, level2, easy, nil];
+	//CCMenu * myMenu = [CCMenu menuWithItems: left, right, tutorials, level1, level2, easy, nil];
+    CCMenu * myBG = [CCMenu menuWithItems:tutorials, easy, nil];
+    CCMenu * myLevels = [CCMenu menuWithItems: left, right, level1, level2, nil];
     
 	// Arrange the menu items vertically
 	//[myMenu alignItemsVertically];
@@ -71,11 +74,12 @@ float priorY = 1000;
     easy.position = ccp(480, 170);
 
     
-    
-    myMenu.position = ccp(0,0);
+    myBG.position = ccp(0, 0);
+    myLevels.position = ccp(0,0);
     
 	// add the menu to your scene
-	[self addChild:myMenu];
+    [self addChild: myBG z:0];
+	[self addChild:myLevels z:1];
 }
 
 
