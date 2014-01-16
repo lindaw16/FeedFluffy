@@ -701,8 +701,8 @@ CGFloat arrowRotation = 180;
             CGSize winSize = [[CCDirector sharedDirector] winSize];
             _nextProjectile = [CCSprite spriteWithFile:@"projectile2.png"];
             //_nextProjectile.position = ccp(20, winSize.height/2);
-            //_nextProjectile.position = _player.position;
-            _nextProjectile.position = ccp(_player.position.x, _player.position.y+12.5); //so that ball exits out of cannon arm and not center of wheel
+            _nextProjectile.position = _player.position;
+            //_nextProjectile.position = ccp(_player.position.x, _player.position.y+12.5); //so that ball exits out of cannon arm and not center of wheel
             [balls addObject: _nextProjectile];
             
             // Determine offset of location to projectile
