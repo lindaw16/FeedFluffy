@@ -682,42 +682,6 @@ CGFloat arrowRotation = 180;
     
     if (input.anyTouchBeganThisFrame) //someone's touching the screen!! :O
     {
-        if( (pos.y < _player.position.y + 20) && (pos.y > _player.position.y - 20) ) //touch somewhere in the cannon
-        {
-            //check if touched cannon body
-            if ( (pos.x < _player.position.x + 10) && (pos.x > _player.position.x - 30) )
-            {
-                //shoot cannon
-                //codecodecodeee
-                //[self launchBullet:pos];
-                //touchCannonBody = true;
-            }
-        
-            //check if touched cannon head
-            if ( (pos.x < _player.position.x + 20))
-            {
-                //rotate cannon
-                //should probably break out of this and then find the rotate somewhere..
-                //touchCannonHead = true;
-            }
-        }
-        
-        //outside the cage, move the cannon
-        
-    }
-    
-    
-    else if (input.touchesAvailable)
-    {
-        if (pos.x <= cageLeft)
-        {
-            printf("CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
-            _player.position = ccp(_player.position.x, y+5);
-        }
-    }
-    
-    else if (input.anyTouchEndedThisFrame)
-    {
         printf("ANY-TOUCH-ENDED-THIS-FRAME");
         //Checking if 3 bullets have already been used - if so, then no more bullet are thrown.
         if (_nextProjectile != nil or bulletCounter<=0) return;
@@ -796,7 +760,22 @@ CGFloat arrowRotation = 180;
             printf("FAILURE!!!!!!!!!!!!!\n");
             
         }
-
+        
+    }
+    
+    
+    else if (input.touchesAvailable)
+    {
+        if (pos.x <= cageLeft)
+        {
+            printf("CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
+            _player.position = ccp(_player.position.x, y+5);
+        }
+    }
+    
+    else if (input.anyTouchEndedThisFrame)
+    {
+       
     }
     
     
