@@ -378,53 +378,53 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 //    }
 }
 CGFloat arrowRotation = 180;
-- (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    
-    UITouch *touch = [touches anyObject];
-//
+//- (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+//{
 //    
-//    CGPoint point = [touch locationInView:[touch view]];
+//    UITouch *touch = [touches anyObject];
+////
+////    
+////    CGPoint point = [touch locationInView:[touch view]];
+////    
+////    point = [[CCDirector sharedDirector] convertToGL:point];
+////
+////    if(_MoveableSpriteTouch==TRUE){
+////        
+////        [_player setPosition:point];
+////        
+////    }
 //    
-//    point = [[CCDirector sharedDirector] convertToGL:point];
-//
-//    if(_MoveableSpriteTouch==TRUE){
-//        
-//        [_player setPosition:point];
-//        
+//    //acquire the previous touch location
+//    
+//    CGPoint firstLocation = [touch previousLocationInView:[touch view]];
+//    CGPoint location = [touch locationInView:[touch view]];
+//    
+//    //preform all the same basic rig on both the current touch and previous touch
+//    CGPoint touchingPoint = [[CCDirector sharedDirector] convertToGL:location];
+//    CGPoint firstTouchingPoint = [[CCDirector sharedDirector] convertToGL:firstLocation];
+//    
+//    CGPoint firstVector = ccpSub(firstTouchingPoint, _player.position);
+//    CGFloat firstRotateAngle = -ccpToAngle(firstVector);
+//    CGFloat previousTouch = CC_RADIANS_TO_DEGREES(firstRotateAngle);
+//    
+//    CGPoint vector = ccpSub(touchingPoint, _player.position);
+//    CGFloat rotateAngle = -ccpToAngle(vector);
+//    CGFloat currentTouch = CC_RADIANS_TO_DEGREES(rotateAngle);
+//    
+//    printf("ccTouchesMoved");
+//    
+//    //keep adding the difference of the two angles to the dial rotation
+//    arrowRotation += currentTouch - previousTouch;
+//    if (arrowRotation >= 50) {
+//        printf("ARROW.........\n");
+//        arrowRotation = 50;
 //    }
-    
-    //acquire the previous touch location
-    
-    CGPoint firstLocation = [touch previousLocationInView:[touch view]];
-    CGPoint location = [touch locationInView:[touch view]];
-    
-    //preform all the same basic rig on both the current touch and previous touch
-    CGPoint touchingPoint = [[CCDirector sharedDirector] convertToGL:location];
-    CGPoint firstTouchingPoint = [[CCDirector sharedDirector] convertToGL:firstLocation];
-    
-    CGPoint firstVector = ccpSub(firstTouchingPoint, _player.position);
-    CGFloat firstRotateAngle = -ccpToAngle(firstVector);
-    CGFloat previousTouch = CC_RADIANS_TO_DEGREES(firstRotateAngle);
-    
-    CGPoint vector = ccpSub(touchingPoint, _player.position);
-    CGFloat rotateAngle = -ccpToAngle(vector);
-    CGFloat currentTouch = CC_RADIANS_TO_DEGREES(rotateAngle);
-    
-    printf("ccTouchesMoved");
-    
-    //keep adding the difference of the two angles to the dial rotation
-    arrowRotation += currentTouch - previousTouch;
-    if (arrowRotation >= 50) {
-        printf("ARROW.........\n");
-        arrowRotation = 50;
-    }
-    
-    else if (arrowRotation <= 20) {
-        printf("ARROW.........\n");
-        arrowRotation = 20;
-    }
-    
+//    
+//    else if (arrowRotation <= 20) {
+//        printf("ARROW.........\n");
+//        arrowRotation = 20;
+//    }
+
 //    //UITouch *touch = [touches anyObject];
 //
 //    CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
@@ -438,7 +438,7 @@ CGFloat arrowRotation = 180;
 //    //_player.position = newPos;
 //    _player.position = ccp(_player.position.x, newPos.y);
 
-}
+//}
 
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
