@@ -53,11 +53,12 @@ enum
 //TODO: fix this list
 //Currently these are all public.. decide which ones we want public, private
 //Also maybe change to a more sensical order
+
 //+(id) scene;
+/*
 +(id) sceneWithLevel:(int)level;
 -(void) detectCollisions;
 -(void)tick:(ccTime)dt;
-
 -(void)launchBullet:(CGPoint)location;
 
 
@@ -74,7 +75,22 @@ enum
 -(b2Vec2) toMeters:(CGPoint)point;
 -(CGPoint) toPixels:(b2Vec2)vec;
 -(BOOL) checkLevelCompleted;
-//-(void) draw;
+-(void) draw;
+ */
+
+//updated list ~Linda 1.16
+//ones I think we should eventually move to private methods I added //
++(id) sceneWithLevel:(int)level;
+- (id)initWithLevel: (int) level;
+-(void) detectCollisions;
+-(BOOL) checkLevelCompleted; //
+- (void)tick:(ccTime) dt;
+-(void) dealloc;
+-(CCSprite*) addRandomSpriteAt:(CGPoint)pos;
+-(void) bodyCreateFixture:(b2Body*)body;
+-(void) update:(ccTime)delta;
+-(void) draw;
+
 
 
 @end

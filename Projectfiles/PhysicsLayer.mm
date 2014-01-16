@@ -30,12 +30,10 @@
  */
 
 /* BUG LIST
- * you can drag the cannon off the screen!
  * the bullets dont bounce off the sides..
  *
- *
- *
  */
+
 
 //Pixel to metres ratio. Box2D uses metres as the unit for measurement.
 //This ratio defines how many pixels correspond to 1 Box2D "metre"
@@ -131,21 +129,13 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         _groundBody->CreateFixture(&groundBoxDef);
 
         
-        
-//okay player2 was kinda confusing. I'm going to change this to "cannon"
+    
         _player = [CCSprite spriteWithFile:@"cannon2.png"];
         _player.position = ccp(_player.contentSize.width/2 - 5, winSize.height/2);
         
         
         [self addChild:_player];
         
-        
-        
-//will be removing this later right? --edit: i removed it :P
-        // Create the ball and add it to the layer
-//        ball = [CCSprite spriteWithFile:@"projectile.png" rect:CGRectMake(0, 0, 52, 52)];
-//        ball.position = ccp(0, 0);
-//        [balls addObject:ball];
         
         CCSprite *meep = [CCSprite spriteWithFile:@"gameBackground.png"];
         meep.anchorPoint = CGPointZero;
@@ -155,8 +145,10 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         bar.position = ccp(winSize.width / 2, 20);
         [self addChild:bar z:1];
 
-        movableSprites = [[NSMutableArray alloc] init];
-        NSArray *images = [NSArray arrayWithObjects:@"hungryEevee.png", @"hungryEeveeMouth.png", @"dog.png", @"turtle.png", nil];
+//I don't think we need this anymore
+//        movableSprites = [[NSMutableArray alloc] init];
+//        NSArray *images = [NSArray arrayWithObjects:@"hungryEevee.png", @"hungryEeveeMouth.png", @"dog.png", @"turtle.png", nil];
+
         
         // plist level creation stuff
         
@@ -193,31 +185,6 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             [objects addObject:fruit2];
             [self addChild:fruit2 z:0];
         }
-
-        
-        // Create ball body and shape
-        /*b2BodyDef ballBodyDef;
-        ballBodyDef.type = b2_dynamicBody;
-        ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
-        ballBodyDef.userData = (__bridge void*)_nextProjectile;
-        
-        b2Body *_body = world->CreateBody(&ballBodyDef);
-        
-        b2CircleShape circle;
-        circle.m_radius = 26.0/PTM_RATIO;
-        
-        b2FixtureDef ballShapeDef;
-        ballShapeDef.shape = &circle;
-        ballShapeDef.density = 1.0f;
-        ballShapeDef.friction = 0.f;
-        ballShapeDef.restitution = 1.0f;
-        _ballFixture=_body->CreateFixture(&ballShapeDef);
-        
-       
-        //this determines the speed of the ball projectile
-        b2Vec2 force = b2Vec2(1,1);
-        _body->ApplyLinearImpulse(force, ballBodyDef.position);*/
-    
         
         [self schedule:@selector(tick:)];
         //[self schedule:@selector(kick) interval:5.0];
@@ -323,24 +290,6 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     return YES;
 }
 
-//add this back after I find where the projectile went
- 
-//    //check if the ball hit the target
-//    CCSprite *mouth = [self getChildByTag:1];
-//    
-//    //check if their x coordinates are close enough
-//    if(ball.position.x < (mouth.position.x + 10.0f) && ball.position.y < (mouth.position.x - 10.0f))
-//    {
-//        //check if their y coordinates are close enough
-//        if(ball.position.y < (mouth.position.y + 10.0f) && ball.position.y > mouth.position.y - 10.0f)
-//        {
-//            [self removeChild:ball cleanup: YES];
-//            //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[GameLayer alloc] init]];
-//        }
-//    }
-
-//}
-
 
 - (void)tick:(ccTime) dt {
     
@@ -358,170 +307,6 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     }
 }
 
-
-
-- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-// 
-//    UITouch *touch = [touches anyObject];
-//    CGPoint poBefore = [touch locationInView:[touch view]];
-//    poBefore = [[CCDirector sharedDirector] convertToGL:poBefore];
-//    
-    //    // Fail when more than 1 finger detected.
-    
-
-//    
-//    
-//    if (CGRectContainsPoint(_player.boundingBox, poBefore))
-//    {
-//        _MoveableSpriteTouch = true;
-//    }
-}
-CGFloat arrowRotation = 180;
-//- (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    
-//    UITouch *touch = [touches anyObject];
-////
-////    
-////    CGPoint point = [touch locationInView:[touch view]];
-////    
-////    point = [[CCDirector sharedDirector] convertToGL:point];
-////
-////    if(_MoveableSpriteTouch==TRUE){
-////        
-////        [_player setPosition:point];
-////        
-////    }
-//    
-//    //acquire the previous touch location
-//    
-//    CGPoint firstLocation = [touch previousLocationInView:[touch view]];
-//    CGPoint location = [touch locationInView:[touch view]];
-//    
-//    //preform all the same basic rig on both the current touch and previous touch
-//    CGPoint touchingPoint = [[CCDirector sharedDirector] convertToGL:location];
-//    CGPoint firstTouchingPoint = [[CCDirector sharedDirector] convertToGL:firstLocation];
-//    
-//    CGPoint firstVector = ccpSub(firstTouchingPoint, _player.position);
-//    CGFloat firstRotateAngle = -ccpToAngle(firstVector);
-//    CGFloat previousTouch = CC_RADIANS_TO_DEGREES(firstRotateAngle);
-//    
-//    CGPoint vector = ccpSub(touchingPoint, _player.position);
-//    CGFloat rotateAngle = -ccpToAngle(vector);
-//    CGFloat currentTouch = CC_RADIANS_TO_DEGREES(rotateAngle);
-//    
-//    printf("ccTouchesMoved");
-//    
-//    //keep adding the difference of the two angles to the dial rotation
-//    arrowRotation += currentTouch - previousTouch;
-//    if (arrowRotation >= 50) {
-//        printf("ARROW.........\n");
-//        arrowRotation = 50;
-//    }
-//    
-//    else if (arrowRotation <= 20) {
-//        printf("ARROW.........\n");
-//        arrowRotation = 20;
-//    }
-
-//    //UITouch *touch = [touches anyObject];
-//
-//    CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
-//    
-//    CGPoint oldTouchLocation = [touch previousLocationInView:touch.view];
-//    oldTouchLocation = [[CCDirector sharedDirector] convertToGL:oldTouchLocation];
-//    oldTouchLocation = [self convertToNodeSpace:oldTouchLocation];
-//    
-//    CGPoint translation = ccpSub(touchLocation, oldTouchLocation);
-//    CGPoint newPos = ccpAdd(_player.position, translation);
-//    //_player.position = newPos;
-//    _player.position = ccp(_player.position.x, newPos.y);
-
-//}
-
-
-- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    printf("CCTouchesEnded!\n");
-//    //Checking if 3 bullets have already been used - if so, then no more bullet are thrown.
-//    if (_nextProjectile != nil or bulletCounter<=0) return;
-//
-//    _MoveableSpriteTouch=FALSE;
-//    
-//    // Choose one of the touches to work with
-//    UITouch *touch = [touches anyObject];
-//    CGPoint location = [self convertTouchToNodeSpace:touch];
-//    CGRect leftBorder = CGRectMake(cageLeft, 0, cageLeft+10, 350);
-//   
-//    
-//    if (CGRectContainsPoint(leftBorder, location)) {
-//        printf("Correctly within border - in ccTouchesEnded");
-//    // Set up initial location of projectile
-//    CGSize winSize = [[CCDirector sharedDirector] winSize];
-//    _nextProjectile = [CCSprite spriteWithFile:@"projectile2.png"];
-//    //_nextProjectile.position = ccp(20, winSize.height/2);
-//    //_nextProjectile.position = _player.position;
-//    _nextProjectile.position = ccp(_player.position.x, _player.position.y+12.5); //so that ball exits out of cannon arm and not center of wheel
-//    [balls addObject: _nextProjectile];
-//    
-//    // Determine offset of location to projectile
-//    CGPoint offset = ccpSub(location, _nextProjectile.position);
-//    // Bail out if you are shooting down or backwards
-//    if (offset.x <= 0) return;
-// 
-//    // Determine where you wish to shoot the projectile to
-//    int realX = winSize.width + (_nextProjectile.contentSize.width/2);
-//    float ratio = (float) offset.y / (float) offset.x;
-//    int realY = (realX * ratio) + _nextProjectile.position.y;
-//    CGPoint realDest = ccp(realX, realY);
-//    
-//    // Determine the length of how far you're shooting
-//    int offRealX = realX - _nextProjectile.position.x;
-//    int offRealY = realY - _nextProjectile.position.y;
-//    float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
-//    float velocity = 480/1; // 480pixels/1sec
-//    float realMoveDuration = length/velocity;
-//    // Determine angle to face
-//    float angleRadians = atanf((float)offRealY / (float)offRealX);
-//    float angleDegrees = CC_RADIANS_TO_DEGREES(angleRadians);
-//    float cocosAngle = -1 * angleDegrees;
-//    float rotateDegreesPerSecond = 180 / 0.5; // Would take 0.5 seconds to rotate 180 degrees, or half a circle
-//    //_player.anchorPoint = ccp(0.5, 0.5);
-//    
-//    float degreesDiff = _player.rotation - cocosAngle;
-//    float rotateDuration = fabs(degreesDiff / rotateDegreesPerSecond);
-//         
-//        [_player runAction:
-//         [CCSequence actions:
-//          [CCRotateTo actionWithDuration:rotateDuration angle:cocosAngle],
-//          [CCCallBlock actionWithBlock:^{
-//             // OK to add now - rotation is finished!
-//             [self addChild:_nextProjectile];
-//             // Release
-//             _nextProjectile = nil;
-//         }],
-//          nil]];
-//    // Move projectile to actual endpoint
-//    [_nextProjectile runAction:
-//     [CCSequence actions:
-//      [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
-//      [CCCallBlockN actionWithBlock:^(CCNode *node) {
-//         [node removeFromParentAndCleanup:YES];
-//     }],
-//      nil]];
-//        bulletCounter--;
-//        
-//    _player.tag = 4;
-//    
-//}
-//    else{
-//    
-//        printf("FAILURE!!!!!!!!!!!!!\n");
-//    
-//    }
-    }
-
-
 -(void) dealloc
 {
 	delete world;
@@ -535,7 +320,6 @@ CGFloat arrowRotation = 180;
 	[super dealloc];
 #endif
 }
-
 
 
 -(void) enableBox2dDebugDrawing
@@ -710,10 +494,11 @@ CGFloat arrowRotation = 180;
             _nextProjectile.position = _player.position;
             [balls addObject: _nextProjectile];
             
+            // Create ball body and shape
             b2BodyDef ballBodyDef;
             ballBodyDef.type = b2_dynamicBody;
 //            ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
-            printf("in Position.SET\n");
+            NSLog(@"in Position.SET\n");
             ballBodyDef.position.Set(_player.position.x/PTM_RATIO,_player.position.y/PTM_RATIO);
             ballBodyDef.userData = (__bridge void*)_nextProjectile;
             
