@@ -27,8 +27,8 @@ enum
     b2Body *_groundBody;
     b2Fixture *_paddleFixture;
 	b2World* world;
-    b2Body *_body;
-    CCSprite *ball;
+    //b2Body *_body;
+    //CCSprite *ball;
     //to help with cannon to rotate smoothly 
     CCSprite *_nextProjectile; //I'm replacing nextProjectile with "bullet"
 //    CCSprite *_bullet;
@@ -46,6 +46,9 @@ enum
     NSMutableArray *movableSprites;
     CCSprite *meep;
     bool _MoveableSpriteTouch;
+    
+    b2Fixture *_ballFixture;
+    
     
 }
 

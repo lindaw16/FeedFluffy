@@ -1,5 +1,21 @@
 all da commented out things
 
+
+
+//Create a hungry eevee and add it to layer
+        /*CCSprite *hungryEevee = [CCSprite spriteWithFile: @"hungryEevee.png"];
+        hungryEevee.position = ccp(winSize.width - 10, winSize.height/2);
+        [self addChild:hungryEevee z:0 tag:2];
+        
+        //Create the hungry eevee mouth -- useful to detect collision
+        
+        CCSprite *hungryEeveeMouth = [CCSprite spriteWithFile: @"hungryEeveeMouth.png"];
+        hungryEeveeMouth.position = ccp(450, 148);
+        [self addChild:hungryEeveeMouth z:-1 tag:1];*/
+
+
+
+
 //        // Create paddle body
 //        b2BodyDef paddleBodyDef;
 //        paddleBodyDef.type = b2_dynamicBody;
