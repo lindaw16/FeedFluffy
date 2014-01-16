@@ -17,6 +17,7 @@
 #import "GameLayer.h"
 #import "Fluffy.h"
 #import "OopsDNE.h"
+#import "Fruit.h"
 
 //#import "cocos2d.m"
 
@@ -49,14 +50,16 @@ const int TILESET_ROWS = 19;
 const int cageLeft = 30;
 int bulletCounter = 300;
 
-NSMutableArray *foodObjects = [[NSMutableArray alloc] init];
+NSMutableArray *objects = [[NSMutableArray alloc] init];
 NSMutableArray *balls = [[NSMutableArray alloc] init];
 CCSprite *ball;
 
-CCSprite *food;
+CCSprite *object;
 CGRect firstrect;
 CGRect secondrect;
 
+NSDictionary *goal;
+NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 
 @interface PhysicsLayer (PrivateMethods)
 -(void) enableBox2dDebugDrawing;
@@ -74,13 +77,6 @@ CGRect secondrect;
     CGFloat poMinX;
     CGFloat poMaxX;
 }
-
-/*+(id) scene {
-    CCScene *scene = [CCScene node];
-    PhysicsLayer *layer = [PhysicsLayer node];
-    [scene addChild:layer];
-    return scene;
-}*/
 
 +(id) sceneWithLevel:(int)level
 {
@@ -175,34 +171,40 @@ CGRect secondrect;
         hungryEeveeMouth.position = ccp(450, 148);
         [self addChild:hungryEeveeMouth z:-1 tag:1];*/
         
-
+        // plist level creation stuff
         
         NSString* levelString = [NSString stringWithFormat:@"%i", level];
         NSString *levelName = [@"level" stringByAppendingString:levelString];
         NSString *path = [[NSBundle mainBundle] pathForResource:levelName ofType:@"plist"];
         NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:path];
         
-        NSArray *fruits = [level objectForKey:@"Fruits"];
+        goal = [level objectForKey:@"Goal"];
+        
+        // create new dictionary that keeps track of the level progress
+
+        for (NSString *key in goal){
+            [goalProgress setObject:@0 forKey:key];
+        }
         
         NSDictionary *fluffy = [level objectForKey:@"Fluffy"];
         Fluffy *fluffy2 = [[Fluffy alloc] initWithFluffyImage];
         NSNumber *x = [fluffy objectForKey:@"x"];
         NSNumber *y = [fluffy objectForKey:@"y"];
         fluffy2.position = CGPointMake([x floatValue], [y floatValue]);
-        [foodObjects addObject:fluffy2];
-        [self addChild:fluffy2 z:0];
+        [objects addObject:fluffy2];
+        [self addChild:fluffy2 z:1];
         
+        NSArray *fruits = [level objectForKey:@"Fruits"];
         
         for (NSDictionary *fruit in fruits){
             NSString *sName = [fruit objectForKey:@"spriteName"];
-            NSString *spriteName = [sName stringByAppendingString:@".png"];
+            Fruit *fruit2 = [[Fruit alloc] initWithFruit: sName];
             NSNumber *x = [fruit objectForKey:@"x"];
             NSNumber *y = [fruit objectForKey:@"y"];
 
-            CCSprite *sprite = [CCSprite spriteWithFile:spriteName];
-            sprite.position = CGPointMake([x floatValue], [y floatValue]);
-            [foodObjects addObject:sprite];
-            [self addChild:sprite z:0];
+            fruit2.position = CGPointMake([x floatValue], [y floatValue]);
+            [objects addObject:fruit2];
+            [self addChild:fruit2 z:0];
         }
 
         
@@ -252,34 +254,54 @@ CGRect secondrect;
     //First check if the ball hit a food
     for(int i = 0; i < [balls count]; i++)
     {
-        for(int j = 0; j < [foodObjects count]; j++)
+        for(int j = 0; j < [objects count]; j++)
         {
             if([balls count]>0)
             {
                 NSInteger ballIndex = i;
                 NSInteger foodIndex = j;
-                food = [foodObjects objectAtIndex:foodIndex];
+                object = [objects objectAtIndex:foodIndex];
                 ball = [balls objectAtIndex:ballIndex];
                 
                 firstrect = [ball textureRect];
-                secondrect = [food textureRect];
+                secondrect = [object textureRect];
                 //check if their x coordinates match
                 //if(ball.position.x == food.position.x)
-                if(ball.position.x < (food.position.x + 50.0f) && ball.position.x > (food.position.x - 50.0f))
+                if(ball.position.x < (object.position.x + 50.0f) && ball.position.x > (object.position.x - 50.0f))
                 {
 
                     //check if their y coordinates are within the height of the block
-                    if(ball.position.y < (food.position.y + 50.0f) && ball.position.y > food.position.y - 50.0f)
+                    if(ball.position.y < (object.position.y + 50.0f) && ball.position.y > object.position.y - 50.0f)
                     {
-                        if([food isKindOfClass:[Fluffy class]]) {
-                            NSLog(@"YOU BEAT THE LEVEL!");
-                            [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+                        NSLog(@"COLLISION!!!");
+                        if([object isKindOfClass:[Fluffy class]]) {
+
+                            BOOL levelCompleted = [self checkLevelCompleted];
+                            NSLog(@"BOOLEAN VALUE");
+                            NSLog(@"%d", levelCompleted);
+                            if (levelCompleted){
+                                [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+                            }
+                            else {
+                                NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
+                            }
                         }
                         else {
-                        NSLog(@"FOOD COLLECTED!");
-                        [self removeChild:food cleanup:YES];
-                        //[self removeChild:ball cleanup:YES];
-                        [foodObjects removeObjectAtIndex:foodIndex];
+                            Fruit *fruit = (Fruit*) object;
+                            NSString *fruitName = fruit.fruitName;
+                            NSLog(fruitName);
+                            int num = [[goal objectForKey:fruitName] intValue];
+                            NSLog(@"%d", num);
+                            int fruitNum = [[goalProgress objectForKey:fruitName] intValue];
+                            NSLog(@"%d", fruitNum);
+                            fruitNum++;
+                            [goalProgress setObject:[NSNumber numberWithInt: fruitNum] forKey:fruitName];
+                            int fruitNum2 = [[goalProgress objectForKey:fruitName] intValue];
+                            NSLog(@"%d", fruitNum2);
+                            
+                            [self removeChild:object cleanup:YES];
+                            //[self removeChild:ball cleanup:YES];
+                            [objects removeObjectAtIndex:foodIndex];
                         //[bullets removeObjectAtIndex:first];
                         //[[SimpleAudioEngine sharedEngine] playEffect:@"explo2.wav"];
                         //}
@@ -290,7 +312,22 @@ CGRect secondrect;
             }
         }
     }
-    
+}
+
+-(BOOL) checkLevelCompleted {
+    NSLog(@"CHECKING IF LEVEL IS COMPLETED");
+    for (NSString *key in goal){
+        int goalValue = [[goal objectForKey:key] intValue];
+        int goalProgressValue = [[goalProgress objectForKey:key] intValue];
+        NSLog(@"GOAL VALUE");
+        NSLog(@"%d", goalValue);
+        if (goalProgressValue < goalValue) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
 //add this back after I find where the projectile went
  
 //    //check if the ball hit the target
@@ -308,71 +345,6 @@ CGRect secondrect;
 //    }
 
 //}
-
-
-
-
-/*-(void) detectCollisions
-{
-    //balls in this case is still the projectile, which we will be removing/replacing
-    //NSLog(@"foodObjects Count");
-    //NSLog(@"%d",[foodObjects count]);
-    
-    //First check if the ball hit a food
-    for(int j = 0; j < [foodObjects count]; j++)
-    {
-        if(_nextProjectile != nil) //not sure if this is right :P
-        {
-            //NSLog(@"HIHIHI");
-            NSInteger foodIndex = j;
-            food = [foodObjects objectAtIndex:foodIndex];
-            
-            NSLog(@"foooooood %f", food.position.x);
-            NSLog(@"food %f", food.position.y);
-            firstrect = [_nextProjectile textureRect];
-            secondrect = [food textureRect];
-            //check if their x coordinates match
-            //if(ball.position.x == food.position.x)
-            if(_nextProjectile.position.x < (food.position.x + 50.0f) && _nextProjectile.position.x > (food.position.x - 50.0f))
-            {
-                //check if their y coordinates are within the height of the block
-                if(_nextProjectile.position.y < (food.position.y + 50.0f) && _nextProjectile.position.y > food.position.y - 50.0f)
-                {
-                    NSLog(@"DOES IT EVER GO HERE HUHHHH!");
-                    [self removeChild:food cleanup:YES];
-                    //[self removeChild:ball cleanup:YES];
-                    [foodObjects removeObjectAtIndex:foodIndex];
-                    //[bullets removeObjectAtIndex:first];
-                    //[[SimpleAudioEngine sharedEngine] playEffect:@"explo2.wav"];
-                    //}
-                    
-                }
-            }
-        }
-    }*/
-    
-    //add this back after I find where the projectile went
-    
-       //check if the ball hit the target
-        CCSprite *mouth = [self getChildByTag:1];
-    
-        //check if their x coordinates are close enough
-        if(_nextProjectile.position.x < (mouth.position.x + 10.0f) && _nextProjectile.position.y < (mouth.position.x - 10.0f))
-      {
-            //check if their y coordinates are close enough
-            if(_nextProjectile.position.y < (mouth.position.y + 10.0f) && _nextProjectile.position.y > mouth.position.y - 10.0f)
-           {
-            [self removeChild:_nextProjectile cleanup: YES];
-               //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[GameLayer alloc] init]];
-            }
-       }
-    
-}
-
-
-
-
-
 
 
 - (void)tick:(ccTime) dt {

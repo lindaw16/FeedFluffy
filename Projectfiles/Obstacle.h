@@ -6,8 +6,8 @@
 //
 //
 
-#import "CCLayer.h"
+#import "CCSprite.h"
 
-@interface Obstacle : CCLayer
+@interface Obstacle : CCSprite
 
 @end

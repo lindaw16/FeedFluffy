@@ -73,6 +73,7 @@ enum
 -(void) update:(ccTime)delta;
 -(b2Vec2) toMeters:(CGPoint)point;
 -(CGPoint) toPixels:(b2Vec2)vec;
+-(BOOL) checkLevelCompleted;
 //-(void) draw;
 
 

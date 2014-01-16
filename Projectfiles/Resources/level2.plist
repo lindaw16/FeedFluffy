@@ -5,9 +5,16 @@
 	<key>Fluffy</key>
 	<dict>
 		<key>x</key>
-		<integer>400</integer>
+		<integer>450</integer>
 		<key>y</key>
-		<integer>250</integer>
+		<integer>180</integer>
+	</dict>
+	<key>Goal</key>
+	<dict>
+		<key>apple</key>
+		<integer>1</integer>
+		<key>banana</key>
+		<integer>1</integer>
 	</dict>
 	<key>Fruits</key>
 	<array>
@@ -25,7 +32,7 @@
 			<key>y</key>
 			<integer>100</integer>
 			<key>spriteName</key>
-			<string>apple</string>
+			<string>banana</string>
 		</dict>
 	</array>
 </dict>
