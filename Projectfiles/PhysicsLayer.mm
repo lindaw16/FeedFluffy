@@ -73,10 +73,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 
 @implementation PhysicsLayer
 {
-    //Used these variables when trying to drag cannon along y-axis - but unforunately didn't work :(
-    CGPoint po;
-    CGFloat poMinX;
-    CGFloat poMaxX;
+
 }
 
 +(id) sceneWithLevel:(int)level
@@ -97,30 +94,27 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         _MoveableSpriteTouch=FALSE;
         self.touchEnabled = YES;
         
-        UIRotationGestureRecognizer *rot = [[UIRotationGestureRecognizer alloc] initWithTarget:_player action:@selector(handleRotation:)];
-        
-        [rot setDelegate:(id)self];
-        [[[CCDirector sharedDirector] openGLView] addGestureRecognizer:rot];
-        
+                
         CGSize winSize = [CCDirector sharedDirector].winSize;
         
 
         //no gravity -- Do we still need this then?
-        b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
+        b2Vec2 gravity = b2Vec2(0.0f, -0.0f);
         world = new b2World(gravity);
-        
+
         
         // Create edges around the entire screen except the one on the left
         b2BodyDef groundBodyDef;
         groundBodyDef.position.Set(0,0);
-        _groundBody = world->CreateBody(&groundBodyDef);
         
+        
+        _groundBody = world->CreateBody(&groundBodyDef);
         b2EdgeShape groundBox;
         b2FixtureDef groundBoxDef;
         groundBoxDef.shape = &groundBox;
         
         groundBox.Set(b2Vec2(0,0), b2Vec2(winSize.width/PTM_RATIO, 0));
-        _bottomFixture = _groundBody->CreateFixture(&groundBoxDef);
+        _groundBody->CreateFixture(&groundBoxDef);
         
         groundBox.Set(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
         _groundBody->CreateFixture(&groundBoxDef);
@@ -447,8 +441,8 @@ CGFloat arrowRotation = 180;
 }
 
 
-//- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-//    
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    printf("CCTouchesEnded!\n");
 //    //Checking if 3 bullets have already been used - if so, then no more bullet are thrown.
 //    if (_nextProjectile != nil or bulletCounter<=0) return;
 //
@@ -461,7 +455,7 @@ CGFloat arrowRotation = 180;
 //   
 //    
 //    if (CGRectContainsPoint(leftBorder, location)) {
-//        
+//        printf("Correctly within border - in ccTouchesEnded");
 //    // Set up initial location of projectile
 //    CGSize winSize = [[CCDirector sharedDirector] winSize];
 //    _nextProjectile = [CCSprite spriteWithFile:@"projectile2.png"];
@@ -525,7 +519,7 @@ CGFloat arrowRotation = 180;
 //        printf("FAILURE!!!!!!!!!!!!!\n");
 //    
 //    }
-//    }
+    }
 
 
 -(void) dealloc
@@ -691,9 +685,9 @@ CGFloat arrowRotation = 180;
     
     if (input.anyTouchBeganThisFrame) //someone's touching the screen!! :O
     {
-        //printf("ANY-TOUCH-BEGAN-THIS-FRAME");
+        printf("ANY-TOUCH-BEGAN-THIS-FRAME");
         //Checking if 3 bullets have already been used - if so, then no more bullet are thrown.
-        if (_nextProjectile != nil or bulletCounter<=0) return;
+        if  (bulletCounter<=0) return;
         
         _MoveableSpriteTouch = FALSE;
         
@@ -705,7 +699,7 @@ CGFloat arrowRotation = 180;
         
         
         //if (CGRectContainsPoint(leftBorder, location)) {
-        if (ccpDistance(pos, _player.position) > cannonRadius) {
+        if (ccpDistance(location, _player.position) < 45 and (ccpDistance(location, _player.position)) > 15 ) {
             
             NSLog(@"SDFJDS:FJSDKFJ");
             
@@ -732,14 +726,11 @@ CGFloat arrowRotation = 180;
             b2FixtureDef ballShapeDef;
             ballShapeDef.shape = &circle;
             ballShapeDef.density = 1.0f;
-            ballShapeDef.friction = 0.f;
+            ballShapeDef.friction = 0.0f;
             ballShapeDef.restitution = 1.0f;
-            _ballFixture=_body->CreateFixture(&ballShapeDef);
+            _body->CreateFixture(&ballShapeDef);
             
             
-            //this determines the speed of the ball projectile
-            b2Vec2 force = b2Vec2(0.5,0.5);
-            _body->ApplyLinearImpulse(force, ballBodyDef.position);
             
             // Determine offset of location to projectile
             CGPoint offset = ccpSub(location, _nextProjectile.position);
@@ -778,6 +769,13 @@ CGFloat arrowRotation = 180;
                  _nextProjectile = nil;
              }],
               nil]];
+            //this determines the speed of the ball projectile
+            b2Vec2 force = b2Vec2(cos(angleRadians), sin(angleRadians));
+
+            //_body->ApplyLinearImpulse(force, ballBodyDef.position);
+            printf("Applying Linear Impulse!");
+            _body->ApplyLinearImpulse(force, ballBodyDef.position);
+            
             // Move projectile to actual endpoint
             [_nextProjectile runAction:
              [CCSequence actions:
@@ -793,7 +791,7 @@ CGFloat arrowRotation = 180;
         }
         else{
             
-            printf("FAILURE!!!!!!!!!!!!!\n");
+            printf("Not in Range - Don't SHOOT!!!!!!!!!!!!!\n");
             
         }
         
@@ -807,12 +805,18 @@ CGFloat arrowRotation = 180;
             printf("CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
             _player.position = ccp(_player.position.x, y+5);
             _nextProjectile.position = _player.position;
+            
+        }
+        if (input.anyTouchEndedThisFrame) {
+        
+            
+        
         }
     }
     
     else if (input.anyTouchEndedThisFrame)
     {
-       
+        printf("ended frame..........\n");
     }
     
     
