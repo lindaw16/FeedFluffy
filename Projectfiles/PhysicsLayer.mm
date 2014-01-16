@@ -678,8 +678,7 @@ CGFloat arrowRotation = 180;
     
     int x = pos.x;
     int y = pos.y;
-    bool touchCannonBody = false;
-    bool touchCannonHead = false;
+
     
     if (input.anyTouchBeganThisFrame) //someone's touching the screen!! :O
     {
@@ -691,15 +690,15 @@ CGFloat arrowRotation = 180;
                 //shoot cannon
                 //codecodecodeee
                 //[self launchBullet:pos];
-                touchCannonBody = true;
+                //touchCannonBody = true;
             }
         
             //check if touched cannon head
-            if ( (pos.x < _player.position.x + 20) && !touchCannonBody)
+            if ( (pos.x < _player.position.x + 20))
             {
                 //rotate cannon
                 //should probably break out of this and then find the rotate somewhere..
-                touchCannonHead = true;
+                //touchCannonHead = true;
             }
         }
         
@@ -710,7 +709,7 @@ CGFloat arrowRotation = 180;
     
     else if (input.touchesAvailable)
     {
-        if (pos.x <= cageLeft && !touchCannonBody && !touchCannonHead)
+        if (pos.x <= cageLeft)
         {
             printf("CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
             _player.position = ccp(_player.position.x, y+5);
