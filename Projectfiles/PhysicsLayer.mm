@@ -139,7 +139,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
 //okay player2 was kinda confusing. I'm going to change this to "cannon"
         _player = [CCSprite spriteWithFile:@"cannon2.png"];
-        _player.position = ccp(_player.contentSize.width/2, winSize.height/2);
+        _player.position = ccp(_player.contentSize.width/2 - 5, winSize.height/2);
         
         
         [self addChild:_player];
@@ -705,10 +705,10 @@ CGFloat arrowRotation = 180;
         }
         
         //outside the cage, move the cannon
-        if (pos.x < cageLeft && !touchCannonBody && !touchCannonHead)
+        if (pos.x <= cageLeft && !touchCannonBody && !touchCannonHead)
         {
             printf("CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
-            _player.position = ccp(x, y);
+            _player.position = ccp(_player.position.x, y+5);
         }
         
     }
