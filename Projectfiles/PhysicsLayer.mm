@@ -51,6 +51,7 @@ int cannonRadius = 5.0/PTM_RATIO;
 bool ButtonTapped = false;
 
 float angleRadians;
+float angleInDegrees;
 float realMoveDuration;
 b2BodyDef ballBodyDef;
 b2Body *_body;
@@ -137,21 +138,26 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
         
         
-        _player = [CCSprite spriteWithFile:@"cannon2.png"];
+        
+        _player = [CCSprite spriteWithFile:@"cannon-body.png"];
         _player.position = ccp(_player.contentSize.width/2 - 8, winSize.height/2 + 32);
         
         
         [self addChild:_player z:0];
         
+    
         
-        /*CCSprite *cannonHead = [CCSprite spriteWithFile:@"cannon-head.png"];
-        cannonHead.position = ccp(_player.position.x + 38, _player.position.y + 3);
-        [self addChild:cannonHead z:1];*/
+        cannonHead = [CCSprite spriteWithFile:@"cannon-head-cropped.png"];
+        cannonHead.position = ccp(_player.position.x + 26, _player.position.y + 0.5);
+        [self addChild:cannonHead z:1];
+        
+        
         
         
         // Create contact listener
         _contactListener = new MyContactListener();
         world->SetContactListener(_contactListener);
+        
         
         //Adding "Launch" button so player can click on it to launch bullet/projectile
         
@@ -307,13 +313,14 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 
 // DETECT COLLISIONS BETWEEN BALL AND FOOD!
 
+
 - (void)starButtonTapped:(id)sender {
     printf("Button tapped!!!!!!\n");
     
-    
+    float radianAngle = CC_DEGREES_TO_RADIANS(angleInDegrees);
     [_player runAction:[CCSequence actions:[CCCallBlock actionWithBlock:^{[self addChild:_nextProjectile];_nextProjectile = nil;}],nil]];
     //this determines the speed of the ball projectile
-    b2Vec2 force = b2Vec2(5 * cos(angleRadians), 5 * sin(angleRadians));
+    b2Vec2 force = b2Vec2(5 * cos(radianAngle), 5 * sin(radianAngle));
     
     //_body->ApplyLinearImpulse(force, ballBodyDef.position);
     printf("Applying Linear Impulse!");
@@ -440,6 +447,9 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     }
 }
 
+
+
+
 -(void) dealloc
 {
 	delete world;
@@ -526,7 +536,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 	body->CreateFixture(&fixtureDef);
 	
 }
-
+int counter = 1;
 -(void) addSomeJoinedBodies:(CGPoint)pos
 {
 	// Create a body definition and set it to be a dynamic body
@@ -599,7 +609,8 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     int x = pos.x;
     int y = pos.y;
     
-    
+    CGPoint location;
+    CGSize winSize;
     if (input.anyTouchBeganThisFrame) //someone's touching the screen!! :O
     {
         printf("ANY-TOUCH-BEGAN-THIS-FRAME");
@@ -609,77 +620,104 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         _MoveableSpriteTouch = FALSE;
         
         // Choose one of the touches to work with
-        
-        
-        CGPoint location = [self convertToNodeSpace:pos];
+                
+        location = [self convertToNodeSpace:pos];
         //CGRect leftBorder = CGRectMake(cageLeft, 0, cageLeft+10, 350);
         
+        _nextProjectile = [CCSprite spriteWithFile:@"bullet.png"];
+        _nextProjectile.tag = 1;
+        
+        _nextProjectile.position = _player.position;
+        [balls addObject: _nextProjectile];
+        // Create ball body and shape
+        
+        ballBodyDef.type = b2_dynamicBody;
+        //            ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
+        NSLog(@"in Position.SET\n");
+        ballBodyDef.position.Set(_player.position.x/PTM_RATIO,_player.position.y/PTM_RATIO);
+        ballBodyDef.userData = (__bridge void*)_nextProjectile;
+        
+        _body = world->CreateBody(&ballBodyDef);
+        
+        b2CircleShape circle;
+        //circle.m_radius = 26.0/PTM_RATIO;
+        //circle.m_radius = 9.0/PTM_RATIO;
+        circle.m_radius = 20.0/PTM_RATIO;
+        
+        b2FixtureDef ballShapeDef;
+        ballShapeDef.shape = &circle;
+        ballShapeDef.density = 0.5f;
+        ballShapeDef.friction = 0.0f;
+        ballShapeDef.restitution = 1.0f;
+        _body->CreateFixture(&ballShapeDef);
+
+        //This code is not needed anymore - I believe.
         
         //if (CGRectContainsPoint(leftBorder, location)) {
-        if (ccpDistance(location, _player.position) < 45 and (ccpDistance(location, _player.position)) > 15 ) {
+        if (counter==3 ) {
             
-            NSLog(@"SDFJDS:FJSDKFJ");
-            
-            // Set up initial location of projectile
-            CGSize winSize = [[CCDirector sharedDirector] winSize];
-            _nextProjectile = [CCSprite spriteWithFile:@"bullet.png"];
-            _nextProjectile.tag = 1;
-            
-            _nextProjectile.position = _player.position;
-            [balls addObject: _nextProjectile];
-            
-            // Create ball body and shape
-            
-            ballBodyDef.type = b2_dynamicBody;
-            //            ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
-            NSLog(@"in Position.SET\n");
-            ballBodyDef.position.Set(_player.position.x/PTM_RATIO,_player.position.y/PTM_RATIO);
-            ballBodyDef.userData = (__bridge void*)_nextProjectile;
-            
-            _body = world->CreateBody(&ballBodyDef);
-            
-            b2CircleShape circle;
-            //circle.m_radius = 26.0/PTM_RATIO;
-            //circle.m_radius = 9.0/PTM_RATIO;
-            circle.m_radius = 20.0/PTM_RATIO;
-            
-            b2FixtureDef ballShapeDef;
-            ballShapeDef.shape = &circle;
-            ballShapeDef.density = 0.5f;
-            ballShapeDef.friction = 0.0f;
-            ballShapeDef.restitution = 1.0f;
-            _body->CreateFixture(&ballShapeDef);
-            
-            
-            
-            // Determine offset of location to projectile
-            CGPoint offset = ccpSub(location, _nextProjectile.position);
-            // Bail out if you are shooting down or backwards
-            if (offset.x <= 0) return;
-            
-            // Determine where you wish to shoot the projectile to
-            int realX = winSize.width + (_nextProjectile.contentSize.width/2);
-            float ratio = (float) offset.y / (float) offset.x;
-            int realY = (realX * ratio) + _nextProjectile.position.y;
-            realDest = ccp(realX, realY);
-            
-            // Determine the length of how far you're shooting
-            int offRealX = realX - _nextProjectile.position.x;
-            int offRealY = realY - _nextProjectile.position.y;
-            float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
-            float velocity = 480/1; // 480pixels/1sec
-            realMoveDuration = length/velocity;
-            // Determine angle to face
-            angleRadians = atanf((float)offRealY / (float)offRealX);
-            float angleDegrees = CC_RADIANS_TO_DEGREES(angleRadians);
-            float cocosAngle = -1 * angleDegrees;
-            float rotateDegreesPerSecond = 180 / 0.5; // Would take 0.5 seconds to rotate 180 degrees, or half a circle
-            //_player.anchorPoint = ccp(0.5, 0.5);
-            
-            float degreesDiff = _player.rotation - cocosAngle;
-            float rotateDuration = fabs(degreesDiff / rotateDegreesPerSecond);
-            
-            [_player runAction:[CCSequence actions:[CCRotateTo actionWithDuration:rotateDuration angle:cocosAngle],nil]];
+//            NSLog(@"SDFJDS:FJSDKFJ");
+//            
+//            // Set up initial location of projectile
+//            winSize = [[CCDirector sharedDirector] winSize];
+//            _nextProjectile = [CCSprite spriteWithFile:@"bullet.png"];
+//            _nextProjectile.tag = 1;
+//            
+//            _nextProjectile.position = _player.position;
+//            [balls addObject: _nextProjectile];
+//            
+//            // Create ball body and shape
+//            
+//            ballBodyDef.type = b2_dynamicBody;
+//            //            ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
+//            NSLog(@"SHOULD NOT BE IN HERE!(*&^(*&^(*&^(&^");
+//            ballBodyDef.position.Set(_player.position.x/PTM_RATIO,_player.position.y/PTM_RATIO);
+//            ballBodyDef.userData = (__bridge void*)_nextProjectile;
+//            
+//            _body = world->CreateBody(&ballBodyDef);
+//            
+//            b2CircleShape circle;
+//            //circle.m_radius = 26.0/PTM_RATIO;
+//            //circle.m_radius = 9.0/PTM_RATIO;
+//            circle.m_radius = 20.0/PTM_RATIO;
+//            
+//            b2FixtureDef ballShapeDef;
+//            ballShapeDef.shape = &circle;
+//            ballShapeDef.density = 0.5f;
+//            ballShapeDef.friction = 0.0f;
+//            ballShapeDef.restitution = 1.0f;
+//            _body->CreateFixture(&ballShapeDef);
+//            
+//            
+//            
+//            // Determine offset of location to projectile
+//            CGPoint offset = ccpSub(location, _nextProjectile.position);
+//            // Bail out if you are shooting down or backwards
+//            if (offset.x <= 0) return;
+//            
+//            // Determine where you wish to shoot the projectile to
+//            int realX = winSize.width + (_nextProjectile.contentSize.width/2);
+//            float ratio = (float) offset.y / (float) offset.x;
+//            int realY = (realX * ratio) + _nextProjectile.position.y;
+//            realDest = ccp(realX, realY);
+//            
+//            // Determine the length of how far you're shooting
+//            int offRealX = realX - _nextProjectile.position.x;
+//            int offRealY = realY - _nextProjectile.position.y;
+//            float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
+//            float velocity = 480/1; // 480pixels/1sec
+//            realMoveDuration = length/velocity;
+//            // Determine angle to face
+//            angleRadians = atanf((float)offRealY / (float)offRealX);
+//            float angleDegrees = CC_RADIANS_TO_DEGREES(angleRadians);
+//            float cocosAngle = -1 * angleDegrees;
+//            float rotateDegreesPerSecond = 180 / 0.5; // Would take 0.5 seconds to rotate 180 degrees, or half a circle
+//            //_player.anchorPoint = ccp(0.5, 0.5);
+//            
+//            float degreesDiff = _player.rotation - cocosAngle;
+//            float rotateDuration = fabs(degreesDiff / rotateDegreesPerSecond);
+//            
+//            [_player runAction:[CCSequence actions:[CCRotateTo actionWithDuration:rotateDuration angle:cocosAngle],nil]];
             
             
             //            if (ButtonTapped) {
@@ -721,11 +759,35 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             printf("CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
             _player.position = ccp(_player.position.x, y+5);
             _nextProjectile.position = _player.position;
+            cannonHead.position = ccp(cannonHead.position.x, y);
+            
+        }
+        
+        if (pos.x>=cageLeft+5 and pos.x <=80 )
+        {
+            
+            //NSLog(@"X location: %f", pos.x);
+            //NSLog(@"Y Location: %f",pos.y);
+            
+            float deltaY = pos.y - _player.position.y;
+            float deltaX = pos.x - _player.position.x;
+            
+            // Bail out if you are shooting down or backwards
+            //if (offset.x <= 0) return;
+            angleInDegrees = atan2(deltaY, deltaX) * 180 / M_PI;
+            
+   
+            if (counter ==1){
+                cannonHead.position = ccp(cannonHead.position.x - 10.0, cannonHead.position.y - 2.0);
+                counter = 0;
+            }
+            cannonHead.anchorPoint = ccp(0.3,0.3);
+            cannonHead.rotation = -angleInDegrees;
             
         }
         if (input.anyTouchEndedThisFrame) {
             
-            
+        
             
         }
     }

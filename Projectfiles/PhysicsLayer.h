@@ -34,7 +34,8 @@ enum
 	//ContactListener* contactListener;
 	GLESDebugDraw* debugDraw;
     b2MouseJoint *_mouseJoint;
-    CCSprite *_player;    //Also replacing _player with "cannon"
+    CCSprite *_player;
+    CCSprite *cannonHead;//Also replacing _player with "cannon"
 //    CCSprite *_cannon;
     
     
