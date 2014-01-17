@@ -142,7 +142,9 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     
         
         cannonHead = [CCSprite spriteWithFile:@"cannon-head-cropped.png"];
-        cannonHead.position = ccp(_player.position.x + 26, _player.position.y + 0.5);
+        cannonHead.position = ccp(_player.position.x + 30, _player.position.y - 0.5);
+        int asdf = cannonHead.position.x;
+        int fdsa = cannonHead.position.y;
         [self addChild:cannonHead z:1];
         
         
@@ -722,13 +724,17 @@ int counter = 1;
             angleInDegrees = atan2(deltaY, deltaX) * 180 / M_PI;
             
             
-            if (counter ==1){
-                
-                cannonHead.position = ccp(cannonHead.position.x - 10.0, cannonHead.position.y - 2.0);
-                counter = 0;
+            if ( angleInDegrees < 50 && angleInDegrees > -50)
+            {
+            
+                if (counter ==1){
+                    
+                    cannonHead.position = ccp(cannonHead.position.x - 10.0, cannonHead.position.y - 2.0);
+                    counter = 0;
+                }
+                cannonHead.anchorPoint = ccp(0.3,0.3);
+                cannonHead.rotation = -angleInDegrees;
             }
-            cannonHead.anchorPoint = ccp(0.3,0.3);
-            cannonHead.rotation = -angleInDegrees;
             
         }
         if (input.anyTouchEndedThisFrame) {
@@ -950,6 +956,19 @@ int counter = 1;
     
     ccColor4F bottomColor = ccc4f(0, 0, 0, 1);
     ccDrawSolidRect( ccp(barx, bary), ccp(480, bary + 5), bottomColor);
+    
+    
+    ccColor4F SFD = ccc4f(0.5, 0, 0, 1);
+    
+    int asdfx = 70;
+    int asdfy = 242;
+    
+    ccDrawSolidRect( ccp(asdfx, asdfy), ccp(asdfx + 1, asdfy + 1), SFD);
+    
+    int fdsax = 70;
+    int fdsay = 142;
+    ccDrawSolidRect(ccp(fdsax, fdsay), ccp(fdsax + 1, fdsay + 1), SFD);
+    
 }
 
 @end
