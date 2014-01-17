@@ -703,11 +703,13 @@ int counter = 1;
         //pos.x <= cageLeft
         if (CGRectContainsPoint(_player.boundingBox, pos))
         {
-            printf("CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
-            _player.position = ccp(_player.position.x, y+5);
-            _nextProjectile.position = _player.position;
-            cannonHead.position = ccp(cannonHead.position.x, y);
-            
+            if (pos.y < 280 && pos.y > cageBottom + 20)
+            {
+                printf("CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
+                _player.position = ccp(_player.position.x, y+5);
+                _nextProjectile.position = _player.position;
+                cannonHead.position = ccp(cannonHead.position.x, y);
+            }
         }
         
         if (pos.x>=cageLeft+5 and pos.x <=80 )
@@ -958,16 +960,16 @@ int counter = 1;
     ccDrawSolidRect( ccp(barx, bary), ccp(480, bary + 5), bottomColor);
     
     
-    ccColor4F SFD = ccc4f(0.5, 0, 0, 1);
-    
-    int asdfx = 70;
-    int asdfy = 242;
-    
-    ccDrawSolidRect( ccp(asdfx, asdfy), ccp(asdfx + 1, asdfy + 1), SFD);
-    
-    int fdsax = 70;
-    int fdsay = 142;
-    ccDrawSolidRect(ccp(fdsax, fdsay), ccp(fdsax + 1, fdsay + 1), SFD);
+//    ccColor4F SFD = ccc4f(0.5, 0, 0, 1);
+//    
+//    int asdfx = 70;
+//    int asdfy = 242;
+//    
+//    ccDrawSolidRect( ccp(asdfx, asdfy), ccp(asdfx + 1, asdfy + 1), SFD);
+//    
+//    int fdsax = 70;
+//    int fdsay = 142;
+//    ccDrawSolidRect(ccp(fdsax, fdsay), ccp(fdsax + 1, fdsay + 1), SFD);
     
 }
 
