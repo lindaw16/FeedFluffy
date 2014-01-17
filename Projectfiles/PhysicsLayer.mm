@@ -165,10 +165,10 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         CCMenuItem *starMenuItem = [CCMenuItemImage
                                     itemFromNormalImage:@"ButtonStar.png" selectedImage:@"ButtonStarSel.png"
                                     target:self selector:@selector(starButtonTapped:)];
-        starMenuItem.position = ccp(80, 80);
+        starMenuItem.position = ccp(winSize.width - 40, 30);
         CCMenu *starMenu = [CCMenu menuWithItems:starMenuItem, nil];
         starMenu.position = CGPointZero;
-        [self addChild:starMenu];
+        [self addChild:starMenu z:2];
         
         CCSprite *meep = [CCSprite spriteWithFile:@"gameBackground.png"];
         meep.anchorPoint = CGPointZero;
