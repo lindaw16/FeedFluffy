@@ -143,7 +143,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         _player.position = ccp(_player.contentSize.width/2 - 4, winSize.height/2 + 32);
         
         
-        [self addChild:_player z:0];
+        [self addChild:_player z:1];
         
     
         
