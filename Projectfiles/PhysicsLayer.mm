@@ -78,7 +78,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 
 @implementation PhysicsLayer
 {
-
+    
 }
 
 +(id) sceneWithLevel:(int)level
@@ -99,14 +99,14 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         _MoveableSpriteTouch=FALSE;
         self.touchEnabled = YES;
         
-                
+        
         CGSize winSize = [CCDirector sharedDirector].winSize;
         
-
+        
         //no gravity -- Do we still need this then?
         b2Vec2 gravity = b2Vec2(0.0f, -0.0f);
         world = new b2World(gravity);
-
+        
         
         // Create edges around the entire screen except the one on the left
         b2BodyDef groundBodyDef;
@@ -134,13 +134,17 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
         groundBox.Set(b2Vec2(winSize.width/PTM_RATIO, winSize.height/PTM_RATIO), b2Vec2(winSize.width/PTM_RATIO, 0));
         _groundBody->CreateFixture(&groundBoxDef);
-
         
-    
+        
+        
         _player = [CCSprite spriteWithFile:@"cannon2.png"];
         _player.position = ccp(_player.contentSize.width/2 - 5, winSize.height/2);
         
         [self addChild:_player];
+        
+        // Create contact listener
+        _contactListener = new MyContactListener();
+        world->SetContactListener(_contactListener);
         
         //Adding "Launch" button so player can click on it to launch bullet/projectile
         
@@ -160,13 +164,48 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         CCSprite *bar = [CCSprite spriteWithFile: @"gameBar.png"];
         bar.position = ccp(winSize.width / 2, 20);
         [self addChild:bar z:1];
-
-//I don't think we need this anymore
-//        movableSprites = [[NSMutableArray alloc] init];
-//        NSArray *images = [NSArray arrayWithObjects:@"hungryEevee.png", @"hungryEeveeMouth.png", @"dog.png", @"turtle.png", nil];
-
+        
+        //I don't think we need this anymore
+        //        movableSprites = [[NSMutableArray alloc] init];
+        //        NSArray *images = [NSArray arrayWithObjects:@"hungryEevee.png", @"hungryEeveeMouth.png", @"dog.png", @"turtle.png", nil];
+        
         
         // plist level creation stuff
+        
+        /*NSString* levelString = [NSString stringWithFormat:@"%i", level];
+         NSString *levelName = [@"level" stringByAppendingString:levelString];
+         NSString *path = [[NSBundle mainBundle] pathForResource:levelName ofType:@"plist"];
+         NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:path];
+         
+         goal = [level objectForKey:@"Goal"];
+         
+         // create new dictionary that keeps track of the level progress
+         
+         for (NSString *key in goal){
+         [goalProgress setObject:@0 forKey:key];
+         }
+         
+         NSDictionary *fluffy = [level objectForKey:@"Fluffy"];
+         Fluffy *fluffy2 = [[Fluffy alloc] initWithFluffyImage];
+         NSNumber *x = [fluffy objectForKey:@"x"];
+         NSNumber *y = [fluffy objectForKey:@"y"];
+         fluffy2.position = CGPointMake([x floatValue], [y floatValue]);
+         [objects addObject:fluffy2];
+         [self addChild:fluffy2 z:1];
+         
+         NSArray *fruits = [level objectForKey:@"Fruits"];
+         
+         for (NSDictionary *fruit in fruits){
+         NSString *sName = [fruit objectForKey:@"spriteName"];
+         Fruit *fruit2 = [[Fruit alloc] initWithFruit: sName];
+         NSNumber *x = [fruit objectForKey:@"x"];
+         NSNumber *y = [fruit objectForKey:@"y"];
+         
+         fruit2.position = CGPointMake([x floatValue], [y floatValue]);
+         [objects addObject:fruit2];
+         [self addChild:fruit2 z:0];
+         }*/
+        
         
         NSString* levelString = [NSString stringWithFormat:@"%i", level];
         NSString *levelName = [@"level" stringByAppendingString:levelString];
@@ -176,7 +215,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         goal = [level objectForKey:@"Goal"];
         
         // create new dictionary that keeps track of the level progress
-
+        
         for (NSString *key in goal){
             [goalProgress setObject:@0 forKey:key];
         }
@@ -193,14 +232,38 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
         for (NSDictionary *fruit in fruits){
             NSString *sName = [fruit objectForKey:@"spriteName"];
+            //NSString *spriteName = [sName stringByAppendingString:@".png"];
             Fruit *fruit2 = [[Fruit alloc] initWithFruit: sName];
+            fruit2.tag = 2;
             NSNumber *x = [fruit objectForKey:@"x"];
             NSNumber *y = [fruit objectForKey:@"y"];
-
+            
             fruit2.position = CGPointMake([x floatValue], [y floatValue]);
             [objects addObject:fruit2];
             [self addChild:fruit2 z:0];
+            
+            // Create block body
+            b2BodyDef fruitBodyDef;
+            fruitBodyDef.type = b2_dynamicBody;
+            fruitBodyDef.position.Set([x floatValue]/PTM_RATIO, [y floatValue]/PTM_RATIO);
+            fruitBodyDef.userData = (__bridge void*)fruit2;
+            b2Body *fruitBody = world->CreateBody(&fruitBodyDef);
+            
+            // Create block shape
+            b2PolygonShape fruitShape;
+            fruitShape.SetAsBox(fruit2.contentSize.width/PTM_RATIO/2,
+                                fruit2.contentSize.height/PTM_RATIO/2);
+            
+            // Create shape definition and add to body
+            b2FixtureDef fruitShapeDef;
+            fruitShapeDef.shape = &fruitShape;
+            fruitShapeDef.density = 10.0;
+            fruitShapeDef.friction = 0.0;
+            fruitShapeDef.restitution = 0.1f;
+            fruitShapeDef.isSensor = true;
+            fruitBody->CreateFixture(&fruitShapeDef);
         }
+        
         
         [self schedule:@selector(tick:)];
         //[self schedule:@selector(kick) interval:5.0];
@@ -220,28 +283,28 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     
     [_player runAction:[CCSequence actions:[CCCallBlock actionWithBlock:^{[self addChild:_nextProjectile];_nextProjectile = nil;}],nil]];
     //this determines the speed of the ball projectile
-    b2Vec2 force = b2Vec2(cos(angleRadians), sin(angleRadians));
+    b2Vec2 force = b2Vec2(5 * cos(angleRadians), 5 * sin(angleRadians));
     
     //_body->ApplyLinearImpulse(force, ballBodyDef.position);
     printf("Applying Linear Impulse!");
     _body->ApplyLinearImpulse(force, ballBodyDef.position);
     
     // Move projectile to actual endpoint
-    [_nextProjectile runAction:
+    /*[_nextProjectile runAction:
      [CCSequence actions:
-      [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
-      [CCCallBlockN actionWithBlock:^(CCNode *node) {
-         [node removeFromParentAndCleanup:YES];
+     [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
+     [CCCallBlockN actionWithBlock:^(CCNode *node) {
+     [node removeFromParentAndCleanup:YES];
      }],
-      nil]];
+     nil]];*/
     bulletCounter--;
     ButtonTapped = false;
-
+    
     
 }
 -(void) detectCollisions
 {
-//balls in this case is still the projectile, which we will be removing/replacing
+    //balls in this case is still the projectile, which we will be removing/replacing
     //NSLog(@"foodObjects Count");
     //NSLog(@"%d",[foodObjects count]);
     
@@ -263,13 +326,13 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
                 //if(ball.position.x == food.position.x)
                 if(ball.position.x < (object.position.x + 50.0f) && ball.position.x > (object.position.x - 50.0f))
                 {
-
+                    
                     //check if their y coordinates are within the height of the block
                     if(ball.position.y < (object.position.y + 50.0f) && ball.position.y > object.position.y - 50.0f)
                     {
                         //NSLog(@"COLLISION!!!");
                         if([object isKindOfClass:[Fluffy class]]) {
-
+                            
                             BOOL levelCompleted = [self checkLevelCompleted];
                             //NSLog(@"BOOLEAN VALUE");
                             //NSLog(@"%d", levelCompleted);
@@ -277,7 +340,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
                             
                             
                             if (levelCompleted){
-//                                [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+                                //                                [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
                             }
                             
                             
@@ -302,9 +365,9 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
                             [self removeChild:object cleanup:YES];
                             //[self removeChild:ball cleanup:YES];
                             [objects removeObjectAtIndex:foodIndex];
-                        //[bullets removeObjectAtIndex:first];
-                        //[[SimpleAudioEngine sharedEngine] playEffect:@"explo2.wav"];
-                        //}
+                            //[bullets removeObjectAtIndex:first];
+                            //[[SimpleAudioEngine sharedEngine] playEffect:@"explo2.wav"];
+                            //}
                         }
                         
                     }
@@ -342,7 +405,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             ballData.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
             
             // if ball is going too fast, turn on damping
-//we should do this!!
+            //we should do this!!
         }
     }
 }
@@ -355,7 +418,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     _groundBody = NULL;
     //world = NULL;
     //delete contactListener;
-    
+    delete _contactListener;
 #ifndef KK_ARC_ENABLED
 	[super dealloc];
 #endif
@@ -492,10 +555,10 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 
 -(void) update:(ccTime)delta
 {
-   
+    
 	CCDirector* director = [CCDirector sharedDirector];
     
-//do we have to check the current platform stuff?
+    //do we have to check the current platform stuff?
     
     //Create an instance called input of Kobold2D's built-in super easy to use touch processor
     KKInput* input = [KKInput sharedInput];
@@ -505,7 +568,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     
     int x = pos.x;
     int y = pos.y;
-
+    
     
     if (input.anyTouchBeganThisFrame) //someone's touching the screen!! :O
     {
@@ -530,6 +593,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             // Set up initial location of projectile
             CGSize winSize = [[CCDirector sharedDirector] winSize];
             _nextProjectile = [CCSprite spriteWithFile:@"bullet.png"];
+            _nextProjectile.tag = 1;
             
             _nextProjectile.position = _player.position;
             [balls addObject: _nextProjectile];
@@ -537,7 +601,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             // Create ball body and shape
             
             ballBodyDef.type = b2_dynamicBody;
-//            ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
+            //            ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
             NSLog(@"in Position.SET\n");
             ballBodyDef.position.Set(_player.position.x/PTM_RATIO,_player.position.y/PTM_RATIO);
             ballBodyDef.userData = (__bridge void*)_nextProjectile;
@@ -586,29 +650,29 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             float rotateDuration = fabs(degreesDiff / rotateDegreesPerSecond);
             
             [_player runAction:[CCSequence actions:[CCRotateTo actionWithDuration:rotateDuration angle:cocosAngle],nil]];
-
             
-//            if (ButtonTapped) {
-//             [_player runAction:[CCSequence actions:[CCCallBlock actionWithBlock:^{[self addChild:_nextProjectile];_nextProjectile = nil;}],nil]];
-//            //this determines the speed of the ball projectile
-//            b2Vec2 force = b2Vec2(cos(angleRadians), sin(angleRadians));
-//
-//            //_body->ApplyLinearImpulse(force, ballBodyDef.position);
-//            printf("Applying Linear Impulse!");
-//            _body->ApplyLinearImpulse(force, ballBodyDef.position);
-//            
-//            // Move projectile to actual endpoint
-//            [_nextProjectile runAction:
-//             [CCSequence actions:
-//              [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
-//              [CCCallBlockN actionWithBlock:^(CCNode *node) {
-//                 [node removeFromParentAndCleanup:YES];
-//             }],
-//              nil]];
-//            bulletCounter--;
-//                ButtonTapped = false;
-//            _player.tag = 4;
-//            }
+            
+            //            if (ButtonTapped) {
+            //             [_player runAction:[CCSequence actions:[CCCallBlock actionWithBlock:^{[self addChild:_nextProjectile];_nextProjectile = nil;}],nil]];
+            //            //this determines the speed of the ball projectile
+            //            b2Vec2 force = b2Vec2(cos(angleRadians), sin(angleRadians));
+            //
+            //            //_body->ApplyLinearImpulse(force, ballBodyDef.position);
+            //            printf("Applying Linear Impulse!");
+            //            _body->ApplyLinearImpulse(force, ballBodyDef.position);
+            //
+            //            // Move projectile to actual endpoint
+            //            [_nextProjectile runAction:
+            //             [CCSequence actions:
+            //              [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
+            //              [CCCallBlockN actionWithBlock:^(CCNode *node) {
+            //                 [node removeFromParentAndCleanup:YES];
+            //             }],
+            //              nil]];
+            //            bulletCounter--;
+            //                ButtonTapped = false;
+            //            _player.tag = 4;
+            //            }
             
         }
         else{
@@ -630,9 +694,9 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             
         }
         if (input.anyTouchEndedThisFrame) {
-        
             
-        
+            
+            
         }
     }
     
@@ -642,7 +706,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     }
     
     
- 
+    
 	if (director.currentPlatformIsIOS)
 	{
 		KKInput* input = [KKInput sharedInput];
@@ -689,7 +753,53 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 		}
 	}
     
-    [self detectCollisions];
+    //check contacts
+    //check contacts
+    std::vector<b2Body *>toDestroy;
+    std::vector<MyContact>::iterator pos2;
+    for (pos2=_contactListener->_contacts.begin();
+         pos2 != _contactListener->_contacts.end(); ++pos2) {
+        MyContact contact = *pos2;
+        
+        /*if ((contact.fixtureA == _bottomFixture && contact.fixtureB == _ballFixture) ||
+         (contact.fixtureA == _ballFixture && contact.fixtureB == _bottomFixture)) {
+         //NSLog(@"Ball hit bottom!");
+         CCScene *gameOverScene = [GameOverLayer sceneWithWon:NO];
+         [[CCDirector sharedDirector] replaceScene:gameOverScene];
+         }*/
+        
+        b2Body *bodyA = contact.fixtureA->GetBody();
+        b2Body *bodyB = contact.fixtureB->GetBody();
+        if (bodyA->GetUserData() != NULL && bodyB->GetUserData() != NULL) {
+            CCSprite *spriteA = (__bridge CCSprite *) bodyA->GetUserData();
+            CCSprite *spriteB = (__bridge CCSprite *) bodyB->GetUserData();
+            
+            //Sprite A = ball, Sprite B = Block
+            if (spriteA.tag == 1 && spriteB.tag == 2) {
+                if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) == toDestroy.end()) {
+                    toDestroy.push_back(bodyB);
+                }
+            }
+            
+            //Sprite A = block, Sprite B = ball
+            else if (spriteA.tag == 2 && spriteB.tag == 1) {
+                if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
+                    toDestroy.push_back(bodyA);
+                }
+            }
+        }
+    }
+    
+    std::vector<b2Body *>::iterator pos3;
+    for (pos3 = toDestroy.begin(); pos3 != toDestroy.end(); ++pos3) {
+        b2Body *body = *pos3;
+        if (body->GetUserData() != NULL) {
+            CCSprite *sprite = (__bridge CCSprite *) body->GetUserData();
+            [self removeChild:sprite cleanup:YES];
+        }
+        world->DestroyBody(body);
+    }
+    //[self detectCollisions];
 }
 
 
@@ -706,32 +816,32 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 }
 
 /*
-#if DEBUG
--(void) draw
-{
-	[super draw];
-    
-	if (debugDraw)
-	{
-		ccGLEnableVertexAttribs(kCCVertexAttribFlag_Position);
-		kmGLPushMatrix();
-		world->DrawDebugData();
-		kmGLPopMatrix();
-	}
-}
-#endif
-*/
-
-
-
+ #if DEBUG
  -(void) draw
+ {
+ [super draw];
+ 
+ if (debugDraw)
+ {
+ ccGLEnableVertexAttribs(kCCVertexAttribFlag_Position);
+ kmGLPushMatrix();
+ world->DrawDebugData();
+ kmGLPopMatrix();
+ }
+ }
+ #endif
+ */
+
+
+
+-(void) draw
 {
     //draw the cage
     ccColor4F buttonColor = ccc4f(0, 0.5, 0.5, 0.5);
-  
+    
     int x = cageLeft;
     int y = 0;
-//why can't I use winSize here?
+    //why can't I use winSize here?
     ccDrawSolidRect( ccp(x, y), ccp(x + 10, y+ 350) , buttonColor);
     
     int barx = 0;
@@ -742,15 +852,3 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 }
 
 @end
-
-
-
-
-
-
-
-
-
-
-
-

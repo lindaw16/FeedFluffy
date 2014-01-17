@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		911975BA1888618F0070C1AE /* ButtonStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 911975B81888618F0070C1AE /* ButtonStar.png */; };
 		911975BB1888618F0070C1AE /* ButtonStarSel.png in Resources */ = {isa = PBXBuildFile; fileRef = 911975B91888618F0070C1AE /* ButtonStarSel.png */; };
+		AB9E2D031888D5B600F99EAB /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = AB9E2D021888D5B600F99EAB /* MyContactListener.mm */; };
 		ABA2151C18862C0E0011BE0B /* gameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA2151B18862C0E0011BE0B /* gameBackground.png */; };
 		ABB719CF18871CCA004D2FCA /* Fluffy.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB719CE18871CCA004D2FCA /* Fluffy.m */; };
 		ABB719D118872333004D2FCA /* cannon2.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719D018872333004D2FCA /* cannon2.png */; };
@@ -108,6 +109,8 @@
 		911975B81888618F0070C1AE /* ButtonStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonStar.png; sourceTree = "<group>"; };
 		911975B91888618F0070C1AE /* ButtonStarSel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonStarSel.png; sourceTree = "<group>"; };
 		912F81ED18839C0300838683 /* Box2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box2D.h; sourceTree = "<group>"; };
+		AB9E2D011888D5B600F99EAB /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContactListener.h; sourceTree = "<group>"; };
+		AB9E2D021888D5B600F99EAB /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyContactListener.mm; sourceTree = "<group>"; };
 		ABA2151B18862C0E0011BE0B /* gameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground.png; sourceTree = "<group>"; };
 		ABB719CD18871CCA004D2FCA /* Fluffy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fluffy.h; sourceTree = "<group>"; };
 		ABB719CE18871CCA004D2FCA /* Fluffy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fluffy.m; sourceTree = "<group>"; };
@@ -401,6 +404,8 @@
 			isa = PBXGroup;
 			children = (
 				BFB4259F18862DDE002DD826 /* StartMenuLayer.h */,
+				AB9E2D011888D5B600F99EAB /* MyContactListener.h */,
+				AB9E2D021888D5B600F99EAB /* MyContactListener.mm */,
 				BFB425A018862DDE002DD826 /* StartMenuLayer.mm */,
 				BFB4259518862C92002DD826 /* LevelSelectLayer.h */,
 				BFB4259618862C92002DD826 /* LevelSelectLayer.mm */,
@@ -627,6 +632,7 @@
 				BFB425A118862DDE002DD826 /* StartMenuLayer.mm in Sources */,
 				ABB719DA18873FBF004D2FCA /* Obstacle.m in Sources */,
 				DC2A3EC4149A30B400EF78B0 /* Box2DDebugLayer.mm in Sources */,
+				AB9E2D031888D5B600F99EAB /* MyContactListener.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

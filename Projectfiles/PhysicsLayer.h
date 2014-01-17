@@ -10,8 +10,8 @@
 //#import "Box2DDebugLayer.h"
 #import "GLES-Render.h"
 
-#import "ContactListener.h"
-
+//#import "ContactListener.h"
+#import "MyContactListener.h"
 enum
 {
 	kTagBatchNode,
@@ -48,6 +48,7 @@ enum
     
     //Launch Button Label Button
     CCLabelTTF *_launchLabel;
+    MyContactListener *_contactListener;
     
 }
 
