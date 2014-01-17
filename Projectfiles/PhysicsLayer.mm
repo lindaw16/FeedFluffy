@@ -56,6 +56,7 @@ float realMoveDuration;
 b2BodyDef ballBodyDef;
 b2Body *_body;
 CGPoint realDest;
+BOOL levelCompleted;
 
 NSMutableArray *objects = [[NSMutableArray alloc] init];
 NSMutableArray *balls = [[NSMutableArray alloc] init];
@@ -805,8 +806,9 @@ int counter = 1;
             //if (offset.x <= 0) return;
             angleInDegrees = atan2(deltaY, deltaX) * 180 / M_PI;
             
-   
+            
             if (counter ==1){
+                
                 cannonHead.position = ccp(cannonHead.position.x - 10.0, cannonHead.position.y - 2.0);
                 counter = 0;
             }
@@ -944,12 +946,14 @@ int counter = 1;
 
                 if (levelCompleted){
                     [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+                    counter = 1;
                 }
                 
                 else {
                     NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
                 }
                 NSLog(@"Hit Fluffy!");
+
                 //}
 
             }
@@ -960,12 +964,14 @@ int counter = 1;
                     //toDestroy.push_back(bodyA);
                     //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
                     NSLog(@"Hit Fluffy!");
-                BOOL levelCompleted = [self checkLevelCompleted];
+                levelCompleted = [self checkLevelCompleted];
+
                 //NSLog(@"BOOLEAN VALUE");
                 //NSLog(@"%d", levelCompleted);
                 
                 if (levelCompleted){
                     [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+                                    counter = 1;
                 }
                 
                 else {
