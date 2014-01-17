@@ -225,8 +225,31 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         NSNumber *x = [fluffy objectForKey:@"x"];
         NSNumber *y = [fluffy objectForKey:@"y"];
         fluffy2.position = CGPointMake([x floatValue], [y floatValue]);
+        fluffy2.tag = 3;
+        
         [objects addObject:fluffy2];
         [self addChild:fluffy2 z:1];
+        
+        // Create block body
+        b2BodyDef fluffyBodyDef;
+        fluffyBodyDef.type = b2_dynamicBody;
+        fluffyBodyDef.position.Set([x floatValue]/PTM_RATIO, [y floatValue]/PTM_RATIO);
+        fluffyBodyDef.userData = (__bridge void*)fluffy2;
+        b2Body *fluffyBody = world->CreateBody(&fluffyBodyDef);
+        
+        // Create block shape
+        b2PolygonShape fluffyShape;
+        fluffyShape.SetAsBox(fluffy2.contentSize.width/PTM_RATIO/2,
+                            fluffy2.contentSize.height/PTM_RATIO/2);
+        
+        // Create shape definition and add to body
+        b2FixtureDef fluffyShapeDef;
+        fluffyShapeDef.shape = &fluffyShape;
+        fluffyShapeDef.density = 10.0;
+        fluffyShapeDef.friction = 0.0;
+        fluffyShapeDef.restitution = 0.1f;
+        fluffyShapeDef.isSensor = true;
+        fluffyBody->CreateFixture(&fluffyShapeDef);
         
         NSArray *fruits = [level objectForKey:@"Fruits"];
         
@@ -774,18 +797,40 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             CCSprite *spriteA = (__bridge CCSprite *) bodyA->GetUserData();
             CCSprite *spriteB = (__bridge CCSprite *) bodyB->GetUserData();
             
-            //Sprite A = ball, Sprite B = Block
-            if (spriteA.tag == 1 && spriteB.tag == 2) {
+            //Sprite A = ball, Sprite B = fruit
+            if (spriteA.tag == 1 && [spriteB isKindOfClass:[Fruit class]]) {
+            //if (spriteA.tag == 1 && spriteB.tag == 2) {
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) == toDestroy.end()) {
                     toDestroy.push_back(bodyB);
+                    NSLog(@"Hit Fruit");
                 }
             }
             
-            //Sprite A = block, Sprite B = ball
-            else if (spriteA.tag == 2 && spriteB.tag == 1) {
+            //Sprite A = fruit, Sprite B = ball
+            else if ([spriteA isKindOfClass:[Fruit class]] && spriteB.tag == 1) {
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
                     toDestroy.push_back(bodyA);
+                    NSLog(@"Hit Fruit");
                 }
+            }
+            
+            //Sprite A = ball, Sprite B = fluffy
+            else if (spriteA.tag == 1 && [spriteA isKindOfClass:[Fluffy class]]) {
+                //if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) == toDestroy.end()) {
+                    //toDestroy.push_back(bodyB);
+                    //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+                    NSLog(@"Hit Fluffy!");
+                //}
+
+            }
+            
+            //Sprite A = fluffy, Sprite B = ball
+            else if ([spriteA isKindOfClass:[Fluffy class]] && spriteB.tag == 1) {
+                //if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
+                    //toDestroy.push_back(bodyA);
+                    //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+                    NSLog(@"Hit Fluffy!");
+                //}
             }
         }
     }
