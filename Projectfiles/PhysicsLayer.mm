@@ -122,9 +122,9 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         _groundBody->CreateFixture(&groundBoxDef);
         
         
-        groundBox.Set(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
-        _groundBody->CreateFixture(&groundBoxDef);
-        
+//        groundBox.Set(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
+//        _groundBody->CreateFixture(&groundBoxDef);
+//        
         //adding this back in case we need it later
         //groundBox.Set(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
         //_groundBody->CreateFixture(&groundBoxDef);
@@ -316,6 +316,34 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 
 - (void)starButtonTapped:(id)sender {
     printf("Button tapped!!!!!!\n");
+    
+    _nextProjectile = [CCSprite spriteWithFile:@"bullet.png"];
+    _nextProjectile.tag = 1;
+    
+    _nextProjectile.position = _player.position;
+    [balls addObject: _nextProjectile];
+    // Create ball body and shape
+    
+    ballBodyDef.type = b2_dynamicBody;
+    //            ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
+    NSLog(@"in Position.SET\n");
+    ballBodyDef.position.Set(_player.position.x/PTM_RATIO,_player.position.y/PTM_RATIO);
+    ballBodyDef.userData = (__bridge void*)_nextProjectile;
+    
+    _body = world->CreateBody(&ballBodyDef);
+    
+    b2CircleShape circle;
+    //circle.m_radius = 26.0/PTM_RATIO;
+    //circle.m_radius = 9.0/PTM_RATIO;
+    circle.m_radius = 20.0/PTM_RATIO;
+    
+    b2FixtureDef ballShapeDef;
+    ballShapeDef.shape = &circle;
+    ballShapeDef.density = 0.5f;
+    ballShapeDef.friction = 0.0f;
+    ballShapeDef.restitution = 1.0f;
+    _body->CreateFixture(&ballShapeDef);
+
     
     float radianAngle = CC_DEGREES_TO_RADIANS(angleInDegrees);
     [_player runAction:[CCSequence actions:[CCCallBlock actionWithBlock:^{[self addChild:_nextProjectile];_nextProjectile = nil;}],nil]];
@@ -624,32 +652,32 @@ int counter = 1;
         location = [self convertToNodeSpace:pos];
         //CGRect leftBorder = CGRectMake(cageLeft, 0, cageLeft+10, 350);
         
-        _nextProjectile = [CCSprite spriteWithFile:@"bullet.png"];
-        _nextProjectile.tag = 1;
-        
-        _nextProjectile.position = _player.position;
-        [balls addObject: _nextProjectile];
-        // Create ball body and shape
-        
-        ballBodyDef.type = b2_dynamicBody;
-        //            ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
-        NSLog(@"in Position.SET\n");
-        ballBodyDef.position.Set(_player.position.x/PTM_RATIO,_player.position.y/PTM_RATIO);
-        ballBodyDef.userData = (__bridge void*)_nextProjectile;
-        
-        _body = world->CreateBody(&ballBodyDef);
-        
-        b2CircleShape circle;
-        //circle.m_radius = 26.0/PTM_RATIO;
-        //circle.m_radius = 9.0/PTM_RATIO;
-        circle.m_radius = 20.0/PTM_RATIO;
-        
-        b2FixtureDef ballShapeDef;
-        ballShapeDef.shape = &circle;
-        ballShapeDef.density = 0.5f;
-        ballShapeDef.friction = 0.0f;
-        ballShapeDef.restitution = 1.0f;
-        _body->CreateFixture(&ballShapeDef);
+//        _nextProjectile = [CCSprite spriteWithFile:@"bullet.png"];
+//        _nextProjectile.tag = 1;
+//        
+//        _nextProjectile.position = _player.position;
+//        [balls addObject: _nextProjectile];
+//        // Create ball body and shape
+//        
+//        ballBodyDef.type = b2_dynamicBody;
+//        //            ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
+//        NSLog(@"in Position.SET\n");
+//        ballBodyDef.position.Set(_player.position.x/PTM_RATIO,_player.position.y/PTM_RATIO);
+//        ballBodyDef.userData = (__bridge void*)_nextProjectile;
+//        
+//        _body = world->CreateBody(&ballBodyDef);
+//        
+//        b2CircleShape circle;
+//        //circle.m_radius = 26.0/PTM_RATIO;
+//        //circle.m_radius = 9.0/PTM_RATIO;
+//        circle.m_radius = 20.0/PTM_RATIO;
+//        
+//        b2FixtureDef ballShapeDef;
+//        ballShapeDef.shape = &circle;
+//        ballShapeDef.density = 0.5f;
+//        ballShapeDef.friction = 0.0f;
+//        ballShapeDef.restitution = 1.0f;
+//        _body->CreateFixture(&ballShapeDef);
 
         //This code is not needed anymore - I believe.
         
