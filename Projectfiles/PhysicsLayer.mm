@@ -139,8 +139,8 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
         
         
-        _player = [CCSprite spriteWithFile:@"cannon-body.png"];
-        _player.position = ccp(_player.contentSize.width/2 - 8, winSize.height/2 + 32);
+        _player = [CCSprite spriteWithFile:@"cannon-body-bigger.png"];
+        _player.position = ccp(_player.contentSize.width/2 - 4, winSize.height/2 + 32);
         
         
         [self addChild:_player z:0];
@@ -754,7 +754,8 @@ int counter = 1;
     
     else if (input.touchesAvailable)
     {
-        if (pos.x <= cageLeft)
+        //pos.x <= cageLeft
+        if (CGRectContainsPoint(_player.boundingBox, pos))
         {
             printf("CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
             _player.position = ccp(_player.position.x, y+5);
