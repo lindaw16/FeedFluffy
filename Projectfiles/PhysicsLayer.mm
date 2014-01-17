@@ -137,10 +137,17 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
         
         
-        _player = [CCSprite spriteWithFile:@"cannon2.png"];
-        _player.position = ccp(_player.contentSize.width/2 - 5, winSize.height/2);
+        _player = [CCSprite spriteWithFile:@"cannon-body.png"];
+        _player.position = ccp(_player.contentSize.width/2 - 8, winSize.height/2 + 32);
         
-        [self addChild:_player];
+        
+        [self addChild:_player z:0];
+        
+        
+        CCSprite *cannonHead = [CCSprite spriteWithFile:@"cannon-head.png"];
+        cannonHead.position = ccp(_player.position.x + 38, _player.position.y + 3);
+        [self addChild:cannonHead z:1];
+        
         
         // Create contact listener
         _contactListener = new MyContactListener();
