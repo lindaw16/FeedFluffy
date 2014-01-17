@@ -10,7 +10,7 @@
 		911975BA1888618F0070C1AE /* ButtonStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 911975B81888618F0070C1AE /* ButtonStar.png */; };
 		911975BB1888618F0070C1AE /* ButtonStarSel.png in Resources */ = {isa = PBXBuildFile; fileRef = 911975B91888618F0070C1AE /* ButtonStarSel.png */; };
 		914BE9CD188969C70085E989 /* cannon-head-cropped.png in Resources */ = {isa = PBXBuildFile; fileRef = 914BE9CC188969C70085E989 /* cannon-head-cropped.png */; };
-		914BE9CF18898DE10085E989 /* cannon-body-bigger.png in Resources */ = {isa = PBXBuildFile; fileRef = 914BE9CE18898DE00085E989 /* cannon-body-bigger.png */; };
+		914BE9D1188990390085E989 /* cannon-body2.png in Resources */ = {isa = PBXBuildFile; fileRef = 914BE9D0188990390085E989 /* cannon-body2.png */; };
 		AB9E2D031888D5B600F99EAB /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = AB9E2D021888D5B600F99EAB /* MyContactListener.mm */; };
 		ABA2151C18862C0E0011BE0B /* gameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA2151B18862C0E0011BE0B /* gameBackground.png */; };
 		ABB719CF18871CCA004D2FCA /* Fluffy.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB719CE18871CCA004D2FCA /* Fluffy.m */; };
@@ -114,7 +114,7 @@
 		911975B91888618F0070C1AE /* ButtonStarSel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonStarSel.png; sourceTree = "<group>"; };
 		912F81ED18839C0300838683 /* Box2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box2D.h; sourceTree = "<group>"; };
 		914BE9CC188969C70085E989 /* cannon-head-cropped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cannon-head-cropped.png"; sourceTree = "<group>"; };
-		914BE9CE18898DE00085E989 /* cannon-body-bigger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cannon-body-bigger.png"; sourceTree = "<group>"; };
+		914BE9D0188990390085E989 /* cannon-body2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cannon-body2.png"; sourceTree = "<group>"; };
 		AB9E2D011888D5B600F99EAB /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContactListener.h; sourceTree = "<group>"; };
 		AB9E2D021888D5B600F99EAB /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyContactListener.mm; sourceTree = "<group>"; };
 		ABA2151B18862C0E0011BE0B /* gameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground.png; sourceTree = "<group>"; };
@@ -300,7 +300,7 @@
 		BF39176A18878CE000EF99E6 /* additional buttons */ = {
 			isa = PBXGroup;
 			children = (
-				914BE9CE18898DE00085E989 /* cannon-body-bigger.png */,
+				914BE9D0188990390085E989 /* cannon-body2.png */,
 				914BE9CC188969C70085E989 /* cannon-head-cropped.png */,
 				BF30E0051888DDB1000773E5 /* cannon-body.png */,
 				BF30E0061888DDB1000773E5 /* cannon-head.png */,
@@ -610,7 +610,7 @@
 				911975BA1888618F0070C1AE /* ButtonStar.png in Resources */,
 				911975BB1888618F0070C1AE /* ButtonStarSel.png in Resources */,
 				914BE9CD188969C70085E989 /* cannon-head-cropped.png in Resources */,
-				914BE9CF18898DE10085E989 /* cannon-body-bigger.png in Resources */,
+				914BE9D1188990390085E989 /* cannon-body2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

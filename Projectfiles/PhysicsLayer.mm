@@ -139,7 +139,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
         
         
-        _player = [CCSprite spriteWithFile:@"cannon-body-bigger.png"];
+        _player = [CCSprite spriteWithFile:@"cannon-body2.png"];
         _player.position = ccp(_player.contentSize.width/2 - 4, winSize.height/2 + 32);
         
         
