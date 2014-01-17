@@ -17,6 +17,7 @@
 #import "Fluffy.h"
 #import "OopsDNE.h"
 #import "Fruit.h"
+#import "Obstacle.h"
 
 //#import "cocos2d.m"
 
@@ -58,13 +59,13 @@ b2Body *_body;
 CGPoint realDest;
 BOOL levelCompleted;
 
-NSMutableArray *objects = [[NSMutableArray alloc] init];
+/*NSMutableArray *objects = [[NSMutableArray alloc] init];
 NSMutableArray *balls = [[NSMutableArray alloc] init];
 CCSprite *ball;
 
 CCSprite *object;
 CGRect firstrect;
-CGRect secondrect;
+CGRect secondrect;*/
 
 NSDictionary *goal;
 NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
@@ -183,43 +184,8 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         //        movableSprites = [[NSMutableArray alloc] init];
         //        NSArray *images = [NSArray arrayWithObjects:@"hungryEevee.png", @"hungryEeveeMouth.png", @"dog.png", @"turtle.png", nil];
         
-        
+
         // plist level creation stuff
-        
-        /*NSString* levelString = [NSString stringWithFormat:@"%i", level];
-         NSString *levelName = [@"level" stringByAppendingString:levelString];
-         NSString *path = [[NSBundle mainBundle] pathForResource:levelName ofType:@"plist"];
-         NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:path];
-         
-         goal = [level objectForKey:@"Goal"];
-         
-         // create new dictionary that keeps track of the level progress
-         
-         for (NSString *key in goal){
-         [goalProgress setObject:@0 forKey:key];
-         }
-         
-         NSDictionary *fluffy = [level objectForKey:@"Fluffy"];
-         Fluffy *fluffy2 = [[Fluffy alloc] initWithFluffyImage];
-         NSNumber *x = [fluffy objectForKey:@"x"];
-         NSNumber *y = [fluffy objectForKey:@"y"];
-         fluffy2.position = CGPointMake([x floatValue], [y floatValue]);
-         [objects addObject:fluffy2];
-         [self addChild:fluffy2 z:1];
-         
-         NSArray *fruits = [level objectForKey:@"Fruits"];
-         
-         for (NSDictionary *fruit in fruits){
-         NSString *sName = [fruit objectForKey:@"spriteName"];
-         Fruit *fruit2 = [[Fruit alloc] initWithFruit: sName];
-         NSNumber *x = [fruit objectForKey:@"x"];
-         NSNumber *y = [fruit objectForKey:@"y"];
-         
-         fruit2.position = CGPointMake([x floatValue], [y floatValue]);
-         [objects addObject:fruit2];
-         [self addChild:fruit2 z:0];
-         }*/
-        
         
         NSString* levelString = [NSString stringWithFormat:@"%i", level];
         NSString *levelName = [@"level" stringByAppendingString:levelString];
@@ -241,7 +207,6 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         fluffy2.position = CGPointMake([x floatValue], [y floatValue]);
         fluffy2.tag = 3;
         
-        [objects addObject:fluffy2];
         [self addChild:fluffy2 z:1];
         
         // Create block body
@@ -265,6 +230,41 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         fluffyShapeDef.isSensor = true;
         fluffyBody->CreateFixture(&fluffyShapeDef);
         
+        if ([level objectForKey:@"Obstacles"]){
+            NSArray *obstacles= [level objectForKey:@"Obstacles"];
+            for (NSDictionary *obstacle in obstacles){
+                NSString *sName = [obstacle objectForKey:@"spriteName"];
+                Obstacle *obstacle2 = [[Obstacle alloc] initWithObstacle: sName];
+                NSNumber *x = [obstacle objectForKey:@"x"];
+                NSNumber *y = [obstacle objectForKey:@"y"];
+                obstacle2.position = CGPointMake([x floatValue], [y floatValue]);
+                obstacle2.tag = 4;
+            
+                [self addChild:obstacle2 z:1];
+            
+                // Create block body
+                b2BodyDef obstacleBodyDef;
+                obstacleBodyDef.type = b2_staticBody;
+                obstacleBodyDef.position.Set([x floatValue]/PTM_RATIO, [y floatValue]/PTM_RATIO);
+                obstacleBodyDef.userData = (__bridge void*)obstacle2;
+                b2Body *obstacleBody = world->CreateBody(&obstacleBodyDef);
+            
+                // Create block shape
+                b2PolygonShape obstacleShape;
+                obstacleShape.SetAsBox(obstacle2.contentSize.width/PTM_RATIO/2,
+                                 obstacle2.contentSize.height/PTM_RATIO/2);
+            
+                // Create shape definition and add to body
+                b2FixtureDef obstacleShapeDef;
+                obstacleShapeDef.shape = &obstacleShape;
+                obstacleShapeDef.density = 10.0;
+                obstacleShapeDef.friction = 0.0;
+                obstacleShapeDef.restitution = 0.1f;
+                obstacleShapeDef.isSensor = false;
+                obstacleBody->CreateFixture(&obstacleShapeDef);
+            }
+        }
+        
         NSArray *fruits = [level objectForKey:@"Fruits"];
         
         for (NSDictionary *fruit in fruits){
@@ -276,7 +276,6 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             NSNumber *y = [fruit objectForKey:@"y"];
             
             fruit2.position = CGPointMake([x floatValue], [y floatValue]);
-            [objects addObject:fruit2];
             [self addChild:fruit2 z:0];
             
             // Create block body
@@ -322,7 +321,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     _nextProjectile.tag = 1;
     
     _nextProjectile.position = _player.position;
-    [balls addObject: _nextProjectile];
+
     // Create ball body and shape
     
     ballBodyDef.type = b2_dynamicBody;
@@ -368,7 +367,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     
     
 }
--(void) detectCollisions
+/*-(void) detectCollisions
 {
     //balls in this case is still the projectile, which we will be removing/replacing
     //NSLog(@"foodObjects Count");
@@ -441,7 +440,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             }
         }
     }
-}
+}*/
 
 
 

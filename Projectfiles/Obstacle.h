@@ -10,4 +10,6 @@
 
 @interface Obstacle : CCSprite
 
+-(id) initWithObstacle: (NSString *) obstacle;
+
 @end
