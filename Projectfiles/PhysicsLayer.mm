@@ -59,14 +59,6 @@ b2Body *_body;
 CGPoint realDest;
 BOOL levelCompleted;
 
-/*NSMutableArray *objects = [[NSMutableArray alloc] init];
-NSMutableArray *balls = [[NSMutableArray alloc] init];
-CCSprite *ball;
-
-CCSprite *object;
-CGRect firstrect;
-CGRect secondrect;*/
-
 NSDictionary *goal;
 NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 
@@ -367,82 +359,6 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     
     
 }
-/*-(void) detectCollisions
-{
-    //balls in this case is still the projectile, which we will be removing/replacing
-    //NSLog(@"foodObjects Count");
-    //NSLog(@"%d",[foodObjects count]);
-    
-    //First check if the ball hit a food
-    for(int i = 0; i < [balls count]; i++)
-    {
-        for(int j = 0; j < [objects count]; j++)
-        {
-            if([balls count]>0)
-            {
-                NSInteger ballIndex = i;
-                NSInteger foodIndex = j;
-                object = [objects objectAtIndex:foodIndex];
-                ball = [balls objectAtIndex:ballIndex];
-                
-                firstrect = [ball textureRect];
-                secondrect = [object textureRect];
-                //check if their x coordinates match
-                //if(ball.position.x == food.position.x)
-                if(ball.position.x < (object.position.x + 50.0f) && ball.position.x > (object.position.x - 50.0f))
-                {
-                    
-                    //check if their y coordinates are within the height of the block
-                    if(ball.position.y < (object.position.y + 50.0f) && ball.position.y > object.position.y - 50.0f)
-                    {
-                        //NSLog(@"COLLISION!!!");
-                        if([object isKindOfClass:[Fluffy class]]) {
-                            
-                            BOOL levelCompleted = [self checkLevelCompleted];
-                            //NSLog(@"BOOLEAN VALUE");
-                            //NSLog(@"%d", levelCompleted);
-                            
-                            
-                            
-                            if (levelCompleted){
-                                //                                [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
-                            }
-                            
-                            
-                            
-                            else {
-                                //NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
-                            }
-                        }
-                        else {
-                            Fruit *fruit = (Fruit*) object;
-                            NSString *fruitName = fruit.fruitName;
-                            //NSLog(fruitName);
-                            int num = [[goal objectForKey:fruitName] intValue];
-                            //NSLog(@"%d", num);
-                            int fruitNum = [[goalProgress objectForKey:fruitName] intValue];
-                            //NSLog(@"%d", fruitNum);
-                            fruitNum++;
-                            [goalProgress setObject:[NSNumber numberWithInt: fruitNum] forKey:fruitName];
-                            int fruitNum2 = [[goalProgress objectForKey:fruitName] intValue];
-                            //NSLog(@"%d", fruitNum2);
-                            
-                            [self removeChild:object cleanup:YES];
-                            //[self removeChild:ball cleanup:YES];
-                            [objects removeObjectAtIndex:foodIndex];
-                            //[bullets removeObjectAtIndex:first];
-                            //[[SimpleAudioEngine sharedEngine] playEffect:@"explo2.wav"];
-                            //}
-                        }
-                        
-                    }
-                }
-            }
-        }
-    }
-}*/
-
-
 
 -(BOOL) checkLevelCompleted {
     //NSLog(@"CHECKING IF LEVEL IS COMPLETED");
@@ -936,48 +852,41 @@ int counter = 1;
             
             //Sprite A = ball, Sprite B = fluffy
             else if (spriteA.tag == 1 && [spriteA isKindOfClass:[Fluffy class]]) {
-                //if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) == toDestroy.end()) {
-                    //toDestroy.push_back(bodyB);
-                    //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
-                BOOL levelCompleted = [self checkLevelCompleted];
-                //NSLog(@"BOOLEAN VALUE");
-                //NSLog(@"%d", levelCompleted);
+                if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) == toDestroy.end()) {
+                    toDestroy.push_back(bodyA);
+                    BOOL levelCompleted = [self checkLevelCompleted];
 
-                if (levelCompleted){
-                    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
-                    counter = 1;
-                }
+                    if (levelCompleted){
+                        [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+                        counter = 1;
+                    }
                 
-                else {
-                    NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
+                    else {
+                        NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
+                    }
+                    NSLog(@"Hit Fluffy!");
                 }
-                NSLog(@"Hit Fluffy!");
-
-                //}
 
             }
             
             //Sprite A = fluffy, Sprite B = ball
             else if ([spriteA isKindOfClass:[Fluffy class]] && spriteB.tag == 1) {
-                //if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
-                    //toDestroy.push_back(bodyA);
-                    //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
-                    NSLog(@"Hit Fluffy!");
-                levelCompleted = [self checkLevelCompleted];
+                if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
+                    toDestroy.push_back(bodyB);
 
-                //NSLog(@"BOOLEAN VALUE");
-                //NSLog(@"%d", levelCompleted);
+                    NSLog(@"Hit Fluffy!");
+                    levelCompleted = [self checkLevelCompleted];
                 
-                if (levelCompleted){
-                    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
-                                    counter = 1;
-                }
+                    if (levelCompleted){
+                        [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+                        counter = 1;
+                    }
                 
-                else {
-                    NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
-                }
+                    else {
+                        NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
+                    }
                 NSLog(@"Hit Fluffy!");
-                //}
+                }
             }
         }
     }
