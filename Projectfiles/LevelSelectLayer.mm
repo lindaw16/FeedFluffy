@@ -9,6 +9,7 @@
 #import "LevelSelectLayer.h"
 #import "PhysicsLayer.h"
 #import "OopsDNE.h"
+#import "EasyLevelLayer.h"
 
 CCMenuItemImage * left;
 CCMenuItemImage * right;
@@ -58,7 +59,7 @@ float priorY = 1000;
     level2.tag = 2;
     
     
-    CCMenuItemImage * easy = [CCMenuItemImage itemWithNormalImage:@"Easy.png" selectedImage: @"Easy.png" target:self selector:@selector(goToLevel:)];
+    CCMenuItemImage * easy = [CCMenuItemImage itemWithNormalImage:@"Easy.png" selectedImage: @"Easy.png" target:self selector:@selector(goToEasyLevelLayer:)];
     easy.tag = 4;
     
 	// Create a menu and add your menu items to it
@@ -129,6 +130,14 @@ float priorY = 1000;
     int level = menuItem.tag;
     [[CCDirector sharedDirector] replaceScene: (CCScene*)[PhysicsLayer sceneWithLevel:level]];
 }
+
+
+- (void) goToEasyLevelLayer: (CCMenuItem  *) menuItem
+{
+	//NSLog(@"The first menu was called");
+    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[EasyLevelLayer alloc] init]];
+}
+
 
 /*
 -(void) update:(ccTime)delta
