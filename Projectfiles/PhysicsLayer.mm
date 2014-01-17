@@ -137,16 +137,16 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
         
         
-        _player = [CCSprite spriteWithFile:@"cannon-body.png"];
+        _player = [CCSprite spriteWithFile:@"cannon2.png"];
         _player.position = ccp(_player.contentSize.width/2 - 8, winSize.height/2 + 32);
         
         
         [self addChild:_player z:0];
         
         
-        CCSprite *cannonHead = [CCSprite spriteWithFile:@"cannon-head.png"];
+        /*CCSprite *cannonHead = [CCSprite spriteWithFile:@"cannon-head.png"];
         cannonHead.position = ccp(_player.position.x + 38, _player.position.y + 3);
-        [self addChild:cannonHead z:1];
+        [self addChild:cannonHead z:1];*/
         
         
         // Create contact listener
@@ -809,6 +809,17 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             //if (spriteA.tag == 1 && spriteB.tag == 2) {
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) == toDestroy.end()) {
                     toDestroy.push_back(bodyB);
+                    
+                    Fruit *fruit = (Fruit*) spriteB;
+                    NSString *fruitName = fruit.fruitName;
+                    NSLog(fruitName);
+                    int num = [[goal objectForKey:fruitName] intValue];
+                    NSLog(@"%d", num);
+                    int fruitNum = [[goalProgress objectForKey:fruitName] intValue];
+                    NSLog(@"%d", fruitNum);
+                    fruitNum++;
+                    [goalProgress setObject:[NSNumber numberWithInt: fruitNum] forKey:fruitName];
+                    int fruitNum2 = [[goalProgress objectForKey:fruitName] intValue];
                     NSLog(@"Hit Fruit");
                 }
             }
@@ -817,6 +828,16 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             else if ([spriteA isKindOfClass:[Fruit class]] && spriteB.tag == 1) {
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
                     toDestroy.push_back(bodyA);
+                    Fruit *fruit = (Fruit*) spriteA;
+                    NSString *fruitName = fruit.fruitName;
+                    NSLog(fruitName);
+                    int num = [[goal objectForKey:fruitName] intValue];
+                    NSLog(@"%d", num);
+                    int fruitNum = [[goalProgress objectForKey:fruitName] intValue];
+                    NSLog(@"%d", fruitNum);
+                    fruitNum++;
+                    [goalProgress setObject:[NSNumber numberWithInt: fruitNum] forKey:fruitName];
+                    int fruitNum2 = [[goalProgress objectForKey:fruitName] intValue];
                     NSLog(@"Hit Fruit");
                 }
             }
@@ -826,7 +847,18 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
                 //if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) == toDestroy.end()) {
                     //toDestroy.push_back(bodyB);
                     //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
-                    NSLog(@"Hit Fluffy!");
+                BOOL levelCompleted = [self checkLevelCompleted];
+                //NSLog(@"BOOLEAN VALUE");
+                //NSLog(@"%d", levelCompleted);
+
+                if (levelCompleted){
+                    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+                }
+                
+                else {
+                    NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
+                }
+                NSLog(@"Hit Fluffy!");
                 //}
 
             }
@@ -837,6 +869,18 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
                     //toDestroy.push_back(bodyA);
                     //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
                     NSLog(@"Hit Fluffy!");
+                BOOL levelCompleted = [self checkLevelCompleted];
+                //NSLog(@"BOOLEAN VALUE");
+                //NSLog(@"%d", levelCompleted);
+                
+                if (levelCompleted){
+                    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+                }
+                
+                else {
+                    NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
+                }
+                NSLog(@"Hit Fluffy!");
                 //}
             }
         }
