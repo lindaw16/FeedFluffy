@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface EasyLevelLayer : CCLayer
+{
 
+CCLabelTTF *infoLabel;
+}
 @end
