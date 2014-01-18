@@ -196,7 +196,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             //tapHere = [CCSprite spriteWithFile:@"cannonx.png"];
             myTut = [CCMenu menuWithItems: tapHere, nil];
             //tapHere.position = ccp(100, 80);
-            tapHere.position = ccp(150, 150);
+            tapHere.position = ccp(220, 120);
             myTut.position = CGPointZero;
             [self addChild:myTut z:3];
         }
@@ -896,7 +896,7 @@ int counter = 1;
         message.position = ccp(150, 150);
         myTut = [CCMenu menuWithItems: tapHere, nil];
         myTut.position = CGPointZero;
-        tapHere.position = ccp(100, 80);
+        tapHere.position = ccp(220, 120);
         [self addChild:message z:1];
         [self addChild:myTut z:1];
     }
