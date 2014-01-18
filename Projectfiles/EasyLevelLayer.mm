@@ -40,6 +40,18 @@
         [self addChild:bg];
         
         
+        
+        
+        infoLabel = [CCLabelTTF labelWithString:@"(Tap an Item)" fontName:@"Helvetica" fontSize:24];
+        infoLabel.position = ccp(size.width/2, 30);
+        [self addChild:infoLabel];
+
+        //create CCMenuItemSprite
+        CCMenuItem *itemSprite = [CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"button.png"] selectedSprite:[CCSprite spriteWithFile:@"button.png"] block:^(id sender){
+            infoLabel.string = @"(ItemSprite Tapped)";
+        }];
+        [self ]
+        
         //[self setUpMenus];
         [self scheduleUpdate];
         
