@@ -34,24 +34,29 @@
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"Paused"
                                                fontName:@"Courier New"
                                                fontSize:30];
-        label.position = ccp(240,220);
+        label.position = ccp(240,250);
         [self addChild: label];
         [CCMenuItemFont setFontName:@"Courier New"];
         [CCMenuItemFont setFontSize:20];
         
-        CCMenuItem *Resume= [CCMenuItemFont itemFromString:@"Resume"
-                                                    target:self
+        CCMenuItemImage *Resume= [CCMenuItemImage itemWithNormalImage:@"resume_button.png"
+                                                        selectedImage: @"resume_button2.png" target:self
                                                   selector:@selector(resume:)];
         
-        CCMenuItem *Restart = [CCMenuItemFont itemFromString:@"Restart"
-                                                   target:self selector:@selector(Restart:)];
+        //CCMenuItem *Restart = [CCMenuItemFont itemFromString:@"Restart" target:self selector:@selector(Restart:)];
+        CCMenuItemImage *Restart = [CCMenuItemImage itemWithNormalImage: @"restart_button.png" selectedImage: @"restart_button2.png" target:self
+                                                              selector:@selector(Restart:)];
         Restart.tag = level;
     
-        CCMenuItem *Level = [CCMenuItemFont itemFromString:@"Level Select"
-                                                   target:self selector:@selector(GoToLevels:)];
+        //CCMenuItem *Level = [CCMenuItemFont itemFromString:@"Level Select"
+                                                   //target:self selector:@selector(GoToLevels:)];
+        CCMenuItemImage *Level = [CCMenuItemImage itemWithNormalImage: @"level_select_button.png" selectedImage: @"level_select_button2.png" target:self
+                                                            selector:@selector(GoToLevels:)];
         
-        CCMenuItem *Quit = [CCMenuItemFont itemFromString:@"Main Menu"
-                                                   target:self selector:@selector(GoToMainMenu:)];
+        //CCMenuItem *Quit = [CCMenuItemFont itemFromString:@"Main Menu"
+                                                   //target:self selector:@selector(GoToMainMenu:)];
+        CCMenuItemImage *Quit = [CCMenuItemImage itemWithNormalImage: @"main_menu_button.png" selectedImage: @"main_menu_button2.png" target:self
+                                                           selector:@selector(GoToMainMenu:)];
         
         CCMenu *menu= [CCMenu menuWithItems: Resume, Restart, Level, Quit, nil];
         menu.position = ccp(249, 131.67f);
