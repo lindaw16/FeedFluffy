@@ -181,10 +181,22 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         meep.anchorPoint = CGPointZero;
         [self addChild:meep z:-1];
         
-        /*CCSprite *bar = [CCSprite spriteWithFile: @"gameBar.png"];
+        CCSprite *bar = [CCSprite spriteWithFile: @"gameBar.png"];
         bar.position = ccp(winSize.width / 2, 20);
-        [self addChild:bar z:1];*/
+        [self addChild:bar z:1];
         
+        // pause menu
+        
+        CCMenuItem *Pause = [CCMenuItemImage itemFromNormalImage:@"pause.png"
+                                                   selectedImage: @"pause.png"
+                                                          target:self
+                                                        selector:@selector(pause:)];
+        CCMenu *PauseButton = [CCMenu menuWithItems: Pause, nil];
+        Pause.tag = level;
+        PauseButton.position = ccp(460, 295);
+        //Pause.position = ccp(460, 295);
+        [self schedule:@selector(tick:) interval:1.0f/60.0f];
+        [self addChild:PauseButton z:7];
         
         
         if (level == 1)
@@ -322,22 +334,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             fruitShapeDef.isSensor = true;
             fruitBody->CreateFixture(&fruitShapeDef);
         }
-    
-        // pause menu
-        
-        CCMenuItem *Pause = [CCMenuItemImage itemFromNormalImage:@"pause.png"
-                                                   selectedImage: @"pause.png"
-                                                          target:self
-                                                        selector:@selector(pause:)];
-        CCMenu *PauseButton = [CCMenu menuWithItems: Pause, nil];
-        PauseButton.position = ccp(460, 295);
-        //Pause.position = ccp(460, 295);
-        [self schedule:@selector(tick:) interval:1.0f/60.0f];
-        [self addChild:PauseButton z:7];
-        
-        
-        
-        
+
         
         [self schedule:@selector(tick:)];
         //[self schedule:@selector(kick) interval:5.0];
@@ -404,8 +401,11 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     ButtonTapped = false;
 }
 
--(void) pause: (id) sender{
-    [[CCDirector sharedDirector] pushScene:[PauseScene node]];
+-(void) pause: (CCMenuItem *) sender{
+    int level = sender.tag;
+    //[[CCDirector sharedDirector] pushScene:[PauseScene node]];
+    NSLog(@"LEVELLLL %d", level);
+    [[CCDirector sharedDirector] pushScene: (CCScene*)[PauseScene sceneWithLevel: level]];
 }
 
 -(BOOL) checkLevelCompleted {

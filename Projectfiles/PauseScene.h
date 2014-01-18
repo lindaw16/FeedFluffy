@@ -9,5 +9,6 @@
 #import "CCLayer.h"
 
 @interface PauseScene : CCLayer
-+(id) scene;
++(id) sceneWithLevel: (int) level;
+-(id) initWithLevel: (int) level;
 @end

@@ -9,21 +9,32 @@
 #import "PauseScene.h"
 #import "StartMenuLayer.h"
 #import "PhysicsLayer.h"
+#import "LevelSelectLayer.h"
 
 @implementation PauseScene
-+(id) scene{
+/*+(id) scene{
     CCScene *scene=[CCScene node];
     PauseScene *layer = [PauseScene node];
     [scene addChild: layer];
     return scene;
+}*/
++(id) sceneWithLevel:(int)level
+{
+	// 'scene' is an autorelease object.
+	CCScene *scene = [CCScene node];
+    
+	// 'layer' is an autorelease object.
+    PauseScene *layer = [[PauseScene alloc] initWithLevel:level];
+	[scene addChild: layer];
+	return scene;
 }
 
--(id)init{
+-(id)initWithLevel: (int) level{
     if( (self=[super init] )) {
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"Paused"
                                                fontName:@"Courier New"
                                                fontSize:30];
-        label.position = ccp(240,190);
+        label.position = ccp(240,220);
         [self addChild: label];
         [CCMenuItemFont setFontName:@"Courier New"];
         [CCMenuItemFont setFontSize:20];
@@ -31,10 +42,18 @@
         CCMenuItem *Resume= [CCMenuItemFont itemFromString:@"Resume"
                                                     target:self
                                                   selector:@selector(resume:)];
-        CCMenuItem *Quit = [CCMenuItemFont itemFromString:@"Quit Game"
+        
+        CCMenuItem *Restart = [CCMenuItemFont itemFromString:@"Restart"
+                                                   target:self selector:@selector(Restart:)];
+        Restart.tag = level;
+    
+        CCMenuItem *Level = [CCMenuItemFont itemFromString:@"Level Select"
+                                                   target:self selector:@selector(GoToLevels:)];
+        
+        CCMenuItem *Quit = [CCMenuItemFont itemFromString:@"Main Menu"
                                                    target:self selector:@selector(GoToMainMenu:)];
         
-        CCMenu *menu= [CCMenu menuWithItems: Resume, Quit, nil];
+        CCMenu *menu= [CCMenu menuWithItems: Resume, Restart, Level, Quit, nil];
         menu.position = ccp(249, 131.67f);
         [menu alignItemsVerticallyWithPadding:12.5f];
         
@@ -57,6 +76,27 @@
                                                transitionWithDuration:1
                                                scene:[StartMenuLayer node]]
      ];
+}
+
+-(void) GoToLevels: (id) sender {
+    
+    [[CCDirector sharedDirector] sendCleanupToScene];
+    [[CCDirector sharedDirector] popScene];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade
+                                               transitionWithDuration:1
+                                               scene:[LevelSelectLayer node]]
+     ];
+}
+
+
+-(void) Restart: (CCMenuItem*) sender {
+    
+    [[CCDirector sharedDirector] sendCleanupToScene];
+    [[CCDirector sharedDirector] popScene];
+    int level = sender.tag;
+    //[[CCDirector sharedDirector] replaceScene: (CCScene*)[PhysicsLayer sceneWithLevel:level]];
+    [[CCDirector sharedDirector] replaceScene: [CCTransitionFade transitionWithDuration:1 scene:[PhysicsLayer sceneWithLevel:level]]];
+
 }
 
 @end
