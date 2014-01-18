@@ -51,12 +51,23 @@ int bulletCounter = 300;
 int cannonRadius = 5.0/PTM_RATIO;
 bool ButtonTapped = false;
 
+
+
+
 //for dialog boxes
 CCSprite *message;
-CCSprite *tapHere;
+CCMenuItemImage *tapHere;
+CCMenu * myMenu;
 bool showTutorial;
 bool iscannonx;
 bool iscannonheadx;
+bool tutorialsuccessful;
+
+
+
+
+
+
 
 float angleRadians;
 float angleInDegrees;
@@ -188,13 +199,18 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             showTutorial = true;
             iscannonx = true;
             
+            
             message = [CCSprite spriteWithFile:@"dialog.png"];
             message.position = ccp(150, 150);
             [self addChild:message z:1];
         
-            tapHere = [CCSprite spriteWithFile:@"cannonx.png"];
-            tapHere.position = _player.position;
-            [self addChild:tapHere z:1];
+            tapHere = [CCMenuItemImage itemWithNormalImage:@"cannonx.png" selectedImage: @"cannonx.png" target:self selector:@selector(cannonx:)];
+            //tapHere = [CCSprite spriteWithFile:@"cannonx.png"];
+            myMenu = [CCMenu menuWithItems: tapHere, nil];
+            //tapHere.position = ccp(100, 80);
+            [tapHere setPosition: _player.position];
+            myMenu.position = CGPointZero;
+            [self addChild:myMenu z:3];
             
         }
         
@@ -599,25 +615,33 @@ int counter = 1;
                 
         location = [self convertToNodeSpace:pos];
         //CGRect leftBorder = CGRectMake(cageLeft, 0, cageLeft+10, 350);
-        
+//        
+//        if (iscannonheadx) //level 1
+//        {
+//            NSLog(@"MEWO");
+//            [self removeChild:tapHere cleanup:YES];
+//            [self removeChild:message cleanup:YES];
+//        }
+//        
     }
     
     else if (input.anyTouchEndedThisFrame)
     {
         printf("ended frame..........\n");
         
-        if (iscannonheadx)
-        {
-            NSLog(@"4");
-            iscannonheadx = false;
-        }
-        
-        if (iscannonx)
-        {
-            NSLog(@"2");
-            iscannonx = false;
-            iscannonheadx = true;
-        }
+//        if (iscannonheadx &&tutorialsuccessful)
+//        {
+//            NSLog(@"4");
+//            iscannonheadx = false;
+//        }
+//        
+//        if (iscannonx)
+//        {
+//            NSLog(@"2");
+//            iscannonx = false;
+//            iscannonheadx = true;
+//            tutorialsuccessful = false;
+//        }
 
     }
     
@@ -631,12 +655,6 @@ int counter = 1;
             if (pos.y < 280 && pos.y > cageBottom + 20)
             {
                 //NSLog(@"CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
-                if (iscannonx || iscannonheadx) //level 1
-                {
-                    NSLog(@"1");
-                    [self removeChild:tapHere cleanup:YES];
-                    [self removeChild:message cleanup:YES];
-                }
                 
                 _player.position = ccp(_player.position.x, y+5);
                 _nextProjectile.position = _player.position;
@@ -675,18 +693,18 @@ int counter = 1;
     }
     
     //NSLog(@"SLFKJSD:FLKJSDF");
-    if (iscannonheadx)
-    {
-        NSLog(@"3");
-        message = [CCSprite spriteWithFile:@"dialog2.png"];
-        message.position = ccp(150, 150);
-        [self addChild:message z:1];
-        
-        tapHere = [CCSprite spriteWithFile:@"cannonheadx.png"];
-        tapHere.position = ccp(cannonHead.position.x , cannonHead.position.y);
-        [self addChild:tapHere z:2];
-    }
-    
+//    if (iscannonheadx)
+//    {
+//        NSLog(@"3");
+//        message = [CCSprite spriteWithFile:@"dialog2.png"];
+//        message.position = ccp(150, 150);
+//        [self addChild:message z:1];
+//        
+//        tapHere = [CCSprite spriteWithFile:@"cannonheadx.png"];
+//        tapHere.position = ccp(cannonHead.position.x , cannonHead.position.y);
+//        [self addChild:tapHere z:2];
+//    }
+//    
     
     
     
@@ -901,5 +919,38 @@ int counter = 1;
     ccColor4F bottomColor = ccc4f(0, 0, 0, 1);
     ccDrawSolidRect( ccp(barx, bary), ccp(480, bary + 5), bottomColor);    
 }
+
+
+-(void) cannonx: (CCMenuItemImage *) menuItem
+{
+    //[self removeChild:tapHere cleanup:YES];
+    [self removeChild:message cleanup:YES];
+    [self removeChild:myMenu cleanup: YES];
+    //[tapHere setIsEnabled:NO];
+    
+    
+    message = [CCSprite spriteWithFile:@"dialog2.png"];
+    message.position = ccp(150, 150);
+    [self addChild:message z:1];
+    
+    tapHere = [CCMenuItemImage itemWithNormalImage:@"cannonx.png" selectedImage: @"cannonx.png" target:self selector:@selector(cannonheadx:)];
+    
+    
+    myMenu = [CCMenu menuWithItems: tapHere, nil];
+    tapHere.position = ccp(100, 80);
+    //[tapHere setPosition: _player.position];
+    myMenu.position = CGPointZero;
+    [self addChild:myMenu z:3];
+    
+    NSLog(@"YEAAAAA");
+}
+
+-(void) cannonheadx:(CCMenuItemImage *)menuItem
+{
+    [self removeChild:message cleanup:YES];
+    [self removeChild:myMenu cleanup: YES];
+
+}
+
 
 @end
