@@ -57,16 +57,8 @@ bool ButtonTapped = false;
 //for dialog boxes
 CCSprite *message;
 CCMenuItemImage *tapHere;
-CCMenu * myMenu;
-bool showTutorial;
-bool iscannonx;
-bool iscannonheadx;
-bool tutorialsuccessful;
-
-
-
-
-
+CCMenu * myTut;
+int showDialog = 1;
 
 
 float angleRadians;
@@ -196,22 +188,17 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
         if (level == 1)
         {
-            showTutorial = true;
-            iscannonx = true;
-            
-            
             message = [CCSprite spriteWithFile:@"dialog.png"];
             message.position = ccp(150, 150);
             [self addChild:message z:1];
         
             tapHere = [CCMenuItemImage itemWithNormalImage:@"cannonx.png" selectedImage: @"cannonx.png" target:self selector:@selector(cannonx:)];
             //tapHere = [CCSprite spriteWithFile:@"cannonx.png"];
-            myMenu = [CCMenu menuWithItems: tapHere, nil];
+            myTut = [CCMenu menuWithItems: tapHere, nil];
             //tapHere.position = ccp(100, 80);
-            [tapHere setPosition: _player.position];
-            myMenu.position = CGPointZero;
-            [self addChild:myMenu z:3];
-            
+            tapHere.position = ccp(150, 150);
+            myTut.position = CGPointZero;
+            [self addChild:myTut z:3];
         }
         
         
@@ -615,34 +602,11 @@ int counter = 1;
                 
         location = [self convertToNodeSpace:pos];
         //CGRect leftBorder = CGRectMake(cageLeft, 0, cageLeft+10, 350);
-//        
-//        if (iscannonheadx) //level 1
-//        {
-//            NSLog(@"MEWO");
-//            [self removeChild:tapHere cleanup:YES];
-//            [self removeChild:message cleanup:YES];
-//        }
-//        
     }
     
     else if (input.anyTouchEndedThisFrame)
     {
         printf("ended frame..........\n");
-        
-//        if (iscannonheadx &&tutorialsuccessful)
-//        {
-//            NSLog(@"4");
-//            iscannonheadx = false;
-//        }
-//        
-//        if (iscannonx)
-//        {
-//            NSLog(@"2");
-//            iscannonx = false;
-//            iscannonheadx = true;
-//            tutorialsuccessful = false;
-//        }
-
     }
     
     
@@ -691,21 +655,6 @@ int counter = 1;
             }
         }
     }
-    
-    //NSLog(@"SLFKJSD:FLKJSDF");
-//    if (iscannonheadx)
-//    {
-//        NSLog(@"3");
-//        message = [CCSprite spriteWithFile:@"dialog2.png"];
-//        message.position = ccp(150, 150);
-//        [self addChild:message z:1];
-//        
-//        tapHere = [CCSprite spriteWithFile:@"cannonheadx.png"];
-//        tapHere.position = ccp(cannonHead.position.x , cannonHead.position.y);
-//        [self addChild:tapHere z:2];
-//    }
-//    
-    
     
     
 ///I really dont believe we need thisVVVV
@@ -923,34 +872,44 @@ int counter = 1;
 
 -(void) cannonx: (CCMenuItemImage *) menuItem
 {
+    showDialog++;
     //[self removeChild:tapHere cleanup:YES];
     [self removeChild:message cleanup:YES];
-    [self removeChild:myMenu cleanup: YES];
+    [self removeChild:myTut cleanup: YES];
     //[tapHere setIsEnabled:NO];
     
+    if (showDialog == 2)
+    {
+        message = [CCSprite spriteWithFile:@"dialog2.png"];
+        tapHere = [CCMenuItemImage itemWithNormalImage:@"cannonx.png" selectedImage: @"cannonx.png" target:self selector:@selector(cannonx:)];
+        //[tapHere setPosition: _player.position];
+    }
     
-    message = [CCSprite spriteWithFile:@"dialog2.png"];
-    message.position = ccp(150, 150);
-    [self addChild:message z:1];
     
-    tapHere = [CCMenuItemImage itemWithNormalImage:@"cannonx.png" selectedImage: @"cannonx.png" target:self selector:@selector(cannonheadx:)];
+    if (showDialog == 3)
+    {
+        message = [CCSprite spriteWithFile:@"dialog3.png"];
+        tapHere = [CCMenuItemImage itemWithNormalImage:@"cannonx.png" selectedImage: @"cannonx.png" target:self selector:@selector(cannonx:)];
+    }
     
-    
-    myMenu = [CCMenu menuWithItems: tapHere, nil];
-    tapHere.position = ccp(100, 80);
-    //[tapHere setPosition: _player.position];
-    myMenu.position = CGPointZero;
-    [self addChild:myMenu z:3];
+    if (showDialog <= 3){
+        message.position = ccp(150, 150);
+        myTut = [CCMenu menuWithItems: tapHere, nil];
+        myTut.position = CGPointZero;
+        tapHere.position = ccp(100, 80);
+        [self addChild:message z:1];
+        [self addChild:myTut z:1];
+    }
     
     NSLog(@"YEAAAAA");
 }
 
--(void) cannonheadx:(CCMenuItemImage *)menuItem
-{
-    [self removeChild:message cleanup:YES];
-    [self removeChild:myMenu cleanup: YES];
-
-}
+//-(void) cannonheadx:(CCMenuItemImage *)menuItem
+//{
+//    [self removeChild:message cleanup:YES];
+//    [self removeChild:myTut cleanup: YES];
+//
+//}
 
 
 @end
