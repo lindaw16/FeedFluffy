@@ -12,5 +12,7 @@
 {
 
 CCLabelTTF *infoLabel;
+CCLabelTTF *level1Label;
+    CCMenuItem *lockSprite1;
 }
 @end
