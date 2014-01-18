@@ -50,7 +50,7 @@
         CCMenuItem *itemSprite = [CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"button.png"] selectedSprite:[CCSprite spriteWithFile:@"button.png"] block:^(id sender){
             infoLabel.string = @"(ItemSprite Tapped)";
         }];
-        [self ]
+        //[self ]
         
         //[self setUpMenus];
         [self scheduleUpdate];

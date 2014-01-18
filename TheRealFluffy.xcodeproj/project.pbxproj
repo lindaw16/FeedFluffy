@@ -18,6 +18,8 @@
 		914BE9E61889BDF40085E989 /* button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914BE9E01889BDF40085E989 /* button@2x.png */; };
 		914BE9E71889BDF40085E989 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 914BE9E11889BDF40085E989 /* lock.png */; };
 		914BE9E81889BDF40085E989 /* lock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914BE9E21889BDF40085E989 /* lock@2x.png */; };
+		AB7821C6188A5515008F51B8 /* PauseScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = AB7821C5188A5515008F51B8 /* PauseScene.mm */; };
+		AB7821C8188A56A7008F51B8 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = AB7821C7188A56A7008F51B8 /* pause.png */; };
 		AB9E13821889CA4B001F6EA8 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9E13811889CA4B001F6EA8 /* rock.png */; };
 		AB9E13841889CF26001F6EA8 /* level2.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB9E13831889CF26001F6EA8 /* level2.plist */; };
 		AB9E2D031888D5B600F99EAB /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = AB9E2D021888D5B600F99EAB /* MyContactListener.mm */; };
@@ -137,6 +139,9 @@
 		914BE9E01889BDF40085E989 /* button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button@2x.png"; sourceTree = "<group>"; };
 		914BE9E11889BDF40085E989 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		914BE9E21889BDF40085E989 /* lock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock@2x.png"; sourceTree = "<group>"; };
+		AB7821C4188A5515008F51B8 /* PauseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseScene.h; sourceTree = "<group>"; };
+		AB7821C5188A5515008F51B8 /* PauseScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PauseScene.mm; sourceTree = "<group>"; };
+		AB7821C7188A56A7008F51B8 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 		AB9E13811889CA4B001F6EA8 /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
 		AB9E13831889CF26001F6EA8 /* level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level2.plist; sourceTree = "<group>"; };
 		AB9E2D011888D5B600F99EAB /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContactListener.h; sourceTree = "<group>"; };
@@ -469,6 +474,8 @@
 				BFB4259618862C92002DD826 /* LevelSelectLayer.mm */,
 				DCC1A38F13A94F1A005BD75D /* PhysicsLayer.h */,
 				DCC1A39013A94F1A005BD75D /* PhysicsLayer.mm */,
+				AB7821C4188A5515008F51B8 /* PauseScene.h */,
+				AB7821C5188A5515008F51B8 /* PauseScene.mm */,
 				BFB425A218865A9C002DD826 /* OopsDNE.h */,
 				BFB425A318865A9C002DD826 /* OopsDNE.mm */,
 				ABB719CD18871CCA004D2FCA /* Fluffy.h */,
@@ -496,6 +503,7 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AB7821C7188A56A7008F51B8 /* pause.png */,
 				BF4E9606188A1FD10000B4FE /* cannonx.png */,
 				BF4E960A188A26F30000B4FE /* dialog2.png */,
 				BF4E9608188A23760000B4FE /* cannonheadx.png */,
@@ -659,6 +667,7 @@
 				ABB719EC18875684004D2FCA /* strawberry-hd.png in Resources */,
 				BFB425B8188727AA002DD826 /* Bonus.png in Resources */,
 				AB9E13841889CF26001F6EA8 /* level2.plist in Resources */,
+				AB7821C8188A56A7008F51B8 /* pause.png in Resources */,
 				ABB719F01887568D004D2FCA /* watermelon-hd.png in Resources */,
 				ABB719E51887566E004D2FCA /* grapes.png in Resources */,
 				BF39176C18879F5C00EF99E6 /* projectile2.png in Resources */,
@@ -709,6 +718,7 @@
 				BFB425A418865A9C002DD826 /* OopsDNE.mm in Sources */,
 				DCC1A3AD13A94F1A005BD75D /* main.m in Sources */,
 				DC193EB813B692D100500B56 /* GLES-Render.mm in Sources */,
+				AB7821C6188A5515008F51B8 /* PauseScene.mm in Sources */,
 				DC193EBC13B6956F00500B56 /* ContactListener.mm in Sources */,
 				BFB425A118862DDE002DD826 /* StartMenuLayer.mm in Sources */,
 				ABB719DA18873FBF004D2FCA /* Obstacle.m in Sources */,

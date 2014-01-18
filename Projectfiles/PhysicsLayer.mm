@@ -18,6 +18,7 @@
 #import "OopsDNE.h"
 #import "Fruit.h"
 #import "Obstacle.h"
+#import "PauseScene.h"
 
 //#import "cocos2d.m"
 
@@ -180,9 +181,9 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         meep.anchorPoint = CGPointZero;
         [self addChild:meep z:-1];
         
-        CCSprite *bar = [CCSprite spriteWithFile: @"gameBar.png"];
+        /*CCSprite *bar = [CCSprite spriteWithFile: @"gameBar.png"];
         bar.position = ccp(winSize.width / 2, 20);
-        [self addChild:bar z:1];
+        [self addChild:bar z:1];*/
         
         
         
@@ -322,7 +323,17 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             fruitBody->CreateFixture(&fruitShapeDef);
         }
     
+        // pause menu
         
+        CCMenuItem *Pause = [CCMenuItemImage itemFromNormalImage:@"pause.png"
+                                                   selectedImage: @"pause.png"
+                                                          target:self
+                                                        selector:@selector(pause:)];
+        CCMenu *PauseButton = [CCMenu menuWithItems: Pause, nil];
+        PauseButton.position = ccp(460, 295);
+        //Pause.position = ccp(460, 295);
+        [self schedule:@selector(tick:) interval:1.0f/60.0f];
+        [self addChild:PauseButton z:7];
         
         
         
@@ -391,8 +402,10 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
      nil]];*/
     bulletCounter--;
     ButtonTapped = false;
-    
-    
+}
+
+-(void) pause: (id) sender{
+    [[CCDirector sharedDirector] pushScene:[PauseScene node]];
 }
 
 -(BOOL) checkLevelCompleted {
