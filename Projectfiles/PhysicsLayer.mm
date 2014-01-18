@@ -51,6 +51,13 @@ int bulletCounter = 300;
 int cannonRadius = 5.0/PTM_RATIO;
 bool ButtonTapped = false;
 
+//for dialog boxes
+CCSprite *message;
+CCSprite *tapHere;
+bool showTutorial;
+bool iscannonx;
+bool iscannonheadx;
+
 float angleRadians;
 float angleInDegrees;
 float realMoveDuration;
@@ -90,6 +97,8 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 - (id)initWithLevel: (int) level {
     
     if ((self = [super initWithColor:ccc4(255,255,255,255)])) {
+
+        
         
         _MoveableSpriteTouch=FALSE;
         self.touchEnabled = YES;
@@ -143,8 +152,6 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
         cannonHead = [CCSprite spriteWithFile:@"cannon-head-cropped.png"];
         cannonHead.position = ccp(_player.position.x + 30, _player.position.y - 0.5);
-        int asdf = cannonHead.position.x;
-        int fdsa = cannonHead.position.y;
         [self addChild:cannonHead z:1];
         
         
@@ -174,7 +181,27 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         bar.position = ccp(winSize.width / 2, 20);
         [self addChild:bar z:1];
         
-
+        
+        
+        if (level == 1)
+        {
+            showTutorial = true;
+            iscannonx = true;
+            
+            message = [CCSprite spriteWithFile:@"dialog.png"];
+            message.position = ccp(150, 150);
+            [self addChild:message z:1];
+        
+            tapHere = [CCSprite spriteWithFile:@"cannonx.png"];
+            tapHere.position = _player.position;
+            [self addChild:tapHere z:1];
+            
+        }
+        
+        
+        
+        
+        
         
 
         // plist level creation stuff
@@ -291,6 +318,11 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             fruitShapeDef.isSensor = true;
             fruitBody->CreateFixture(&fruitShapeDef);
         }
+    
+        
+        
+        
+        
         
         
         [self schedule:@selector(tick:)];
@@ -573,6 +605,20 @@ int counter = 1;
     else if (input.anyTouchEndedThisFrame)
     {
         printf("ended frame..........\n");
+        
+        if (iscannonheadx)
+        {
+            NSLog(@"4");
+            iscannonheadx = false;
+        }
+        
+        if (iscannonx)
+        {
+            NSLog(@"2");
+            iscannonx = false;
+            iscannonheadx = true;
+        }
+
     }
     
     
@@ -581,19 +627,29 @@ int counter = 1;
         //pos.x <= cageLeft
         if (CGRectContainsPoint(_player.boundingBox, pos))
         {
+            //make sure the cannon does not move offscreen
             if (pos.y < 280 && pos.y > cageBottom + 20)
             {
-                printf("CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
+                //NSLog(@"CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
+                if (iscannonx || iscannonheadx) //level 1
+                {
+                    NSLog(@"1");
+                    [self removeChild:tapHere cleanup:YES];
+                    [self removeChild:message cleanup:YES];
+                }
+                
                 _player.position = ccp(_player.position.x, y+5);
                 _nextProjectile.position = _player.position;
                 cannonHead.position = ccp(cannonHead.position.x, y);
             }
+            
+            
         }
         
         
         if (pos.x>=cageLeft+5 and pos.x <=80 )
         {
-            //make sure the cannon does not move offscreen
+
             
             float deltaY = pos.y - _player.position.y;
             float deltaX = pos.x - _player.position.x;
@@ -617,6 +673,22 @@ int counter = 1;
             }
         }
     }
+    
+    //NSLog(@"SLFKJSD:FLKJSDF");
+    if (iscannonheadx)
+    {
+        NSLog(@"3");
+        message = [CCSprite spriteWithFile:@"dialog2.png"];
+        message.position = ccp(150, 150);
+        [self addChild:message z:1];
+        
+        tapHere = [CCSprite spriteWithFile:@"cannonheadx.png"];
+        tapHere.position = ccp(cannonHead.position.x , cannonHead.position.y);
+        [self addChild:tapHere z:2];
+    }
+    
+    
+    
     
 ///I really dont believe we need thisVVVV
     
