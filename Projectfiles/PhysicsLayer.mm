@@ -174,9 +174,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         bar.position = ccp(winSize.width / 2, 20);
         [self addChild:bar z:1];
         
-        //I don't think we need this anymore
-        //        movableSprites = [[NSMutableArray alloc] init];
-        //        NSArray *images = [NSArray arrayWithObjects:@"hungryEevee.png", @"hungryEeveeMouth.png", @"dog.png", @"turtle.png", nil];
+
         
 
         // plist level creation stuff
@@ -570,131 +568,11 @@ int counter = 1;
         location = [self convertToNodeSpace:pos];
         //CGRect leftBorder = CGRectMake(cageLeft, 0, cageLeft+10, 350);
         
-//        _nextProjectile = [CCSprite spriteWithFile:@"bullet.png"];
-//        _nextProjectile.tag = 1;
-//        
-//        _nextProjectile.position = _player.position;
-//        [balls addObject: _nextProjectile];
-//        // Create ball body and shape
-//        
-//        ballBodyDef.type = b2_dynamicBody;
-//        //            ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
-//        NSLog(@"in Position.SET\n");
-//        ballBodyDef.position.Set(_player.position.x/PTM_RATIO,_player.position.y/PTM_RATIO);
-//        ballBodyDef.userData = (__bridge void*)_nextProjectile;
-//        
-//        _body = world->CreateBody(&ballBodyDef);
-//        
-//        b2CircleShape circle;
-//        //circle.m_radius = 26.0/PTM_RATIO;
-//        //circle.m_radius = 9.0/PTM_RATIO;
-//        circle.m_radius = 20.0/PTM_RATIO;
-//        
-//        b2FixtureDef ballShapeDef;
-//        ballShapeDef.shape = &circle;
-//        ballShapeDef.density = 0.5f;
-//        ballShapeDef.friction = 0.0f;
-//        ballShapeDef.restitution = 1.0f;
-//        _body->CreateFixture(&ballShapeDef);
-
-        //This code is not needed anymore - I believe.
-        
-        //if (CGRectContainsPoint(leftBorder, location)) {
-        if (counter==3 ) {
-            
-//            NSLog(@"SDFJDS:FJSDKFJ");
-//            
-//            // Set up initial location of projectile
-//            winSize = [[CCDirector sharedDirector] winSize];
-//            _nextProjectile = [CCSprite spriteWithFile:@"bullet.png"];
-//            _nextProjectile.tag = 1;
-//            
-//            _nextProjectile.position = _player.position;
-//            [balls addObject: _nextProjectile];
-//            
-//            // Create ball body and shape
-//            
-//            ballBodyDef.type = b2_dynamicBody;
-//            //            ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
-//            NSLog(@"SHOULD NOT BE IN HERE!(*&^(*&^(*&^(&^");
-//            ballBodyDef.position.Set(_player.position.x/PTM_RATIO,_player.position.y/PTM_RATIO);
-//            ballBodyDef.userData = (__bridge void*)_nextProjectile;
-//            
-//            _body = world->CreateBody(&ballBodyDef);
-//            
-//            b2CircleShape circle;
-//            //circle.m_radius = 26.0/PTM_RATIO;
-//            //circle.m_radius = 9.0/PTM_RATIO;
-//            circle.m_radius = 20.0/PTM_RATIO;
-//            
-//            b2FixtureDef ballShapeDef;
-//            ballShapeDef.shape = &circle;
-//            ballShapeDef.density = 0.5f;
-//            ballShapeDef.friction = 0.0f;
-//            ballShapeDef.restitution = 1.0f;
-//            _body->CreateFixture(&ballShapeDef);
-//            
-//            
-//            
-//            // Determine offset of location to projectile
-//            CGPoint offset = ccpSub(location, _nextProjectile.position);
-//            // Bail out if you are shooting down or backwards
-//            if (offset.x <= 0) return;
-//            
-//            // Determine where you wish to shoot the projectile to
-//            int realX = winSize.width + (_nextProjectile.contentSize.width/2);
-//            float ratio = (float) offset.y / (float) offset.x;
-//            int realY = (realX * ratio) + _nextProjectile.position.y;
-//            realDest = ccp(realX, realY);
-//            
-//            // Determine the length of how far you're shooting
-//            int offRealX = realX - _nextProjectile.position.x;
-//            int offRealY = realY - _nextProjectile.position.y;
-//            float length = sqrtf((offRealX*offRealX)+(offRealY*offRealY));
-//            float velocity = 480/1; // 480pixels/1sec
-//            realMoveDuration = length/velocity;
-//            // Determine angle to face
-//            angleRadians = atanf((float)offRealY / (float)offRealX);
-//            float angleDegrees = CC_RADIANS_TO_DEGREES(angleRadians);
-//            float cocosAngle = -1 * angleDegrees;
-//            float rotateDegreesPerSecond = 180 / 0.5; // Would take 0.5 seconds to rotate 180 degrees, or half a circle
-//            //_player.anchorPoint = ccp(0.5, 0.5);
-//            
-//            float degreesDiff = _player.rotation - cocosAngle;
-//            float rotateDuration = fabs(degreesDiff / rotateDegreesPerSecond);
-//            
-//            [_player runAction:[CCSequence actions:[CCRotateTo actionWithDuration:rotateDuration angle:cocosAngle],nil]];
-            
-            
-            //            if (ButtonTapped) {
-            //             [_player runAction:[CCSequence actions:[CCCallBlock actionWithBlock:^{[self addChild:_nextProjectile];_nextProjectile = nil;}],nil]];
-            //            //this determines the speed of the ball projectile
-            //            b2Vec2 force = b2Vec2(cos(angleRadians), sin(angleRadians));
-            //
-            //            //_body->ApplyLinearImpulse(force, ballBodyDef.position);
-            //            printf("Applying Linear Impulse!");
-            //            _body->ApplyLinearImpulse(force, ballBodyDef.position);
-            //
-            //            // Move projectile to actual endpoint
-            //            [_nextProjectile runAction:
-            //             [CCSequence actions:
-            //              [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
-            //              [CCCallBlockN actionWithBlock:^(CCNode *node) {
-            //                 [node removeFromParentAndCleanup:YES];
-            //             }],
-            //              nil]];
-            //            bulletCounter--;
-            //                ButtonTapped = false;
-            //            _player.tag = 4;
-            //            }
-            
-        }
-        else{
-            
-            printf("Not in Range - Don't SHOOT!!!!!!!!!!!!!\n");
-            
-        }
-        
+    }
+    
+    else if (input.anyTouchEndedThisFrame)
+    {
+        printf("ended frame..........\n");
     }
     
     
@@ -712,11 +590,10 @@ int counter = 1;
             }
         }
         
+        
         if (pos.x>=cageLeft+5 and pos.x <=80 )
         {
-            
-            //NSLog(@"X location: %f", pos.x);
-            //NSLog(@"Y Location: %f",pos.y);
+            //make sure the cannon does not move offscreen
             
             float deltaY = pos.y - _player.position.y;
             float deltaX = pos.x - _player.position.x;
@@ -728,7 +605,8 @@ int counter = 1;
             
             if ( angleInDegrees < 50 && angleInDegrees > -50)
             {
-            
+                //dont let the cannon rotate too far
+                
                 if (counter ==1){
                     
                     cannonHead.position = ccp(cannonHead.position.x - 10.0, cannonHead.position.y - 2.0);
@@ -737,21 +615,10 @@ int counter = 1;
                 cannonHead.anchorPoint = ccp(0.3,0.3);
                 cannonHead.rotation = -angleInDegrees;
             }
-            
-        }
-        if (input.anyTouchEndedThisFrame) {
-            
-        
-            
         }
     }
     
-    else if (input.anyTouchEndedThisFrame)
-    {
-        printf("ended frame..........\n");
-    }
-    
-    
+///I really dont believe we need thisVVVV
     
 	if (director.currentPlatformIsIOS)
 	{
@@ -777,6 +644,9 @@ int counter = 1;
 			[self addNewSpriteAt:input.mouseLocation];
 		}
 	}
+    
+    
+    
 	
 	// The number of iterations influence the accuracy of the physics simulation. With higher values the
 	// body's velocity and position are more accurately tracked but at the cost of speed.
@@ -957,20 +827,7 @@ int counter = 1;
     int bary = cageBottom;
     
     ccColor4F bottomColor = ccc4f(0, 0, 0, 1);
-    ccDrawSolidRect( ccp(barx, bary), ccp(480, bary + 5), bottomColor);
-    
-    
-//    ccColor4F SFD = ccc4f(0.5, 0, 0, 1);
-//    
-//    int asdfx = 70;
-//    int asdfy = 242;
-//    
-//    ccDrawSolidRect( ccp(asdfx, asdfy), ccp(asdfx + 1, asdfy + 1), SFD);
-//    
-//    int fdsax = 70;
-//    int fdsay = 142;
-//    ccDrawSolidRect(ccp(fdsax, fdsay), ccp(fdsax + 1, fdsay + 1), SFD);
-    
+    ccDrawSolidRect( ccp(barx, bary), ccp(480, bary + 5), bottomColor);    
 }
 
 @end
