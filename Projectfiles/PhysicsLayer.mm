@@ -51,7 +51,7 @@ const int cageBottom = 60;
 int bulletCounter = 300;
 int cannonRadius = 5.0/PTM_RATIO;
 bool ButtonTapped = false;
-
+int currentLevel;
 
 
 
@@ -94,6 +94,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     
 	// 'layer' is an autorelease object.
     PhysicsLayer *layer = [[PhysicsLayer alloc] initWithLevel:level];
+    currentLevel = level;
 	[scene addChild: layer];
 	return scene;
 }
@@ -102,7 +103,9 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     
     if ((self = [super initWithColor:ccc4(255,255,255,255)])) {
 
-        
+        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        NSString *levelString =[@"level" stringByAppendingFormat:@"%d", currentLevel];
+        NSLog(@"LEVEL COMPLETED? %d", [[defaults objectForKey:levelString] intValue]);
         
         _MoveableSpriteTouch=FALSE;
         self.touchEnabled = YES;
@@ -192,7 +195,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
                                                           target:self
                                                         selector:@selector(pause:)];
         CCMenu *PauseButton = [CCMenu menuWithItems: Pause, nil];
-        Pause.tag = level;
+        //Pause.tag = level;
         PauseButton.position = ccp(460, 295);
         //Pause.position = ccp(460, 295);
         [self schedule:@selector(tick:) interval:1.0f/60.0f];
@@ -201,7 +204,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
         if (level == 1)
         {
-            message = [CCSprite spriteWithFile:@"dialog.png"];
+            message = [CCSprite spriteWithFile:@"dialog1.png"];
             message.position = ccp(150, 150);
             [self addChild:message z:1];
         
@@ -214,16 +217,10 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             [self addChild:myTut z:3];
         }
         
-        
-        
-        
-        
-        
-
         // plist level creation stuff
         
-        NSString* levelString = [NSString stringWithFormat:@"%i", level];
-        NSString *levelName = [@"level" stringByAppendingString:levelString];
+        NSString* levelString2 = [NSString stringWithFormat:@"%i", level];
+        NSString *levelName = [@"level" stringByAppendingString:levelString2];
         NSString *path = [[NSBundle mainBundle] pathForResource:levelName ofType:@"plist"];
         NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:path];
         
@@ -402,10 +399,10 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 }
 
 -(void) pause: (CCMenuItem *) sender{
-    int level = sender.tag;
+    //int level = sender.tag;
     //[[CCDirector sharedDirector] pushScene:[PauseScene node]];
-    NSLog(@"LEVELLLL %d", level);
-    [[CCDirector sharedDirector] pushScene: (CCScene*)[PauseScene sceneWithLevel: level]];
+    //NSLog(@"LEVELLLL %d", level);
+    [[CCDirector sharedDirector] pushScene: (CCScene*)[PauseScene sceneWithLevel: currentLevel]];
 }
 
 -(BOOL) checkLevelCompleted {
@@ -419,6 +416,10 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             return NO;
         }
     }
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    NSString *levelString = [@"level" stringByAppendingFormat:@"%d", currentLevel];
+    [defaults setObject:@YES forKey:levelString];
+    
     return YES;
 }
 

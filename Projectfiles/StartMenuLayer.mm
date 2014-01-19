@@ -11,6 +11,8 @@
 #import "LevelSelectLayer.h"
 #import "OopsDNE.h"
 
+int NUM_LEVELS = 20;
+
 @implementation StartMenuLayer
 
 +(id) scene
@@ -66,7 +68,15 @@
     if ((self = [super init])){
         //[self scheduleUpdate];
         
-        //CCSprite *sprite = [CCSprite spriteWithFile:@"eevee.png"];
+        // Get a pointer to the NSUserDefaults object
+        NSUserDefaults * standardDefaults = [NSUserDefaults standardUserDefaults];
+        for (int i = 0; i < NUM_LEVELS; i++){
+            NSString *levelString = [@"level" stringByAppendingFormat:@"%d", i];
+            // initialize all levels as not completed
+            [standardDefaults registerDefaults:@{levelString: @NO}];
+            [standardDefaults synchronize];
+        }
+        
         CCSprite *sprite = [CCSprite spriteWithFile:@"menuBackground.png"];
         sprite.anchorPoint = CGPointZero;
         [self addChild:sprite z:-1];
