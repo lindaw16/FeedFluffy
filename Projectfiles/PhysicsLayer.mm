@@ -419,6 +419,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     NSString *levelString = [@"level" stringByAppendingFormat:@"%d", currentLevel];
     [defaults setObject:@YES forKey:levelString];
+    [defaults synchronize];
     
     return YES;
 }

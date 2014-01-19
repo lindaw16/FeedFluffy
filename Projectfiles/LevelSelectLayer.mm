@@ -49,14 +49,35 @@ float priorY = 1000;
     
 
     //CCMenuItemImage * tutorials = [CCMenuItemImage itemWithNormalImage:@"tutorials.png" selectedImage: @"tutorials.png" target:self selector:@selector(goToLevel1:)];
+    
+    // TEST
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    NSString *levelString = @"level1";
+    
+    // Set levels as not completed for testing
+    //[defaults setObject:@NO forKey:levelString];
+    //[defaults synchronize];
+    
+    int level1Completed = [[defaults objectForKey:levelString] intValue];
+    NSLog(@"LEVEL 2: %d", level1Completed);
+    
     CCMenuItemImage * tutorials = [CCMenuItemImage itemWithNormalImage:@"tutorials.png" selectedImage:@"tutorials.png"];
 
     CCMenuItemImage * level1 = [CCMenuItemImage itemWithNormalImage:@"level1.png" selectedImage: @"level1.png" target:self selector:@selector(goToLevel:)];
     level1.tag = 1;
 
+    //CCMenuItemImage * level2 = [CCMenuItemImage itemWithNormalImage:@"level2.png" selectedImage: @"level2.png" target:self selector:@selector(goToLevel:)];
+    //level2.tag = 2;
     
-    CCMenuItemImage * level2 = [CCMenuItemImage itemWithNormalImage:@"level2.png" selectedImage: @"level2.png" target:self selector:@selector(goToLevel:)];
-    level2.tag = 2;
+    CCMenuItemImage *level2;
+    if (level1Completed == 1){
+        level2 = [CCMenuItemImage itemWithNormalImage:@"level2.png" selectedImage: @"level2.png" target:self selector:@selector(goToLevel:)];
+        level2.tag = 2;
+    }
+    else {
+        level2 = [CCMenuItemImage itemWithNormalImage:@"lock.png" selectedImage: @"lock.png" target:self selector:@selector(doNothing:)];
+        level2.tag = 2;
+    }
     
     
     CCMenuItemImage * easy = [CCMenuItemImage itemWithNormalImage:@"Easy.png" selectedImage: @"Easy.png" target:self selector:@selector(goToEasyLevelLayer:)];
@@ -138,6 +159,10 @@ float priorY = 1000;
     [[CCDirector sharedDirector] replaceScene: (CCScene*)[[EasyLevelLayer alloc] init]];
 }
 
+- (void) doNothing: (CCMenuItem *) menuItem
+{
+    
+}
 
 /*
 -(void) update:(ccTime)delta
