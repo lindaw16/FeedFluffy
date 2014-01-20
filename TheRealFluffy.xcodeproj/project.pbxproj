@@ -56,9 +56,9 @@
 		ABB719ED18875684004D2FCA /* strawberry.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719EB18875684004D2FCA /* strawberry.png */; };
 		ABB719F01887568D004D2FCA /* watermelon-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719EE1887568D004D2FCA /* watermelon-hd.png */; };
 		ABB719F11887568D004D2FCA /* watermelon.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719EF1887568D004D2FCA /* watermelon.png */; };
-		BF196CE0188CE7E4008CB197 /* fluffy1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CDF188CE7E4008CB197 /* fluffy1.png */; };
-		BF196CE7188CEE09008CB197 /* fluffysprites.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF196CE5188CEE09008CB197 /* fluffysprites.plist */; };
-		BF196CE8188CEE09008CB197 /* fluffysprites.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CE6188CEE09008CB197 /* fluffysprites.png */; };
+		BF196CF5188DDD74008CB197 /* fluffyframes.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF196CF3188DDD74008CB197 /* fluffyframes.plist */; };
+		BF196CF6188DDD74008CB197 /* fluffyframes.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CF4188DDD74008CB197 /* fluffyframes.png */; };
+		BF196CF8188DDD7D008CB197 /* fluffy1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CF7188DDD7D008CB197 /* fluffy1.png */; };
 		BF22E3D5188472C9007E26DF /* hungryEevee.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D4188472C9007E26DF /* hungryEevee.png */; };
 		BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */; };
 		BF30E0071888DDB1000773E5 /* cannon-body.png in Resources */ = {isa = PBXBuildFile; fileRef = BF30E0051888DDB1000773E5 /* cannon-body.png */; };
@@ -201,9 +201,9 @@
 		ABB719EB18875684004D2FCA /* strawberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strawberry.png; sourceTree = "<group>"; };
 		ABB719EE1887568D004D2FCA /* watermelon-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "watermelon-hd.png"; sourceTree = "<group>"; };
 		ABB719EF1887568D004D2FCA /* watermelon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermelon.png; sourceTree = "<group>"; };
-		BF196CDF188CE7E4008CB197 /* fluffy1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fluffy1.png; path = fluffysprites/fluffy1.png; sourceTree = "<group>"; };
-		BF196CE5188CEE09008CB197 /* fluffysprites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = fluffysprites.plist; path = fluffysprites/fluffysprites.plist; sourceTree = "<group>"; };
-		BF196CE6188CEE09008CB197 /* fluffysprites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fluffysprites.png; path = fluffysprites/fluffysprites.png; sourceTree = "<group>"; };
+		BF196CF3188DDD74008CB197 /* fluffyframes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = fluffyframes.plist; path = fluffysprites/fluffyframes.plist; sourceTree = "<group>"; };
+		BF196CF4188DDD74008CB197 /* fluffyframes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fluffyframes.png; path = fluffysprites/fluffyframes.png; sourceTree = "<group>"; };
+		BF196CF7188DDD7D008CB197 /* fluffy1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fluffy1.png; path = fluffysprites/fluffy1.png; sourceTree = "<group>"; };
 		BF22E3D4188472C9007E26DF /* hungryEevee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEevee.png; sourceTree = "<group>"; };
 		BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEeveeMouth.png; sourceTree = "<group>"; };
 		BF30E0051888DDB1000773E5 /* cannon-body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cannon-body.png"; sourceTree = "<group>"; };
@@ -541,9 +541,9 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BF196CE5188CEE09008CB197 /* fluffysprites.plist */,
-				BF196CE6188CEE09008CB197 /* fluffysprites.png */,
-				BF196CDF188CE7E4008CB197 /* fluffy1.png */,
+				BF196CF3188DDD74008CB197 /* fluffyframes.plist */,
+				BF196CF4188DDD74008CB197 /* fluffyframes.png */,
+				BF196CF7188DDD7D008CB197 /* fluffy1.png */,
 				AB9E5972188B261100B7D315 /* level_select_button@2x.png */,
 				AB9E5974188B261100B7D315 /* main_menu_button@2x.png */,
 				AB9E5975188B261100B7D315 /* main_menu_button2@2x.png */,
@@ -675,7 +675,6 @@
 				BF4E960F188A367E0000B4FE /* dialog3.png in Resources */,
 				DCC1A0FA13A94ED5005BD75D /* Default.png in Resources */,
 				BF22E3D5188472C9007E26DF /* hungryEevee.png in Resources */,
-				BF196CE7188CEE09008CB197 /* fluffysprites.plist in Resources */,
 				DCC1A0FC13A94ED5005BD75D /* fps_images.png in Resources */,
 				BFB425AD1886FB5D002DD826 /* goLeft.png in Resources */,
 				DCC1A0FE13A94ED5005BD75D /* Icon-72.png in Resources */,
@@ -694,8 +693,8 @@
 				AB9E5980188B261100B7D315 /* resume_button@2x.png in Resources */,
 				ABB719E91887567B004D2FCA /* pineapple.png in Resources */,
 				BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */,
+				BF196CF8188DDD7D008CB197 /* fluffy1.png in Resources */,
 				DCC1A3AF13A94F1A005BD75D /* config.lua in Resources */,
-				BF196CE8188CEE09008CB197 /* fluffysprites.png in Resources */,
 				BFB425B2188702D4002DD826 /* level2.png in Resources */,
 				ABB719ED18875684004D2FCA /* strawberry.png in Resources */,
 				ABB719E41887566E004D2FCA /* grapes-hd.png in Resources */,
@@ -715,6 +714,7 @@
 				BF4E960E188A367E0000B4FE /* dialog1.png in Resources */,
 				BFC2DCE8188609E900A1D673 /* apple.png in Resources */,
 				AB9E597C188B261100B7D315 /* main_menu_button@2x.png in Resources */,
+				BF196CF5188DDD74008CB197 /* fluffyframes.plist in Resources */,
 				AB9FBB8C188B190000992502 /* restart_button2.png in Resources */,
 				BFB425B618872304002DD826 /* Achievements.png in Resources */,
 				BFB425BA188783EB002DD826 /* gameBar.png in Resources */,
@@ -729,12 +729,12 @@
 				ABB719E01887565E004D2FCA /* banana-hd.png in Resources */,
 				BF30E0081888DDB1000773E5 /* cannon-head.png in Resources */,
 				BFB425A818865B99002DD826 /* OopsDNE.png in Resources */,
-				BF196CE0188CE7E4008CB197 /* fluffy1.png in Resources */,
 				BFB425AE1886FB5D002DD826 /* goRight.png in Resources */,
 				ABB719F11887568D004D2FCA /* watermelon.png in Resources */,
 				AB9FBB8A188B190000992502 /* main_menu_button2.png in Resources */,
 				BFB425B1188702D4002DD826 /* level1.png in Resources */,
 				ABB719E81887567B004D2FCA /* pineapple-hd.png in Resources */,
+				BF196CF6188DDD74008CB197 /* fluffyframes.png in Resources */,
 				ABB719EC18875684004D2FCA /* strawberry-hd.png in Resources */,
 				BFB425B8188727AA002DD826 /* Bonus.png in Resources */,
 				AB9E13841889CF26001F6EA8 /* level2.plist in Resources */,

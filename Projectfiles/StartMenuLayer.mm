@@ -50,24 +50,34 @@ int NUM_LEVELS = 20;
     //CCMenuItemImage * fluffy = [CCMenuItemImage itemWithNormalImage: @"fluffy1.png" selectedImage: @"fluffy1.png"];
     
     
+    
+    
     //Initialize fluffy with the first frame from the spritesheet, fluffy1
     
     CCSprite * fluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
     fluffy.anchorPoint = CGPointZero;
-    fluffy.position = CGPointMake(200.0f, 80.0f);
+    fluffy.position = CGPointMake(190.0f, 60.0f);
     
     //Create an animation from the set of frames
     
-    CCAnimation *wagging = [CCAnimation animationWithFrames: waggingFrames delay:0.5f];
+    //CCAnimation *wagging = [CCAnimation animationWithFrames: waggingFrames delay:0.1f];
+    CCAnimation *wagging = [CCAnimation animationWithSpriteFrames: waggingFrames delay:0.2f];
     
     //Create an action with the animation that can then be assigned to a sprite
     
-    wag = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:wagging restoreOriginalFrame:NO]];
+    //wag = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:wagging restoreOriginalFrame:NO]];
+    wag = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:wagging]];
+    wagging.restoreOriginalFrame = NO;
+           
     
     //tell the bear to run the taunting action
     [fluffy runAction:wag];
     
     [self addChild:fluffy z:1];
+    
+    
+    //Create an action with the animation that can then be assigned to a sprite
+ 
     
     
     
@@ -97,11 +107,11 @@ int NUM_LEVELS = 20;
         
         //Load the plist which tells Kobold2D how to properly parse your spritesheet. If on a retina device Kobold2D will automatically use bearframes-hd.plist
         
-        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"fluffysprites.plist"];
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"fluffyframes.plist"];
         
         //Load in the spritesheet, if retina Kobold2D will automatically use bearframes-hd.png
         
-        CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"fluffysprites.png"];
+        CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"fluffyframes.png"];
         
         [self addChild:spriteSheet];
         
@@ -116,11 +126,6 @@ int NUM_LEVELS = 20;
             [waggingFrames addObject:
              [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName: [NSString stringWithFormat:@"fluffy%d.png", i]]];
         }
-        
-        
-        
-        
-        
         
         
         

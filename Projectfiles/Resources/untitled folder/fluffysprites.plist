@@ -7,72 +7,72 @@
             <key>fluffy1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{100,116}}</string>
+                <string>{{0,0},{100,118}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,116}}</string>
+                <string>{{0,0},{100,118}}</string>
                 <key>sourceSize</key>
-                <string>{100,116}</string>
+                <string>{100,118}</string>
             </dict>
             <key>fluffy2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,0},{100,116}}</string>
+                <string>{{100,0},{100,113}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,116}}</string>
+                <string>{{0,0},{100,113}}</string>
                 <key>sourceSize</key>
-                <string>{100,116}</string>
+                <string>{100,113}</string>
             </dict>
             <key>fluffy3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,116},{100,116}}</string>
+                <string>{{0,118},{100,115}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,116}}</string>
+                <string>{{0,0},{100,115}}</string>
                 <key>sourceSize</key>
-                <string>{100,116}</string>
+                <string>{100,115}</string>
             </dict>
             <key>fluffy4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,0},{100,116}}</string>
+                <string>{{100,0},{100,113}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,116}}</string>
+                <string>{{0,0},{100,113}}</string>
                 <key>sourceSize</key>
-                <string>{100,116}</string>
+                <string>{100,113}</string>
             </dict>
             <key>fluffy5.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{100,116}}</string>
+                <string>{{0,0},{100,118}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,116}}</string>
+                <string>{{0,0},{100,118}}</string>
                 <key>sourceSize</key>
-                <string>{100,116}</string>
+                <string>{100,118}</string>
             </dict>
             <key>fluffy6.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,116},{100,113}}</string>
+                <string>{{100,118},{100,113}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -88,13 +88,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>fluffyframes.png</string>
+            <string>fluffysprites.png</string>
             <key>size</key>
             <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0f03514abccdc842931ce84920a5c719:5a14431dbd689bec4f4922b735e30600:4d211f879357f4cc0b86ff6e9ec58cfa$</string>
+            <string>$TexturePacker:SmartUpdate:a215c0973ae9704cd574920f48afe079:7994e3391205cf47893153d48c3bf276:d372bb75d716e21077865cdb4d6b0e78$</string>
             <key>textureFileName</key>
-            <string>fluffyframes.png</string>
+            <string>fluffysprites.png</string>
         </dict>
     </dict>
 </plist>
