@@ -9,5 +9,9 @@
 #import "CCLayer.h"
 
 @interface StartMenuLayer : CCLayer
-
+{
+    //animation
+    CCAction *wag;
+    NSMutableArray *waggingFrames;
+}
 @end

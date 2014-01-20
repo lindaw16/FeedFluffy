@@ -47,6 +47,31 @@ int NUM_LEVELS = 20;
     
     CCMenuItemImage * achievements = [CCMenuItemImage itemWithNormalImage:@"Achievements.png" selectedImage: @"Achievements.png" target:self selector:@selector(goToAchievements:)];
     
+    //CCMenuItemImage * fluffy = [CCMenuItemImage itemWithNormalImage: @"fluffy1.png" selectedImage: @"fluffy1.png"];
+    
+    
+    //Initialize fluffy with the first frame from the spritesheet, fluffy1
+    
+    CCSprite * fluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
+    fluffy.anchorPoint = CGPointZero;
+    fluffy.position = CGPointMake(200.0f, 80.0f);
+    
+    //Create an animation from the set of frames
+    
+    CCAnimation *wagging = [CCAnimation animationWithFrames: waggingFrames delay:0.5f];
+    
+    //Create an action with the animation that can then be assigned to a sprite
+    
+    wag = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:wagging restoreOriginalFrame:NO]];
+    
+    //tell the bear to run the taunting action
+    [fluffy runAction:wag];
+    
+    [self addChild:fluffy z:1];
+    
+    
+    
+    
 	// Create a menu and add your menu items to it
 	CCMenu * myMenu = [CCMenu menuWithItems:playButton, bonus,achievements, nil];
     
@@ -56,6 +81,7 @@ int NUM_LEVELS = 20;
     playButton.position = ccp(400,250);
     bonus.position = ccp(100, 80);
     achievements.position = ccp(375, 80);
+    //fluffy.position = ccp(200, 80);
     myMenu.position = ccp(0,0);
     
 	// add the menu to your scene
@@ -67,6 +93,37 @@ int NUM_LEVELS = 20;
     //    instanceOfMyClass = self;
     if ((self = [super init])){
         //[self scheduleUpdate];
+        
+        
+        //Load the plist which tells Kobold2D how to properly parse your spritesheet. If on a retina device Kobold2D will automatically use bearframes-hd.plist
+        
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"fluffyframes.plist"];
+        
+        //Load in the spritesheet, if retina Kobold2D will automatically use bearframes-hd.png
+        
+        CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"fluffyframes.png"];
+        
+        [self addChild:spriteSheet];
+        
+        //Define the frames based on the plist - note that for this to work, the original files must be in the format bear1, bear2, bear3 etc...
+        
+        //When it comes time to get art for your own original game, makegameswith.us will give you spritesheets that follow this convention, <spritename>1 <spritename>2 <spritename>3 etc...
+        
+        waggingFrames = [NSMutableArray array];
+        
+        for(int i = 1; i <= 6; ++i)
+        {
+            [waggingFrames addObject:
+             [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName: [NSString stringWithFormat:@"fluffy%d.png", i]]];
+        }
+        
+        
+        
+        
+        
+        
+        
+        
         
         // Get a pointer to the NSUserDefaults object
         NSUserDefaults * standardDefaults = [NSUserDefaults standardUserDefaults];
