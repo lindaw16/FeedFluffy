@@ -64,6 +64,9 @@
 		BF196D00188EFCAC008CB197 /* ok1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CFD188EFCAC008CB197 /* ok1.png */; };
 		BF196D01188EFCAC008CB197 /* ok2.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CFE188EFCAC008CB197 /* ok2.png */; };
 		BF196D02188EFCAC008CB197 /* ok3.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CFF188EFCAC008CB197 /* ok3.png */; };
+		BF196D06188F1CE9008CB197 /* snore1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196D05188F1CE9008CB197 /* snore1.png */; };
+		BF196D11188F1EE9008CB197 /* snoringframes.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF196D0F188F1EE9008CB197 /* snoringframes.plist */; };
+		BF196D12188F1EE9008CB197 /* snoringframes.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196D10188F1EE9008CB197 /* snoringframes.png */; };
 		BF22E3D5188472C9007E26DF /* hungryEevee.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D4188472C9007E26DF /* hungryEevee.png */; };
 		BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */; };
 		BF30E0071888DDB1000773E5 /* cannon-body.png in Resources */ = {isa = PBXBuildFile; fileRef = BF30E0051888DDB1000773E5 /* cannon-body.png */; };
@@ -214,6 +217,9 @@
 		BF196CFD188EFCAC008CB197 /* ok1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok1.png; sourceTree = "<group>"; };
 		BF196CFE188EFCAC008CB197 /* ok2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok2.png; sourceTree = "<group>"; };
 		BF196CFF188EFCAC008CB197 /* ok3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok3.png; sourceTree = "<group>"; };
+		BF196D05188F1CE9008CB197 /* snore1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snore1.png; path = asnore/snore1.png; sourceTree = "<group>"; };
+		BF196D0F188F1EE9008CB197 /* snoringframes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = snoringframes.plist; path = bsnore/snoringframes.plist; sourceTree = "<group>"; };
+		BF196D10188F1EE9008CB197 /* snoringframes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snoringframes.png; path = bsnore/snoringframes.png; sourceTree = "<group>"; };
 		BF22E3D4188472C9007E26DF /* hungryEevee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEevee.png; sourceTree = "<group>"; };
 		BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEeveeMouth.png; sourceTree = "<group>"; };
 		BF30E0051888DDB1000773E5 /* cannon-body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cannon-body.png"; sourceTree = "<group>"; };
@@ -553,6 +559,9 @@
 			isa = PBXGroup;
 			children = (
 				BF196CF9188EF27D008CB197 /* cage.png */,
+				BF196D05188F1CE9008CB197 /* snore1.png */,
+				BF196D0F188F1EE9008CB197 /* snoringframes.plist */,
+				BF196D10188F1EE9008CB197 /* snoringframes.png */,
 				BF196CF3188DDD74008CB197 /* fluffyframes.plist */,
 				BF196CF4188DDD74008CB197 /* fluffyframes.png */,
 				BF196CF7188DDD7D008CB197 /* fluffy1.png */,
@@ -708,7 +717,9 @@
 				DCC1A10B13A94ED5005BD75D /* iTunesArtwork in Resources */,
 				AB9E5980188B261100B7D315 /* resume_button@2x.png in Resources */,
 				ABB719E91887567B004D2FCA /* pineapple.png in Resources */,
+				BF196D06188F1CE9008CB197 /* snore1.png in Resources */,
 				BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */,
+				BF196D12188F1EE9008CB197 /* snoringframes.png in Resources */,
 				BF196CF8188DDD7D008CB197 /* fluffy1.png in Resources */,
 				DCC1A3AF13A94F1A005BD75D /* config.lua in Resources */,
 				BFB425B2188702D4002DD826 /* level2.png in Resources */,
@@ -729,6 +740,7 @@
 				DC2721B1160CB01100D88944 /* Default-568h@2x.png in Resources */,
 				BF4E960E188A367E0000B4FE /* dialog1.png in Resources */,
 				BFC2DCE8188609E900A1D673 /* apple.png in Resources */,
+				BF196D11188F1EE9008CB197 /* snoringframes.plist in Resources */,
 				AB9E597C188B261100B7D315 /* main_menu_button@2x.png in Resources */,
 				BF196CF5188DDD74008CB197 /* fluffyframes.plist in Resources */,
 				AB9FBB8C188B190000992502 /* restart_button2.png in Resources */,

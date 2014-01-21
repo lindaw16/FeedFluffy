@@ -51,6 +51,11 @@ enum
     CCLabelTTF *_launchLabel;
     MyContactListener *_contactListener;
     
+    
+    //snoring
+    CCAction *snore;
+    NSMutableArray *snoringFrames;
+    
 }
 
 
@@ -86,6 +91,7 @@ enum
 //ones I think we should eventually move to private methods I added //
 +(id) sceneWithLevel:(int)level;
 - (id)initWithLevel: (int) level;
+- (void) setUpMenus;
 -(void) detectCollisions;
 -(BOOL) checkLevelCompleted; //
 - (void)tick:(ccTime) dt;

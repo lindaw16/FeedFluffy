@@ -99,6 +99,37 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 	return scene;
 }
 
+
+-(void) setUpMenus
+{
+//we should probably put the pause button and star button here??
+    
+    CCSprite * thesnores = [CCSprite spriteWithSpriteFrameName:@"snore1.png"];
+    thesnores.anchorPoint = CGPointZero;
+    thesnores.position = CGPointMake(380.0f, 120.0f);
+    
+    //Create an animation from the set of frames
+    
+    //CCAnimation *wagging = [CCAnimation animationWithFrames: waggingFrames delay:0.1f];
+    CCAnimation *snoring = [CCAnimation animationWithSpriteFrames: snoringFrames delay:0.9f];
+    
+    //Create an action with the animation that can then be assigned to a sprite
+    
+    //wag = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:wagging restoreOriginalFrame:NO]];
+    snore = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:snoring]];
+    snoring.restoreOriginalFrame = NO;
+    
+    
+    //tell the bear to run the taunting action
+    [thesnores runAction:snore];
+    
+    [self addChild:thesnores z:2];
+
+}
+
+
+
+
 - (id)initWithLevel: (int) level {
     
     if ((self = [super initWithColor:ccc4(255,255,255,255)])) {
@@ -165,10 +196,48 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         cage.position = ccp(470, cageBottom + (winSize.height - cageBottom)/2);
         [self addChild: cage z:1];
         
+//        CCSprite *temp = [CCSprite spriteWithFile: @"snore3.png"];
+//        temp.position = ccp(430, cage.position.y - 30);
+//        [self addChild: temp z:3];
+        
+        
+        
+        
+        
+        //Load the plist which tells Kobold2D how to properly parse your spritesheet. If on a retina device Kobold2D will automatically use bearframes-hd.plist
+        
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"snoringframes.plist"];
+        
+        //Load in the spritesheet, if retina Kobold2D will automatically use bearframes-hd.png
+        
+        CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"snoringframes.png"];
+        
+        [self addChild:spriteSheet];
+        
+        
+        //When it comes time to get art for your own original game, makegameswith.us will give you spritesheets that follow this convention, <spritename>1 <spritename>2 <spritename>3 etc...
+        
+        snoringFrames = [NSMutableArray array];
+        
+        for(int i = 1; i <= 4; ++i)
+        {
+            [snoringFrames addObject:
+             [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName: [NSString stringWithFormat:@"snore%d.png", i]]];
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         // Create contact listener
         _contactListener = new MyContactListener();
         world->SetContactListener(_contactListener);
+        
         
         
         //Adding "Launch" button so player can click on it to launch bullet/projectile
@@ -334,6 +403,9 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             fruitBody->CreateFixture(&fruitShapeDef);
         }
 
+        
+        [self setUpMenus];
+        
         
         [self schedule:@selector(tick:)];
         //[self schedule:@selector(kick) interval:5.0];
