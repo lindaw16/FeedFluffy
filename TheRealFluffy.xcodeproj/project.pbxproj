@@ -59,6 +59,10 @@
 		BF196CF5188DDD74008CB197 /* fluffyframes.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF196CF3188DDD74008CB197 /* fluffyframes.plist */; };
 		BF196CF6188DDD74008CB197 /* fluffyframes.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CF4188DDD74008CB197 /* fluffyframes.png */; };
 		BF196CF8188DDD7D008CB197 /* fluffy1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CF7188DDD7D008CB197 /* fluffy1.png */; };
+		BF196CFA188EF27D008CB197 /* cage.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CF9188EF27D008CB197 /* cage.png */; };
+		BF196D00188EFCAC008CB197 /* ok1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CFD188EFCAC008CB197 /* ok1.png */; };
+		BF196D01188EFCAC008CB197 /* ok2.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CFE188EFCAC008CB197 /* ok2.png */; };
+		BF196D02188EFCAC008CB197 /* ok3.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CFF188EFCAC008CB197 /* ok3.png */; };
 		BF22E3D5188472C9007E26DF /* hungryEevee.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D4188472C9007E26DF /* hungryEevee.png */; };
 		BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */; };
 		BF30E0071888DDB1000773E5 /* cannon-body.png in Resources */ = {isa = PBXBuildFile; fileRef = BF30E0051888DDB1000773E5 /* cannon-body.png */; };
@@ -204,6 +208,10 @@
 		BF196CF3188DDD74008CB197 /* fluffyframes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = fluffyframes.plist; path = fluffysprites/fluffyframes.plist; sourceTree = "<group>"; };
 		BF196CF4188DDD74008CB197 /* fluffyframes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fluffyframes.png; path = fluffysprites/fluffyframes.png; sourceTree = "<group>"; };
 		BF196CF7188DDD7D008CB197 /* fluffy1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fluffy1.png; path = fluffysprites/fluffy1.png; sourceTree = "<group>"; };
+		BF196CF9188EF27D008CB197 /* cage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cage.png; sourceTree = "<group>"; };
+		BF196CFD188EFCAC008CB197 /* ok1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok1.png; sourceTree = "<group>"; };
+		BF196CFE188EFCAC008CB197 /* ok2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok2.png; sourceTree = "<group>"; };
+		BF196CFF188EFCAC008CB197 /* ok3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok3.png; sourceTree = "<group>"; };
 		BF22E3D4188472C9007E26DF /* hungryEevee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEevee.png; sourceTree = "<group>"; };
 		BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEeveeMouth.png; sourceTree = "<group>"; };
 		BF30E0051888DDB1000773E5 /* cannon-body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cannon-body.png"; sourceTree = "<group>"; };
@@ -541,6 +549,7 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BF196CF9188EF27D008CB197 /* cage.png */,
 				BF196CF3188DDD74008CB197 /* fluffyframes.plist */,
 				BF196CF4188DDD74008CB197 /* fluffyframes.png */,
 				BF196CF7188DDD7D008CB197 /* fluffy1.png */,
@@ -560,6 +569,9 @@
 				AB9FBB84188B190000992502 /* restart_button2.png */,
 				AB9FBB85188B190000992502 /* resume_button.png */,
 				AB9FBB86188B190000992502 /* resume_button2.png */,
+				BF196CFD188EFCAC008CB197 /* ok1.png */,
+				BF196CFE188EFCAC008CB197 /* ok2.png */,
+				BF196CFF188EFCAC008CB197 /* ok3.png */,
 				AB7821C7188A56A7008F51B8 /* pause.png */,
 				BF4E9606188A1FD10000B4FE /* cannonx.png */,
 				BF4E960A188A26F30000B4FE /* dialog2.png */,
@@ -683,6 +695,7 @@
 				AB9E597F188B261100B7D315 /* restart_button2@2x.png in Resources */,
 				BF30E0071888DDB1000773E5 /* cannon-body.png in Resources */,
 				ABB719D318872546004D2FCA /* level1.plist in Resources */,
+				BF196CFA188EF27D008CB197 /* cage.png in Resources */,
 				ABB719D118872333004D2FCA /* cannon2.png in Resources */,
 				BFB425B418870FD7002DD826 /* cannon2.png in Resources */,
 				DCC1A10413A94ED5005BD75D /* Icon-Small@2x.png in Resources */,
@@ -716,6 +729,7 @@
 				AB9E597C188B261100B7D315 /* main_menu_button@2x.png in Resources */,
 				BF196CF5188DDD74008CB197 /* fluffyframes.plist in Resources */,
 				AB9FBB8C188B190000992502 /* restart_button2.png in Resources */,
+				BF196D02188EFCAC008CB197 /* ok3.png in Resources */,
 				BFB425B618872304002DD826 /* Achievements.png in Resources */,
 				BFB425BA188783EB002DD826 /* gameBar.png in Resources */,
 				BFB425AA1886600F002DD826 /* levelSelectBackground.png in Resources */,
@@ -729,6 +743,7 @@
 				ABB719E01887565E004D2FCA /* banana-hd.png in Resources */,
 				BF30E0081888DDB1000773E5 /* cannon-head.png in Resources */,
 				BFB425A818865B99002DD826 /* OopsDNE.png in Resources */,
+				BF196D00188EFCAC008CB197 /* ok1.png in Resources */,
 				BFB425AE1886FB5D002DD826 /* goRight.png in Resources */,
 				ABB719F11887568D004D2FCA /* watermelon.png in Resources */,
 				AB9FBB8A188B190000992502 /* main_menu_button2.png in Resources */,
@@ -740,6 +755,7 @@
 				AB9E13841889CF26001F6EA8 /* level2.plist in Resources */,
 				AB9E597E188B261100B7D315 /* restart_button@2x.png in Resources */,
 				AB9FBB8B188B190000992502 /* restart_button.png in Resources */,
+				BF196D01188EFCAC008CB197 /* ok2.png in Resources */,
 				AB7821C8188A56A7008F51B8 /* pause.png in Resources */,
 				ABB719F01887568D004D2FCA /* watermelon-hd.png in Resources */,
 				ABB719E51887566E004D2FCA /* grapes.png in Resources */,

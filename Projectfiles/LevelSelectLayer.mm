@@ -54,9 +54,9 @@ float priorY = 1000;
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     NSString *levelString = @"level1";
     
-    // Set levels as not completed for testing
-    //[defaults setObject:@NO forKey:levelString];
-    //[defaults synchronize];
+ //Set levels as not completed for testing
+//[defaults setObject:@NO forKey:levelString];
+//[defaults synchronize];
     
     int level1Completed = [[defaults objectForKey:levelString] intValue];
     NSLog(@"LEVEL 2: %d", level1Completed);

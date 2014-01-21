@@ -161,7 +161,9 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         cannonHead.position = ccp(_player.position.x + 30, _player.position.y - 0.5);
         [self addChild:cannonHead z:1];
         
-        
+        CCSprite *cage = [CCSprite spriteWithFile: @"cage.png"];
+        cage.position = ccp(470, cageBottom + (winSize.height - cageBottom)/2);
+        [self addChild: cage z:1];
         
         
         // Create contact listener
@@ -205,14 +207,14 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         if (level == 1)
         {
             message = [CCSprite spriteWithFile:@"dialog1.png"];
-            message.position = ccp(150, 150);
+            message.position = ccp(220, 140);
             [self addChild:message z:1];
         
-            tapHere = [CCMenuItemImage itemWithNormalImage:@"cannonx.png" selectedImage: @"cannonx.png" target:self selector:@selector(cannonx:)];
+            tapHere = [CCMenuItemImage itemWithNormalImage:@"ok1.png" selectedImage: @"ok1" target:self selector:@selector(cannonx:)];
             //tapHere = [CCSprite spriteWithFile:@"cannonx.png"];
             myTut = [CCMenu menuWithItems: tapHere, nil];
             //tapHere.position = ccp(100, 80);
-            tapHere.position = ccp(220, 120);
+            tapHere.position = ccp(250, 110);
             myTut.position = CGPointZero;
             [self addChild:myTut z:3];
         }
@@ -896,7 +898,8 @@ int counter = 1;
     if (showDialog == 2)
     {
         message = [CCSprite spriteWithFile:@"dialog2.png"];
-        tapHere = [CCMenuItemImage itemWithNormalImage:@"cannonx.png" selectedImage: @"cannonx.png" target:self selector:@selector(cannonx:)];
+        tapHere = [CCMenuItemImage itemWithNormalImage:@"ok2.png" selectedImage: @"ok2.png" target:self selector:@selector(cannonx:)];
+        tapHere.position = ccp(230, 110);
         //[tapHere setPosition: _player.position];
     }
     
@@ -904,14 +907,18 @@ int counter = 1;
     if (showDialog == 3)
     {
         message = [CCSprite spriteWithFile:@"dialog3.png"];
-        tapHere = [CCMenuItemImage itemWithNormalImage:@"cannonx.png" selectedImage: @"cannonx.png" target:self selector:@selector(cannonx:)];
+        tapHere = [CCMenuItemImage itemWithNormalImage:@"ok3.png" selectedImage: @"ok3.png" target:self selector:@selector(cannonx:)];
+        tapHere.position = ccp(180, 110);
     }
     
     if (showDialog <= 3){
-        message.position = ccp(150, 150);
+        message = [CCSprite spriteWithFile: [@"dialog" stringByAppendingFormat:@"%d", showDialog]];
+        
+        
+        message.position = ccp(200, 110);
         myTut = [CCMenu menuWithItems: tapHere, nil];
         myTut.position = CGPointZero;
-        tapHere.position = ccp(220, 120);
+        //tapHere.position = ccp(220, 120);
         [self addChild:message z:1];
         [self addChild:myTut z:1];
     }
