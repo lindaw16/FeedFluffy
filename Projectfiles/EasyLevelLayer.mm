@@ -57,12 +57,12 @@
         //Check whether level is locked, or released and change display accordingly.
         if (!level1Locked){
             Label1 = [CCMenuItemImage
-                           itemFromNormalImage:@"1.png" selectedImage:@"1.png"
-                           target:self selector:@selector(level1Tapped:)];
+                      itemFromNormalImage:@"1.png" selectedImage:@"1.png"
+                      target:self selector:@selector(level1Tapped:)];
             Label1.position = ccp(-110,15);
             
             //level1Label.anchorPoint = ccp(-110,15);
-
+            
             
             level1Items = [CCMenu menuWithItems:itemSprite1, Label1, nil];
         }
@@ -96,12 +96,18 @@
         
         
         //Check whether level is locked, or released and change display accordingly.
-        if (level2Locked){
-            level2Label = [CCLabelTTF labelWithString:@"1" fontName:@"Helvetica" fontSize:24];
-            level2Label.position = ccp(0.1,0.1);
-            [self addChild:level2Label];
-            level2Items = [CCMenu menuWithItems:itemSprite2,nil];
+        if (!level2Locked){
+            Label2 = [CCMenuItemImage
+                      itemFromNormalImage:@"2.png" selectedImage:@"2.png"
+                      target:self selector:@selector(level2Tapped:)];
+            Label2.position = ccp(-40,15);
+            
+            //level1Label.anchorPoint = ccp(-110,15);
+            
+            
+            level2Items = [CCMenu menuWithItems:itemSprite2, Label2, nil];
         }
+        
         else {
             
             lockSprite2 = [CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"lock.png"] selectedSprite:[CCSprite spriteWithFile:@"lock.png"] block:^(id sender){
@@ -112,10 +118,12 @@
             level2Items = [CCMenu menuWithItems:itemSprite2,lockSprite2, nil];
         }
         [self addChild:level2Items];
+        
+        
         //CCMenu *finalMenu = [CCMenu menuWithItems:level1Items, level2Items, nil];
         //[finalMenu alignItemsHorizontally];
         //[self setUpMenus];
-
+        
         
         
         //Create third level green button
@@ -132,12 +140,18 @@
         
         
         //Check whether level is locked, or released and change display accordingly.
-        if (level3Locked){
-            level3Label = [CCLabelTTF labelWithString:@"1" fontName:@"Helvetica" fontSize:24];
-            level3Label.position = ccp(0.1,0.1);
-            [self addChild:level3Label];
-            level3Items = [CCMenu menuWithItems:itemSprite3,nil];
+        if (!level3Locked){
+            Label3 = [CCMenuItemImage
+                      itemFromNormalImage:@"3.png" selectedImage:@"3.png"
+                      target:self selector:@selector(level3Tapped:)];
+            Label3.position = ccp(30,15);
+            
+            //level1Label.anchorPoint = ccp(-110,15);
+            
+            
+            level3Items = [CCMenu menuWithItems:itemSprite3, Label3, nil];
         }
+        
         else {
             
             lockSprite3 = [CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"lock.png"] selectedSprite:[CCSprite spriteWithFile:@"lock.png"] block:^(id sender){
@@ -151,7 +165,7 @@
         //CCMenu *finalMenu = [CCMenu menuWithItems:level1Items, level2Items, nil];
         //[finalMenu alignItemsHorizontally];
         //[self setUpMenus];
-
+        
         
         //Create third level green button
         CCMenuItem *itemSprite4 = [CCMenuItemImage
@@ -168,11 +182,17 @@
         
         //Check whether level is locked, or released and change display accordingly.
         if (level4Locked){
-            level4Label = [CCLabelTTF labelWithString:@"1" fontName:@"Helvetica" fontSize:24];
-            level4Label.position = ccp(0.1,0.1);
-            [self addChild:level4Label];
-            level4Items = [CCMenu menuWithItems:itemSprite4,nil];
+            Label4 = [CCMenuItemImage
+                      itemFromNormalImage:@"4.png" selectedImage:@"4.png"
+                      target:self selector:@selector(level4Tapped:)];
+            Label4.position = ccp(100,15);
+            
+            //level1Label.anchorPoint = ccp(-110,15);
+            
+            
+            level4Items = [CCMenu menuWithItems:itemSprite4, Label4, nil];
         }
+        
         else {
             
             lockSprite4 = [CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"lock.png"] selectedSprite:[CCSprite spriteWithFile:@"lock.png"] block:^(id sender){
@@ -189,12 +209,10 @@
         
         
         
-        
-        
         [self scheduleUpdate];
         
     }
-
+    
     return self;
 }
 
