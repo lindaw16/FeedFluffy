@@ -204,7 +204,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         [self addChild:PauseButton z:7];
         
         
-        if (level == 1)
+        if (level == 1 && showDialog == 1)
         {
             message = [CCSprite spriteWithFile:@"dialog1.png"];
             message.position = ccp(220, 140);
@@ -214,7 +214,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             //tapHere = [CCSprite spriteWithFile:@"cannonx.png"];
             myTut = [CCMenu menuWithItems: tapHere, nil];
             //tapHere.position = ccp(100, 80);
-            tapHere.position = ccp(250, 110);
+            tapHere.position = ccp(250, 100);
             myTut.position = CGPointZero;
             [self addChild:myTut z:3];
         }
@@ -899,8 +899,13 @@ int counter = 1;
     {
         message = [CCSprite spriteWithFile:@"dialog2.png"];
         tapHere = [CCMenuItemImage itemWithNormalImage:@"ok2.png" selectedImage: @"ok2.png" target:self selector:@selector(cannonx:)];
-        tapHere.position = ccp(230, 110);
+        message.position = ccp(220, 130);
+        tapHere.position = ccp(250, 110);
         //[tapHere setPosition: _player.position];
+        myTut = [CCMenu menuWithItems: tapHere, nil];
+        myTut.position = CGPointZero;
+        [self addChild:message z:1];
+        [self addChild:myTut z:1];
     }
     
     
@@ -908,20 +913,26 @@ int counter = 1;
     {
         message = [CCSprite spriteWithFile:@"dialog3.png"];
         tapHere = [CCMenuItemImage itemWithNormalImage:@"ok3.png" selectedImage: @"ok3.png" target:self selector:@selector(cannonx:)];
-        tapHere.position = ccp(180, 110);
-    }
-    
-    if (showDialog <= 3){
-        message = [CCSprite spriteWithFile: [@"dialog" stringByAppendingFormat:@"%d", showDialog]];
+        message.position = ccp(230, 150);
+        tapHere.position = ccp(230, 100);
         
-        
-        message.position = ccp(200, 110);
         myTut = [CCMenu menuWithItems: tapHere, nil];
         myTut.position = CGPointZero;
-        //tapHere.position = ccp(220, 120);
         [self addChild:message z:1];
         [self addChild:myTut z:1];
     }
+    
+//    if (showDialog <= 3){
+//        //message = [CCSprite spriteWithFile: [@"dialog" stringByAppendingFormat:@"%d", showDialog]];
+//        
+////        
+////        message.position = ccp(200, 110);
+////        myTut = [CCMenu menuWithItems: tapHere, nil];
+////        myTut.position = CGPointZero;
+////        //tapHere.position = ccp(220, 120);
+////        [self addChild:message z:1];
+////        [self addChild:myTut z:1];
+//    }
     
     NSLog(@"YEAAAAA");
 }
