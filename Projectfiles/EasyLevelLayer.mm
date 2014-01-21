@@ -42,9 +42,7 @@
         [self addChild:bg];
         
         
-        infoLabel = [CCLabelTTF labelWithString:@"(Tap an Item)" fontName:@"Helvetica" fontSize:24];
-        infoLabel.position = ccp(size.width/2, 30);
-        [self addChild:infoLabel];
+        
         
         //Create first level green button
         CCMenuItem *itemSprite1 = [CCMenuItemImage
@@ -58,15 +56,15 @@
         
         //Check whether level is locked, or released and change display accordingly.
         if (!level1Locked){
-            level1Label = [CCLabelTTF labelWithString:@"1" fontName:@"Helvetica" fontSize:24];
-            //level1Label.position = ccp(-110,15);
-            CCLabelTTF* label = [CCLabelTTF labelWithString:@"1" fontName:@"Arial" fontSize:12];
-            label.position = itemSprite1.position;
-            [self addChild:label];
+            Label1 = [CCMenuItemImage
+                           itemFromNormalImage:@"1.png" selectedImage:@"1.png"
+                           target:self selector:@selector(level1Tapped:)];
+            Label1.position = ccp(-110,15);
+            
             //level1Label.anchorPoint = ccp(-110,15);
 
             
-            level1Items = [CCMenu menuWithItems:itemSprite1, nil];
+            level1Items = [CCMenu menuWithItems:itemSprite1, Label1, nil];
         }
         else {
             

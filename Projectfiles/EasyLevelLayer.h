@@ -19,7 +19,9 @@ CCLabelTTF *level3Label;
 
     
     CCMenuItem *lockSprite1;
+    CCMenuItem *Label1;
     CCMenuItem *lockSprite2;
+    
         CCMenuItem *lockSprite3;
      CCMenuItem *lockSprite4;
     CCMenuItem *level1Items;
