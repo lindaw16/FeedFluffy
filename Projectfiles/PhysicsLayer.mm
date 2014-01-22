@@ -288,7 +288,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 //            [self addChild:myTut z:3];
 //        }
         
-        if (currentLevel == 1 || currentLevel == 2)
+        if (currentLevel == 1 || currentLevel == 2 || currentLevel == 3) // add a list of tutorial levels :P
         {
             //message = [CCSprite spriteWithFile:@"tutorial1.png"];
             message = [CCSprite spriteWithFile:[NSString stringWithFormat:@"tutorial%d.png", currentLevel]];
@@ -708,7 +708,7 @@ int counter = 1;
     else if (input.anyTouchEndedThisFrame)
     {
         printf("ended frame..........\n");
-        if (currentLevel == 1 || currentLevel == 2) // add a list for later
+        if (currentLevel == 1 || currentLevel == 2 || currentLevel == 3) // add a list for later
         {
             [self removeChild: message];
         }

@@ -70,8 +70,9 @@
 		BF196D06188F1CE9008CB197 /* snore1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196D05188F1CE9008CB197 /* snore1.png */; };
 		BF196D11188F1EE9008CB197 /* snoringframes.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF196D0F188F1EE9008CB197 /* snoringframes.plist */; };
 		BF196D12188F1EE9008CB197 /* snoringframes.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196D10188F1EE9008CB197 /* snoringframes.png */; };
-		BF196D18188F8151008CB197 /* tutorial1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196D17188F8151008CB197 /* tutorial1.png */; };
-		BF196D1A188F83C9008CB197 /* tutorial2.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196D19188F83C9008CB197 /* tutorial2.png */; };
+		BF196D20188F8696008CB197 /* tutorial1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196D1D188F8696008CB197 /* tutorial1.png */; };
+		BF196D21188F8696008CB197 /* tutorial2.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196D1E188F8696008CB197 /* tutorial2.png */; };
+		BF196D22188F8696008CB197 /* tutorial3.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196D1F188F8696008CB197 /* tutorial3.png */; };
 		BF22E3D5188472C9007E26DF /* hungryEevee.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D4188472C9007E26DF /* hungryEevee.png */; };
 		BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */; };
 		BF30E0071888DDB1000773E5 /* cannon-body.png in Resources */ = {isa = PBXBuildFile; fileRef = BF30E0051888DDB1000773E5 /* cannon-body.png */; };
@@ -228,8 +229,9 @@
 		BF196D05188F1CE9008CB197 /* snore1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snore1.png; path = asnore/snore1.png; sourceTree = "<group>"; };
 		BF196D0F188F1EE9008CB197 /* snoringframes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = snoringframes.plist; path = bsnore/snoringframes.plist; sourceTree = "<group>"; };
 		BF196D10188F1EE9008CB197 /* snoringframes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = snoringframes.png; path = bsnore/snoringframes.png; sourceTree = "<group>"; };
-		BF196D17188F8151008CB197 /* tutorial1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial1.png; sourceTree = "<group>"; };
-		BF196D19188F83C9008CB197 /* tutorial2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial2.png; sourceTree = "<group>"; };
+		BF196D1D188F8696008CB197 /* tutorial1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial1.png; sourceTree = "<group>"; };
+		BF196D1E188F8696008CB197 /* tutorial2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial2.png; sourceTree = "<group>"; };
+		BF196D1F188F8696008CB197 /* tutorial3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial3.png; sourceTree = "<group>"; };
 		BF22E3D4188472C9007E26DF /* hungryEevee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEevee.png; sourceTree = "<group>"; };
 		BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEeveeMouth.png; sourceTree = "<group>"; };
 		BF30E0051888DDB1000773E5 /* cannon-body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cannon-body.png"; sourceTree = "<group>"; };
@@ -598,8 +600,9 @@
 				BF196CFE188EFCAC008CB197 /* ok2.png */,
 				BF196CFF188EFCAC008CB197 /* ok3.png */,
 				AB7821C7188A56A7008F51B8 /* pause.png */,
-				BF196D17188F8151008CB197 /* tutorial1.png */,
-				BF196D19188F83C9008CB197 /* tutorial2.png */,
+				BF196D1D188F8696008CB197 /* tutorial1.png */,
+				BF196D1E188F8696008CB197 /* tutorial2.png */,
+				BF196D1F188F8696008CB197 /* tutorial3.png */,
 				BF4E9606188A1FD10000B4FE /* cannonx.png */,
 				BF4E960A188A26F30000B4FE /* dialog2.png */,
 				BF4E9608188A23760000B4FE /* cannonheadx.png */,
@@ -723,7 +726,8 @@
 				BF30E0071888DDB1000773E5 /* cannon-body.png in Resources */,
 				ABB719D318872546004D2FCA /* level1.plist in Resources */,
 				BF196CFA188EF27D008CB197 /* cage.png in Resources */,
-				BF196D1A188F83C9008CB197 /* tutorial2.png in Resources */,
+				BF196D21188F8696008CB197 /* tutorial2.png in Resources */,
+				BF196D22188F8696008CB197 /* tutorial3.png in Resources */,
 				ABB719D118872333004D2FCA /* cannon2.png in Resources */,
 				BFB425B418870FD7002DD826 /* cannon2.png in Resources */,
 				DCC1A10413A94ED5005BD75D /* Icon-Small@2x.png in Resources */,
@@ -801,7 +805,7 @@
 				914BE9D1188990390085E989 /* cannon-body2.png in Resources */,
 				AB9E597D188B261100B7D315 /* main_menu_button2@2x.png in Resources */,
 				914BE9E31889BDF40085E989 /* bg.png in Resources */,
-				BF196D18188F8151008CB197 /* tutorial1.png in Resources */,
+				BF196D20188F8696008CB197 /* tutorial1.png in Resources */,
 				914BE9E41889BDF40085E989 /* bg@2x.png in Resources */,
 				914BE9E51889BDF40085E989 /* button.png in Resources */,
 				914BE9E61889BDF40085E989 /* button@2x.png in Resources */,
