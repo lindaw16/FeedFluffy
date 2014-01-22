@@ -67,7 +67,7 @@ float priorY = 1000;
     //CCMenuItemImage * tutorials = [CCMenuItemImage itemWithNormalImage:@"tutorials.png" selectedImage:@"tutorials.png"];
 
 //CCMenuItemImage * level1 = [CCMenuItemImage itemWithNormalImage:@"level1.png" selectedImage: @"level1.png" target:self selector:@selector(goToLevel:)];
-    CCMenuItemImage * level1 = [CCMenuItemImage itemWithNormalImage:@"apple.png" selectedImage: @"apple.png" target:self selector:@selector(goToLevel:)];
+    CCMenuItemImage * level1 = [CCMenuItemImage itemWithNormalImage:@"apple_level.png" selectedImage: @"apple_level.png" target:self selector:@selector(goToLevel:)];
     level1.tag = 1;
     CCLabelTTF *label = [CCLabelTTF labelWithString:@"1"
                                            fontName:@"Verdana"
@@ -81,7 +81,7 @@ float priorY = 1000;
     CCMenuItemImage *level2;
     if (level1Completed == 1){
 //        level2 = [CCMenuItemImage itemWithNormalImage:@"level2.png" selectedImage: @"level2.png" target:self selector:@selector(goToLevel:)];
-        level2 = [CCMenuItemImage itemWithNormalImage:@"apple.png" selectedImage: @"apple.png" target:self selector:@selector(goToLevel:)];
+        level2 = [CCMenuItemImage itemWithNormalImage:@"apple_level.png" selectedImage: @"apple_level.png" target:self selector:@selector(goToLevel:)];
         level2.tag = 2;
     }
     else {
@@ -91,7 +91,7 @@ float priorY = 1000;
     
     CCMenuItemImage *level3;
    // if (level2Completed == 1){
-        level3 = [CCMenuItemImage itemWithNormalImage:@"apple.png" selectedImage: @"apple.png" target:self selector:@selector(goToLevel:)];
+        level3 = [CCMenuItemImage itemWithNormalImage:@"apple_level.png" selectedImage: @"apple_level.png" target:self selector:@selector(goToLevel:)];
         level3.tag = 3;
     //}
     //else {
@@ -101,14 +101,14 @@ float priorY = 1000;
     
     CCMenuItemImage *level4;
     // if (level2Completed == 1){
-    level4 = [CCMenuItemImage itemWithNormalImage:@"apple.png" selectedImage: @"apple.png" target:self selector:@selector(goToLevel:)];
+    level4 = [CCMenuItemImage itemWithNormalImage:@"apple_level.png" selectedImage: @"apple_level.png" target:self selector:@selector(goToLevel:)];
     level4.tag = 4;
     
     CCMenuItemImage * easy = [CCMenuItemImage itemWithNormalImage:@"Easy.png" selectedImage: @"Easy.png" target:self selector:@selector(goToEasyLevelLayer:)];
     
     CCMenuItemImage *level5;
     // if (level2Completed == 1){
-    level5 = [CCMenuItemImage itemWithNormalImage:@"apple.png" selectedImage: @"apple.png" target:self selector:@selector(goToLevel:)];
+    level5 = [CCMenuItemImage itemWithNormalImage:@"apple_level.png" selectedImage: @"apple_level.png" target:self selector:@selector(goToLevel:)];
     level5.tag = 5;
     
     //easy.tag = 4;
