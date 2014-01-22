@@ -135,8 +135,8 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     if ((self = [super initWithColor:ccc4(255,255,255,255)])) {
 
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-        NSString *levelString =[@"level" stringByAppendingFormat:@"%d", currentLevel];
-        NSLog(@"LEVEL COMPLETED? %d", [[defaults objectForKey:levelString] intValue]);
+        //NSString *levelString =[@"level" stringByAppendingFormat:@"%d", currentLevel];
+        //NSLog(@"LEVEL COMPLETED? %d", [[defaults objectForKey:levelString] intValue]);
         
         _MoveableSpriteTouch=FALSE;
         self.touchEnabled = YES;
@@ -492,7 +492,9 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     }
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     NSString *levelString = [@"level" stringByAppendingFormat:@"%d", currentLevel];
-    [defaults setObject:@YES forKey:levelString];
+    NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
+    [levelDict setObject:@YES forKey:@"completed"];
+    [defaults setObject: levelDict forKey:levelString];
     [defaults synchronize];
     
     return YES;

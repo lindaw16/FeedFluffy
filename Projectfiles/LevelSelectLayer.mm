@@ -58,8 +58,11 @@ float priorY = 1000;
 //[defaults setObject:@NO forKey:levelString];
 //[defaults synchronize];
     
-    int level1Completed = [[defaults objectForKey:levelString] intValue];
-    NSLog(@"LEVEL 2: %d", level1Completed);
+    //int level1Completed = [[defaults objectForKey:levelString] intValue];
+    NSMutableDictionary *level1Dict = [[NSMutableDictionary alloc] init];
+    level1Dict = [defaults objectForKey:levelString];
+    int level1Completed = [[level1Dict objectForKey:@"completed"] intValue];
+    //NSLog(@"LEVEL 2: %d", level1Completed);
     
     CCMenuItemImage * tutorials = [CCMenuItemImage itemWithNormalImage:@"tutorials.png" selectedImage:@"tutorials.png"];
 
