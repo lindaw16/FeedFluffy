@@ -12,7 +12,7 @@
 
 -(id) initWithFluffyImage
 {
-    if ((self = [super initWithFile:@"hungryEeveeMouth.png"])) {
+    if ((self = [super initWithFile:@"cage.png"])) {
         
     }
     return self;
