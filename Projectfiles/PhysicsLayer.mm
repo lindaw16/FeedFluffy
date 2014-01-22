@@ -25,8 +25,8 @@
 
 /*
  * Sprite Tags
- * 1: hungry eevee
- * 2: hungry eevee mouth
+ * 1: 
+ * 2:
  * 3: the cannon
  * 4: the bullet
  */
