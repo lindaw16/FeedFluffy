@@ -94,7 +94,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     
 	// 'layer' is an autorelease object.
     PhysicsLayer *layer = [[PhysicsLayer alloc] initWithLevel:level];
-    currentLevel = level;
+    NSLog(@"THE LEVEL IS %d", currentLevel);
 	[scene addChild: layer];
 	return scene;
 }
@@ -133,7 +133,9 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 - (id)initWithLevel: (int) level {
     
     if ((self = [super initWithColor:ccc4(255,255,255,255)])) {
-
+        [self stopAllActions];
+            currentLevel = level;
+            NSLog(@"THE LEVELLLLL IS %d", currentLevel);
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
         //NSString *levelString =[@"level" stringByAppendingFormat:@"%d", currentLevel];
         //NSLog(@"LEVEL COMPLETED? %d", [[defaults objectForKey:levelString] intValue]);
