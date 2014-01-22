@@ -288,12 +288,13 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 //            [self addChild:myTut z:3];
 //        }
         
-        if (level == 1)
+        if (currentLevel == 1)
         {
             message = [CCSprite spriteWithFile:@"tutorial1.png"];
             message.position = ccp(220, 140);
             [self addChild:message z:1];
         }
+        
         
         
         // plist level creation stuff
@@ -706,6 +707,11 @@ int counter = 1;
     else if (input.anyTouchEndedThisFrame)
     {
         printf("ended frame..........\n");
+        if (currentLevel == 1)
+        {
+            [self removeChild: message];
+        }
+
     }
     
     
