@@ -11,8 +11,6 @@
 #import "PhysicsLayer.h"
 #import "LevelSelectLayer.h"
 
-
-
 @implementation EasyLevelLayer
 
 +(id) scene
