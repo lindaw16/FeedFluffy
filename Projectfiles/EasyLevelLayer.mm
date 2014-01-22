@@ -44,7 +44,7 @@
         
         //Create first level green button
         CCMenuItem *itemSprite1 = [CCMenuItemImage
-                                   itemFromNormalImage:@"button.png" selectedImage:@"button.png"
+                                   itemWithNormalImage:@"button.png" selectedImage:@"button.png"
                                    target:self selector:@selector(level1Tapped:)];
         itemSprite1.position = ccp(-110, 15);
         //CCMenu *starMenu = [CCMenu menuWithItems:itemSprite1, nil];
@@ -55,7 +55,7 @@
         //Check whether level is locked, or released and change display accordingly.
         if (!level1Locked){
             Label1 = [CCMenuItemImage
-                      itemFromNormalImage:@"1.png" selectedImage:@"1.png"
+                      itemWithNormalImage:@"1.png" selectedImage:@"1.png"
                       target:self selector:@selector(level1Tapped:)];
             Label1.position = ccp(-110,15);
             
@@ -67,7 +67,7 @@
         else {
             
             lockSprite1 = [CCMenuItemImage
-                           itemFromNormalImage:@"lock.png" selectedImage:@"lock.png"
+                           itemWithNormalImage:@"lock.png" selectedImage:@"lock.png"
                            target:self selector:@selector(level1Tapped:)];
             lockSprite1.position = ccp(-110, 15);
             
@@ -82,7 +82,7 @@
         
         //Create second level green button
         CCMenuItem *itemSprite2 = [CCMenuItemImage
-                                   itemFromNormalImage:@"button.png" selectedImage:@"button.png"
+                                   itemWithNormalImage:@"button.png" selectedImage:@"button.png"
                                    target:self selector:@selector(level2Tapped:)];
         //itemSprite2.anchorPoint = ccp(0.3f,0.5f);
         itemSprite2.position = ccp(-40, 15);
@@ -96,7 +96,7 @@
         //Check whether level is locked, or released and change display accordingly.
         if (!level2Locked){
             Label2 = [CCMenuItemImage
-                      itemFromNormalImage:@"2.png" selectedImage:@"2.png"
+                      itemWithNormalImage:@"2.png" selectedImage:@"2.png"
                       target:self selector:@selector(level2Tapped:)];
             Label2.position = ccp(-40,15);
             
@@ -126,7 +126,7 @@
         
         //Create third level green button
         CCMenuItem *itemSprite3 = [CCMenuItemImage
-                                   itemFromNormalImage:@"button.png" selectedImage:@"button.png"
+                                   itemWithNormalImage:@"button.png" selectedImage:@"button.png"
                                    target:self selector:@selector(level3Tapped:)];
         //itemSprite2.anchorPoint = ccp(0.3f,0.5f);
         itemSprite3.position = ccp(30, 15);
@@ -140,7 +140,7 @@
         //Check whether level is locked, or released and change display accordingly.
         if (!level3Locked){
             Label3 = [CCMenuItemImage
-                      itemFromNormalImage:@"3.png" selectedImage:@"3.png"
+                      itemWithNormalImage:@"3.png" selectedImage:@"3.png"
                       target:self selector:@selector(level3Tapped:)];
             Label3.position = ccp(30,15);
             
@@ -167,7 +167,7 @@
         
         //Create third level green button
         CCMenuItem *itemSprite4 = [CCMenuItemImage
-                                   itemFromNormalImage:@"button.png" selectedImage:@"button.png"
+                                   itemWithNormalImage:@"button.png" selectedImage:@"button.png"
                                    target:self selector:@selector(level4Tapped:)];
         //itemSprite2.anchorPoint = ccp(0.3f,0.5f);
         itemSprite4.position = ccp(100, 15);
@@ -181,7 +181,7 @@
         //Check whether level is locked, or released and change display accordingly.
         if (level4Locked){
             Label4 = [CCMenuItemImage
-                      itemFromNormalImage:@"4.png" selectedImage:@"4.png"
+                      itemWithNormalImage:@"4.png" selectedImage:@"4.png"
                       target:self selector:@selector(level4Tapped:)];
             Label4.position = ccp(100,15);
             
