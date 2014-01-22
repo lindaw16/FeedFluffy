@@ -64,9 +64,10 @@ float priorY = 1000;
     int level1Completed = [[level1Dict objectForKey:@"completed"] intValue];
     //NSLog(@"LEVEL 2: %d", level1Completed);
     
-    CCMenuItemImage * tutorials = [CCMenuItemImage itemWithNormalImage:@"tutorials.png" selectedImage:@"tutorials.png"];
+    //CCMenuItemImage * tutorials = [CCMenuItemImage itemWithNormalImage:@"tutorials.png" selectedImage:@"tutorials.png"];
 
-    CCMenuItemImage * level1 = [CCMenuItemImage itemWithNormalImage:@"level1.png" selectedImage: @"level1.png" target:self selector:@selector(goToLevel:)];
+//CCMenuItemImage * level1 = [CCMenuItemImage itemWithNormalImage:@"level1.png" selectedImage: @"level1.png" target:self selector:@selector(goToLevel:)];
+    CCMenuItemImage * level1 = [CCMenuItemImage itemWithNormalImage:@"apple.png" selectedImage: @"apple.png" target:self selector:@selector(goToLevel:)];
     level1.tag = 1;
 
     //CCMenuItemImage * level2 = [CCMenuItemImage itemWithNormalImage:@"level2.png" selectedImage: @"level2.png" target:self selector:@selector(goToLevel:)];
@@ -74,7 +75,8 @@ float priorY = 1000;
     
     CCMenuItemImage *level2;
     if (level1Completed == 1){
-        level2 = [CCMenuItemImage itemWithNormalImage:@"level2.png" selectedImage: @"level2.png" target:self selector:@selector(goToLevel:)];
+//        level2 = [CCMenuItemImage itemWithNormalImage:@"level2.png" selectedImage: @"level2.png" target:self selector:@selector(goToLevel:)];
+        level2 = [CCMenuItemImage itemWithNormalImage:@"apple.png" selectedImage: @"apple.png" target:self selector:@selector(goToLevel:)];
         level2.tag = 2;
     }
     else {
@@ -108,7 +110,7 @@ float priorY = 1000;
     
 	// Create a menu and add your menu items to it
 	//CCMenu * myMenu = [CCMenu menuWithItems: left, right, tutorials, level1, level2, easy, nil];
-    CCMenu * myBG = [CCMenu menuWithItems:tutorials, easy, nil];
+    CCMenu * myBG = [CCMenu menuWithItems: easy, nil];
     CCMenu * myLevels = [CCMenu menuWithItems: left, right, level1, level2, level3, level4, level5, nil];
     
 	// Arrange the menu items vertically
@@ -116,13 +118,13 @@ float priorY = 1000;
     //menuItem1.position = ccp(240,95);
     left.position = ccp(40, 30);
     right.position = ccp(440, 30);
-    tutorials.position = ccp(170,170);
-    level1.position = ccp(130, 150);
-    level2.position = ccp(200, 150);
-    level3.position = ccp(270, 150);
-    level4.position = ccp(340, 150);
-    level5.position = ccp(410, 150);
-    easy.position = ccp(480, 170);
+    //tutorials.position = ccp(170,170);
+    level1.position = ccp(120, 150);
+    level2.position = ccp(180, 150);
+    level3.position = ccp(240, 150);
+    level4.position = ccp(300, 150);
+    level5.position = ccp(360, 150);
+    easy.position = ccp(240, 170);
 
     
     myBG.position = ccp(0, 0);
