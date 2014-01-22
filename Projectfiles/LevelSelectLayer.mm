@@ -69,6 +69,11 @@ float priorY = 1000;
 //CCMenuItemImage * level1 = [CCMenuItemImage itemWithNormalImage:@"level1.png" selectedImage: @"level1.png" target:self selector:@selector(goToLevel:)];
     CCMenuItemImage * level1 = [CCMenuItemImage itemWithNormalImage:@"apple.png" selectedImage: @"apple.png" target:self selector:@selector(goToLevel:)];
     level1.tag = 1;
+    CCLabelTTF *label = [CCLabelTTF labelWithString:@"1"
+                                           fontName:@"Verdana"
+                                           fontSize:26];
+    label.position = ccp(120,146);
+    [self addChild: label z:3];
 
     //CCMenuItemImage * level2 = [CCMenuItemImage itemWithNormalImage:@"level2.png" selectedImage: @"level2.png" target:self selector:@selector(goToLevel:)];
     //level2.tag = 2;
