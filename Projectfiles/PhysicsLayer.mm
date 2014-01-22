@@ -133,6 +133,10 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 - (id)initWithLevel: (int) level {
     
     if ((self = [super initWithColor:ccc4(255,255,255,255)])) {
+        
+        [self stopAllActions];
+        NSArray * tutorialLevels = [[NSArray alloc] init];
+        tutorialLevels = [NSArray arrayWithObjects: @1, @2, @3];
 
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
         //NSString *levelString =[@"level" stringByAppendingFormat:@"%d", currentLevel];
@@ -288,14 +292,18 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 //            [self addChild:myTut z:3];
 //        }
         
-        if (currentLevel == 1 || currentLevel == 2 || currentLevel == 3) // add a list of tutorial levels :P
+        //if (currentLevel == 1 || currentLevel == 2 || currentLevel == 3) // add a list of tutorial levels :P
+        if (level == 1 || level == 2 || level == 3)
+        //if ([tutorialLevels containsObject: currentLevel])
         {
+            NSLog(@"this is the currenet level %d", currentLevel);
             //message = [CCSprite spriteWithFile:@"tutorial1.png"];
-            message = [CCSprite spriteWithFile:[NSString stringWithFormat:@"tutorial%d.png", currentLevel]];
+            //message = [CCSprite spriteWithFile:[NSString stringWithFormat:@"tutorial%d.png", currentLevel]];
+            message = [CCSprite spriteWithFile:[NSString stringWithFormat:@"tutorial%d.png", level]];
             message.position = ccp(220, 140);
             [self addChild:message z:1];
         }
-        
+        NSLog(@"this is the currenet level %d but i'm not inside the if statement", currentLevel);
         
         
         // plist level creation stuff
