@@ -159,7 +159,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         b2FixtureDef groundBoxDef;
         groundBoxDef.shape = &groundBox;
         
-        groundBox.Set(b2Vec2(0,0), b2Vec2(winSize.width/PTM_RATIO, 0));
+        groundBox.Set(b2Vec2(0, cageBottom/PTM_RATIO), b2Vec2(winSize.width/PTM_RATIO, cageBottom/PTM_RATIO));
         _groundBody->CreateFixture(&groundBoxDef);
         
         
@@ -192,9 +192,9 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         cannonHead.position = ccp(_player.position.x + 30, _player.position.y - 0.5);
         [self addChild:cannonHead z:1];
         
-        CCSprite *cage = [CCSprite spriteWithFile: @"cage.png"];
-        cage.position = ccp(470, cageBottom + (winSize.height - cageBottom)/2);
-        [self addChild: cage z:1];
+//        CCSprite *cage = [CCSprite spriteWithFile: @"cage.png"];
+//        cage.position = ccp(470, cageBottom + (winSize.height - cageBottom)/2);
+//        [self addChild: cage z:1];
         
 //        CCSprite *temp = [CCSprite spriteWithFile: @"snore3.png"];
 //        temp.position = ccp(430, cage.position.y - 30);
@@ -273,20 +273,28 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         [self addChild:PauseButton z:7];
         
         
-        if (level == 1 && showDialog == 1)
+//        if (level == 1 && showDialog == 1)
+//        {
+//            message = [CCSprite spriteWithFile:@"dialog1.png"];
+//            message.position = ccp(220, 140);
+//            [self addChild:message z:1];
+//        
+//            tapHere = [CCMenuItemImage itemWithNormalImage:@"ok1.png" selectedImage: @"ok1" target:self selector:@selector(cannonx:)];
+//            //tapHere = [CCSprite spriteWithFile:@"cannonx.png"];
+//            myTut = [CCMenu menuWithItems: tapHere, nil];
+//            //tapHere.position = ccp(100, 80);
+//            tapHere.position = ccp(250, 100);
+//            myTut.position = CGPointZero;
+//            [self addChild:myTut z:3];
+//        }
+        
+        if (level == 1)
         {
-            message = [CCSprite spriteWithFile:@"dialog1.png"];
+            message = [CCSprite spriteWithFile:@"tutorial1.png"];
             message.position = ccp(220, 140);
             [self addChild:message z:1];
-        
-            tapHere = [CCMenuItemImage itemWithNormalImage:@"ok1.png" selectedImage: @"ok1" target:self selector:@selector(cannonx:)];
-            //tapHere = [CCSprite spriteWithFile:@"cannonx.png"];
-            myTut = [CCMenu menuWithItems: tapHere, nil];
-            //tapHere.position = ccp(100, 80);
-            tapHere.position = ccp(250, 100);
-            myTut.position = CGPointZero;
-            [self addChild:myTut z:3];
         }
+        
         
         // plist level creation stuff
         
