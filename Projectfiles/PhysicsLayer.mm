@@ -19,6 +19,7 @@
 #import "Fruit.h"
 #import "Obstacle.h"
 #import "PauseScene.h"
+#import "NextLevelScene.h"
 
 //#import "cocos2d.m"
 
@@ -907,9 +908,10 @@ int counter = 1;
 
                     NSLog(@"Hit Fluffy!");
                     levelCompleted = [self checkLevelCompleted];
-                
+                    NSLog(@"THE CURRENT LEVEL IS: %d", currentLevel);
                     if (levelCompleted){
-                        [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+                        //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+                        [[CCDirector sharedDirector] replaceScene: (CCScene*)[NextLevelScene sceneWithLevel: currentLevel]];
                         counter = 1;
                     }
                 
