@@ -15,6 +15,8 @@
 		<integer>1</integer>
 		<key>banana</key>
 		<integer>1</integer>
+		<key>strawberry</key>
+		<integer>1</integer>
 	</dict>
 	<key>Fruits</key>
 	<array>
@@ -22,17 +24,25 @@
 			<key>x</key>
 			<integer>120</integer>
 			<key>y</key>
-			<integer>230</integer>
+			<integer>250</integer>
 			<key>spriteName</key>
 			<string>apple</string>
 		</dict>
 		<dict>
 			<key>x</key>
-			<integer>230</integer>
+			<integer>220</integer>
 			<key>y</key>
-			<integer>120</integer>
+			<integer>80</integer>
 			<key>spriteName</key>
 			<string>banana</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>320</integer>
+			<key>y</key>
+			<integer>250</integer>
+			<key>spriteName</key>
+			<string>strawberry</string>
 		</dict>
 	</array>
 </dict>

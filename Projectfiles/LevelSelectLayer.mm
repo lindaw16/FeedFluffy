@@ -82,14 +82,34 @@ float priorY = 1000;
         level2.tag = 2;
     }
     
+    CCMenuItemImage *level3;
+   // if (level2Completed == 1){
+        level3 = [CCMenuItemImage itemWithNormalImage:@"apple.png" selectedImage: @"apple.png" target:self selector:@selector(goToLevel:)];
+        level3.tag = 3;
+    //}
+    //else {
+      //  level2 = [CCMenuItemImage itemWithNormalImage:@"lock.png" selectedImage: @"lock.png" target:self selector:@selector(doNothing:)];
+       // level2.tag = 2;
+   // }
+    
+    CCMenuItemImage *level4;
+    // if (level2Completed == 1){
+    level4 = [CCMenuItemImage itemWithNormalImage:@"apple.png" selectedImage: @"apple.png" target:self selector:@selector(goToLevel:)];
+    level4.tag = 4;
     
     CCMenuItemImage * easy = [CCMenuItemImage itemWithNormalImage:@"Easy.png" selectedImage: @"Easy.png" target:self selector:@selector(goToEasyLevelLayer:)];
-    easy.tag = 4;
+    
+    CCMenuItemImage *level5;
+    // if (level2Completed == 1){
+    level5 = [CCMenuItemImage itemWithNormalImage:@"apple.png" selectedImage: @"apple.png" target:self selector:@selector(goToLevel:)];
+    level5.tag = 5;
+    
+    //easy.tag = 4;
     
 	// Create a menu and add your menu items to it
 	//CCMenu * myMenu = [CCMenu menuWithItems: left, right, tutorials, level1, level2, easy, nil];
     CCMenu * myBG = [CCMenu menuWithItems:tutorials, easy, nil];
-    CCMenu * myLevels = [CCMenu menuWithItems: left, right, level1, level2, nil];
+    CCMenu * myLevels = [CCMenu menuWithItems: left, right, level1, level2, level3, level4, level5, nil];
     
 	// Arrange the menu items vertically
 	//[myMenu alignItemsVertically];
@@ -99,6 +119,9 @@ float priorY = 1000;
     tutorials.position = ccp(170,170);
     level1.position = ccp(130, 150);
     level2.position = ccp(200, 150);
+    level3.position = ccp(270, 150);
+    level4.position = ccp(340, 150);
+    level5.position = ccp(410, 150);
     easy.position = ccp(480, 170);
 
     
