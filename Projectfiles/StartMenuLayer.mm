@@ -128,14 +128,23 @@ int NUM_LEVELS = 20;
         }
         
         
-        
+        // reset NSUserDefaults
+        //NSString *domainName = [[NSBundle mainBundle] bundleIdentifier];
+        //[[NSUserDefaults standardUserDefaults] removePersistentDomainForName:domainName];
         
         // Get a pointer to the NSUserDefaults object
         NSUserDefaults * standardDefaults = [NSUserDefaults standardUserDefaults];
         for (int i = 0; i < NUM_LEVELS; i++){
             NSString *levelString = [@"level" stringByAppendingFormat:@"%d", i];
             // initialize all levels as not completed
-            [standardDefaults registerDefaults:@{levelString: @NO}];
+            NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
+            [levelDict setObject:@NO forKey: @"completed"];
+            [levelDict setObject:@0 forKey: @"stars"];
+            [levelDict setObject:@0 forKey: @"time"];
+            [levelDict setObject:@0 forKey: @"balls"];
+            
+            //[standardDefaults registerDefaults:@{levelString: @NO}];
+            [standardDefaults registerDefaults:@{levelString: levelDict}];
             [standardDefaults synchronize];
         }
         
