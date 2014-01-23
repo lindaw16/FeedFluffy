@@ -250,7 +250,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
         // Standard method to create a button
         CCMenuItem *starMenuItem = [CCMenuItemImage
-                                    itemFromNormalImage:@"launch_button.png" selectedImage:@"launch_button.png"
+                                    itemWithNormalImage:@"launch_button.png" selectedImage:@"launch_button.png"
                                     target:self selector:@selector(starButtonTapped:)];
         starMenuItem.position = ccp(starMenuItem.contentSize.width/PTM_RATIO/2, starMenuItem.contentSize.height/PTM_RATIO/2);
         //starMenuItem.position = ccp(50,30);
@@ -268,7 +268,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
         // pause menu
         
-        CCMenuItem *Pause = [CCMenuItemImage itemFromNormalImage:@"pause.png"
+        CCMenuItem *Pause = [CCMenuItemImage itemWithNormalImage:@"pause.png"
                                                    selectedImage: @"pause.png"
                                                           target:self
                                                         selector:@selector(pause:)];
@@ -701,7 +701,7 @@ int counter = 1;
     int y = pos.y;
     
     CGPoint location;
-    CGSize winSize;
+   // CGSize winSize;
     if (input.anyTouchBeganThisFrame) //someone's touching the screen!! :O
     {
         printf("ANY-TOUCH-BEGAN-THIS-FRAME");
@@ -854,7 +854,7 @@ int counter = 1;
                     
                     Fruit *fruit = (Fruit*) spriteB;
                     NSString *fruitName = fruit.fruitName;
-                    NSLog(fruitName);
+                    //NSLog(fruitName);
                     int num = [[goal objectForKey:fruitName] intValue];
                     NSLog(@"%d", num);
                     int fruitNum = [[goalProgress objectForKey:fruitName] intValue];
@@ -872,7 +872,7 @@ int counter = 1;
                     toDestroy.push_back(bodyA);
                     Fruit *fruit = (Fruit*) spriteA;
                     NSString *fruitName = fruit.fruitName;
-                    NSLog(fruitName);
+                    //NSLog(fruitName);
                     int num = [[goal objectForKey:fruitName] intValue];
                     NSLog(@"%d", num);
                     int fruitNum = [[goalProgress objectForKey:fruitName] intValue];

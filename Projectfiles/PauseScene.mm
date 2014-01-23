@@ -10,6 +10,7 @@
 #import "StartMenuLayer.h"
 #import "PhysicsLayer.h"
 #import "LevelSelectLayer.h"
+#import "EasyLevelLayer.h"
 
 @implementation PauseScene
 /*+(id) scene{
@@ -89,7 +90,7 @@
     [[CCDirector sharedDirector] popScene];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade
                                                transitionWithDuration:1
-                                               scene:[LevelSelectLayer node]]
+                                               scene:[EasyLevelLayer node]]
      ];
 }
 
