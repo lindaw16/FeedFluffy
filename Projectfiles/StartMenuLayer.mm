@@ -130,8 +130,8 @@ int NUM_LEVELS = 20;
         
         
         // reset NSUserDefaults
-        //NSString *domainName = [[NSBundle mainBundle] bundleIdentifier];
-        //[[NSUserDefaults standardUserDefaults] removePersistentDomainForName:domainName];
+//        NSString *domainName = [[NSBundle mainBundle] bundleIdentifier];
+//        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:domainName];
         
         // Get a pointer to the NSUserDefaults object
         NSUserDefaults * standardDefaults = [NSUserDefaults standardUserDefaults];

@@ -141,6 +141,12 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             NSLog(@"THE LEVELLLLL IS %d", currentLevel);
 
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        NSString *levelString = [@"level" stringByAppendingFormat:@"%d", currentLevel];
+        NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
+        levelDict = [defaults objectForKey:levelString];
+        levelCompleted = [[levelDict objectForKey:@"completed"] intValue];
+        
+        
         //NSString *levelString =[@"level" stringByAppendingFormat:@"%d", currentLevel];
         //NSLog(@"LEVEL COMPLETED? %d", [[defaults objectForKey:levelString] intValue]);
         
@@ -296,7 +302,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 //        }
         
         //if (currentLevel == 1 || currentLevel == 2 || currentLevel == 3) // add a list of tutorial levels :P
-        if (level == 1 || level == 2 || level == 3)
+        if ( (level == 1 || level == 2 || level == 3 ) && levelCompleted == 0)
         //if ([tutorialLevels containsObject: currentLevel])
         {
             NSLog(@"this is the currenet level %d", currentLevel);
