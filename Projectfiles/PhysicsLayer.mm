@@ -252,7 +252,8 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         CCMenuItem *starMenuItem = [CCMenuItemImage
                                     itemFromNormalImage:@"launch_button.png" selectedImage:@"launch_button.png"
                                     target:self selector:@selector(starButtonTapped:)];
-        starMenuItem.position = ccp(50, 30);
+        starMenuItem.position = ccp(starMenuItem.contentSize.width/PTM_RATIO/2, starMenuItem.contentSize.height/PTM_RATIO/2);
+        //starMenuItem.position = ccp(50,30);
         CCMenu *starMenu = [CCMenu menuWithItems:starMenuItem, nil];
         starMenu.position = CGPointZero;
         [self addChild:starMenu z:2];
