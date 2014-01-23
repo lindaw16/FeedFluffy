@@ -53,6 +53,7 @@ int bulletCounter = 300;
 int cannonRadius = 5.0/PTM_RATIO;
 bool ButtonTapped = false;
 int currentLevel;
+int ballsUsed;
 
 
 
@@ -135,7 +136,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 - (id)initWithLevel: (int) level {
     
     if ((self = [super initWithColor:ccc4(255,255,255,255)])) {
-
+        ballsUsed = 0;
         [self stopAllActions];
             currentLevel = level;
             NSLog(@"THE LEVELLLLL IS %d", currentLevel);
@@ -467,7 +468,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 
 - (void)starButtonTapped:(id)sender {
     printf("Button tapped!!!!!!\n");
-    
+    ballsUsed++;
     _nextProjectile = [CCSprite spriteWithFile:@"bullet.png"];
     _nextProjectile.tag = 1;
     
@@ -529,7 +530,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     for (NSString *key in goal){
         int goalValue = [[goal objectForKey:key] intValue];
         int goalProgressValue = [[goalProgress objectForKey:key] intValue];
-        //NSLog(@"GOAL VALUE");
+        NSLog(@"BALLS USED: %d", ballsUsed);
         //NSLog(@"%d", goalValue);
         if (goalProgressValue < goalValue) {
             return NO;
