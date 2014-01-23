@@ -14,6 +14,7 @@ int numCol = 4;
 int numRow;
 const float PTM = 32.0f;
 
+CCSprite *level;
 
 //CGSize winSize;
 
@@ -26,6 +27,8 @@ const float PTM = 32.0f;
 {
     
     CCMenu *myLevels = [CCMenu menuWithItems:nil];
+    myLevels.position = ccp(0, 0);
+    
     for (int i = 1; i <= numLevels; i++)
     {
 //        if (! [NSString stringWithFormat:@"level%dLocked", i])
@@ -37,7 +40,7 @@ const float PTM = 32.0f;
 //        [myLevels addChild: [NSString stringWithFormat:@"level%d", i]];
         
         level.tag = i;
-        level.position = ccp(6 * i, 150);
+        level.position = ccp(60 + 60 * i, 150);
         [myLevels addChild: level];
         
 
@@ -68,8 +71,8 @@ const float PTM = 32.0f;
         
         CCSprite *bg = [CCSprite spriteWithFile:@"bg.png"];
         
-        bg.anchorPoint = CGPointZero;
-        bg.position = CGPointMake(240.0f, 160.0f);
+        //bg.anchorPoint = CGPointZero;
+        bg.position = ccp(0, 0);
         [self addChild:bg];
         [self setUpMenus];
     }
