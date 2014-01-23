@@ -46,7 +46,7 @@
         CCMenuItem *itemSprite1 = [CCMenuItemImage
                                    itemWithNormalImage:@"button.png" selectedImage:@"button.png"
                                    target:self selector:@selector(level1Tapped:)];
-        itemSprite1.position = ccp(-110, 15);
+        itemSprite1.position = ccp(133, size.height);
         //CCMenu *starMenu = [CCMenu menuWithItems:itemSprite1, nil];
         //[self addChild:starMenu];
         

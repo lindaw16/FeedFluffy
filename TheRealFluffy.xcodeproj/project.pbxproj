@@ -21,6 +21,7 @@
 		917E7AC5188F1D4F004C4217 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 917E7AC1188F1D4F004C4217 /* 3.png */; };
 		917E7AC6188F1D4F004C4217 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 917E7AC2188F1D4F004C4217 /* 2.png */; };
 		917E7AC7188F1D4F004C4217 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 917E7AC3188F1D4F004C4217 /* 1.png */; };
+		919F04231890BE89008BADF4 /* button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 919F04221890BE89008BADF4 /* button@2x.png */; };
 		AB49BD90188F991600795F1D /* level2.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB49BD8F188F991600795F1D /* level2.plist */; };
 		AB49BD92188F9F3D00795F1D /* level4.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB49BD91188F9F3D00795F1D /* level4.plist */; };
 		AB7821C6188A5515008F51B8 /* PauseScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = AB7821C5188A5515008F51B8 /* PauseScene.mm */; };
@@ -181,6 +182,7 @@
 		917E7AC1188F1D4F004C4217 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
 		917E7AC2188F1D4F004C4217 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		917E7AC3188F1D4F004C4217 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		919F04221890BE89008BADF4 /* button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button@2x.png"; sourceTree = "<group>"; };
 		AB49BD8F188F991600795F1D /* level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level2.plist; sourceTree = "<group>"; };
 		AB49BD91188F9F3D00795F1D /* level4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level4.plist; sourceTree = "<group>"; };
 		AB7821C4188A5515008F51B8 /* PauseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseScene.h; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 		914BE9DC1889BDD70085E989 /* easyLevel images */ = {
 			isa = PBXGroup;
 			children = (
+				919F04221890BE89008BADF4 /* button@2x.png */,
 				917E7AC0188F1D4F004C4217 /* 4.png */,
 				917E7AC1188F1D4F004C4217 /* 3.png */,
 				917E7AC2188F1D4F004C4217 /* 2.png */,
@@ -837,6 +840,7 @@
 				AB9E597D188B261100B7D315 /* main_menu_button2@2x.png in Resources */,
 				914BE9E31889BDF40085E989 /* bg.png in Resources */,
 				BF196D20188F8696008CB197 /* tutorial1.png in Resources */,
+				919F04231890BE89008BADF4 /* button@2x.png in Resources */,
 				914BE9E41889BDF40085E989 /* bg@2x.png in Resources */,
 				914BE9E51889BDF40085E989 /* button.png in Resources */,
 				914BE9E71889BDF40085E989 /* lock.png in Resources */,
