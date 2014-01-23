@@ -26,8 +26,9 @@
 		AB49BD92188F9F3D00795F1D /* level4.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB49BD91188F9F3D00795F1D /* level4.plist */; };
 		AB7821C6188A5515008F51B8 /* PauseScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = AB7821C5188A5515008F51B8 /* PauseScene.mm */; };
 		AB7821C8188A56A7008F51B8 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = AB7821C7188A56A7008F51B8 /* pause.png */; };
+		AB9828BF18907A010029FFEC /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9828BE18907A010029FFEC /* apple.png */; };
 		AB9BA6441890672E00D66681 /* apple_big.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9BA6421890672E00D66681 /* apple_big.png */; };
-		AB9BA6451890672E00D66681 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9BA6431890672E00D66681 /* apple.png */; };
+		AB9BA6451890672E00D66681 /* apple_level.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9BA6431890672E00D66681 /* apple_level.png */; };
 		AB9E13821889CA4B001F6EA8 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9E13811889CA4B001F6EA8 /* rock.png */; };
 		AB9E13841889CF26001F6EA8 /* level5.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB9E13831889CF26001F6EA8 /* level5.plist */; };
 		AB9E2D031888D5B600F99EAB /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = AB9E2D021888D5B600F99EAB /* MyContactListener.mm */; };
@@ -187,8 +188,9 @@
 		AB7821C4188A5515008F51B8 /* PauseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseScene.h; sourceTree = "<group>"; };
 		AB7821C5188A5515008F51B8 /* PauseScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PauseScene.mm; sourceTree = "<group>"; };
 		AB7821C7188A56A7008F51B8 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		AB9828BE18907A010029FFEC /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
 		AB9BA6421890672E00D66681 /* apple_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple_big.png; sourceTree = "<group>"; };
-		AB9BA6431890672E00D66681 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
+		AB9BA6431890672E00D66681 /* apple_level.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple_level.png; sourceTree = "<group>"; };
 		AB9E13811889CA4B001F6EA8 /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
 		AB9E13831889CF26001F6EA8 /* level5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level5.plist; sourceTree = "<group>"; };
 		AB9E2D011888D5B600F99EAB /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContactListener.h; sourceTree = "<group>"; };
@@ -416,7 +418,8 @@
 			isa = PBXGroup;
 			children = (
 				AB9BA6421890672E00D66681 /* apple_big.png */,
-				AB9BA6431890672E00D66681 /* apple.png */,
+				AB9828BE18907A010029FFEC /* apple.png */,
+				AB9BA6431890672E00D66681 /* apple_level.png */,
 				BFC2DCE7188609E900A1D673 /* apple2.png */,
 				ABB719DE1887565E004D2FCA /* banana-hd.png */,
 				ABB719DF1887565E004D2FCA /* banana.png */,
@@ -802,6 +805,7 @@
 				BFB4259B18862CFA002DD826 /* tutorials.png in Resources */,
 				BFB425A618865B93002DD826 /* Easy.png in Resources */,
 				AB9E5983188B371B00B7D315 /* level_select_button2@2x.png in Resources */,
+				AB9828BF18907A010029FFEC /* apple.png in Resources */,
 				AB9E13821889CA4B001F6EA8 /* rock.png in Resources */,
 				BF39176E1887A20400EF99E6 /* bullet.png in Resources */,
 				ABB719E01887565E004D2FCA /* banana-hd.png in Resources */,
@@ -841,7 +845,7 @@
 				914BE9E61889BDF40085E989 /* button@2x.png in Resources */,
 				914BE9E71889BDF40085E989 /* lock.png in Resources */,
 				AB9E597A188B261100B7D315 /* level_select_button@2x.png in Resources */,
-				AB9BA6451890672E00D66681 /* apple.png in Resources */,
+				AB9BA6451890672E00D66681 /* apple_level.png in Resources */,
 				914BE9E81889BDF40085E989 /* lock@2x.png in Resources */,
 				BF4E9609188A23760000B4FE /* cannonheadx.png in Resources */,
 				917E7AC4188F1D4F004C4217 /* 4.png in Resources */,
