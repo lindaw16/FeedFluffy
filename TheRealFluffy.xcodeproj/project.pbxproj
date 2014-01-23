@@ -15,7 +15,6 @@
 		914BE9E31889BDF40085E989 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 914BE9DD1889BDF40085E989 /* bg.png */; };
 		914BE9E41889BDF40085E989 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914BE9DE1889BDF40085E989 /* bg@2x.png */; };
 		914BE9E51889BDF40085E989 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 914BE9DF1889BDF40085E989 /* button.png */; };
-		914BE9E61889BDF40085E989 /* button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914BE9E01889BDF40085E989 /* button@2x.png */; };
 		914BE9E71889BDF40085E989 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 914BE9E11889BDF40085E989 /* lock.png */; };
 		914BE9E81889BDF40085E989 /* lock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 914BE9E21889BDF40085E989 /* lock@2x.png */; };
 		917E7AC4188F1D4F004C4217 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 917E7AC0188F1D4F004C4217 /* 4.png */; };
@@ -176,7 +175,6 @@
 		914BE9DD1889BDF40085E989 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		914BE9DE1889BDF40085E989 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
 		914BE9DF1889BDF40085E989 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
-		914BE9E01889BDF40085E989 /* button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button@2x.png"; sourceTree = "<group>"; };
 		914BE9E11889BDF40085E989 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		914BE9E21889BDF40085E989 /* lock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock@2x.png"; sourceTree = "<group>"; };
 		917E7AC0188F1D4F004C4217 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
@@ -390,7 +388,6 @@
 				914BE9DF1889BDF40085E989 /* button.png */,
 				BF4E960C188A367E0000B4FE /* dialog1.png */,
 				BF4E960D188A367E0000B4FE /* dialog3.png */,
-				914BE9E01889BDF40085E989 /* button@2x.png */,
 				914BE9E11889BDF40085E989 /* lock.png */,
 				914BE9E21889BDF40085E989 /* lock@2x.png */,
 			);
@@ -842,7 +839,6 @@
 				BF196D20188F8696008CB197 /* tutorial1.png in Resources */,
 				914BE9E41889BDF40085E989 /* bg@2x.png in Resources */,
 				914BE9E51889BDF40085E989 /* button.png in Resources */,
-				914BE9E61889BDF40085E989 /* button@2x.png in Resources */,
 				914BE9E71889BDF40085E989 /* lock.png in Resources */,
 				AB9E597A188B261100B7D315 /* level_select_button@2x.png in Resources */,
 				AB9BA6451890672E00D66681 /* apple_level.png in Resources */,

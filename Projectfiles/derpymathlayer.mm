@@ -9,11 +9,13 @@
 #import "derpymathlayer.h"
 #import "PhysicsLayer.h"
 
-int numLevels = 5;
+int numLevels = 16;
 int numCol = 4;
-int numRow;
+//int numRow;
 const float PTM = 32.0f;
 
+int leftMargin = 60;
+int topMargin = 250;
 CCSprite *level;
 
 //CGSize winSize;
@@ -29,18 +31,18 @@ CCSprite *level;
     CCMenu *myLevels = [CCMenu menuWithItems:nil];
     myLevels.position = ccp(0, 0);
     
-    for (int i = 1; i <= numLevels; i++)
+    for (int i = 0; i < numLevels; i++)
     {
 //        if (! [NSString stringWithFormat:@"level%dLocked", i])
 
-        level = [CCMenuItemImage itemWithNormalImage:@"apple.png" selectedImage:@"apple.png" target:self selector: @selector(goToLevel:)];
+        level = [CCMenuItemImage itemWithNormalImage:@"apple_level.png" selectedImage:@"apple_level.png" target:self selector: @selector(goToLevel:)];
         
 //        [NSString stringWithFormat:@"level%d", i].tag = i;
 //        [NSString stringWithFormat:@"level%d", i].position = (60 + 60*i, 150);
 //        [myLevels addChild: [NSString stringWithFormat:@"level%d", i]];
         
-        level.tag = i;
-        level.position = ccp(60 + 60 * i, 150);
+        level.tag = i + 1;
+        level.position = ccp(leftMargin + 80 * (i % numCol), topMargin - (i/ numCol) * 60);
         [myLevels addChild: level];
         
 
@@ -66,7 +68,7 @@ CCSprite *level;
 {
     if ((self = [super init] ))
     {
-        numRow = numLevels / numCol + 1;
+        //numRow = numLevels / numCol + 1;
         
         
         CCSprite *bg = [CCSprite spriteWithFile:@"bg.png"];
