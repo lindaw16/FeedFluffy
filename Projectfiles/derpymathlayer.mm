@@ -42,8 +42,17 @@ CCSprite *level;
 //        [myLevels addChild: [NSString stringWithFormat:@"level%d", i]];
         
         level.tag = i + 1;
-        level.position = ccp(leftMargin + 80 * (i % numCol), topMargin - (i/ numCol) * 60);
+        int x = leftMargin + 80 * (i % numCol);
+        int y =  topMargin - (i/numCol)*60;
+        level.position = ccp(x, y);
+        //level.position = ccp(leftMargin + 80 * (i % numCol), topMargin - (i/ numCol) * 60);
         [myLevels addChild: level];
+        
+        CCLabelTTF *label = [CCLabelTTF labelWithString:[NSString stringWithFormat: @"%d", level.tag]
+                                               fontName:@"Verdana"
+                                               fontSize:26];
+        label.position = ccp(x,y-3);
+        [self addChild: label z:3];
         
 
 //        [NSString stringWithFormat:@"level%d", i].tag = i;
