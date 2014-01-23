@@ -111,6 +111,7 @@
 		BFB425BA188783EB002DD826 /* gameBar.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB425B9188783EB002DD826 /* gameBar.png */; };
 		BFC2DCE41885FE3200A1D673 /* comments in Resources */ = {isa = PBXBuildFile; fileRef = BFC2DCE31885FE3200A1D673 /* comments */; };
 		BFC2DCE8188609E900A1D673 /* apple2.png in Resources */ = {isa = PBXBuildFile; fileRef = BFC2DCE7188609E900A1D673 /* apple2.png */; };
+		BFF451161890D5AA000EF0F6 /* menuBackgroundBig.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF451151890D5AA000EF0F6 /* menuBackgroundBig.png */; };
 		DC193EB713B692D100500B56 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC193EB313B6872600500B56 /* GLES-Render.mm */; };
 		DC193EB813B692D100500B56 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC193EB313B6872600500B56 /* GLES-Render.mm */; };
 		DC193EBC13B6956F00500B56 /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC193EBB13B6956F00500B56 /* ContactListener.mm */; };
@@ -281,6 +282,7 @@
 		BFB425B9188783EB002DD826 /* gameBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBar.png; sourceTree = "<group>"; };
 		BFC2DCE31885FE3200A1D673 /* comments */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = comments; sourceTree = "<group>"; };
 		BFC2DCE7188609E900A1D673 /* apple2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple2.png; sourceTree = "<group>"; };
+		BFF451151890D5AA000EF0F6 /* menuBackgroundBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackgroundBig.png; sourceTree = "<group>"; };
 		DC193EB213B6872600500B56 /* GLES-Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
 		DC193EB313B6872600500B56 /* GLES-Render.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
 		DC193EBA13B6956F00500B56 /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
@@ -599,6 +601,7 @@
 				BF196D0F188F1EE9008CB197 /* snoringframes.plist */,
 				BF196D10188F1EE9008CB197 /* snoringframes.png */,
 				BF196CF3188DDD74008CB197 /* fluffyframes.plist */,
+				BFF451151890D5AA000EF0F6 /* menuBackgroundBig.png */,
 				BF196CF4188DDD74008CB197 /* fluffyframes.png */,
 				BF196CF7188DDD7D008CB197 /* fluffy1.png */,
 				AB9E5972188B261100B7D315 /* level_select_button@2x.png */,
@@ -749,6 +752,7 @@
 				DCC1A0FC13A94ED5005BD75D /* fps_images.png in Resources */,
 				BFB425AD1886FB5D002DD826 /* goLeft.png in Resources */,
 				DCC1A0FE13A94ED5005BD75D /* Icon-72.png in Resources */,
+				BFF451161890D5AA000EF0F6 /* menuBackgroundBig.png in Resources */,
 				DCC1A10013A94ED5005BD75D /* Icon-Small-50.png in Resources */,
 				DCC1A10213A94ED5005BD75D /* Icon-Small.png in Resources */,
 				AB9E597F188B261100B7D315 /* restart_button2@2x.png in Resources */,
@@ -950,7 +954,7 @@
 				"CLANG_ENABLE_OBJC_ARC[arch=*]" = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Linda Wang (98H3U2N8C4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Linda Wang (98H3U2N8C4)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "E73C399C-EC7D-4F98-B6A6-DAF6FB1FB4A1";
 			};
 			name = Debug;
 		};
@@ -961,7 +965,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Linda Wang (98H3U2N8C4)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Linda Wang (98H3U2N8C4)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "E73C399C-EC7D-4F98-B6A6-DAF6FB1FB4A1";
 			};
 			name = Release;
 		};

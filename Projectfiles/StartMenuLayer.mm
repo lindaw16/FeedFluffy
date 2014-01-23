@@ -57,7 +57,8 @@ int NUM_LEVELS = 20;
     
     CCSprite * fluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
     fluffy.anchorPoint = CGPointZero;
-    fluffy.position = CGPointMake(190.0f, 60.0f);
+    //fluffy.position = CGPointMake(190.0f, 60.0f);
+    fluffy.position = CGPointMake(250.0f, 60.0f);
     
     //Create an animation from the set of frames
     
@@ -89,9 +90,13 @@ int NUM_LEVELS = 20;
 	// Arrange the menu items vertically
 	//[myMenu alignItemsVertically];
     //menuItem1.position = ccp(240,95);
-    playButton.position = ccp(400,250);
-    bonus.position = ccp(100, 80);
-    achievements.position = ccp(375, 80);
+    //playButton.position = ccp(400,250);
+    //bonus.position = ccp(100, 80);
+    //achievements.position = ccp(375, 80);
+    
+    playButton.position = ccp(480,250);
+    bonus.position = ccp(120, 80);
+    achievements.position = ccp(420, 80);
     //fluffy.position = ccp(200, 80);
     myMenu.position = ccp(0,0);
     
@@ -149,7 +154,8 @@ int NUM_LEVELS = 20;
             [standardDefaults synchronize];
         }
         
-        CCSprite *sprite = [CCSprite spriteWithFile:@"menuBackground.png"];
+        //CCSprite *sprite = [CCSprite spriteWithFile:@"menuBackground.png"];
+        CCSprite *sprite = [CCSprite spriteWithFile:@"menuBackgroundBig.png"];
         sprite.anchorPoint = CGPointZero;
         [self addChild:sprite z:-1];
         
