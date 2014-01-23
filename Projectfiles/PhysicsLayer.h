@@ -19,6 +19,7 @@ enum
 
 @interface PhysicsLayer : CCLayerColor
 {
+    
     b2Body *_paddleBody;
     b2Fixture *_bottomFixture;
     b2Body *_groundBody;

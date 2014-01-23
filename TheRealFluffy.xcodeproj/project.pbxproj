@@ -79,6 +79,7 @@
 		BF196D20188F8696008CB197 /* tutorial1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196D1D188F8696008CB197 /* tutorial1.png */; };
 		BF196D21188F8696008CB197 /* tutorial2.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196D1E188F8696008CB197 /* tutorial2.png */; };
 		BF196D22188F8696008CB197 /* tutorial3.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196D1F188F8696008CB197 /* tutorial3.png */; };
+		BF196D2518905AFA008CB197 /* derpymathlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF196D2418905AFA008CB197 /* derpymathlayer.mm */; };
 		BF22E3D5188472C9007E26DF /* hungryEevee.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D4188472C9007E26DF /* hungryEevee.png */; };
 		BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */ = {isa = PBXBuildFile; fileRef = BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */; };
 		BF30E0071888DDB1000773E5 /* cannon-body.png in Resources */ = {isa = PBXBuildFile; fileRef = BF30E0051888DDB1000773E5 /* cannon-body.png */; };
@@ -245,6 +246,8 @@
 		BF196D1D188F8696008CB197 /* tutorial1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial1.png; sourceTree = "<group>"; };
 		BF196D1E188F8696008CB197 /* tutorial2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial2.png; sourceTree = "<group>"; };
 		BF196D1F188F8696008CB197 /* tutorial3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial3.png; sourceTree = "<group>"; };
+		BF196D2318905AFA008CB197 /* derpymathlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = derpymathlayer.h; sourceTree = "<group>"; };
+		BF196D2418905AFA008CB197 /* derpymathlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = derpymathlayer.mm; sourceTree = "<group>"; };
 		BF22E3D4188472C9007E26DF /* hungryEevee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEevee.png; sourceTree = "<group>"; };
 		BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hungryEeveeMouth.png; sourceTree = "<group>"; };
 		BF30E0051888DDB1000773E5 /* cannon-body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cannon-body.png"; sourceTree = "<group>"; };
@@ -552,6 +555,8 @@
 			children = (
 				914BE9D91889BC9F0085E989 /* EasyLevelLayer.h */,
 				914BE9DA1889BC9F0085E989 /* EasyLevelLayer.mm */,
+				BF196D2318905AFA008CB197 /* derpymathlayer.h */,
+				BF196D2418905AFA008CB197 /* derpymathlayer.mm */,
 				BFB4259F18862DDE002DD826 /* StartMenuLayer.h */,
 				BFB425A018862DDE002DD826 /* StartMenuLayer.mm */,
 				AB9E2D011888D5B600F99EAB /* MyContactListener.h */,
@@ -709,6 +714,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0420;
+				TargetAttributes = {
+					DCC1A0E213A94ED5005BD75D = {
+						DevelopmentTeam = GZNS8GQYRG;
+					};
+				};
 			};
 			buildConfigurationList = DCC1A0DB13A94EC0005BD75D /* Build configuration list for PBXProject "TheRealFluffy" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -879,6 +889,7 @@
 				AB7821C6188A5515008F51B8 /* PauseScene.mm in Sources */,
 				DC193EBC13B6956F00500B56 /* ContactListener.mm in Sources */,
 				BFB425A118862DDE002DD826 /* StartMenuLayer.mm in Sources */,
+				BF196D2518905AFA008CB197 /* derpymathlayer.mm in Sources */,
 				ABB719DA18873FBF004D2FCA /* Obstacle.m in Sources */,
 				DC2A3EC4149A30B400EF78B0 /* Box2DDebugLayer.mm in Sources */,
 				AB9E2D031888D5B600F99EAB /* MyContactListener.mm in Sources */,
@@ -939,6 +950,9 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CLANG_ENABLE_OBJC_ARC[arch=*]" = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Linda Wang (98H3U2N8C4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Linda Wang (98H3U2N8C4)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -947,6 +961,9 @@
 			baseConfigurationReference = DCFA90F013B4F811009DD35A /* BuildSettings-Release-iOS.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Linda Wang (98H3U2N8C4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Linda Wang (98H3U2N8C4)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

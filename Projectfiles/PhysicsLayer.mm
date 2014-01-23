@@ -70,6 +70,7 @@ b2BodyDef ballBodyDef;
 b2Body *_body;
 CGPoint realDest;
 BOOL levelCompleted;
+CGSize winSize;
 
 NSDictionary *goal;
 NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
@@ -80,7 +81,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 -(void) addNewSpriteAt:(CGPoint)p;
 -(b2Vec2) toMeters:(CGPoint)point;
 -(CGPoint) toPixels:(b2Vec2)vec;
--(CGSize) winSize;
+//-(CGSize) winSize;
 @end
 
 @implementation PhysicsLayer
