@@ -30,30 +30,47 @@ CCSprite *level;
     
     CCMenu *myLevels = [CCMenu menuWithItems:nil];
     myLevels.position = ccp(0, 0);
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     
     for (int i = 0; i < numLevels; i++)
     {
 //        if (! [NSString stringWithFormat:@"level%dLocked", i])
 
-        level = [CCMenuItemImage itemWithNormalImage:@"apple_level.png" selectedImage:@"apple_level.png" target:self selector: @selector(goToLevel:)];
+       // level = [CCMenuItemImage itemWithNormalImage:@"apple_level.png" selectedImage:@"apple_level.png" target:self selector: @selector(goToLevel:)];
         
 //        [NSString stringWithFormat:@"level%d", i].tag = i;
 //        [NSString stringWithFormat:@"level%d", i].position = (60 + 60*i, 150);
 //        [myLevels addChild: [NSString stringWithFormat:@"level%d", i]];
+        int levelCompleted;
+        if (i >= 1){
+            NSString *levelString = [@"level" stringByAppendingFormat:@"%d", i];
+            NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
+            levelDict = [defaults objectForKey:levelString];
+            levelCompleted = [[levelDict objectForKey:@"completed"] intValue];
+        }
+
         
-        level.tag = i + 1;
         int x = leftMargin + 80 * (i % numCol);
         int y =  topMargin - (i/numCol)*60;
-        level.position = ccp(x, y);
+
         //level.position = ccp(leftMargin + 80 * (i % numCol), topMargin - (i/ numCol) * 60);
-        [myLevels addChild: level];
-        
-        CCLabelTTF *label = [CCLabelTTF labelWithString:[NSString stringWithFormat: @"%d", level.tag]
+        //[myLevels addChild: level];
+        if (levelCompleted == 1 or i == 0){
+            level = [CCMenuItemImage itemWithNormalImage:@"apple_level.png" selectedImage:@"apple_level.png" target:self selector: @selector(goToLevel:)];
+            level.tag = i + 1;
+            level.position = ccp(x, y);
+            CCLabelTTF *label = [CCLabelTTF labelWithString:[NSString stringWithFormat: @"%d", level.tag]
                                                fontName:@"Verdana"
                                                fontSize:26];
-        label.position = ccp(x,y-3);
-        [self addChild: label z:3];
-        
+            label.position = ccp(x,y-3);
+            [myLevels addChild: level];
+            [self addChild: label z:3];
+        }
+        else {
+            level = [CCMenuItemImage itemWithNormalImage:@"lock.png" selectedImage:@"lock.png" target:self selector: @selector(doNothing:)];
+            [myLevels addChild: level];
+            level.position = ccp(x, y);
+        }
 
 //        [NSString stringWithFormat:@"level%d", i].tag = i;
 //        CCLabelTTF * [NSString stringWithFormat:@"Label%d", i]= [CCLabelTTF labelWithString:@"%d", i
@@ -100,4 +117,7 @@ CCSprite *level;
     [[CCDirector sharedDirector] replaceScene: (CCScene*)[PhysicsLayer sceneWithLevel:level]];
 }
 
+- (void) doNothing: (CCMenuItem *) menuItem  {
+    
+}
 @end
