@@ -33,7 +33,7 @@ local config =
 		GLViewNumberOfSamples = 0,
 
 		Enable2DProjection = NO,
-		EnableRetinaDisplaySupport = NO,	-- there are no Retina assets in this template project
+		EnableRetinaDisplaySupport = YES,	-- there are no Retina assets in this template project
 		EnableGLViewNodeHitTesting = NO,
 		EnableStatusBar = NO,
 

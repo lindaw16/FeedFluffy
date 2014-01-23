@@ -331,19 +331,36 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             [goalProgress setObject:@0 forKey:key];
         }
         
+        // this is the resolution we designed for, all positions are relative to this resolution
+        CGSize reference = CGSizeMake(480, 320);
+        
+        // the current device resolution, on iPad this will be 1024x768
+        //CGSize winSize = [CCDirector sharedDirector].winSize;
+        
+        // calculate the scale factor for the current device by dividing with the reference resolution
+        // on iPad, the resulting scale will be: 2.13x1.6
+        CGPoint scale = CGPointMake(winSize.width / reference.width, winSize.height / reference.height);
+        float scaleX = winSize.width / reference.width;
+        float scaleY = winSize.height / reference.height;
+        
+        NSLog(@"ScaleX : %f", scaleX);
         NSDictionary *fluffy = [level objectForKey:@"Fluffy"];
         Fluffy *fluffy2 = [[Fluffy alloc] initWithFluffyImage];
         NSNumber *x = [fluffy objectForKey:@"x"];
         NSNumber *y = [fluffy objectForKey:@"y"];
-        fluffy2.position = CGPointMake([x floatValue], [y floatValue]);
+        //fluffy2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
+                fluffy2.position = CGPointMake(560, 190);
+
+        //fluffy2.position = ccpMult(fluffy2.position, scale);
         fluffy2.tag = 3;
-        
+        //NSLog(@"Scale = %d", [scale.x floatValue]);
         [self addChild:fluffy2 z:1];
+        NSLog(@"adf: %f", fluffy2.position.x);
         
         // Create block body
         b2BodyDef fluffyBodyDef;
         fluffyBodyDef.type = b2_dynamicBody;
-        fluffyBodyDef.position.Set([x floatValue]/PTM_RATIO, [y floatValue]/PTM_RATIO);
+        fluffyBodyDef.position.Set([x floatValue] * scaleX/PTM_RATIO, [y floatValue]*scaleY/PTM_RATIO);
         fluffyBodyDef.userData = (__bridge void*)fluffy2;
         b2Body *fluffyBody = world->CreateBody(&fluffyBodyDef);
         
@@ -368,7 +385,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
                 Obstacle *obstacle2 = [[Obstacle alloc] initWithObstacle: sName];
                 NSNumber *x = [obstacle objectForKey:@"x"];
                 NSNumber *y = [obstacle objectForKey:@"y"];
-                obstacle2.position = CGPointMake([x floatValue], [y floatValue]);
+                obstacle2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
                 obstacle2.tag = 4;
             
                 [self addChild:obstacle2 z:1];
@@ -376,7 +393,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
                 // Create block body
                 b2BodyDef obstacleBodyDef;
                 obstacleBodyDef.type = b2_staticBody;
-                obstacleBodyDef.position.Set([x floatValue]/PTM_RATIO, [y floatValue]/PTM_RATIO);
+                obstacleBodyDef.position.Set([x floatValue]*scaleX/PTM_RATIO, [y floatValue]*scaleY/PTM_RATIO);
                 obstacleBodyDef.userData = (__bridge void*)obstacle2;
                 b2Body *obstacleBody = world->CreateBody(&obstacleBodyDef);
             
@@ -406,13 +423,13 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             NSNumber *x = [fruit objectForKey:@"x"];
             NSNumber *y = [fruit objectForKey:@"y"];
             
-            fruit2.position = CGPointMake([x floatValue], [y floatValue]);
+            fruit2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
             [self addChild:fruit2 z:0];
             
             // Create block body
             b2BodyDef fruitBodyDef;
             fruitBodyDef.type = b2_dynamicBody;
-            fruitBodyDef.position.Set([x floatValue]/PTM_RATIO, [y floatValue]/PTM_RATIO);
+            fruitBodyDef.position.Set([x floatValue]*scaleX/PTM_RATIO, [y floatValue]*scaleY/PTM_RATIO);
             fruitBodyDef.userData = (__bridge void*)fruit2;
             b2Body *fruitBody = world->CreateBody(&fruitBodyDef);
             
@@ -991,7 +1008,7 @@ int counter = 1;
     int bary = cageBottom;
     
     ccColor4F bottomColor = ccc4f(0, 0, 0, 1);
-    ccDrawSolidRect( ccp(barx, bary), ccp(480, bary + 5), bottomColor);    
+    ccDrawSolidRect( ccp(barx, bary), ccp(480, bary + 5), bottomColor);
 }
 
 
