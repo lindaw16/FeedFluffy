@@ -15,5 +15,5 @@
 }
 
 
--(void) incrementLevel;
+-(void) incrementLevel:(NSString *) string;
 @end

@@ -17,6 +17,7 @@
 		914BE9E51889BDF40085E989 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 914BE9DF1889BDF40085E989 /* button.png */; };
 		914BE9E71889BDF40085E989 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 914BE9E11889BDF40085E989 /* lock.png */; };
 		914BE9E81889BDF40085E989 /* lock-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 914BE9E21889BDF40085E989 /* lock-hd.png */; };
+		915693CA1891DD4700B5C44A /* HUDLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 915693C91891DD4700B5C44A /* HUDLayer.mm */; };
 		917E7AC4188F1D4F004C4217 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 917E7AC0188F1D4F004C4217 /* 4.png */; };
 		917E7AC5188F1D4F004C4217 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 917E7AC1188F1D4F004C4217 /* 3.png */; };
 		917E7AC6188F1D4F004C4217 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 917E7AC2188F1D4F004C4217 /* 2.png */; };
@@ -179,6 +180,8 @@
 		914BE9DF1889BDF40085E989 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		914BE9E11889BDF40085E989 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock.png; sourceTree = "<group>"; };
 		914BE9E21889BDF40085E989 /* lock-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lock-hd.png"; sourceTree = "<group>"; };
+		915693C81891DD4700B5C44A /* HUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDLayer.h; sourceTree = "<group>"; };
+		915693C91891DD4700B5C44A /* HUDLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HUDLayer.mm; sourceTree = "<group>"; };
 		917E7AC0188F1D4F004C4217 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
 		917E7AC1188F1D4F004C4217 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
 		917E7AC2188F1D4F004C4217 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
@@ -565,6 +568,8 @@
 				BFB4259618862C92002DD826 /* LevelSelectLayer.mm */,
 				DCC1A38F13A94F1A005BD75D /* PhysicsLayer.h */,
 				DCC1A39013A94F1A005BD75D /* PhysicsLayer.mm */,
+				915693C81891DD4700B5C44A /* HUDLayer.h */,
+				915693C91891DD4700B5C44A /* HUDLayer.mm */,
 				AB7821C4188A5515008F51B8 /* PauseScene.h */,
 				AB7821C5188A5515008F51B8 /* PauseScene.mm */,
 				ABA18ADC18903B3800B05B35 /* NextLevelScene.h */,
@@ -888,6 +893,7 @@
 				ABB719DD188744B9004D2FCA /* Fruit.m in Sources */,
 				BFB425A418865A9C002DD826 /* OopsDNE.mm in Sources */,
 				DCC1A3AD13A94F1A005BD75D /* main.m in Sources */,
+				915693CA1891DD4700B5C44A /* HUDLayer.mm in Sources */,
 				DC193EB813B692D100500B56 /* GLES-Render.mm in Sources */,
 				AB7821C6188A5515008F51B8 /* PauseScene.mm in Sources */,
 				DC193EBC13B6956F00500B56 /* ContactListener.mm in Sources */,

@@ -10,23 +10,32 @@
 #import "PhysicsLayer.h"
 
 @implementation HUDLayer
-int levelCounter = 0;
+int levelCount = 0;
+
 -(id)init{
 
 if ((self = [super init]))
 {
-    _levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Level: %d", levelCounter] fontName:@"Marker Felt" fontSize:24.0];
+//    _levelLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Level: %d", levelCount
+//                                               ] fontName:@"Marker Felt" fontSize:24.0];
     CGSize size = [[CCDirector sharedDirector] winSize];
-    _levelLabel.position = ccp(0,0);
-    [self addChild: _levelLabel z:10];
+    
+    NSLog(@"Level Label in HUD\n");
+    
+//    //_levelLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:24.0];
+//    _levelLabel.position = ccp(size.width/2, size.height/2);
+//[self addChild: _levelLabel z:10];
+    
 }
     return self;
 }
 
-
--(void) incrementLevel
+-(void) incrementLevel:(NSString *)string
 {
-    levelCounter++;
-    _levelLabel.string = [NSString stringWithFormat:@"Level: %d", levelCounter];
+    NSLog(@"Increment HUD level\n");
+    //levelCounter++;
+//    _levelLabel.string = [NSString stringWithFormat:@"Level: %d", levelCount];
+    _levelLabel.string = string;
 }
+
 @end

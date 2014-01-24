@@ -12,6 +12,7 @@
 
 //#import "ContactListener.h"
 #import "MyContactListener.h"
+#import "HUDLayer.h"
 enum
 {
 	kTagBatchNode,
@@ -19,6 +20,7 @@ enum
 
 @interface PhysicsLayer : CCLayerColor
 {
+    HUDLayer *_hud;
     
     b2Body *_paddleBody;
     b2Fixture *_bottomFixture;
@@ -101,7 +103,7 @@ enum
 -(void) bodyCreateFixture:(b2Body*)body;
 -(void) update:(ccTime)delta;
 -(void) draw;
-
+-(id) initWithHUD:(HUDLayer *)hud;
 
 
 @end

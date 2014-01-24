@@ -20,7 +20,7 @@
 #import "Obstacle.h"
 #import "PauseScene.h"
 #import "NextLevelScene.h"
-
+#import "HUDLayer.h"
 //#import "cocos2d.m"
 
 
@@ -95,10 +95,15 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
     
+    
+    HUDLayer *hud = [HUDLayer node];
+    [scene addChild:hud z:2];
 	// 'layer' is an autorelease object.
     PhysicsLayer *layer = [[PhysicsLayer alloc] initWithLevel:level];
     NSLog(@"THE LEVEL IS %d", currentLevel);
 	[scene addChild: layer];
+    NSLog(@"Successfully added first layer!!!!\n");
+    
 	return scene;
 }
 
@@ -132,10 +137,21 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 
 
 
-
 - (id)initWithLevel: (int) level {
     
     if ((self = [super initWithColor:ccc4(255,255,255,255)])) {
+        HUDLayer *hud;
+        _hud = hud;
+        //CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello Levels!!" fontName:@"Marker Felt" fontSize:48.0];
+        
+        CGSize size = [[CCDirector sharedDirector] winSize];
+        
+        //label.position = ccp(size.width/2, size.height/2);
+        
+        //[self addChild:	label];
+        
+        
+        
         ballsUsed = 0;
         [self stopAllActions];
             currentLevel = level;
@@ -260,7 +276,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         CCMenuItem *starMenuItem = [CCMenuItemImage
                                     itemWithNormalImage:@"launch_button.png" selectedImage:@"launch_button.png"
                                     target:self selector:@selector(starButtonTapped:)];
-        starMenuItem.position = ccp(starMenuItem.contentSize.width/PTM_RATIO/2, starMenuItem.contentSize.height/PTM_RATIO/2);
+        starMenuItem.position = ccp(starMenuItem.contentSize.width/PTM_RATIO/2+30, starMenuItem.contentSize.height/PTM_RATIO/2+30);
         //starMenuItem.position = ccp(50,30);
         CCMenu *starMenu = [CCMenu menuWithItems:starMenuItem, nil];
         starMenu.position = CGPointZero;
@@ -464,6 +480,18 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 }
 
 // DETECT COLLISIONS BETWEEN BALL AND FOOD!
+- (void)updateLives {
+    //NSLog(@"Update Lives is being called!!!\n");
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    CCLabelTTF *levelLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:18.0];
+    levelLabel.position = ccp(levelLabel.contentSize.width/PTM_RATIO/2+90, levelLabel.contentSize.height/PTM_RATIO/2+30);
+
+    [self addChild: levelLabel z:10];
+    levelLabel.string = [NSString stringWithFormat:@"Level: %d", currentLevel];
+    
+    
+    //[_hud incrementLevel:[NSString stringWithFormat:@"Lives: %d", currentLevel]];
+}
 
 
 - (void)starButtonTapped:(id)sender {
@@ -721,7 +749,7 @@ int counter = 1;
     
     //Create a point, pos, by asking input, our touch processor, where there has been a touch
     CGPoint pos = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
-    
+    [self updateLives];
     int x = pos.x;
     int y = pos.y;
     
@@ -729,7 +757,10 @@ int counter = 1;
    // CGSize winSize;
     if (input.anyTouchBeganThisFrame) //someone's touching the screen!! :O
     {
+        
         printf("ANY-TOUCH-BEGAN-THIS-FRAME");
+        
+        
         //Checking if 3 bullets have already been used - if so, then no more bullet are thrown.
         if  (bulletCounter<=0) return;
         
