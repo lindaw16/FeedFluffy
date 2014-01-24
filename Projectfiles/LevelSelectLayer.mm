@@ -48,95 +48,36 @@ float priorY = 1000;
     right = [CCMenuItemImage itemWithNormalImage:@"goRight.png" selectedImage: @"goRight.png" target:self selector:@selector(goRight:)];
     
 
-    //CCMenuItemImage * tutorials = [CCMenuItemImage itemWithNormalImage:@"tutorials.png" selectedImage: @"tutorials.png" target:self selector:@selector(goToLevel1:)];
+    CCMenuItemImage * easy = [CCMenuItemImage itemWithNormalImage:@"easyCage.png" selectedImage: @"easyCage.png" target:self selector:@selector(goToEasyLevelLayer:)];
     
-    // TEST
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    NSString *levelString = @"level1";
+    CCMenuItemImage * medium = [CCMenuItemImage itemWithNormalImage:@"mediumLevel.png" selectedImage: @"mediumLevel.png" target:self selector:@selector(goToEasyLevelLayer:)];
     
- //Set levels as not completed for testing
-//[defaults setObject:@NO forKey:levelString];
-//[defaults synchronize];
+//    // TEST
+//    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+//    NSString *levelString = @"level1";
     
-    //int level1Completed = [[defaults objectForKey:levelString] intValue];
-    NSMutableDictionary *level1Dict = [[NSMutableDictionary alloc] init];
-    level1Dict = [defaults objectForKey:levelString];
-    int level1Completed = [[level1Dict objectForKey:@"completed"] intValue];
-    //NSLog(@"LEVEL 2: %d", level1Completed);
-    
-    //CCMenuItemImage * tutorials = [CCMenuItemImage itemWithNormalImage:@"tutorials.png" selectedImage:@"tutorials.png"];
-
-//CCMenuItemImage * level1 = [CCMenuItemImage itemWithNormalImage:@"level1.png" selectedImage: @"level1.png" target:self selector:@selector(goToLevel:)];
-    CCMenuItemImage * level1 = [CCMenuItemImage itemWithNormalImage:@"apple_level.png" selectedImage: @"apple_level.png" target:self selector:@selector(goToLevel:)];
-    level1.tag = 1;
-    CCLabelTTF *label = [CCLabelTTF labelWithString:@"1"
-                                           fontName:@"Verdana"
-                                           fontSize:26];
-    label.position = ccp(120,146);
-    [self addChild: label z:3];
-
-    //CCMenuItemImage * level2 = [CCMenuItemImage itemWithNormalImage:@"level2.png" selectedImage: @"level2.png" target:self selector:@selector(goToLevel:)];
-    //level2.tag = 2;
-    
-    CCMenuItemImage *level2;
-    if (level1Completed == 1){
-//        level2 = [CCMenuItemImage itemWithNormalImage:@"level2.png" selectedImage: @"level2.png" target:self selector:@selector(goToLevel:)];
-        level2 = [CCMenuItemImage itemWithNormalImage:@"apple_level.png" selectedImage: @"apple_level.png" target:self selector:@selector(goToLevel:)];
-        level2.tag = 2;
-    }
-    else {
-        level2 = [CCMenuItemImage itemWithNormalImage:@"lock.png" selectedImage: @"lock.png" target:self selector:@selector(doNothing:)];
-        level2.tag = 2;
-    }
-    
-    CCMenuItemImage *level3;
-   // if (level2Completed == 1){
-        level3 = [CCMenuItemImage itemWithNormalImage:@"apple_level.png" selectedImage: @"apple_level.png" target:self selector:@selector(goToLevel:)];
-        level3.tag = 3;
-    //}
-    //else {
-      //  level2 = [CCMenuItemImage itemWithNormalImage:@"lock.png" selectedImage: @"lock.png" target:self selector:@selector(doNothing:)];
-       // level2.tag = 2;
-   // }
-    
-    CCMenuItemImage *level4;
-    // if (level2Completed == 1){
-    level4 = [CCMenuItemImage itemWithNormalImage:@"apple_level.png" selectedImage: @"apple_level.png" target:self selector:@selector(goToLevel:)];
-    level4.tag = 4;
-    
-    CCMenuItemImage * easy = [CCMenuItemImage itemWithNormalImage:@"Easy.png" selectedImage: @"Easy.png" target:self selector:@selector(goToEasyLevelLayer:)];
-    
-    CCMenuItemImage *level5;
-    // if (level2Completed == 1){
-    level5 = [CCMenuItemImage itemWithNormalImage:@"apple_level.png" selectedImage: @"apple_level.png" target:self selector:@selector(goToLevel:)];
-    level5.tag = 5;
-    
-    //easy.tag = 4;
-    
-	// Create a menu and add your menu items to it
-	//CCMenu * myMenu = [CCMenu menuWithItems: left, right, tutorials, level1, level2, easy, nil];
-    CCMenu * myBG = [CCMenu menuWithItems: easy, nil];
-    CCMenu * myLevels = [CCMenu menuWithItems: left, right, level1, level2, level3, level4, level5, nil];
-    
-	// Arrange the menu items vertically
+    CCMenu * myLevels = [CCMenu menuWithItems: left, right, easy, medium, nil];
+  
+//	// Arrange the menu items vertically
 	//[myMenu alignItemsVertically];
     //menuItem1.position = ccp(240,95);
     left.position = ccp(40, 30);
     right.position = ccp(440, 30);
-    //tutorials.position = ccp(170,170);
-    level1.position = ccp(120, 150);
-    level2.position = ccp(180, 150);
-    level3.position = ccp(240, 150);
-    level4.position = ccp(300, 150);
-    level5.position = ccp(360, 150);
-    easy.position = ccp(240, 170);
+//    //tutorials.position = ccp(170,170);
+//    level1.position = ccp(120, 150);
+//    level2.position = ccp(180, 150);
+//    level3.position = ccp(240, 150);
+//    level4.position = ccp(300, 150);
+//    level5.position = ccp(360, 150);
+    easy.position = ccp(180, 180);
+    medium.position = ccp(470, 180);
 
+//    
+    //myBG.position = ccp(0, 0);
+    myLevels.position = CGPointZero;
     
-    myBG.position = ccp(0, 0);
-    myLevels.position = ccp(0,0);
-    
-	// add the menu to your scene
-    [self addChild: myBG z:0];
+//	// add the menu to your scene
+    //[self addChild: myBG z:0];
 	[self addChild:myLevels z:1];
 }
 
