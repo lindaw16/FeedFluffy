@@ -25,8 +25,6 @@
 		917E7AC7188F1D4F004C4217 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 917E7AC3188F1D4F004C4217 /* 1.png */; };
 		919F04231890BE89008BADF4 /* button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 919F04221890BE89008BADF4 /* button@2x.png */; };
 		AB3920431892205000E4830D /* apple-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB3920361892205000E4830D /* apple-hd.png */; };
-		AB3920441892205000E4830D /* bronze_star_big.png in Resources */ = {isa = PBXBuildFile; fileRef = AB3920371892205000E4830D /* bronze_star_big.png */; };
-		AB3920451892205000E4830D /* bronze_star.png in Resources */ = {isa = PBXBuildFile; fileRef = AB3920381892205000E4830D /* bronze_star.png */; };
 		AB3920461892205000E4830D /* gold_star_big-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB3920391892205000E4830D /* gold_star_big-hd.png */; };
 		AB3920471892205000E4830D /* gold_star_big.png in Resources */ = {isa = PBXBuildFile; fileRef = AB39203A1892205000E4830D /* gold_star_big.png */; };
 		AB3920481892205000E4830D /* gold_star-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB39203B1892205000E4830D /* gold_star-hd.png */; };
@@ -44,6 +42,9 @@
 		AB9828BF18907A010029FFEC /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9828BE18907A010029FFEC /* apple.png */; };
 		AB9BA6441890672E00D66681 /* apple_level-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9BA6421890672E00D66681 /* apple_level-hd.png */; };
 		AB9BA6451890672E00D66681 /* apple_level.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9BA6431890672E00D66681 /* apple_level.png */; };
+		AB9C90FB1892FBCA00C1A96E /* silver_star-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9C90FA1892FBCA00C1A96E /* silver_star-hd.png */; };
+		AB9C90FF1892FC2D00C1A96E /* bronze_star-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9C90FE1892FC2D00C1A96E /* bronze_star-hd.png */; };
+		AB9C91011892FC4B00C1A96E /* bronze_star.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9C91001892FC4B00C1A96E /* bronze_star.png */; };
 		AB9E13821889CA4B001F6EA8 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9E13811889CA4B001F6EA8 /* rock.png */; };
 		AB9E13841889CF26001F6EA8 /* level5.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB9E13831889CF26001F6EA8 /* level5.plist */; };
 		AB9E2D031888D5B600F99EAB /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = AB9E2D021888D5B600F99EAB /* MyContactListener.mm */; };
@@ -210,8 +211,6 @@
 		917E7AC3188F1D4F004C4217 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		919F04221890BE89008BADF4 /* button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button@2x.png"; sourceTree = "<group>"; };
 		AB3920361892205000E4830D /* apple-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple-hd.png"; sourceTree = "<group>"; };
-		AB3920371892205000E4830D /* bronze_star_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bronze_star_big.png; sourceTree = "<group>"; };
-		AB3920381892205000E4830D /* bronze_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bronze_star.png; sourceTree = "<group>"; };
 		AB3920391892205000E4830D /* gold_star_big-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gold_star_big-hd.png"; sourceTree = "<group>"; };
 		AB39203A1892205000E4830D /* gold_star_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gold_star_big.png; sourceTree = "<group>"; };
 		AB39203B1892205000E4830D /* gold_star-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gold_star-hd.png"; sourceTree = "<group>"; };
@@ -230,6 +229,9 @@
 		AB9828BE18907A010029FFEC /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
 		AB9BA6421890672E00D66681 /* apple_level-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple_level-hd.png"; sourceTree = "<group>"; };
 		AB9BA6431890672E00D66681 /* apple_level.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple_level.png; sourceTree = "<group>"; };
+		AB9C90FA1892FBCA00C1A96E /* silver_star-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "silver_star-hd.png"; sourceTree = "<group>"; };
+		AB9C90FE1892FC2D00C1A96E /* bronze_star-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bronze_star-hd.png"; sourceTree = "<group>"; };
+		AB9C91001892FC4B00C1A96E /* bronze_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bronze_star.png; sourceTree = "<group>"; };
 		AB9E13811889CA4B001F6EA8 /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
 		AB9E13831889CF26001F6EA8 /* level5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level5.plist; sourceTree = "<group>"; };
 		AB9E2D011888D5B600F99EAB /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContactListener.h; sourceTree = "<group>"; };
@@ -644,8 +646,6 @@
 			isa = PBXGroup;
 			children = (
 				AB3920361892205000E4830D /* apple-hd.png */,
-				AB3920371892205000E4830D /* bronze_star_big.png */,
-				AB3920381892205000E4830D /* bronze_star.png */,
 				BF12C27918923C5200478BCB /* levelSelectBackground-hd.png */,
 				AB3920391892205000E4830D /* gold_star_big-hd.png */,
 				AB39203A1892205000E4830D /* gold_star_big.png */,
@@ -657,6 +657,9 @@
 				AB3920401892205000E4830D /* orange.png */,
 				AB3920411892205000E4830D /* silver_star_big.png */,
 				AB3920421892205000E4830D /* silver_star.png */,
+				AB9C90FA1892FBCA00C1A96E /* silver_star-hd.png */,
+				AB9C90FE1892FC2D00C1A96E /* bronze_star-hd.png */,
+				AB9C91001892FC4B00C1A96E /* bronze_star.png */,
 				915693CB18920C4000B5C44A /* launch_button_bigger.png */,
 				BF12C2611892191500478BCB /* gameBackground-hd.png */,
 				BF12C2711892297300478BCB /* easy.png */,
@@ -817,6 +820,7 @@
 				DCC1A0FA13A94ED5005BD75D /* Default.png in Resources */,
 				AB9F7F051890C3870032BCBD /* launch_button.png in Resources */,
 				BF22E3D5188472C9007E26DF /* hungryEevee.png in Resources */,
+				AB9C90FB1892FBCA00C1A96E /* silver_star-hd.png in Resources */,
 				915693CC18920C4100B5C44A /* launch_button_bigger.png in Resources */,
 				AB39204D1892205000E4830D /* orange.png in Resources */,
 				DCC1A0FC13A94ED5005BD75D /* fps_images.png in Resources */,
@@ -852,6 +856,7 @@
 				DCC1A3AF13A94F1A005BD75D /* config.lua in Resources */,
 				BFB425B2188702D4002DD826 /* level2.png in Resources */,
 				ABB719ED18875684004D2FCA /* strawberry.png in Resources */,
+				AB9C90FF1892FC2D00C1A96E /* bronze_star-hd.png in Resources */,
 				ABB719E41887566E004D2FCA /* grapes-hd.png in Resources */,
 				BF63D6EC1884ADF600F3D3F3 /* menuBackground.png in Resources */,
 				DC193EC113B6969B00500B56 /* Author&License.txt in Resources */,
@@ -877,7 +882,6 @@
 				AB9FBB8C188B190000992502 /* restart_button2.png in Resources */,
 				BF196D02188EFCAC008CB197 /* ok3.png in Resources */,
 				BFB425B618872304002DD826 /* Achievements.png in Resources */,
-				AB3920441892205000E4830D /* bronze_star_big.png in Resources */,
 				BFB425BA188783EB002DD826 /* gameBar.png in Resources */,
 				BFB425AA1886600F002DD826 /* levelSelectBackground.png in Resources */,
 				ABB719D518872D0A004D2FCA /* level3.plist in Resources */,
@@ -895,6 +899,7 @@
 				BF30E0081888DDB1000773E5 /* cannon-head.png in Resources */,
 				BFB425A818865B99002DD826 /* OopsDNE.png in Resources */,
 				BF196D00188EFCAC008CB197 /* ok1.png in Resources */,
+				AB9C91011892FC4B00C1A96E /* bronze_star.png in Resources */,
 				BFB425AE1886FB5D002DD826 /* goRight.png in Resources */,
 				ABB719F11887568D004D2FCA /* watermelon.png in Resources */,
 				AB9FBB8A188B190000992502 /* main_menu_button2.png in Resources */,
@@ -929,7 +934,6 @@
 				AB9E597D188B261100B7D315 /* main_menu_button2@2x.png in Resources */,
 				914BE9E31889BDF40085E989 /* bg.png in Resources */,
 				BF196D20188F8696008CB197 /* tutorial1.png in Resources */,
-				AB3920451892205000E4830D /* bronze_star.png in Resources */,
 				919F04231890BE89008BADF4 /* button@2x.png in Resources */,
 				914BE9E41889BDF40085E989 /* bg@2x.png in Resources */,
 				914BE9E51889BDF40085E989 /* button.png in Resources */,
