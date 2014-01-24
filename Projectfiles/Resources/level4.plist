@@ -21,7 +21,7 @@
 	<dict>
 		<key>apple</key>
 		<integer>1</integer>
-		<key>banana</key>
+		<key>lemon</key>
 		<integer>1</integer>
 		<key>strawberry</key>
 		<integer>1</integer>
@@ -42,7 +42,7 @@
 			<key>y</key>
 			<integer>80</integer>
 			<key>spriteName</key>
-			<string>banana</string>
+			<string>lemon</string>
 		</dict>
 		<dict>
 			<key>x</key>

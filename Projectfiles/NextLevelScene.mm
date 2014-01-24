@@ -34,29 +34,33 @@
         [CCMenuItemFont setFontName:@"Courier New"];
         [CCMenuItemFont setFontSize:20];
         
-        CCMenuItemImage *Resume= [CCMenuItemImage itemWithNormalImage:@"apple.png"
-                                                        selectedImage: @"apple.png" target:self
+        CCMenuItemImage *nextlevel= [CCMenuItemImage itemWithNormalImage:@"next_level.png"
+                                                        selectedImage: @"next_level2.png" target:self
                                                              selector:@selector(NextLevel:)];
-        Resume.tag = level;
+        nextlevel.tag = level;
         
         //CCMenuItem *Restart = [CCMenuItemFont itemFromString:@"Restart" target:self selector:@selector(Restart:)];
-        CCMenuItemImage *Restart = [CCMenuItemImage itemWithNormalImage: @"restart_button.png" selectedImage: @"restart_button2.png" target:self
+        CCMenuItemImage *replay = [CCMenuItemImage itemWithNormalImage: @"replay.png" selectedImage: @"replay2.png" target:self
                                                                selector:@selector(Restart:)];
-        Restart.tag = level;
+        replay.tag = level;
         
         //CCMenuItem *Level = [CCMenuItemFont itemFromString:@"Level Select"
         //target:self selector:@selector(GoToLevels:)];
-        CCMenuItemImage *Level = [CCMenuItemImage itemWithNormalImage: @"level_select_button.png" selectedImage: @"level_select_button2.png" target:self
+        CCMenuItemImage *levels = [CCMenuItemImage itemWithNormalImage: @"level_select.png" selectedImage: @"level_select2.png" target:self
                                                              selector:@selector(GoToLevels:)];
         
         //CCMenuItem *Quit = [CCMenuItemFont itemFromString:@"Main Menu"
         //target:self selector:@selector(GoToMainMenu:)];
-        CCMenuItemImage *Quit = [CCMenuItemImage itemWithNormalImage: @"main_menu_button.png" selectedImage: @"main_menu_button2.png" target:self
+        CCMenuItemImage *quit = [CCMenuItemImage itemWithNormalImage: @"main_menu.png" selectedImage: @"main_menu2.png" target:self
                                                             selector:@selector(GoToMainMenu:)];
         
-        CCMenu *menu= [CCMenu menuWithItems: Resume, Restart, Level, Quit, nil];
-        menu.position = ccp(249, 131.67f);
-        [menu alignItemsVerticallyWithPadding:12.5f];
+        CCMenu *menu= [CCMenu menuWithItems: nextlevel, replay, levels, quit, nil];
+        menu.position = CGPointZero;
+        nextlevel.position = ccp(200, 160);
+        replay.position = ccp(320, 160);
+        levels.position = ccp(200, 100);
+        quit.position = ccp(320,100);
+        //[menu alignItemsVerticallyWithPadding:12.5f];
         
         [self addChild:menu];
         
