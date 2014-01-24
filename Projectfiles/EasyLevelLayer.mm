@@ -76,7 +76,7 @@ CCSprite *level;
             level.tag = i + 1;
             level.position = ccp(x, y);
             CCLabelTTF *label = [CCLabelTTF labelWithString:[NSString stringWithFormat: @"%d", level.tag]
-                                                   fontName:@"Verdana"
+                                                   fontName:@"Papyrus"
                                                    fontSize:26];
             label.position = ccp(x,y-3);
             [myLevels addChild: level];
