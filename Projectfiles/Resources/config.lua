@@ -20,7 +20,7 @@ local config =
 		FirstSceneClassName = "StartMenuLayer",
 
 		MaxFrameRate = 60,
-		DisplayFPS = YES,
+		DisplayFPS = NO,
 
 		EnableUserInteraction = YES,
 		EnableMultiTouch = NO,

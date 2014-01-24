@@ -49,7 +49,7 @@ const int TILESET_COLUMNS = 9;
 const int TILESET_ROWS = 19;
 const int cageLeft = 30;
 const int cageBottom = 60;
-int bulletCounter = 300;
+int bulletCounter = 3;
 int cannonRadius = 5.0/PTM_RATIO;
 bool ButtonTapped = false;
 int currentLevel;
@@ -274,7 +274,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
         // Standard method to create a button
         CCMenuItem *starMenuItem = [CCMenuItemImage
-                                    itemWithNormalImage:@"launch_button.png" selectedImage:@"launch_button.png"
+                                    itemWithNormalImage:@"launch_button_bigger.png" selectedImage:@"launch_button_bigger.png"
                                     target:self selector:@selector(starButtonTapped:)];
         starMenuItem.position = ccp(starMenuItem.contentSize.width/PTM_RATIO/2+30, starMenuItem.contentSize.height/PTM_RATIO/2+30);
         //starMenuItem.position = ccp(50,30);
@@ -286,9 +286,9 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         meep.anchorPoint = CGPointZero;
         [self addChild:meep z:-1];
         
-        CCSprite *bar = [CCSprite spriteWithFile: @"gameBar.png"];
-        bar.position = ccp(winSize.width / 2, 20);
-        [self addChild:bar z:1];
+//        CCSprite *bar = [CCSprite spriteWithFile: @"gameBar.png"];
+//        bar.position = ccp(winSize.width / 2, 20);
+//        [self addChild:bar z:1];
         
         // pause menu
         
@@ -480,7 +480,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 }
 
 // DETECT COLLISIONS BETWEEN BALL AND FOOD!
-- (void)updateLives {
+- (void)updateLevel {
     //NSLog(@"Update Lives is being called!!!\n");
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     CCLabelTTF *levelLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:18.0];
@@ -493,6 +493,22 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     //[_hud incrementLevel:[NSString stringWithFormat:@"Lives: %d", currentLevel]];
 }
 
+- (void)updateBallCount {
+    //NSLog(@"Update Lives is being called!!!\n");
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    CCLabelTTF *ballCountLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:18.0];
+    ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, ballCountLabel.contentSize.height/PTM_RATIO/2+30);
+    
+    CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
+    menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, menuBall.contentSize.height/PTM_RATIO/2+30);
+    
+    [self addChild: ballCountLabel z:10];
+    [self addChild:menuBall z:10];
+    ballCountLabel.string = [NSString stringWithFormat:@"X: %d", bulletCounter];
+    
+    
+    //[_hud incrementLevel:[NSString stringWithFormat:@"Lives: %d", currentLevel]];
+}
 
 - (void)starButtonTapped:(id)sender {
     printf("Button tapped!!!!!!\n");
@@ -749,7 +765,8 @@ int counter = 1;
     
     //Create a point, pos, by asking input, our touch processor, where there has been a touch
     CGPoint pos = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
-    [self updateLives];
+    [self updateLevel];
+    [self updateBallCount];
     int x = pos.x;
     int y = pos.y;
     
