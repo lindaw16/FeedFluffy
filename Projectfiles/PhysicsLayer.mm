@@ -614,10 +614,12 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     }
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     NSString *levelString = [@"level" stringByAppendingFormat:@"%d", currentLevel];
-    NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
+    //NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
     //levelDict = [[NSMutableDictionary alloc]init];
-    levelDict = [defaults objectForKey:levelString];
+    
+    NSMutableDictionary *levelDict = [[defaults objectForKey:levelString] mutableCopy];
     [levelDict setObject:@YES forKey:@"completed"];
+
     [levelDict setObject:[NSNumber numberWithInteger:ballsUsed] forKey:@"last_balls"];
     int bestBalls = [[levelDict objectForKey:@"best_balls"] intValue];
     int bestStars = [[levelDict objectForKey:@"best_stars"] intValue];
@@ -653,7 +655,9 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     }
     [levelDict setObject:[NSNumber numberWithInt: bestStars] forKey:@"best_stars"];
     
-    [defaults setObject: levelDict forKey:levelString];
+    //[defaults setObject: levelDict forKey:levelString];
+    [defaults removeObjectForKey:levelString];
+    [defaults setObject:levelDict forKey: levelString];
     [defaults synchronize];
     
     
