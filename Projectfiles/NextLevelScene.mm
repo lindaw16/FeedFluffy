@@ -64,24 +64,22 @@
         NSString *levelString = [@"level" stringByAppendingFormat:@"%d", level];
         NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
         levelDict = [defaults objectForKey:levelString];
-        int stars = [[levelDict objectForKey:@"stars"] intValue];
+        int stars = [[levelDict objectForKey:@"last_stars"] intValue];
         NSLog(@"STARS: %d", stars);
-        
+        CCSprite *rank;
         if (stars == 3){
-            CCSprite *gold = [CCSprite spriteWithFile:@"gold_star_big.png"];
-            gold.position = ccp(240, 200);
-            [self addChild: gold z:3];
+            rank = [CCSprite spriteWithFile:@"gold_star_big.png"];
+
         }
         else if (stars == 2){
-            CCSprite *gold = [CCSprite spriteWithFile:@"silver_star_big.png"];
-            gold.position = ccp(240, 200);
-            [self addChild: gold z:3];
+            rank = [CCSprite spriteWithFile:@"silver_star_big.png"];
         }
         else if (stars == 1){
-            CCSprite *gold = [CCSprite spriteWithFile:@"bronze_star_big.png"];
-            gold.position = ccp(240, 200);
-            [self addChild: gold z:3];
+            rank = [CCSprite spriteWithFile:@"bronze_star_big.png"];
         }
+        
+        rank.position = ccp(240, 200);
+        [self addChild: rank z:3];
 
 
     }
