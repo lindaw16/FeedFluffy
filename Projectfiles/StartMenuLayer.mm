@@ -157,6 +157,7 @@ int NUM_LEVELS = 20;
             NSString *levelString = [@"level" stringByAppendingFormat:@"%d", i];
             // initialize all levels as not completed
             NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
+            //levelDict = [[NSMutableDictionary alloc] init];
             [levelDict setObject:@NO forKey: @"completed"];
             [levelDict setObject:@0 forKey: @"last_stars"];
             [levelDict setObject:[NSNumber numberWithInt: 0] forKey: @"best_stars"];

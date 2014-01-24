@@ -21,6 +21,7 @@
 #import "PauseScene.h"
 #import "NextLevelScene.h"
 #import "HUDLayer.h"
+#import "StartMenuLayer.h"
 //#import "cocos2d.m"
 
 
@@ -105,9 +106,9 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     [scene addChild:hud z:2];
 	// 'layer' is an autorelease object.
     PhysicsLayer *layer = [[PhysicsLayer alloc] initWithLevel:level];
-    NSLog(@"THE LEVEL IS %d", currentLevel);
+    //NSLog(@"THE LEVEL IS %d", currentLevel);
 	[scene addChild: layer];
-    NSLog(@"Successfully added first layer!!!!\n");
+    //NSLog(@"Successfully added first layer!!!!\n");
     
 	return scene;
 }
@@ -156,17 +157,20 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         //[self addChild:	label];
         
         
-        
         ballsUsed = 0;
         [self stopAllActions];
             currentLevel = level;
-            NSLog(@"THE LEVELLLLL IS %d", currentLevel);
+           // NSLog(@"THE LEVELLLLL IS %d", currentLevel);
 
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
         NSString *levelString = [@"level" stringByAppendingFormat:@"%d", currentLevel];
         NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
         levelDict = [defaults objectForKey:levelString];
         levelCompleted = [[levelDict objectForKey:@"completed"] intValue];
+        
+        
+        
+        NSLog(@"Before Game: best stars is %d and last star was %d", [[levelDict objectForKey:@"best_stars"] intValue],[[levelDict objectForKey:@"last_stars"] intValue]);
         
         
         //NSString *levelString =[@"level" stringByAppendingFormat:@"%d", currentLevel];
@@ -327,14 +331,14 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         if ( (level == 1 || level == 2 || level == 3 ) && levelCompleted == 0)
         //if ([tutorialLevels containsObject: currentLevel])
         {
-            NSLog(@"this is the currenet level %d", currentLevel);
+           // NSLog(@"this is the currenet level %d", currentLevel);
             //message = [CCSprite spriteWithFile:@"tutorial1.png"];
             //message = [CCSprite spriteWithFile:[NSString stringWithFormat:@"tutorial%d.png", currentLevel]];
             message = [CCSprite spriteWithFile:[NSString stringWithFormat:@"tutorial%d.png", level]];
             message.position = ccp(220, 140);
             [self addChild:message z:1];
         }
-        NSLog(@"this is the currenet level %d but i'm not inside the if statement", currentLevel);
+       // NSLog(@"this is the currenet level %d but i'm not inside the if statement", currentLevel);
         
         
         // plist level creation stuff
@@ -369,7 +373,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         float scaleX = winSize.width / reference.width;
         float scaleY = winSize.height / reference.height;
         
-        NSLog(@"ScaleX : %f", scaleX);
+        ///NSLog(@"ScaleX : %f", scaleX);
         NSDictionary *fluffy = [level objectForKey:@"Fluffy"];
         Fluffy *fluffy2 = [[Fluffy alloc] initWithFluffyImage];
         NSNumber *x = [fluffy objectForKey:@"x"];
@@ -381,7 +385,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         fluffy2.tag = 3;
         //NSLog(@"Scale = %d", [scale.x floatValue]);
         [self addChild:fluffy2 z:1];
-        NSLog(@"adf: %f", fluffy2.position.x);
+       //NSLog(@"adf: %f", fluffy2.position.x);
         
         // Create block body
         b2BodyDef fluffyBodyDef;
@@ -534,7 +538,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 }
 
 - (void)starButtonTapped:(id)sender {
-    NSLog(@"Button tapped!!!!!!\n");
+   // NSLog(@"Button tapped!!!!!!\n");
     ballsUsed++;
     _nextProjectile = [CCSprite spriteWithFile:@"bullet.png"];
     _nextProjectile.tag = 1;
@@ -545,7 +549,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     
     ballBodyDef.type = b2_dynamicBody;
     //            ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
-    NSLog(@"in Position.SET\n");
+   // NSLog(@"in Position.SET\n");
     ballBodyDef.position.Set(_player.position.x/PTM_RATIO,_player.position.y/PTM_RATIO);
     ballBodyDef.userData = (__bridge void*)_nextProjectile;
     
@@ -597,11 +601,12 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 
 -(BOOL) checkLevelCompleted {
     //NSLog(@"CHECKING IF LEVEL IS COMPLETED");
+    
 
     for (NSString *key in goal){
         int goalValue = [[goal objectForKey:key] intValue];
         int goalProgressValue = [[goalProgress objectForKey:key] intValue];
-        NSLog(@"BALLS USED: %d", ballsUsed);
+        //NSLog(@"BALLS USED: %d", ballsUsed);
         //NSLog(@"%d", goalValue);
         if (goalProgressValue < goalValue) {
             return NO;
@@ -610,12 +615,18 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     NSString *levelString = [@"level" stringByAppendingFormat:@"%d", currentLevel];
     NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
+    //levelDict = [[NSMutableDictionary alloc]init];
+    levelDict = [defaults objectForKey:levelString];
     [levelDict setObject:@YES forKey:@"completed"];
     [levelDict setObject:[NSNumber numberWithInteger:ballsUsed] forKey:@"last_balls"];
     int bestBalls = [[levelDict objectForKey:@"best_balls"] intValue];
     int bestStars = [[levelDict objectForKey:@"best_stars"] intValue];
-    NSLog(@"best_balls: %d", bestBalls);
-    NSLog(@"best_stars: %d", bestStars);
+    //NSLog(@"best_balls: %d", bestBalls);
+   // NSLog(@"best_stars: %d", bestStars);
+    
+    NSLog(@"After Game before calculation: best stars is %d and last star was %d", [[levelDict objectForKey:@"best_stars"] intValue],[[levelDict objectForKey:@"last_stars"] intValue]);
+    
+    
     int stars;
     if (ballsUsed < bestBalls){
         [levelDict setObject:[NSNumber numberWithInt:ballsUsed] forKey:@"best_balls"];
@@ -631,18 +642,22 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     else {
         stars = 1;
     }
+    
     [levelDict setObject:[NSNumber numberWithInt: stars] forKey:@"last_stars"];
     if (stars > bestStars){
-        NSLog(@"HELLO!!!!!");
+       // NSLog(@"HELLO!!!!!");
         bestStars = stars;
 
         //int bestStars = [[levelDict objectForKey:@"best_stars"] intValue];
-        NSLog(@"best_stars: %d", bestStars);
+        //NSLog(@"best_stars: %d", bestStars);
     }
     [levelDict setObject:[NSNumber numberWithInt: bestStars] forKey:@"best_stars"];
     
     [defaults setObject: levelDict forKey:levelString];
     [defaults synchronize];
+    
+    
+    NSLog(@"After Game: best stars is %d and last star was %d", [[levelDict objectForKey:@"best_stars"] intValue],[[levelDict objectForKey:@"last_stars"] intValue]);
     
     return YES;
 }
@@ -832,7 +847,7 @@ int counter = 1;
     if (input.anyTouchBeganThisFrame) //someone's touching the screen!! :O
     {
         
-        printf("ANY-TOUCH-BEGAN-THIS-FRAME");
+        //printf("ANY-TOUCH-BEGAN-THIS-FRAME");
         
         
         //Checking if 3 bullets have already been used - if so, then no more bullet are thrown.
@@ -848,7 +863,7 @@ int counter = 1;
     
     else if (input.anyTouchEndedThisFrame)
     {
-        printf("ended frame..........\n");
+        //printf("ended frame..........\n");
         if (currentLevel == 1 || currentLevel == 2 || currentLevel == 3) // add a list for later
         {
             [self removeChild: message];
@@ -986,13 +1001,13 @@ int counter = 1;
                     NSString *fruitName = fruit.fruitName;
                     //NSLog(fruitName);
                     int num = [[goal objectForKey:fruitName] intValue];
-                    NSLog(@"%d", num);
+                    //NSLog(@"%d", num);
                     int fruitNum = [[goalProgress objectForKey:fruitName] intValue];
-                    NSLog(@"%d", fruitNum);
+                    //NSLog(@"%d", fruitNum);
                     fruitNum++;
                     [goalProgress setObject:[NSNumber numberWithInt: fruitNum] forKey:fruitName];
                     int fruitNum2 = [[goalProgress objectForKey:fruitName] intValue];
-                    NSLog(@"Hit Fruit");
+                    //NSLog(@"Hit Fruit");
                 }
             }
             
@@ -1004,13 +1019,13 @@ int counter = 1;
                     NSString *fruitName = fruit.fruitName;
                     //NSLog(fruitName);
                     int num = [[goal objectForKey:fruitName] intValue];
-                    NSLog(@"%d", num);
+                    //NSLog(@"%d", num);
                     int fruitNum = [[goalProgress objectForKey:fruitName] intValue];
-                    NSLog(@"%d", fruitNum);
+                   // NSLog(@"%d", fruitNum);
                     fruitNum++;
                     [goalProgress setObject:[NSNumber numberWithInt: fruitNum] forKey:fruitName];
                     int fruitNum2 = [[goalProgress objectForKey:fruitName] intValue];
-                    NSLog(@"Hit Fruit");
+                   // NSLog(@"Hit Fruit");
                 }
             }
             
@@ -1026,9 +1041,9 @@ int counter = 1;
                     }
                 
                     else {
-                        NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
+                        //NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
                     }
-                    NSLog(@"Hit Fluffy!");
+                    //NSLog(@"Hit Fluffy!");
                 }
 
             }
@@ -1038,9 +1053,9 @@ int counter = 1;
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
                     toDestroy.push_back(bodyB);
 
-                    NSLog(@"Hit Fluffy!");
+                    //NSLog(@"Hit Fluffy!");
                     levelCompleted = [self checkLevelCompleted];
-                    NSLog(@"THE CURRENT LEVEL IS: %d", currentLevel);
+                    //NSLog(@"THE CURRENT LEVEL IS: %d", currentLevel);
                     if (levelCompleted){
                         //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
                         [[CCDirector sharedDirector] replaceScene: (CCScene*)[NextLevelScene sceneWithLevel: currentLevel]];
@@ -1048,9 +1063,9 @@ int counter = 1;
                     }
                 
                     else {
-                        NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
+                       // NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
                     }
-                NSLog(@"Hit Fluffy!");
+               // NSLog(@"Hit Fluffy!");
                 }
             }
         }
@@ -1165,7 +1180,7 @@ int counter = 1;
 ////        [self addChild:myTut z:1];
 //    }
     
-    NSLog(@"YEAAAAA");
+    //NSLog(@"YEAAAAA");
 }
 
 //-(void) cannonheadx:(CCMenuItemImage *)menuItem

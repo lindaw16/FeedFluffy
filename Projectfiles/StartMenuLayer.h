@@ -13,5 +13,6 @@
     //animation
     CCAction *wag;
     NSMutableArray *waggingFrames;
+   // NSMutableDictionary *levelDict;
 }
 @end
