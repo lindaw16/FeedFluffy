@@ -50,6 +50,9 @@ const int TILESET_ROWS = 19;
 const int cageLeft = 30;
 const int cageBottom = 60;
 int bulletCounter = 3;
+int gold;
+int silver;
+int bronze;
 int cannonRadius = 5.0/PTM_RATIO;
 bool ButtonTapped = false;
 int currentLevel;
@@ -71,6 +74,8 @@ b2BodyDef ballBodyDef;
 b2Body *_body;
 CGPoint realDest;
 BOOL levelCompleted;
+
+        CCLabelTTF *ballCountLabel;
 //CGSize winSize;
 
 NSDictionary *goal;
@@ -255,7 +260,25 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
              [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName: [NSString stringWithFormat:@"snore%d.png", i]]];
         }
         
+        //Adding the display for the number of projectiles remaingin
         
+
+        
+        //NSLog(@"Update Lives is being called!!!\n");
+        
+        //ballCountLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:18.0];
+        ballCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@" X %d", bulletCounter]fontName:@"Marker Felt" fontSize:18.0];
+        ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+175, ballCountLabel.contentSize.height/PTM_RATIO/2+30);
+        
+        CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
+        menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+155, menuBall.contentSize.height/PTM_RATIO/2+30);
+        
+        ballCountLabel.string = [NSString stringWithFormat:@" X %d", bulletCounter];
+        [self addChild: ballCountLabel z:10];
+        [self addChild:menuBall z:10];
+        
+        
+
         
         
         
@@ -339,6 +362,11 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         NSString *levelName = [@"level" stringByAppendingString:levelString2];
         NSString *path = [[NSBundle mainBundle] pathForResource:levelName ofType:@"plist"];
         NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:path];
+        
+        bulletCounter = [[level objectForKey:@"Balls"] intValue];
+        gold = [[level objectForKey:@"Gold"] intValue];
+        silver = [[level objectForKey:@"Silver"] intValue];
+        bronze = [[level objectForKey:@"Bronze"] intValue];
         
         goal = [level objectForKey:@"Goal"];
         
@@ -494,24 +522,29 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 }
 
 - (void)updateBallCount {
+    CCLabelTTF *ballCountLabel;
+    
     //NSLog(@"Update Lives is being called!!!\n");
     CGSize winSize = [[CCDirector sharedDirector] winSize];
-    CCLabelTTF *ballCountLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:18.0];
+    ballCountLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:18.0];
     ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, ballCountLabel.contentSize.height/PTM_RATIO/2+30);
     
     CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
     menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, menuBall.contentSize.height/PTM_RATIO/2+30);
     
-    [self addChild: ballCountLabel z:10];
+
     [self addChild:menuBall z:10];
-    ballCountLabel.string = [NSString stringWithFormat:@"X: %d", bulletCounter];
-    
+
+
+
+        ballCountLabel.string = [NSString stringWithFormat:@"X: %d", bulletCounter];
+        [self addChild: ballCountLabel z:10];
     
     //[_hud incrementLevel:[NSString stringWithFormat:@"Lives: %d", currentLevel]];
 }
 
 - (void)starButtonTapped:(id)sender {
-    printf("Button tapped!!!!!!\n");
+    NSLog(@"Button tapped!!!!!!\n");
     ballsUsed++;
     _nextProjectile = [CCSprite spriteWithFile:@"bullet.png"];
     _nextProjectile.tag = 1;
@@ -559,6 +592,9 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
      }],
      nil]];*/
     bulletCounter--;
+    [ballCountLabel setString:[NSString stringWithFormat:@" X %d", bulletCounter]];
+
+    
     ButtonTapped = false;
 }
 
@@ -584,6 +620,16 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     NSString *levelString = [@"level" stringByAppendingFormat:@"%d", currentLevel];
     NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
     [levelDict setObject:@YES forKey:@"completed"];
+    [levelDict setObject:[NSNumber numberWithInteger:ballsUsed] forKey:@"balls"];
+    if (ballsUsed <= gold){
+        [levelDict setObject:@3 forKey:@"stars"];
+    }
+    else if (ballsUsed <= silver){
+        [levelDict setObject:@2 forKey:@"stars"];
+    }
+    else {
+        [levelDict setObject:@1 forKey:@"stars"];
+    }
     [defaults setObject: levelDict forKey:levelString];
     [defaults synchronize];
     
@@ -766,7 +812,7 @@ int counter = 1;
     //Create a point, pos, by asking input, our touch processor, where there has been a touch
     CGPoint pos = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
     [self updateLevel];
-    [self updateBallCount];
+    //[self updateBallCount];
     int x = pos.x;
     int y = pos.y;
     
