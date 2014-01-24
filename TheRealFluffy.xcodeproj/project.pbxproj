@@ -93,9 +93,12 @@
 		BF12C276189229DF00478BCB /* mediumLevel.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C275189229DF00478BCB /* mediumLevel.png */; };
 		BF12C2781892357800478BCB /* easyCage-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C2771892357800478BCB /* easyCage-hd.png */; };
 		BF12C27A18923C5200478BCB /* levelSelectBackground-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C27918923C5200478BCB /* levelSelectBackground-hd.png */; };
-		BF196CF5188DDD74008CB197 /* fluffyframes.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF196CF3188DDD74008CB197 /* fluffyframes.plist */; };
-		BF196CF6188DDD74008CB197 /* fluffyframes.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CF4188DDD74008CB197 /* fluffyframes.png */; };
-		BF196CF8188DDD7D008CB197 /* fluffy1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CF7188DDD7D008CB197 /* fluffy1.png */; };
+		BF12C28418930AD300478BCB /* fluffy1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C28118930AD300478BCB /* fluffy1.png */; };
+		BF12C28518930AD300478BCB /* fluffysprites.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF12C28218930AD300478BCB /* fluffysprites.plist */; };
+		BF12C28618930AD300478BCB /* fluffysprites.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C28318930AD300478BCB /* fluffysprites.png */; };
+		BF12C28A18930C3F00478BCB /* fluffy1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C28718930C3F00478BCB /* fluffy1-hd.png */; };
+		BF12C28B18930C3F00478BCB /* fluffyframes-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF12C28818930C3F00478BCB /* fluffyframes-hd.plist */; };
+		BF12C28C18930C3F00478BCB /* fluffyframes-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C28918930C3F00478BCB /* fluffyframes-hd.png */; };
 		BF196CFA188EF27D008CB197 /* cage.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CF9188EF27D008CB197 /* cage.png */; };
 		BF196D00188EFCAC008CB197 /* ok1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CFD188EFCAC008CB197 /* ok1.png */; };
 		BF196D01188EFCAC008CB197 /* ok2.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CFE188EFCAC008CB197 /* ok2.png */; };
@@ -288,9 +291,12 @@
 		BF12C275189229DF00478BCB /* mediumLevel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mediumLevel.png; sourceTree = "<group>"; };
 		BF12C2771892357800478BCB /* easyCage-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "easyCage-hd.png"; sourceTree = "<group>"; };
 		BF12C27918923C5200478BCB /* levelSelectBackground-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "levelSelectBackground-hd.png"; sourceTree = "<group>"; };
-		BF196CF3188DDD74008CB197 /* fluffyframes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = fluffyframes.plist; path = fluffysprites/fluffyframes.plist; sourceTree = "<group>"; };
-		BF196CF4188DDD74008CB197 /* fluffyframes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fluffyframes.png; path = fluffysprites/fluffyframes.png; sourceTree = "<group>"; };
-		BF196CF7188DDD7D008CB197 /* fluffy1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fluffy1.png; path = fluffysprites/fluffy1.png; sourceTree = "<group>"; };
+		BF12C28118930AD300478BCB /* fluffy1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fluffy1.png; path = fluffysprites/fluffy1.png; sourceTree = "<group>"; };
+		BF12C28218930AD300478BCB /* fluffysprites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = fluffysprites.plist; path = fluffysprites/fluffysprites.plist; sourceTree = "<group>"; };
+		BF12C28318930AD300478BCB /* fluffysprites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fluffysprites.png; path = fluffysprites/fluffysprites.png; sourceTree = "<group>"; };
+		BF12C28718930C3F00478BCB /* fluffy1-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fluffy1-hd.png"; path = "fluffyspritesNEW/fluffy1-hd.png"; sourceTree = "<group>"; };
+		BF12C28818930C3F00478BCB /* fluffyframes-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "fluffyframes-hd.plist"; path = "fluffyspritesNEW/fluffyframes-hd.plist"; sourceTree = "<group>"; };
+		BF12C28918930C3F00478BCB /* fluffyframes-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fluffyframes-hd.png"; path = "fluffyspritesNEW/fluffyframes-hd.png"; sourceTree = "<group>"; };
 		BF196CF9188EF27D008CB197 /* cage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cage.png; sourceTree = "<group>"; };
 		BF196CFD188EFCAC008CB197 /* ok1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok1.png; sourceTree = "<group>"; };
 		BF196CFE188EFCAC008CB197 /* ok2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok2.png; sourceTree = "<group>"; };
@@ -674,6 +680,12 @@
 				BF12C2611892191500478BCB /* gameBackground-hd.png */,
 				BF12C2711892297300478BCB /* easy.png */,
 				BF12C2731892299D00478BCB /* easyLevel.png */,
+				BF12C28118930AD300478BCB /* fluffy1.png */,
+				BF12C28218930AD300478BCB /* fluffysprites.plist */,
+				BF12C28318930AD300478BCB /* fluffysprites.png */,
+				BF12C28718930C3F00478BCB /* fluffy1-hd.png */,
+				BF12C28818930C3F00478BCB /* fluffyframes-hd.plist */,
+				BF12C28918930C3F00478BCB /* fluffyframes-hd.png */,
 				BF12C275189229DF00478BCB /* mediumLevel.png */,
 				BF12C2771892357800478BCB /* easyCage-hd.png */,
 				BF196CF9188EF27D008CB197 /* cage.png */,
@@ -681,7 +693,6 @@
 				BF12C2651892237600478BCB /* menuBackground-hd.png */,
 				BF196D0F188F1EE9008CB197 /* snoringframes.plist */,
 				BF196D10188F1EE9008CB197 /* snoringframes.png */,
-				BF196CF3188DDD74008CB197 /* fluffyframes.plist */,
 				BFF451151890D5AA000EF0F6 /* menuBackgroundBig.png */,
 				BF196CF4188DDD74008CB197 /* fluffyframes.png */,
 				BF196CF7188DDD7D008CB197 /* fluffy1.png */,
@@ -843,6 +854,7 @@
 				ABB719D318872546004D2FCA /* level1.plist in Resources */,
 				BF196CFA188EF27D008CB197 /* cage.png in Resources */,
 				AB9C910D18930C0D00C1A96E /* orange.png in Resources */,
+				BF12C28C18930C3F00478BCB /* fluffyframes-hd.png in Resources */,
 				AB49BD92188F9F3D00795F1D /* level4.plist in Resources */,
 				BF196D21188F8696008CB197 /* tutorial2.png in Resources */,
 				BF196D22188F8696008CB197 /* tutorial3.png in Resources */,
@@ -864,7 +876,6 @@
 				BF12C2741892299D00478BCB /* easyLevel.png in Resources */,
 				BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */,
 				BF196D12188F1EE9008CB197 /* snoringframes.png in Resources */,
-				BF196CF8188DDD7D008CB197 /* fluffy1.png in Resources */,
 				DCC1A3AF13A94F1A005BD75D /* config.lua in Resources */,
 				BFB425B2188702D4002DD826 /* level2.png in Resources */,
 				ABB719ED18875684004D2FCA /* strawberry.png in Resources */,
@@ -889,7 +900,7 @@
 				BFC2DCE8188609E900A1D673 /* apple2.png in Resources */,
 				BF196D11188F1EE9008CB197 /* snoringframes.plist in Resources */,
 				AB9E597C188B261100B7D315 /* main_menu_button@2x.png in Resources */,
-				BF196CF5188DDD74008CB197 /* fluffyframes.plist in Resources */,
+				BF12C28A18930C3F00478BCB /* fluffy1-hd.png in Resources */,
 				AB9FBB8C188B190000992502 /* restart_button2.png in Resources */,
 				BF196D02188EFCAC008CB197 /* ok3.png in Resources */,
 				BFB425B618872304002DD826 /* Achievements.png in Resources */,
@@ -914,7 +925,6 @@
 				AB9FBB8A188B190000992502 /* main_menu_button2.png in Resources */,
 				BFB425B1188702D4002DD826 /* level1.png in Resources */,
 				ABB719E81887567B004D2FCA /* pineapple-hd.png in Resources */,
-				BF196CF6188DDD74008CB197 /* fluffyframes.png in Resources */,
 				ABB719EC18875684004D2FCA /* strawberry-hd.png in Resources */,
 				BFB425B8188727AA002DD826 /* Bonus.png in Resources */,
 				AB9E13841889CF26001F6EA8 /* level5.plist in Resources */,
@@ -933,18 +943,22 @@
 				BF4E9607188A1FD10000B4FE /* cannonx.png in Resources */,
 				BF4E960B188A26F30000B4FE /* dialog2.png in Resources */,
 				911975BA1888618F0070C1AE /* ButtonStar.png in Resources */,
+				BF12C28518930AD300478BCB /* fluffysprites.plist in Resources */,
 				BF12C27A18923C5200478BCB /* levelSelectBackground-hd.png in Resources */,
 				AB23A832189312AA00127A5D /* level_select_button2-hd.png in Resources */,
 				AB9C910A18930C0D00C1A96E /* lemon-hd.png in Resources */,
 				911975BB1888618F0070C1AE /* ButtonStarSel.png in Resources */,
 				AB39204C1892205000E4830D /* orange-hd.png in Resources */,
 				914BE9CD188969C70085E989 /* cannon-head-cropped.png in Resources */,
+				BF12C28618930AD300478BCB /* fluffysprites.png in Resources */,
+				BF12C28418930AD300478BCB /* fluffy1.png in Resources */,
 				AB9FBB8E188B190000992502 /* resume_button2.png in Resources */,
 				AB49BD90188F991600795F1D /* level2.plist in Resources */,
 				914BE9D1188990390085E989 /* cannon-body2.png in Resources */,
 				AB9E597D188B261100B7D315 /* main_menu_button2@2x.png in Resources */,
 				914BE9E31889BDF40085E989 /* bg.png in Resources */,
 				AB23A831189312AA00127A5D /* level_select_button-hd.png in Resources */,
+				BF12C28B18930C3F00478BCB /* fluffyframes-hd.plist in Resources */,
 				BF196D20188F8696008CB197 /* tutorial1.png in Resources */,
 				919F04231890BE89008BADF4 /* button@2x.png in Resources */,
 				914BE9E41889BDF40085E989 /* bg@2x.png in Resources */,
