@@ -135,8 +135,8 @@ int NUM_LEVELS = 20;
         
         
         // reset NSUserDefaults
-//        NSString *domainName = [[NSBundle mainBundle] bundleIdentifier];
-//        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:domainName];
+        //NSString *domainName = [[NSBundle mainBundle] bundleIdentifier];
+        //[[NSUserDefaults standardUserDefaults] removePersistentDomainForName:domainName];
         
         // Get a pointer to the NSUserDefaults object
         NSUserDefaults * standardDefaults = [NSUserDefaults standardUserDefaults];
@@ -145,9 +145,12 @@ int NUM_LEVELS = 20;
             // initialize all levels as not completed
             NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
             [levelDict setObject:@NO forKey: @"completed"];
-            [levelDict setObject:@0 forKey: @"stars"];
-            [levelDict setObject:@0 forKey: @"time"];
-            [levelDict setObject:@0 forKey: @"balls"];
+            [levelDict setObject:@0 forKey: @"last_stars"];
+            [levelDict setObject:[NSNumber numberWithInt: 0] forKey: @"best_stars"];
+            [levelDict setObject:@0 forKey: @"last_score"];
+            [levelDict setObject:[NSNumber numberWithInt: 0] forKey: @"best_score"];
+            [levelDict setObject:@0 forKey: @"last_balls"];
+            [levelDict setObject:[NSNumber numberWithInt: 100] forKey: @"best_balls"];
             
             //[standardDefaults registerDefaults:@{levelString: @NO}];
             [standardDefaults registerDefaults:@{levelString: levelDict}];

@@ -49,7 +49,7 @@ const int TILESET_COLUMNS = 9;
 const int TILESET_ROWS = 19;
 const int cageLeft = 30;
 const int cageBottom = 60;
-int bulletCounter = 3;
+int bulletCounter;
 int gold;
 int silver;
 int bronze;
@@ -267,7 +267,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         //NSLog(@"Update Lives is being called!!!\n");
         
         //ballCountLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:18.0];
-        ballCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"X: %d", bulletCounter]fontName:@"Marker Felt" fontSize:18.0];
+        /*ballCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"X: %d", bulletCounter]fontName:@"Marker Felt" fontSize:18.0];
         ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, ballCountLabel.contentSize.height/PTM_RATIO/2+30);
         
         CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
@@ -275,7 +275,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
         ballCountLabel.string = [NSString stringWithFormat:@"X: %d", bulletCounter];
         [self addChild: ballCountLabel z:10];
-        [self addChild:menuBall z:10];
+        [self addChild:menuBall z:10];*/
         
         
 
@@ -493,6 +493,15 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             fruitBody->CreateFixture(&fruitShapeDef);
         }
 
+        ballCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"X: %d", bulletCounter]fontName:@"Marker Felt" fontSize:18.0];
+        ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, ballCountLabel.contentSize.height/PTM_RATIO/2+30);
+        
+        CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
+        menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, menuBall.contentSize.height/PTM_RATIO/2+30);
+        
+        ballCountLabel.string = [NSString stringWithFormat:@"X: %d", bulletCounter];
+        [self addChild: ballCountLabel z:10];
+        [self addChild:menuBall z:10];
         
         [self setUpMenus];
         
@@ -607,6 +616,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 
 -(BOOL) checkLevelCompleted {
     //NSLog(@"CHECKING IF LEVEL IS COMPLETED");
+
     for (NSString *key in goal){
         int goalValue = [[goal objectForKey:key] intValue];
         int goalProgressValue = [[goalProgress objectForKey:key] intValue];
@@ -620,16 +630,36 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     NSString *levelString = [@"level" stringByAppendingFormat:@"%d", currentLevel];
     NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
     [levelDict setObject:@YES forKey:@"completed"];
-    [levelDict setObject:[NSNumber numberWithInteger:ballsUsed] forKey:@"balls"];
+    [levelDict setObject:[NSNumber numberWithInteger:ballsUsed] forKey:@"last_balls"];
+    int bestBalls = [[levelDict objectForKey:@"best_balls"] intValue];
+    int bestStars = [[levelDict objectForKey:@"best_stars"] intValue];
+    NSLog(@"best_balls: %d", bestBalls);
+    NSLog(@"best_stars: %d", bestStars);
+    int stars;
+    if (ballsUsed < bestBalls){
+        [levelDict setObject:[NSNumber numberWithInt:ballsUsed] forKey:@"best_balls"];
+        int bestBalls = [[levelDict objectForKey:@"best_balls"] intValue];
+        NSLog(@"best_balls: %d", bestBalls);
+    }
     if (ballsUsed <= gold){
-        [levelDict setObject:@3 forKey:@"stars"];
+        stars = 3;
     }
     else if (ballsUsed <= silver){
-        [levelDict setObject:@2 forKey:@"stars"];
+        stars = 2;
     }
     else {
-        [levelDict setObject:@1 forKey:@"stars"];
+        stars = 1;
     }
+    [levelDict setObject:[NSNumber numberWithInt: stars] forKey:@"last_stars"];
+    if (stars > bestStars){
+        NSLog(@"HELLO!!!!!");
+        bestStars = stars;
+
+        //int bestStars = [[levelDict objectForKey:@"best_stars"] intValue];
+        NSLog(@"best_stars: %d", bestStars);
+    }
+    [levelDict setObject:[NSNumber numberWithInt: bestStars] forKey:@"best_stars"];
+    
     [defaults setObject: levelDict forKey:levelString];
     [defaults synchronize];
     

@@ -13,13 +13,13 @@
 
 #import "PhysicsLayer.h"
 
-int numLevels = 16;
+int numLevels = 12;
 int numCol = 4;
 //int numRow;
 const float PTM = 32.0f;
 
-int leftMargin = 60;
-int topMargin = 250;
+int leftMargin = 120;
+int topMargin = 240;
 CCSprite *level;
 
 
@@ -65,12 +65,44 @@ CCSprite *level;
             levelCompleted = [[levelDict objectForKey:@"completed"] intValue];
         }
         
+        NSString *levelString = [@"level" stringByAppendingFormat:@"%d", i + 1];
+        NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
+        levelDict = [defaults objectForKey:levelString];
+        int currentLevelCompleted = [[levelDict objectForKey:@"completed"] intValue];
         
         int x = leftMargin + 80 * (i % numCol);
-        int y =  topMargin - (i/numCol)*60;
+        int y =  topMargin - (i/numCol)*75;
         
         //level.position = ccp(leftMargin + 80 * (i % numCol), topMargin - (i/ numCol) * 60);
         //[myLevels addChild: level];
+        
+        if (currentLevelCompleted == 1){
+            NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+            NSString *levelString = [@"level" stringByAppendingFormat:@"%d", i+1];
+            NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
+            levelDict = [defaults objectForKey:levelString];
+            int stars1 = [[levelDict objectForKey:@"last_stars"] intValue];
+            int stars = [[levelDict objectForKey:@"best_stars"] intValue];
+            NSLog(@"STARS: %d", stars);
+            NSLog(@"LAST_STARS: %d", stars1);
+            
+            if (stars == 3){
+                CCSprite *gold = [CCSprite spriteWithFile:@"gold_star.png"];
+                gold.position = ccp(x+15, y-20);
+                [self addChild: gold z:3];
+            }
+            else if (stars == 2){
+                CCSprite *gold = [CCSprite spriteWithFile:@"silver_star.png"];
+                gold.position = ccp(x+15, y-20);
+                [self addChild: gold z:3];
+            }
+            else if (stars == 1){
+                CCSprite *gold = [CCSprite spriteWithFile:@"bronze_star.png"];
+                gold.position = ccp(x+15, y-20);
+                [self addChild: gold z:3];
+            }
+
+        }
         if (levelCompleted == 1 or i == 0){
             level = [CCMenuItemImage itemWithNormalImage:@"apple_level.png" selectedImage:@"apple_level.png" target:self selector: @selector(goToLevel:)];
             level.tag = i + 1;
