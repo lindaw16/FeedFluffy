@@ -148,6 +148,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     if ((self = [super initWithColor:ccc4(255,255,255,255)])) {
         HUDLayer *hud;
         _hud = hud;
+        angleInDegrees = 0;
         //CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello Levels!!" fontName:@"Marker Felt" fontSize:48.0];
         
         CGSize size = [[CCDirector sharedDirector] winSize];
@@ -588,7 +589,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     bulletCounter--;
     [ballCountLabel setString:[NSString stringWithFormat:@" X %d", bulletCounter]];
 
-    
+    //angleInDegrees = 0;
     ButtonTapped = false;
 }
 

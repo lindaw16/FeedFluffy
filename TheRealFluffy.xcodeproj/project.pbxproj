@@ -96,6 +96,7 @@
 		BF12C28A18930C3F00478BCB /* fluffy1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C28718930C3F00478BCB /* fluffy1-hd.png */; };
 		BF12C28B18930C3F00478BCB /* fluffyframes-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF12C28818930C3F00478BCB /* fluffyframes-hd.plist */; };
 		BF12C28C18930C3F00478BCB /* fluffyframes-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C28918930C3F00478BCB /* fluffyframes-hd.png */; };
+		BF12C28E189316D600478BCB /* play-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C28D189316D600478BCB /* play-hd.png */; };
 		BF196CFA188EF27D008CB197 /* cage.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CF9188EF27D008CB197 /* cage.png */; };
 		BF196D00188EFCAC008CB197 /* ok1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CFD188EFCAC008CB197 /* ok1.png */; };
 		BF196D01188EFCAC008CB197 /* ok2.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CFE188EFCAC008CB197 /* ok2.png */; };
@@ -291,6 +292,7 @@
 		BF12C28718930C3F00478BCB /* fluffy1-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fluffy1-hd.png"; path = "fluffyspritesNEW/fluffy1-hd.png"; sourceTree = "<group>"; };
 		BF12C28818930C3F00478BCB /* fluffyframes-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "fluffyframes-hd.plist"; path = "fluffyspritesNEW/fluffyframes-hd.plist"; sourceTree = "<group>"; };
 		BF12C28918930C3F00478BCB /* fluffyframes-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fluffyframes-hd.png"; path = "fluffyspritesNEW/fluffyframes-hd.png"; sourceTree = "<group>"; };
+		BF12C28D189316D600478BCB /* play-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-hd.png"; sourceTree = "<group>"; };
 		BF196CF9188EF27D008CB197 /* cage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cage.png; sourceTree = "<group>"; };
 		BF196CFD188EFCAC008CB197 /* ok1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok1.png; sourceTree = "<group>"; };
 		BF196CFE188EFCAC008CB197 /* ok2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok2.png; sourceTree = "<group>"; };
@@ -668,6 +670,7 @@
 				AB9C91001892FC4B00C1A96E /* bronze_star.png */,
 				915693CB18920C4000B5C44A /* launch_button_bigger.png */,
 				BF12C2611892191500478BCB /* gameBackground-hd.png */,
+				BF12C28D189316D600478BCB /* play-hd.png */,
 				BF12C2711892297300478BCB /* easy.png */,
 				BF12C2731892299D00478BCB /* easyLevel.png */,
 				BF12C28118930AD300478BCB /* fluffy1.png */,
@@ -958,6 +961,7 @@
 				BF4E9609188A23760000B4FE /* cannonheadx.png in Resources */,
 				917E7AC4188F1D4F004C4217 /* 4.png in Resources */,
 				917E7AC5188F1D4F004C4217 /* 3.png in Resources */,
+				BF12C28E189316D600478BCB /* play-hd.png in Resources */,
 				917E7AC6188F1D4F004C4217 /* 2.png in Resources */,
 				917E7AC7188F1D4F004C4217 /* 1.png in Resources */,
 			);
