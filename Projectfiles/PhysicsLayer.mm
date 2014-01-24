@@ -50,6 +50,9 @@ const int TILESET_ROWS = 19;
 const int cageLeft = 30;
 const int cageBottom = 60;
 int bulletCounter = 3;
+int gold;
+int silver;
+int bronze;
 int cannonRadius = 5.0/PTM_RATIO;
 bool ButtonTapped = false;
 int currentLevel;
@@ -360,6 +363,11 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         NSString *path = [[NSBundle mainBundle] pathForResource:levelName ofType:@"plist"];
         NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:path];
         
+        bulletCounter = [[level objectForKey:@"Balls"] intValue];
+        gold = [[level objectForKey:@"Gold"] intValue];
+        silver = [[level objectForKey:@"Silver"] intValue];
+        bronze = [[level objectForKey:@"Bronze"] intValue];
+        
         goal = [level objectForKey:@"Goal"];
         
         // create new dictionary that keeps track of the level progress
@@ -612,6 +620,16 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     NSString *levelString = [@"level" stringByAppendingFormat:@"%d", currentLevel];
     NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
     [levelDict setObject:@YES forKey:@"completed"];
+    [levelDict setObject:[NSNumber numberWithInteger:ballsUsed] forKey:@"balls"];
+    if (ballsUsed <= gold){
+        [levelDict setObject:@3 forKey:@"stars"];
+    }
+    else if (ballsUsed <= silver){
+        [levelDict setObject:@2 forKey:@"stars"];
+    }
+    else {
+        [levelDict setObject:@1 forKey:@"stars"];
+    }
     [defaults setObject: levelDict forKey:levelString];
     [defaults synchronize];
     

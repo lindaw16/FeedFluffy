@@ -60,6 +60,30 @@
         
         [self addChild:menu];
         
+        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        NSString *levelString = [@"level" stringByAppendingFormat:@"%d", level];
+        NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
+        levelDict = [defaults objectForKey:levelString];
+        int stars = [[levelDict objectForKey:@"stars"] intValue];
+        NSLog(@"STARS: %d", stars);
+        
+        if (stars == 3){
+            CCSprite *gold = [CCSprite spriteWithFile:@"gold_star_big.png"];
+            gold.position = ccp(240, 200);
+            [self addChild: gold z:3];
+        }
+        else if (stars == 2){
+            CCSprite *gold = [CCSprite spriteWithFile:@"silver_star_big.png"];
+            gold.position = ccp(240, 200);
+            [self addChild: gold z:3];
+        }
+        else if (stars == 1){
+            CCSprite *gold = [CCSprite spriteWithFile:@"bronze_star_big.png"];
+            gold.position = ccp(240, 200);
+            [self addChild: gold z:3];
+        }
+
+
     }
     return self;
 }
