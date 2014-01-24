@@ -267,26 +267,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         //NSLog(@"Update Lives is being called!!!\n");
         
         //ballCountLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:18.0];
-        /*ballCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"X: %d", bulletCounter]fontName:@"Marker Felt" fontSize:18.0];
-        ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, ballCountLabel.contentSize.height/PTM_RATIO/2+30);
-        
-        CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
-        menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, menuBall.contentSize.height/PTM_RATIO/2+30);
-        
-        ballCountLabel.string = [NSString stringWithFormat:@"X: %d", bulletCounter];
-        [self addChild: ballCountLabel z:10];
-        [self addChild:menuBall z:10];*/
-        
-        
 
-        
-        
-        
-        
-        
-        
-        
-        
         // Create contact listener
         _contactListener = new MyContactListener();
         world->SetContactListener(_contactListener);
@@ -601,7 +582,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
      }],
      nil]];*/
     bulletCounter--;
-    [ballCountLabel setString:[NSString stringWithFormat:@"X: %d", bulletCounter]];
+    [ballCountLabel setString:[NSString stringWithFormat:@" X %d", bulletCounter]];
 
     
     ButtonTapped = false;
