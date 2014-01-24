@@ -88,6 +88,7 @@
 		BF12C2741892299D00478BCB /* easyLevel.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C2731892299D00478BCB /* easyLevel.png */; };
 		BF12C276189229DF00478BCB /* mediumLevel.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C275189229DF00478BCB /* mediumLevel.png */; };
 		BF12C2781892357800478BCB /* easyCage-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C2771892357800478BCB /* easyCage-hd.png */; };
+		BF12C27A18923C5200478BCB /* levelSelectBackground-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C27918923C5200478BCB /* levelSelectBackground-hd.png */; };
 		BF196CF5188DDD74008CB197 /* fluffyframes.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF196CF3188DDD74008CB197 /* fluffyframes.plist */; };
 		BF196CF6188DDD74008CB197 /* fluffyframes.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CF4188DDD74008CB197 /* fluffyframes.png */; };
 		BF196CF8188DDD7D008CB197 /* fluffy1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CF7188DDD7D008CB197 /* fluffy1.png */; };
@@ -278,6 +279,7 @@
 		BF12C2731892299D00478BCB /* easyLevel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = easyLevel.png; sourceTree = "<group>"; };
 		BF12C275189229DF00478BCB /* mediumLevel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mediumLevel.png; sourceTree = "<group>"; };
 		BF12C2771892357800478BCB /* easyCage-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "easyCage-hd.png"; sourceTree = "<group>"; };
+		BF12C27918923C5200478BCB /* levelSelectBackground-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "levelSelectBackground-hd.png"; sourceTree = "<group>"; };
 		BF196CF3188DDD74008CB197 /* fluffyframes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = fluffyframes.plist; path = fluffysprites/fluffyframes.plist; sourceTree = "<group>"; };
 		BF196CF4188DDD74008CB197 /* fluffyframes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fluffyframes.png; path = fluffysprites/fluffyframes.png; sourceTree = "<group>"; };
 		BF196CF7188DDD7D008CB197 /* fluffy1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fluffy1.png; path = fluffysprites/fluffy1.png; sourceTree = "<group>"; };
@@ -644,6 +646,7 @@
 				AB3920361892205000E4830D /* apple-hd.png */,
 				AB3920371892205000E4830D /* bronze_star_big.png */,
 				AB3920381892205000E4830D /* bronze_star.png */,
+				BF12C27918923C5200478BCB /* levelSelectBackground-hd.png */,
 				AB3920391892205000E4830D /* gold_star_big-hd.png */,
 				AB39203A1892205000E4830D /* gold_star_big.png */,
 				AB39203B1892205000E4830D /* gold_star-hd.png */,
@@ -916,6 +919,7 @@
 				BF4E960B188A26F30000B4FE /* dialog2.png in Resources */,
 				AB3920431892205000E4830D /* apple-hd.png in Resources */,
 				911975BA1888618F0070C1AE /* ButtonStar.png in Resources */,
+				BF12C27A18923C5200478BCB /* levelSelectBackground-hd.png in Resources */,
 				911975BB1888618F0070C1AE /* ButtonStarSel.png in Resources */,
 				AB39204C1892205000E4830D /* orange-hd.png in Resources */,
 				914BE9CD188969C70085E989 /* cannon-head-cropped.png in Resources */,

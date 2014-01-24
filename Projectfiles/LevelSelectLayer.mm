@@ -50,13 +50,15 @@ float priorY = 1000;
 
     CCMenuItemImage * easy = [CCMenuItemImage itemWithNormalImage:@"easyCage.png" selectedImage: @"easyCage.png" target:self selector:@selector(goToEasyLevelLayer:)];
     
-    CCMenuItemImage * medium = [CCMenuItemImage itemWithNormalImage:@"mediumLevel.png" selectedImage: @"mediumLevel.png" target:self selector:@selector(goToEasyLevelLayer:)];
+    CCMenuItemImage * medium = [CCMenuItemImage itemWithNormalImage:@"easyCage.png" selectedImage: @"easyCage.png" target:self selector:@selector(goToEasyLevelLayer:)];
+    
+    CCMenuItemImage * hard = [CCMenuItemImage itemWithNormalImage: @"easyCage.png" selectedImage:@"easyCage.png" target:self selector:@selector(goToEasyLevelLayer:)];
     
 //    // TEST
 //    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 //    NSString *levelString = @"level1";
     
-    CCMenu * myLevels = [CCMenu menuWithItems: left, right, easy, medium, nil];
+    CCMenu * myLevels = [CCMenu menuWithItems: left, right, easy, medium, hard, nil];
   
 //	// Arrange the menu items vertically
 	//[myMenu alignItemsVertically];
@@ -70,7 +72,8 @@ float priorY = 1000;
 //    level4.position = ccp(300, 150);
 //    level5.position = ccp(360, 150);
     easy.position = ccp(180, 180);
-    medium.position = ccp(470, 180);
+    medium.position = ccp(460, 180);
+    hard.position = ccp(740, 180);
 
 //    
     //myBG.position = ccp(0, 0);
@@ -114,17 +117,14 @@ float priorY = 1000;
 -(void) goRight: (CCMenuItem *) menuItem
 {
 //TODO check to not go offscreen
-    self.position = ccp(self.position.x - 100, self.position.y);
-    left.position = ccp(left.position.x + 100, left.position.y);
-    right.position = ccp(right.position.x + 100, right.position.y);
+    if (right.position.x <= 800)
+    {
+        self.position = ccp(self.position.x - 100, self.position.y);
+        left.position = ccp(left.position.x + 100, left.position.y);
+        right.position = ccp(right.position.x + 100, right.position.y);
+    }
 }
 
-
-- (void) goToLevel: (CCMenuItem *) menuItem  {
-
-    int level = menuItem.tag;
-    [[CCDirector sharedDirector] replaceScene: (CCScene*)[PhysicsLayer sceneWithLevel:level]];
-}
 
 
 - (void) goToEasyLevelLayer: (CCMenuItem  *) menuItem
@@ -133,72 +133,7 @@ float priorY = 1000;
     [[CCDirector sharedDirector] replaceScene: (CCScene*)[[EasyLevelLayer alloc] init]];
 }
 
-- (void) doNothing: (CCMenuItem *) menuItem
-{
-    
-}
 
-/*
--(void) update:(ccTime)delta
-{
-    KKInput * input = [KKInput sharedInput];
-    CGPoint pos = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
-
-    float x1 = pos.x;
-    float y1 = pos.y;
-    
-//    NSLog(@"HIIIIIIIIIIIIIIIIIII %f ", x1, @"%f", y1);
-    
-    if (input.anyTouchBeganThisFrame)
-    {
-        //derp
-    }
-    
-    else if  (input.anyTouchEndedThisFrame)
-    {
-//        priorX = 1000;
-//        priorY = 1000;
-//        self.position = ccp(self.position.x - 1, self.position.y);
-    }
-    
-    else if (input.touchesAvailable)
-    {
-//        float x2 = x1;
-//        float y2 = y1;
-//         NSLog(@"%f ", x2, @"%f", y2);
-//        
-//        if (priorX != 1000 && x2 < x1)
-//        {
-//            self.position = ccp(self.position.x - 1, self.position.y);
-//        }
-//        else if (priorX != 1000 && x2 > x1)
-//        {
-//            self.position = ccp(self.position.x + 1, self.position.y);
-//        }
-//        else
-//        {
-//            //um do nothing?
-//        }
-//        priorX = x2;
-//        priorY = y2;
-//        NSLog(@"new %f ", x2, @"%f", y2);
-//    }
-    
-//    if (priorX != 1000 && priorY != 1000)
-//    {
-//        self.position = ccp(self.position.x - 1, self.position.y);
-        
-        if (y1 > 150)
-        {
-            self.position = ccp(self.position.x - 1, self.position.y);
-        }
-        else
-        {
-            self.position = ccp(self.position.x + 1, self.position.y);
-        }
-    }
-}
-*/
 
 
 @end
