@@ -165,9 +165,10 @@ NSMutableDictionary *levelDict;
         
         
         ballsUsed = 0;
-        [self stopAllActions];
+        //[self stopAllActions];
             currentLevel = level;
-        //[self displayFoodCollect];
+            [self updateLevel];
+        [self displayFoodCollect];
            // NSLog(@"THE LEVELLLLL IS %d", currentLevel);
 
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
@@ -943,7 +944,7 @@ int counter = 1;
     
     //Create a point, pos, by asking input, our touch processor, where there has been a touch
     CGPoint pos = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
-    [self updateLevel];
+    //[self updateLevel];
     
     //[self updateBallCount];
     int x = pos.x;
@@ -1115,6 +1116,7 @@ int counter = 1;
                     [goalProgress setObject:[NSNumber numberWithInt: fruitNum] forKey:fruitName];
                     int fruitNum2 = [[goalProgress objectForKey:fruitName] intValue];
                     //NSLog(@"Hit Fruit");
+                    [self displayFoodCollect];
                 }
             }
             
@@ -1133,6 +1135,7 @@ int counter = 1;
                     [goalProgress setObject:[NSNumber numberWithInt: fruitNum] forKey:fruitName];
                     int fruitNum2 = [[goalProgress objectForKey:fruitName] intValue];
                    // NSLog(@"Hit Fruit");
+                    [self displayFoodCollect];
                 }
             }
             
@@ -1195,7 +1198,7 @@ int counter = 1;
     }
     
     
-    [self displayFoodCollect];
+    //[self displayFoodCollect];
     std::vector<b2Body *>::iterator pos3;
     for (pos3 = toDestroy.begin(); pos3 != toDestroy.end(); ++pos3) {
         b2Body *body = *pos3;
@@ -1314,6 +1317,12 @@ int counter = 1;
 //    [self removeChild:myTut cleanup: YES];
 //
 //}
-
+-(void) onExit {
+    //unschedule selectors to get dealloc to fire off
+    [self unscheduleAllSelectors];
+    //remove all textures to free up additional memory. Textures get retained even if the sprite gets released and it doesn't show as a leak. This was my big memory saver
+    [[CCTextureCache sharedTextureCache] removeAllTextures];
+    [super onExit];
+}
 
 @end

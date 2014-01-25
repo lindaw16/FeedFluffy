@@ -25,20 +25,20 @@ CCSprite *level;
 
 @implementation EasyLevelLayer
 
-//+(id) scene
-//{
-//	// 'scene' is an autorelease object.
-//	CCScene *scene = [CCScene node];
-//    
-//	// 'layer' is an autorelease object.
-//	StartMenuLayer *layer = [StartMenuLayer node];
-//    
-//	// add layer as a child to scene
-//	[scene addChild: layer];
-//    
-//	// return the scene
-//	return scene;
-//}
++(id) scene
+{
+	// 'scene' is an autorelease object.
+	CCScene *scene = [CCScene node];
+    
+	// 'layer' is an autorelease object.
+	EasyLevelLayer *layer = [EasyLevelLayer node];
+    
+	// add layer as a child to scene
+	[scene addChild: layer];
+    
+	// return the scene
+	return scene;
+}
 
 
 -(void) setUpMenus
@@ -377,5 +377,21 @@ CCSprite *level;
 //- (void)level4Tapped:(id)sender {
 //    printf("Button 4 tapped!!!!!!\n");
 //}
+
+-(void) onExit {
+    //unschedule selectors to get dealloc to fire off
+    [self unscheduleAllSelectors];
+    //remove all textures to free up additional memory. Textures get retained even if the sprite gets released and it doesn't show as a leak. This was my big memory saver
+    [[CCTextureCache sharedTextureCache] removeAllTextures];
+    [super onExit];
+}
+
+-(void) dealloc
+{
+#ifndef KK_ARC_ENABLED
+	[super dealloc];
+#endif
+}
+
 
 @end
