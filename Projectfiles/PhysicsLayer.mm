@@ -539,8 +539,9 @@ NSMutableDictionary *levelDict;
     NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:path];
     
     goal = [level objectForKey:@"Goal"];
-    int gapFruit = 150;
-    int gapLabel = 160;
+    int gapFruit = 220;
+    int gapLabel = 260;
+    int yOffset = 32;
     int layer = 10;
     NSArray *keys = [goal allKeys];
     int totalFruitCount = [goal count];
@@ -551,7 +552,7 @@ NSMutableDictionary *levelDict;
         NSLog(@"Fruitname: %@" ,fruit);
             NSLog(@"FRUITSNUM###: %d \n", numFruits);
                     NSLog(@"Before Creating Image\n");
-        NSString *fruitSpriteName = [fruit stringByAppendingString:@".png"];
+        /*NSString *fruitSpriteName = [fruit stringByAppendingString:@".png"];
         
         
         CCSprite *fruity = [CCSprite spriteWithFile:fruitSpriteName];
@@ -564,15 +565,21 @@ NSMutableDictionary *levelDict;
         starLabel.position = ccp(starLabel.contentSize.width/PTM_RATIO/2 + gapLabel,starLabel.contentSize.height/PTM_RATIO/2 + gapLabel);
         gapFruit += 50;
         gapLabel +=60;
-        layer++;
-
+        layer++;*/
         
+        Fruit *fruit2 = [[Fruit alloc] initWithFruit:fruit ];
+        fruit2.position = ccp(fruit2.contentSize.width/PTM_RATIO/2 + gapFruit,fruit2.contentSize.height/PTM_RATIO/2 + yOffset);
+        [self addChild: fruit2 z: 5];
+        
+        NSString *numFruitsDisplay = [NSString stringWithFormat: @"X %d", numFruits];
+        CCLabelTTF *label = [CCLabelTTF labelWithString:numFruitsDisplay
+                                               fontName:@"Marker Felt"
+                                               fontSize:18.0];
+        label.position = ccp(starLabel.contentSize.width/PTM_RATIO/2 + gapLabel,starLabel.contentSize.height/PTM_RATIO/2 + yOffset);
+        [self addChild: label];
+        gapFruit += 80;
+        gapLabel +=80;
 
-    //NSArray *goalFruits = [level objectForKey:@"Goal"];
-//    for (NSDictionary *fruit in goalFruits){
-  //      NSString *sName = [fruit objectForKey:@"spriteName"];
-        //NSString *spriteName = [sName stringByAppendingString:@".png"];
-        //Fruit *fruit2 = [[Fruit alloc] initWithFruit:fruit ];
         
     }
     
