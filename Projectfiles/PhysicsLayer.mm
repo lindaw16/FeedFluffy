@@ -151,7 +151,7 @@ NSMutableDictionary *levelDict;
         HUDLayer *hud;
 
         _hud = hud;
-        [self displayStars];
+        
         NSLog(@"DISPLAYING STARSSSSS\n");
         angleInDegrees = 0;
         //CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello Levels!!" fontName:@"Marker Felt" fontSize:48.0];
@@ -166,6 +166,7 @@ NSMutableDictionary *levelDict;
         ballsUsed = 0;
         [self stopAllActions];
             currentLevel = level;
+        [self displayFoodCollect];
            // NSLog(@"THE LEVELLLLL IS %d", currentLevel);
 
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
@@ -521,53 +522,69 @@ NSMutableDictionary *levelDict;
     //[_hud incrementLevel:[NSString stringWithFormat:@"Lives: %d", currentLevel]];
 }
 
-- (void)displayStars {
+- (void)displayFoodCollect {
     NSLog(@"dispaly stars being called!!!\n");
     //NSLog(@"Update Lives is being called!!!\n");
     CGSize winSize = [[CCDirector sharedDirector] winSize];
-    CCLabelTTF *starLabel = [CCLabelTTF labelWithString:@"High Score" fontName:@"Marker Felt" fontSize:18.0];
+    CCLabelTTF *starLabel = [CCLabelTTF labelWithString:@"Food" fontName:@"Marker Felt" fontSize:18.0];
     starLabel.position = ccp(starLabel.contentSize.width/PTM_RATIO/2+400, starLabel.contentSize.height/PTM_RATIO/2+30);
-    
-    CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
-    menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, menuBall.contentSize.height/PTM_RATIO/2+30);
+//    
+//    CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
+//    menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, menuBall.contentSize.height/PTM_RATIO/2+30);
 
-    CCSprite *star_rank;
+   
+    NSString* levelString2 = [NSString stringWithFormat:@"%i", currentLevel];
+    NSString *levelName = [@"level" stringByAppendingString:levelString2];
+    NSString *path = [[NSBundle mainBundle] pathForResource:levelName ofType:@"plist"];
+    NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:path];
     
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    NSString *levelString = [@"level" stringByAppendingFormat:@"%d", currentLevel];
-    //NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
-    //levelDict = [[NSMutableDictionary alloc]init];
-    
-    NSMutableDictionary *levelDict = [[defaults objectForKey:levelString] mutableCopy];
-    
-    int bestStars = [[levelDict objectForKey:@"best_stars"] intValue];
+    goal = [level objectForKey:@"Goal"];
+    int gapFruit = 150;
+    int gapLabel = 160;
+    int layer = 10;
+    NSArray *keys = [goal allKeys];
+    int totalFruitCount = [goal count];
+    for (int i =0; i< totalFruitCount; i++){
+        NSString *fruit = [keys objectAtIndex: i];
+        int numFruits = [[goal objectForKey:fruit] intValue];
+        int goalProgressValue = [[goalProgress objectForKey:fruit] intValue];
+        NSLog(@"Fruitname: %@" ,fruit);
+            NSLog(@"FRUITSNUM###: %d \n", numFruits);
+                    NSLog(@"Before Creating Image\n");
+        NSString *fruitSpriteName = [fruit stringByAppendingString:@".png"];
+        
+        
+        CCSprite *fruity = [CCSprite spriteWithFile:fruitSpriteName];
+                    NSLog(@"After Sprite Image Created!! \n");
+        NSLog(@"Layer!: %d", layer);
+        [self addChild:fruity z:layer];
+        [self addChild: starLabel z:layer];
+        fruity.position = ccp(fruity.contentSize.width/PTM_RATIO/2 + gapFruit,fruity.contentSize.height/PTM_RATIO/2 + gapFruit);
+        starLabel.string = [NSString stringWithFormat:@" X %d",numFruits];
+        starLabel.position = ccp(starLabel.contentSize.width/PTM_RATIO/2 + gapLabel,starLabel.contentSize.height/PTM_RATIO/2 + gapLabel);
+        gapFruit += 50;
+        gapLabel +=60;
+        layer++;
 
-    
-    
-    
-    NSLog(@"BESTSTARS###: %d", bestStars);
-    if (bestStars == 3){
-        star_rank = [CCSprite spriteWithFile:@"gold_star-hd.png"];
+        
+
+    //NSArray *goalFruits = [level objectForKey:@"Goal"];
+//    for (NSDictionary *fruit in goalFruits){
+  //      NSString *sName = [fruit objectForKey:@"spriteName"];
+        //NSString *spriteName = [sName stringByAppendingString:@".png"];
+        //Fruit *fruit2 = [[Fruit alloc] initWithFruit:fruit ];
         
     }
-    else if (bestStars == 2){
-star_rank = [CCSprite spriteWithFile:@"silver_star-hd.png"];
-    }
-    else if (bestStars == 1){
-star_rank = [CCSprite spriteWithFile:@"bronze_star-hd.png"];
-    }
-    else
-    {
-        star_rank = [CCSprite spriteWithFile:@"gold_star-hd.png"];
+    
+    
+    
+    
 
-    }
-    star_rank.position = ccp(star_rank.contentSize.width/PTM_RATIO/2+510, star_rank.contentSize.height/PTM_RATIO/2 +35);
-    [self addChild:star_rank z:10];
+        //star_rank.position = ccp(star_rank.contentSize.width/PTM_RATIO/2+510, star_rank.contentSize.height/PTM_RATIO/2 +35);
 
     
     
-    starLabel.string = [NSString stringWithFormat:@"Your Current High Score:"];
-    [self addChild: starLabel z:10];
+   // starLabel.string = [NSString stringWithFormat:@" X %d","];
     
     
     //[_hud incrementLevel:[NSString stringWithFormat:@"Lives: %d", currentLevel]];
