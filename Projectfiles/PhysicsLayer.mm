@@ -22,6 +22,7 @@
 #import "NextLevelScene.h"
 #import "HUDLayer.h"
 #import "StartMenuLayer.h"
+#import "LoseScene.h"
 //#import "cocos2d.m"
 
 
@@ -769,6 +770,7 @@ NSMutableDictionary *levelDict;
             if (ballData.position.x <= 0 && bulletCounter <= 0){
                 toDestroy.push_back(b);
                 NSLog(@"YOU LOST!!!!, %f\n", ballData.position.x);
+                [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
             }
             // if ball is going too fast, turn on damping
             //we should do this!!
@@ -1154,6 +1156,7 @@ int counter = 1;
                         if (bulletCounter <=0)
                         {
                             NSLog(@"LAST BULLET - DISAPPEARED!\n");
+                            [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
                         }
                     }
                     //NSLog(@"Hit Fluffy!");
@@ -1179,6 +1182,7 @@ int counter = 1;
                         if (bulletCounter <=0)
                         {
                             NSLog(@"LAST BULLET - DISAPPEARED!\n");
+                            [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
                         }
                     }
                // NSLog(@"Hit Fluffy!");

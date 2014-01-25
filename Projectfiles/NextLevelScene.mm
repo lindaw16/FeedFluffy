@@ -27,7 +27,7 @@
 -(id)initWithLevel: (int) level{
     if( (self=[super init] )) {
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"Level Completed"
-                                               fontName:@"Courier New"
+                                               fontName:@"Marker Felt"
                                                fontSize:30];
         label.position = ccp(240,250);
         [self addChild: label];
