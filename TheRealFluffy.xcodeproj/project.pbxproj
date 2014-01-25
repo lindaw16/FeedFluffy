@@ -110,6 +110,9 @@
 		BF12C28B18930C3F00478BCB /* fluffyframes-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF12C28818930C3F00478BCB /* fluffyframes-hd.plist */; };
 		BF12C28C18930C3F00478BCB /* fluffyframes-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C28918930C3F00478BCB /* fluffyframes-hd.png */; };
 		BF12C28E189316D600478BCB /* play-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C28D189316D600478BCB /* play-hd.png */; };
+		BF12C2901893263700478BCB /* squirrel-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C28F1893263700478BCB /* squirrel-hd.png */; };
+		BF12C2921893270500478BCB /* rightsquirrel-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C2911893270500478BCB /* rightsquirrel-hd.png */; };
+		BF12C2941893270F00478BCB /* leftsquirrel-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C2931893270F00478BCB /* leftsquirrel-hd.png */; };
 		BF196CFA188EF27D008CB197 /* cage.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CF9188EF27D008CB197 /* cage.png */; };
 		BF196D00188EFCAC008CB197 /* ok1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CFD188EFCAC008CB197 /* ok1.png */; };
 		BF196D01188EFCAC008CB197 /* ok2.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196CFE188EFCAC008CB197 /* ok2.png */; };
@@ -319,6 +322,9 @@
 		BF12C28818930C3F00478BCB /* fluffyframes-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "fluffyframes-hd.plist"; path = "fluffyspritesNEW/fluffyframes-hd.plist"; sourceTree = "<group>"; };
 		BF12C28918930C3F00478BCB /* fluffyframes-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fluffyframes-hd.png"; path = "fluffyspritesNEW/fluffyframes-hd.png"; sourceTree = "<group>"; };
 		BF12C28D189316D600478BCB /* play-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-hd.png"; sourceTree = "<group>"; };
+		BF12C28F1893263700478BCB /* squirrel-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "squirrel-hd.png"; sourceTree = "<group>"; };
+		BF12C2911893270500478BCB /* rightsquirrel-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rightsquirrel-hd.png"; sourceTree = "<group>"; };
+		BF12C2931893270F00478BCB /* leftsquirrel-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leftsquirrel-hd.png"; sourceTree = "<group>"; };
 		BF196CF9188EF27D008CB197 /* cage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cage.png; sourceTree = "<group>"; };
 		BF196CFD188EFCAC008CB197 /* ok1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok1.png; sourceTree = "<group>"; };
 		BF196CFE188EFCAC008CB197 /* ok2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok2.png; sourceTree = "<group>"; };
@@ -710,6 +716,8 @@
 				AB39203C1892205000E4830D /* gold_star.png */,
 				AB39203D1892205000E4830D /* lemon-hd.png */,
 				AB39203E1892205000E4830D /* lemon.png */,
+				BF12C2931893270F00478BCB /* leftsquirrel-hd.png */,
+				BF12C2911893270500478BCB /* rightsquirrel-hd.png */,
 				AB39203F1892205000E4830D /* orange-hd.png */,
 				AB3920401892205000E4830D /* orange.png */,
 				AB3920411892205000E4830D /* silver_star_big.png */,
@@ -722,6 +730,7 @@
 				BF12C28D189316D600478BCB /* play-hd.png */,
 				BF12C2711892297300478BCB /* easy.png */,
 				BF12C2731892299D00478BCB /* easyLevel.png */,
+				BF12C28F1893263700478BCB /* squirrel-hd.png */,
 				BF12C28118930AD300478BCB /* fluffy1.png */,
 				BF12C28218930AD300478BCB /* fluffysprites.plist */,
 				BF12C28318930AD300478BCB /* fluffysprites.png */,
@@ -912,6 +921,7 @@
 				DCC1A10B13A94ED5005BD75D /* iTunesArtwork in Resources */,
 				AB9C910B18930C0D00C1A96E /* lemon.png in Resources */,
 				AB9E5980188B261100B7D315 /* resume_button@2x.png in Resources */,
+				BF12C2921893270500478BCB /* rightsquirrel-hd.png in Resources */,
 				ABB719E91887567B004D2FCA /* pineapple.png in Resources */,
 				AB23A84A1893186D00127A5D /* next_level.png in Resources */,
 				BF196D06188F1CE9008CB197 /* snore1.png in Resources */,
@@ -935,6 +945,7 @@
 				BFB4259918862CF2002DD826 /* gameBackground.png in Resources */,
 				DC26D6BE14B9E4D500B6002E /* fps_images-hd.png in Resources */,
 				DC65617D15114BC500E59F8A /* fps_images-ipadhd.png in Resources */,
+				BF12C2901893263700478BCB /* squirrel-hd.png in Resources */,
 				AB39204A1892205000E4830D /* lemon-hd.png in Resources */,
 				AB39204B1892205000E4830D /* lemon.png in Resources */,
 				BF63D6EE1884AFAC00F3D3F3 /* play.png in Resources */,
@@ -994,6 +1005,7 @@
 				BF12C28518930AD300478BCB /* fluffysprites.plist in Resources */,
 				BF12C27A18923C5200478BCB /* levelSelectBackground-hd.png in Resources */,
 				AB9C910A18930C0D00C1A96E /* lemon-hd.png in Resources */,
+				BF12C2941893270F00478BCB /* leftsquirrel-hd.png in Resources */,
 				911975BB1888618F0070C1AE /* ButtonStarSel.png in Resources */,
 				AB39204C1892205000E4830D /* orange-hd.png in Resources */,
 				914BE9CD188969C70085E989 /* cannon-head-cropped.png in Resources */,

@@ -36,20 +36,13 @@ int NUM_LEVELS = 20;
 {
     
 	// Create some menu items
-//	CCMenuItemImage * menuItem1 = [CCMenuItemImage itemWithNormalImage:@"playbutton.png"
-//                                                         selectedImage: @"playbutton.png"
-//                                                                target:self
-//                                                              selector:@selector(goToLevel1:)];
     CCMenuItemImage * playButton = [CCMenuItemImage itemWithNormalImage:@"play.png"
                                                          selectedImage: @"play.png"
                                                                 target:self
                                                               selector:@selector(goToLevelSelect:)];
-    CCMenuItemImage * bonus = [CCMenuItemImage itemWithNormalImage:@"Bonus.png" selectedImage: @"Bonus.png" target:self selector:@selector(goToBonus:)];
+    //CCMenuItemImage * bonus = [CCMenuItemImage itemWithNormalImage:@"Bonus.png" selectedImage: @"Bonus.png" target:self selector:@selector(goToBonus:)];
     
-    CCMenuItemImage * achievements = [CCMenuItemImage itemWithNormalImage:@"Achievements.png" selectedImage: @"Achievements.png" target:self selector:@selector(goToAchievements:)];
-    
-    //CCMenuItemImage * fluffy = [CCMenuItemImage itemWithNormalImage: @"fluffy1.png" selectedImage: @"fluffy1.png"];
-    
+    //CCMenuItemImage * achievements = [CCMenuItemImage itemWithNormalImage:@"Achievements.png" selectedImage: @"Achievements.png" target:self selector:@selector(goToAchievements:)];
     
     
     
@@ -58,7 +51,12 @@ int NUM_LEVELS = 20;
     CCSprite * fluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
     fluffy.anchorPoint = CGPointZero;
     //fluffy.position = CGPointMake(190.0f, 60.0f);
-    fluffy.position = CGPointMake(250.0f, 60.0f);
+    fluffy.position = CGPointMake(250.0f, 50.0f);
+    
+    
+
+    
+    
     
     //Create an animation from the set of frames
     
@@ -85,7 +83,8 @@ int NUM_LEVELS = 20;
     
     
 	// Create a menu and add your menu items to it
-	CCMenu * myMenu = [CCMenu menuWithItems:playButton, bonus,achievements, nil];
+	//CCMenu * myMenu = [CCMenu menuWithItems:playButton, bonus,achievements, nil];
+    CCMenu * myMenu = [CCMenu menuWithItems:playButton, nil];
     
 	// Arrange the menu items vertically
 	//[myMenu alignItemsVertically];
@@ -94,9 +93,9 @@ int NUM_LEVELS = 20;
     //bonus.position = ccp(100, 80);
     //achievements.position = ccp(375, 80);
     
-    playButton.position = ccp(480,250);
-    bonus.position = ccp(120, 80);
-    achievements.position = ccp(420, 80);
+    playButton.position = ccp(460,230);
+    //bonus.position = ccp(120, 80);
+    //achievements.position = ccp(420, 80);
     //fluffy.position = ccp(200, 80);
     myMenu.position = ccp(0,0);
     
@@ -111,16 +110,24 @@ int NUM_LEVELS = 20;
         //[self scheduleUpdate];
         
         
-        CCLabelTTF *label = [CCLabelTTF labelWithString:[NSString stringWithFormat: @"the quick brown fox jumps over"]
-                                               fontName:@"Yuanti SC"
-                                               fontSize:20];
-        CCLabelTTF *label2 = [CCLabelTTF labelWithString:[NSString stringWithFormat: @"the lazy dog 1 2 3 4 5 6 7 8 9 0"]
-                                               fontName:@"Yuppy TC"
-                                               fontSize:20];
-        label.position = ccp(250, 280);
-        label2.position = ccp(250, 250);
-        [self addChild: label z:3];
-        [self addChild: label2 z:3];
+//        CCLabelTTF *label = [CCLabelTTF labelWithString:[NSString stringWithFormat: @"the quick brown fox jumps over"]
+//                                               fontName:@"Yuanti SC"
+//                                               fontSize:20];
+//        CCLabelTTF *label2 = [CCLabelTTF labelWithString:[NSString stringWithFormat: @"the lazy dog 1 2 3 4 5 6 7 8 9 0"]
+//                                               fontName:@"Yuppy TC"
+//                                               fontSize:20];
+//        label.position = ccp(250, 280);
+//        label2.position = ccp(250, 250);
+//        [self addChild: label z:3];
+//        [self addChild: label2 z:3];
+        
+        
+        CCSprite * squirrel = [CCSprite spriteWithFile:@"rightsquirrel.png"];
+        squirrel.anchorPoint = CGPointZero;
+        //fluffy.position = CGPointMake(190.0f, 60.0f);
+        squirrel.position = CGPointMake(50.0f, 40.0f);
+        
+        [self addChild:squirrel];
         
         
         
