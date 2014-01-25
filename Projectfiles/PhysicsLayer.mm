@@ -489,8 +489,9 @@ NSMutableDictionary *levelDict;
         ballCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@" X %d", bulletCounter]fontName:@"Marker Felt" fontSize:18.0];
         ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, ballCountLabel.contentSize.height/PTM_RATIO/2+30);
         
-        menuBall = [CCSprite spriteWithFile:@"bullet.png"];
-        menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, menuBall.contentSize.height/PTM_RATIO/2+30);
+        //menuBall = [CCSprite spriteWithFile:@"bullet.png"];
+        menuBall = [CCSprite spriteWithFile:@"ball.png"];
+        menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+120, menuBall.contentSize.height/PTM_RATIO/2+30);
         
         ballCountLabel.string = [NSString stringWithFormat:@" X %d", bulletCounter];
         [self addChild: ballCountLabel z:10];
@@ -608,7 +609,8 @@ NSMutableDictionary *levelDict;
     ballCountLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:18.0];
     ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, ballCountLabel.contentSize.height/PTM_RATIO/2+30);
     
-    CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
+    //CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
+    CCSprite * menuBall = [CCSprite spriteWithFile:@"ball.png"];
     menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, menuBall.contentSize.height/PTM_RATIO/2+30);
     
 
@@ -625,7 +627,8 @@ NSMutableDictionary *levelDict;
 - (void)starButtonTapped:(id)sender {
    // NSLog(@"Button tapped!!!!!!\n");
     ballsUsed++;
-    _nextProjectile = [CCSprite spriteWithFile:@"bullet.png"];
+    //_nextProjectile = [CCSprite spriteWithFile:@"bullet.png"];
+    _nextProjectile = [CCSprite spriteWithFile:@"ball.png"];
     _nextProjectile.tag = 1;
     
     _nextProjectile.position = _player.position;
@@ -754,6 +757,7 @@ NSMutableDictionary *levelDict;
 - (void)tick:(ccTime) dt {
     
     world->Step(dt, 10, 10);
+    std::vector<b2Body *>toDestroy;
     for(b2Body *b = world->GetBodyList(); b; b=b->GetNext()) {
         if (b->GetUserData() != NULL) {
             ballData = (__bridge CCSprite *)(b->GetUserData());
@@ -761,10 +765,23 @@ NSMutableDictionary *levelDict;
                                     b->GetPosition().y * PTM_RATIO);
             ballData.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
 
-            //NSLog(@"Ball POsition!!!!, %f\n", ballData.position.x);
+            if (ballData.position.x <= 0 && bulletCounter <= 0){
+                toDestroy.push_back(b);
+                NSLog(@"YOU LOST!!!!, %f\n", ballData.position.x);
+            }
             // if ball is going too fast, turn on damping
             //we should do this!!
         }
+    }
+    
+    std::vector<b2Body *>::iterator pos2;
+    for (pos2 = toDestroy.begin(); pos2 != toDestroy.end(); ++pos2) {
+        b2Body *body = *pos2;
+        if (body->GetUserData() != NULL) {
+            CCSprite *sprite = (__bridge CCSprite *) body->GetUserData();
+            [self removeChild:sprite cleanup:YES];
+        }
+        world->DestroyBody(body);
     }
 }
 
@@ -1126,12 +1143,12 @@ int counter = 1;
                     BOOL levelCompleted = [self checkLevelCompleted];
 
                     if (levelCompleted){
-                        [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+                        [[CCDirector sharedDirector] replaceScene: (CCScene*)[NextLevelScene sceneWithLevel: currentLevel]];
                         counter = 1;
                     }
                 
                     else {
-                        if (bulletCounter <=0 && menuBall.position.x <= 10.0)
+                        if (bulletCounter <=0)
                         {
                             NSLog(@"LAST BULLET - DISAPPEARED!\n");
                         }
@@ -1156,7 +1173,7 @@ int counter = 1;
                     }
                 
                     else {
-                        if (bulletCounter <=0 && menuBall.position.x <= 10.0)
+                        if (bulletCounter <=0)
                         {
                             NSLog(@"LAST BULLET - DISAPPEARED!\n");
                         }
@@ -1171,7 +1188,7 @@ int counter = 1;
     }
     
     
-    NSLog(@"BALL data position, %f\n", ballData.position.x);
+    //NSLog(@"BALL data position, %f\n", ballData.position.x);
     if (bulletCounter <=0 && ballData.position.x <= 25.0)
     {
         NSLog(@"LAST BULLET - DISAPPEARED!\n");
