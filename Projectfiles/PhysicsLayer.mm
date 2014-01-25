@@ -82,6 +82,8 @@ BOOL levelCompleted;
 NSDictionary *goal;
 NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 
+NSMutableDictionary *levelDict;
+
 @interface PhysicsLayer (PrivateMethods)
 -(void) enableBox2dDebugDrawing;
 -(void) addSomeJoinedBodies:(CGPoint)pos;
@@ -147,7 +149,10 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     
     if ((self = [super initWithColor:ccc4(255,255,255,255)])) {
         HUDLayer *hud;
+
         _hud = hud;
+        [self displayStars];
+        NSLog(@"DISPLAYING STARSSSSS\n");
         angleInDegrees = 0;
         //CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello Levels!!" fontName:@"Marker Felt" fontSize:48.0];
         
@@ -165,7 +170,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
         NSString *levelString = [@"level" stringByAppendingFormat:@"%d", currentLevel];
-        NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
+        levelDict = [[NSMutableDictionary alloc] init];
         levelDict = [defaults objectForKey:levelString];
         levelCompleted = [[levelDict objectForKey:@"completed"] intValue];
         
@@ -516,6 +521,46 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     //[_hud incrementLevel:[NSString stringWithFormat:@"Lives: %d", currentLevel]];
 }
 
+- (void)displayStars {
+    NSLog(@"dispaly stars being called!!!\n");
+    //NSLog(@"Update Lives is being called!!!\n");
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    CCLabelTTF *starLabel = [CCLabelTTF labelWithString:@"High Score" fontName:@"Marker Felt" fontSize:18.0];
+    starLabel.position = ccp(starLabel.contentSize.width/PTM_RATIO/2+400, starLabel.contentSize.height/PTM_RATIO/2+30);
+    
+    CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
+    menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, menuBall.contentSize.height/PTM_RATIO/2+30);
+
+    CCSprite *star_rank;
+    int stars = [[levelDict objectForKey:@"last_stars"] intValue];
+    NSLog(@"STARS: %d", stars);
+    if (stars == 3){
+        star_rank = [CCSprite spriteWithFile:@"gold_star-hd.png"];
+        
+    }
+    else if (stars == 2){
+star_rank = [CCSprite spriteWithFile:@"silver_star-hd.png"];
+    }
+    else if (stars == 1){
+star_rank = [CCSprite spriteWithFile:@"bronze_star-hd.png"];
+    }
+    else
+    {
+        star_rank = [CCSprite spriteWithFile:@"gold_star-hd.png"];
+
+    }
+    star_rank.position = ccp(star_rank.contentSize.width/PTM_RATIO/2 + 510, star_rank.contentSize.height/PTM_RATIO/2 +35);
+    [self addChild:star_rank z:10];
+
+    
+    
+    starLabel.string = [NSString stringWithFormat:@"Your Current High Score:"];
+    [self addChild: starLabel z:10];
+    
+    
+    //[_hud incrementLevel:[NSString stringWithFormat:@"Lives: %d", currentLevel]];
+}
+
 - (void)updateBallCount {
     CCLabelTTF *ballCountLabel;
     
@@ -843,6 +888,7 @@ int counter = 1;
     //Create a point, pos, by asking input, our touch processor, where there has been a touch
     CGPoint pos = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
     [self updateLevel];
+    
     //[self updateBallCount];
     int x = pos.x;
     int y = pos.y;
