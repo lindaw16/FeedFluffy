@@ -532,16 +532,28 @@ NSMutableDictionary *levelDict;
     menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, menuBall.contentSize.height/PTM_RATIO/2+30);
 
     CCSprite *star_rank;
-    int stars = [[levelDict objectForKey:@"last_stars"] intValue];
-    NSLog(@"STARS: %d", stars);
-    if (stars == 3){
+    
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    NSString *levelString = [@"level" stringByAppendingFormat:@"%d", currentLevel];
+    //NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
+    //levelDict = [[NSMutableDictionary alloc]init];
+    
+    NSMutableDictionary *levelDict = [[defaults objectForKey:levelString] mutableCopy];
+    
+    int bestStars = [[levelDict objectForKey:@"best_stars"] intValue];
+
+    
+    
+    
+    NSLog(@"BESTSTARS###: %d", bestStars);
+    if (bestStars == 3){
         star_rank = [CCSprite spriteWithFile:@"gold_star-hd.png"];
         
     }
-    else if (stars == 2){
+    else if (bestStars == 2){
 star_rank = [CCSprite spriteWithFile:@"silver_star-hd.png"];
     }
-    else if (stars == 1){
+    else if (bestStars == 1){
 star_rank = [CCSprite spriteWithFile:@"bronze_star-hd.png"];
     }
     else
@@ -549,7 +561,7 @@ star_rank = [CCSprite spriteWithFile:@"bronze_star-hd.png"];
         star_rank = [CCSprite spriteWithFile:@"gold_star-hd.png"];
 
     }
-    star_rank.position = ccp(star_rank.contentSize.width/PTM_RATIO/2 + 510, star_rank.contentSize.height/PTM_RATIO/2 +35);
+    star_rank.position = ccp(star_rank.contentSize.width/PTM_RATIO/2+510, star_rank.contentSize.height/PTM_RATIO/2 +35);
     [self addChild:star_rank z:10];
 
     
