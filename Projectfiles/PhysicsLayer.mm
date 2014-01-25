@@ -285,7 +285,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         CCMenuItem *starMenuItem = [CCMenuItemImage
                                     itemWithNormalImage:@"launch_button_bigger.png" selectedImage:@"launch_button_bigger.png"
                                     target:self selector:@selector(starButtonTapped:)];
-        starMenuItem.position = ccp(starMenuItem.contentSize.width/PTM_RATIO/2+30, starMenuItem.contentSize.height/PTM_RATIO/2+30);
+        starMenuItem.position = ccp(starMenuItem.contentSize.width/PTM_RATIO/2+40, starMenuItem.contentSize.height/PTM_RATIO/2+30);
         //starMenuItem.position = ccp(50,30);
         CCMenu *starMenu = [CCMenu menuWithItems:starMenuItem, nil];
         starMenu.position = CGPointZero;
@@ -479,13 +479,13 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             fruitBody->CreateFixture(&fruitShapeDef);
         }
 
-        ballCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"X: %d", bulletCounter]fontName:@"Marker Felt" fontSize:18.0];
+        ballCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@" X %d", bulletCounter]fontName:@"Marker Felt" fontSize:18.0];
         ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, ballCountLabel.contentSize.height/PTM_RATIO/2+30);
         
         CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
         menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, menuBall.contentSize.height/PTM_RATIO/2+30);
         
-        ballCountLabel.string = [NSString stringWithFormat:@"X: %d", bulletCounter];
+        ballCountLabel.string = [NSString stringWithFormat:@" X %d", bulletCounter];
         [self addChild: ballCountLabel z:10];
         [self addChild:menuBall z:10];
         
@@ -507,7 +507,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     //NSLog(@"Update Lives is being called!!!\n");
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     CCLabelTTF *levelLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:18.0];
-    levelLabel.position = ccp(levelLabel.contentSize.width/PTM_RATIO/2+90, levelLabel.contentSize.height/PTM_RATIO/2+30);
+    levelLabel.position = ccp(levelLabel.contentSize.width +10, 295);
 
     [self addChild: levelLabel z:10];
     levelLabel.string = [NSString stringWithFormat:@"Level: %d", currentLevel];
