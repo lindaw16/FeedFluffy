@@ -59,7 +59,7 @@ bool ButtonTapped = false;
 int currentLevel;
 int ballsUsed;
 
-
+CCSprite *ballData;
 
 //for dialog boxes
 CCSprite *message;
@@ -77,6 +77,7 @@ CGPoint realDest;
 BOOL levelCompleted;
 
         CCLabelTTF *ballCountLabel;
+CCSprite * menuBall;
 //CGSize winSize;
 
 NSDictionary *goal;
@@ -166,7 +167,7 @@ NSMutableDictionary *levelDict;
         ballsUsed = 0;
         [self stopAllActions];
             currentLevel = level;
-        [self displayFoodCollect];
+        //[self displayFoodCollect];
            // NSLog(@"THE LEVELLLLL IS %d", currentLevel);
 
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
@@ -488,7 +489,7 @@ NSMutableDictionary *levelDict;
         ballCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@" X %d", bulletCounter]fontName:@"Marker Felt" fontSize:18.0];
         ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, ballCountLabel.contentSize.height/PTM_RATIO/2+30);
         
-        CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
+        menuBall = [CCSprite spriteWithFile:@"bullet.png"];
         menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, menuBall.contentSize.height/PTM_RATIO/2+30);
         
         ballCountLabel.string = [NSString stringWithFormat:@" X %d", bulletCounter];
@@ -523,7 +524,7 @@ NSMutableDictionary *levelDict;
 }
 
 - (void)displayFoodCollect {
-    NSLog(@"dispaly stars being called!!!\n");
+    
     //NSLog(@"Update Lives is being called!!!\n");
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     CCLabelTTF *starLabel = [CCLabelTTF labelWithString:@"Food" fontName:@"Marker Felt" fontSize:18.0];
@@ -549,9 +550,9 @@ NSMutableDictionary *levelDict;
         NSString *fruit = [keys objectAtIndex: i];
         int numFruits = [[goal objectForKey:fruit] intValue];
         int goalProgressValue = [[goalProgress objectForKey:fruit] intValue];
-        NSLog(@"Fruitname: %@" ,fruit);
-            NSLog(@"FRUITSNUM###: %d \n", numFruits);
-                    NSLog(@"Before Creating Image\n");
+        //NSLog(@"Fruitname: %@" ,fruit);
+          //  NSLog(@"FRUITSNUM###: %d \n", numFruits);
+            //        NSLog(@"Before Creating Image\n");
         /*NSString *fruitSpriteName = [fruit stringByAppendingString:@".png"];
         
         
@@ -571,12 +572,14 @@ NSMutableDictionary *levelDict;
         fruit2.position = ccp(fruit2.contentSize.width/PTM_RATIO/2 + gapFruit,fruit2.contentSize.height/PTM_RATIO/2 + yOffset);
         [self addChild: fruit2 z: 5];
         
-        NSString *numFruitsDisplay = [NSString stringWithFormat: @"X %d", numFruits];
-        CCLabelTTF *label = [CCLabelTTF labelWithString:numFruitsDisplay
+        NSString *numFruitsDisplay = [NSString stringWithFormat: @"X %d", numFruits - goalProgressValue];
+        CCLabelTTF *label = [CCLabelTTF labelWithString:@"food"
                                                fontName:@"Marker Felt"
                                                fontSize:18.0];
         label.position = ccp(starLabel.contentSize.width/PTM_RATIO/2 + gapLabel,starLabel.contentSize.height/PTM_RATIO/2 + yOffset);
-        [self addChild: label];
+        
+         label.string = [NSString stringWithFormat:@"X %d", numFruits - goalProgressValue];
+        [self addChild: label z:10];
         gapFruit += 80;
         gapLabel +=80;
 
@@ -658,8 +661,7 @@ NSMutableDictionary *levelDict;
     //_body->ApplyLinearImpulse(force, ballBodyDef.position);
     printf("Applying Linear Impulse!");
     _body->ApplyLinearImpulse(force, ballBodyDef.position);
-    
-    // Move projectile to actual endpoint
+        // Move projectile to actual endpoint
     /*[_nextProjectile runAction:
      [CCSequence actions:
      [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
@@ -754,11 +756,12 @@ NSMutableDictionary *levelDict;
     world->Step(dt, 10, 10);
     for(b2Body *b = world->GetBodyList(); b; b=b->GetNext()) {
         if (b->GetUserData() != NULL) {
-            CCSprite *ballData = (__bridge CCSprite *)(b->GetUserData());
+            ballData = (__bridge CCSprite *)(b->GetUserData());
             ballData.position = ccp(b->GetPosition().x * PTM_RATIO,
                                     b->GetPosition().y * PTM_RATIO);
             ballData.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
-            
+
+            //NSLog(@"Ball POsition!!!!, %f\n", ballData.position.x);
             // if ball is going too fast, turn on damping
             //we should do this!!
         }
@@ -914,7 +917,7 @@ int counter = 1;
 -(void) update:(ccTime)delta
 {
     
-	CCDirector* director = [CCDirector sharedDirector];
+    CCDirector* director = [CCDirector sharedDirector];
     
     //do we have to check the current platform stuff?
     
@@ -1099,7 +1102,7 @@ int counter = 1;
             }
             
             //Sprite A = fruit, Sprite B = ball
-            else if ([spriteA isKindOfClass:[Fruit class]] && spriteB.tag == 1) {
+            else if ([spriteA isKindOfClass:[Fruit class]] && spriteB.tag == 1 ) {
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
                     toDestroy.push_back(bodyA);
                     Fruit *fruit = (Fruit*) spriteA;
@@ -1117,7 +1120,7 @@ int counter = 1;
             }
             
             //Sprite A = ball, Sprite B = fluffy
-            else if (spriteA.tag == 1 && [spriteA isKindOfClass:[Fluffy class]]) {
+            else if (spriteA.tag == 1 && [spriteA isKindOfClass:[Fluffy class]] ) {
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) == toDestroy.end()) {
                     toDestroy.push_back(bodyA);
                     BOOL levelCompleted = [self checkLevelCompleted];
@@ -1128,7 +1131,10 @@ int counter = 1;
                     }
                 
                     else {
-                        //NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
+                        if (bulletCounter <=0 && menuBall.position.x <= 10.0)
+                        {
+                            NSLog(@"LAST BULLET - DISAPPEARED!\n");
+                        }
                     }
                     //NSLog(@"Hit Fluffy!");
                 }
@@ -1136,7 +1142,7 @@ int counter = 1;
             }
             
             //Sprite A = fluffy, Sprite B = ball
-            else if ([spriteA isKindOfClass:[Fluffy class]] && spriteB.tag == 1) {
+            else if ([spriteA isKindOfClass:[Fluffy class]] && spriteB.tag == 1 ) {
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
                     toDestroy.push_back(bodyB);
 
@@ -1150,14 +1156,29 @@ int counter = 1;
                     }
                 
                     else {
-                       // NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
+                        if (bulletCounter <=0 && menuBall.position.x <= 10.0)
+                        {
+                            NSLog(@"LAST BULLET - DISAPPEARED!\n");
+                        }
                     }
                // NSLog(@"Hit Fluffy!");
                 }
             }
+            
+            
         }
+        
     }
     
+    
+    NSLog(@"BALL data position, %f\n", ballData.position.x);
+    if (bulletCounter <=0 && ballData.position.x <= 25.0)
+    {
+        NSLog(@"LAST BULLET - DISAPPEARED!\n");
+    }
+    
+    
+    [self displayFoodCollect];
     std::vector<b2Body *>::iterator pos3;
     for (pos3 = toDestroy.begin(); pos3 != toDestroy.end(); ++pos3) {
         b2Body *body = *pos3;
