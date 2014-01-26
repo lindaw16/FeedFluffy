@@ -100,6 +100,8 @@
 		AB9FBB8C188B190000992502 /* restart_button2.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9FBB84188B190000992502 /* restart_button2.png */; };
 		AB9FBB8D188B190000992502 /* resume_button.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9FBB85188B190000992502 /* resume_button.png */; };
 		AB9FBB8E188B190000992502 /* resume_button2.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9FBB86188B190000992502 /* resume_button2.png */; };
+		ABA136061894BADD008D4DCE /* level6.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABA136051894BADD008D4DCE /* level6.plist */; };
+		ABA136091894BBCE008D4DCE /* Squirrel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA136081894BBCE008D4DCE /* Squirrel.m */; };
 		ABA18ADE18903B3800B05B35 /* NextLevelScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = ABA18ADD18903B3800B05B35 /* NextLevelScene.mm */; };
 		ABA2151C18862C0E0011BE0B /* gameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA2151B18862C0E0011BE0B /* gameBackground.png */; };
 		ABB719CF18871CCA004D2FCA /* Fluffy.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB719CE18871CCA004D2FCA /* Fluffy.m */; };
@@ -328,6 +330,9 @@
 		AB9FBB84188B190000992502 /* restart_button2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restart_button2.png; sourceTree = "<group>"; };
 		AB9FBB85188B190000992502 /* resume_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume_button.png; sourceTree = "<group>"; };
 		AB9FBB86188B190000992502 /* resume_button2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume_button2.png; sourceTree = "<group>"; };
+		ABA136051894BADD008D4DCE /* level6.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level6.plist; sourceTree = "<group>"; };
+		ABA136071894BBCE008D4DCE /* Squirrel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Squirrel.h; sourceTree = "<group>"; };
+		ABA136081894BBCE008D4DCE /* Squirrel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Squirrel.m; sourceTree = "<group>"; };
 		ABA18ADC18903B3800B05B35 /* NextLevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextLevelScene.h; sourceTree = "<group>"; };
 		ABA18ADD18903B3800B05B35 /* NextLevelScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NextLevelScene.mm; sourceTree = "<group>"; };
 		ABA2151B18862C0E0011BE0B /* gameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground.png; sourceTree = "<group>"; };
@@ -718,6 +723,8 @@
 		DCC1A38C13A94F1A005BD75D /* Projectfiles */ = {
 			isa = PBXGroup;
 			children = (
+				ABA136071894BBCE008D4DCE /* Squirrel.h */,
+				ABA136081894BBCE008D4DCE /* Squirrel.m */,
 				914BE9D91889BC9F0085E989 /* EasyLevelLayer.h */,
 				914BE9DA1889BC9F0085E989 /* EasyLevelLayer.mm */,
 				BFB4259F18862DDE002DD826 /* StartMenuLayer.h */,
@@ -837,6 +844,7 @@
 				ABB719D418872D0A004D2FCA /* level3.plist */,
 				AB49BD91188F9F3D00795F1D /* level4.plist */,
 				AB9E13831889CF26001F6EA8 /* level5.plist */,
+				ABA136051894BADD008D4DCE /* level6.plist */,
 				AB9E13811889CA4B001F6EA8 /* rock.png */,
 				BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */,
 				BF22E3D4188472C9007E26DF /* hungryEevee.png */,
@@ -1080,6 +1088,7 @@
 				AB9C910A18930C0D00C1A96E /* lemon-hd.png in Resources */,
 				BF12C2941893270F00478BCB /* leftsquirrel-hd.png in Resources */,
 				AB9EC446189474B90030B830 /* level_select2.png in Resources */,
+				ABA136061894BADD008D4DCE /* level6.plist in Resources */,
 				911975BB1888618F0070C1AE /* ButtonStarSel.png in Resources */,
 				AB39204C1892205000E4830D /* orange-hd.png in Resources */,
 				914BE9CD188969C70085E989 /* cannon-head-cropped.png in Resources */,
@@ -1144,6 +1153,7 @@
 				DCC1A3AB13A94F1A005BD75D /* PhysicsLayer.mm in Sources */,
 				BFB4259718862C92002DD826 /* LevelSelectLayer.mm in Sources */,
 				ABB719DD188744B9004D2FCA /* Fruit.m in Sources */,
+				ABA136091894BBCE008D4DCE /* Squirrel.m in Sources */,
 				BFB425A418865A9C002DD826 /* OopsDNE.mm in Sources */,
 				DCC1A3AD13A94F1A005BD75D /* main.m in Sources */,
 				915693CA1891DD4700B5C44A /* HUDLayer.mm in Sources */,
