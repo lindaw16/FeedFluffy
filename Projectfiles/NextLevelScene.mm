@@ -27,7 +27,7 @@
 -(id)initWithLevel: (int) level{
     if( (self=[super init] )) {
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"Level Completed"
-                                               fontName:@"Courier New"
+                                               fontName:@"Marker Felt"
                                                fontSize:30];
         label.position = ccp(240,250);
         [self addChild: label];
@@ -136,6 +136,21 @@
     //[[CCDirector sharedDirector] replaceScene: (CCScene*)[PhysicsLayer sceneWithLevel:level]];
     [[CCDirector sharedDirector] replaceScene: [CCTransitionFade transitionWithDuration:1 scene:[PhysicsLayer sceneWithLevel:nextLevel]]];
     
+}
+
+-(void) onExit {
+    //unschedule selectors to get dealloc to fire off
+    [self unscheduleAllSelectors];
+    //remove all textures to free up additional memory. Textures get retained even if the sprite gets released and it doesn't show as a leak. This was my big memory saver
+    [[CCTextureCache sharedTextureCache] removeAllTextures];
+    [super onExit];
+}
+
+-(void) dealloc
+{
+#ifndef KK_ARC_ENABLED
+	[super dealloc];
+#endif
 }
 
 @end

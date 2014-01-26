@@ -133,7 +133,20 @@ float priorY = 1000;
     [[CCDirector sharedDirector] replaceScene: (CCScene*)[[EasyLevelLayer alloc] init]];
 }
 
+-(void) onExit {
+    //unschedule selectors to get dealloc to fire off
+    [self unscheduleAllSelectors];
+    //remove all textures to free up additional memory. Textures get retained even if the sprite gets released and it doesn't show as a leak. This was my big memory saver
+    [[CCTextureCache sharedTextureCache] removeAllTextures];
+    [super onExit];
+}
 
+-(void) dealloc
+{
+#ifndef KK_ARC_ENABLED
+	[super dealloc];
+#endif
+}
 
 
 @end

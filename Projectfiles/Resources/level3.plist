@@ -19,7 +19,7 @@
 	</dict>
 	<key>Goal</key>
 	<dict>
-		<key>apple</key>
+		<key>pear</key>
 		<integer>1</integer>
 		<key>orange</key>
 		<integer>1</integer>
@@ -32,7 +32,7 @@
 			<key>y</key>
 			<integer>230</integer>
 			<key>spriteName</key>
-			<string>apple</string>
+			<string>pear</string>
 		</dict>
 		<dict>
 			<key>x</key>
