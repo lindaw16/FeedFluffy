@@ -57,6 +57,9 @@
 		AB49BD92188F9F3D00795F1D /* level4.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB49BD91188F9F3D00795F1D /* level4.plist */; };
 		AB7821C6188A5515008F51B8 /* PauseScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = AB7821C5188A5515008F51B8 /* PauseScene.mm */; };
 		AB7821C8188A56A7008F51B8 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = AB7821C7188A56A7008F51B8 /* pause.png */; };
+		AB954FE71895BB2100E2993F /* pause_background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB954FE51895BB2100E2993F /* pause_background-hd.png */; };
+		AB954FE81895BB2100E2993F /* pause_background.png in Resources */ = {isa = PBXBuildFile; fileRef = AB954FE61895BB2100E2993F /* pause_background.png */; };
+		AB954FEA1895BB3100E2993F /* rock-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB954FE91895BB3100E2993F /* rock-hd.png */; };
 		AB9BA6441890672E00D66681 /* apple_level-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9BA6421890672E00D66681 /* apple_level-hd.png */; };
 		AB9BA6451890672E00D66681 /* apple_level.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9BA6431890672E00D66681 /* apple_level.png */; };
 		AB9C90FB1892FBCA00C1A96E /* silver_star-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9C90FA1892FBCA00C1A96E /* silver_star-hd.png */; };
@@ -285,6 +288,9 @@
 		AB7821C4188A5515008F51B8 /* PauseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseScene.h; sourceTree = "<group>"; };
 		AB7821C5188A5515008F51B8 /* PauseScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PauseScene.mm; sourceTree = "<group>"; };
 		AB7821C7188A56A7008F51B8 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		AB954FE51895BB2100E2993F /* pause_background-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause_background-hd.png"; sourceTree = "<group>"; };
+		AB954FE61895BB2100E2993F /* pause_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_background.png; sourceTree = "<group>"; };
+		AB954FE91895BB3100E2993F /* rock-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rock-hd.png"; sourceTree = "<group>"; };
 		AB9BA6421890672E00D66681 /* apple_level-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple_level-hd.png"; sourceTree = "<group>"; };
 		AB9BA6431890672E00D66681 /* apple_level.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple_level.png; sourceTree = "<group>"; };
 		AB9C90FA1892FBCA00C1A96E /* silver_star-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "silver_star-hd.png"; sourceTree = "<group>"; };
@@ -563,6 +569,8 @@
 		BF39176818878C9200EF99E6 /* backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				AB954FE51895BB2100E2993F /* pause_background-hd.png */,
+				AB954FE61895BB2100E2993F /* pause_background.png */,
 				BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */,
 				BFB425B9188783EB002DD826 /* gameBar.png */,
 				ABA2151B18862C0E0011BE0B /* gameBackground.png */,
@@ -846,6 +854,7 @@
 				AB9E13831889CF26001F6EA8 /* level5.plist */,
 				ABA136051894BADD008D4DCE /* level6.plist */,
 				AB9E13811889CA4B001F6EA8 /* rock.png */,
+				AB954FE91895BB3100E2993F /* rock-hd.png */,
 				BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */,
 				BF22E3D4188472C9007E26DF /* hungryEevee.png */,
 				DC193EBE13B6969B00500B56 /* David Gervais Tilesets */,
@@ -985,6 +994,7 @@
 				DCC1A10613A94ED5005BD75D /* Icon.png in Resources */,
 				DCC1A10813A94ED5005BD75D /* Icon@2x.png in Resources */,
 				BF12C2A51894949D00478BCB /* goLeft-hd.png in Resources */,
+				AB954FEA1895BB3100E2993F /* rock-hd.png in Resources */,
 				BF12C2781892357800478BCB /* easyCage-hd.png in Resources */,
 				AB3920471892205000E4830D /* gold_star_big.png in Resources */,
 				AB9C91031893085200C1A96E /* apple.png in Resources */,
@@ -1018,6 +1028,7 @@
 				AB9EC4581894768E0030B830 /* restart2.png in Resources */,
 				BFB4259918862CF2002DD826 /* gameBackground.png in Resources */,
 				DC26D6BE14B9E4D500B6002E /* fps_images-hd.png in Resources */,
+				AB954FE81895BB2100E2993F /* pause_background.png in Resources */,
 				DC65617D15114BC500E59F8A /* fps_images-ipadhd.png in Resources */,
 				BF12C2901893263700478BCB /* squirrel-hd.png in Resources */,
 				AB39204A1892205000E4830D /* lemon-hd.png in Resources */,
@@ -1095,6 +1106,7 @@
 				BF12C28618930AD300478BCB /* fluffysprites.png in Resources */,
 				BF12C28418930AD300478BCB /* fluffy1.png in Resources */,
 				AB9FBB8E188B190000992502 /* resume_button2.png in Resources */,
+				AB954FE71895BB2100E2993F /* pause_background-hd.png in Resources */,
 				AB49BD90188F991600795F1D /* level2.plist in Resources */,
 				AB23A83E1893184B00127A5D /* resume-hd.png in Resources */,
 				914BE9D1188990390085E989 /* cannon-body2.png in Resources */,
