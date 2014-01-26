@@ -26,10 +26,16 @@
 
 -(id)initWithLevel: (int) level{
     if( (self=[super init] )) {
-        CCLabelTTF *label = [CCLabelTTF labelWithString:@"You didn't feed Fluffy"
+        CCLabelTTF *label = [CCLabelTTF labelWithString:@"You didn't feed Fluffy!"
                                                fontName:@"Marker Felt"
                                                fontSize:30];
+        if (IsIphone5)
+        {
+        label.position = ccp(284,250);
+        }
+        else{
         label.position = ccp(240,250);
+        }
         [self addChild: label];
         [CCMenuItemFont setFontName:@"Courier New"];
         [CCMenuItemFont setFontSize:20];
@@ -50,13 +56,15 @@
         CCMenuItemImage *quit = [CCMenuItemImage itemWithNormalImage: @"main_menu.png" selectedImage: @"main_menu2.png" target:self
                                                             selector:@selector(GoToMainMenu:)];
         
+        CGSize winSize = [CCDirector sharedDirector].winSize;
+
         CCMenu *menu= [CCMenu menuWithItems: replay, levels, quit, nil];
-        menu.position = CGPointZero;
-        replay.position = ccp(320, 160);
-        levels.position = ccp(200, 100);
-        quit.position = ccp(320,100);
-        //[menu alignItemsVerticallyWithPadding:12.5f];
-        
+        //menu.position = CGPointZero;
+        //replay.position = ccp(320, 160);
+        //levels.position = ccp(200, 100);
+        //quit.position = ccp(320,100);
+        [menu alignItemsVerticallyWithPadding:12.5f];
+        menu.position =  ccp(winSize.width/2, winSize.height/2);
         [self addChild:menu];
  
     }
