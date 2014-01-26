@@ -12,7 +12,7 @@
 #import "OopsDNE.h"
 
 int NUM_LEVELS = 20;
-
+CCSprite * fluffy;
 
 @implementation StartMenuLayer
 
@@ -48,7 +48,7 @@ int NUM_LEVELS = 20;
     
     //Initialize fluffy with the first frame from the spritesheet, fluffy1
     
-    CCSprite * fluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
+    fluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
     fluffy.anchorPoint = CGPointZero;
     //fluffy.position = CGPointMake(190.0f, 60.0f);
     
@@ -198,6 +198,7 @@ int NUM_LEVELS = 20;
         sprite.anchorPoint = CGPointZero;
         [self addChild:sprite z:-1];
         
+        [self scheduleUpdate];
         [self setUpMenus];
         
     }
@@ -228,6 +229,23 @@ int NUM_LEVELS = 20;
     [[CCTextureCache sharedTextureCache] removeAllTextures];
     [super onExit];
 }
+
+- (void) update:(ccTime)dt
+{
+    
+    //move fluffy only in the x direction by a fixed amount every frame
+    fluffy.position = ccp( fluffy.position.x + 100*dt, fluffy.position.y );
+    
+    if (fluffy.position.x > 480+32)
+    {
+        
+        //if fluffy reaches the edge of the screen, loop around
+        fluffy.position = ccp( -32, fluffy.position.y );
+        
+    }
+}
+
+
 
 -(void) dealloc
 {
