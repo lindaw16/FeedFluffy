@@ -69,8 +69,14 @@ CCSprite *level;
         NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
         levelDict = [defaults objectForKey:levelString];
         int currentLevelCompleted = [[levelDict objectForKey:@"completed"] intValue];
-        
-        int x = leftMargin + 80 * (i % numCol);
+        int x;
+        if (IsIphone5){
+        x = leftMargin + 110 * (i % numCol);
+            
+        }
+        else{
+        x = leftMargin + 80 * (i % numCol);
+        }
         int y =  topMargin - (i/numCol)*75;
         
         //level.position = ccp(leftMargin + 80 * (i % numCol), topMargin - (i/ numCol) * 60);
@@ -151,7 +157,13 @@ CCSprite *level;
         CCSprite *bg = [CCSprite spriteWithFile:@"bg.png"];
         
         //bg.anchorPoint = CGPointZero;
-        bg.position = ccp(0, 0);
+        if (IsIphone5){
+            bg.position = ccp(284, 140);
+        }
+        else {
+        bg.position = ccp(240, 140);
+        }
+        
         [self addChild:bg];
         [self setUpMenus];
     }

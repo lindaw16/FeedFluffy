@@ -130,6 +130,28 @@ float priorY = 1000;
 #endif
 }
 
+-(void) goLeft: (CCMenuItem *) menuItem
+{
+    if (left.position.x >= 45)
+    {
+        background.position = ccp(self.position.x + 100, self.position.y);
+        left.position = ccp(left.position.x - 100, left.position.y);
+        right.position = ccp(right.position.x - 100, right.position.y);
+    }
+}
+
+-(void) goRight: (CCMenuItem *) menuItem
+{
+//TODO check to not go offscreen
+    if (right.position.x <= 800)
+    {
+        background.position = ccp(self.position.x - 100, self.position.y);
+        left.position = ccp(left.position.x + 100, left.position.y);
+        right.position = ccp(right.position.x + 100, right.position.y);
+    }
+}
+
+
 //LINDA's ORIGINAL CODE - I've commented just so we can go back to it if we would like.
 
 //@implementation LevelSelectLayer
