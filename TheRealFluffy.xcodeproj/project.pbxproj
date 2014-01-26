@@ -98,8 +98,6 @@
 		ABB719F11887568D004D2FCA /* watermelon.png in Resources */ = {isa = PBXBuildFile; fileRef = ABB719EF1887568D004D2FCA /* watermelon.png */; };
 		BF12C2621892191500478BCB /* gameBackground-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C2611892191500478BCB /* gameBackground-hd.png */; };
 		BF12C2661892237600478BCB /* menuBackground-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C2651892237600478BCB /* menuBackground-hd.png */; };
-		BF12C2721892297300478BCB /* easy.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C2711892297300478BCB /* easy.png */; };
-		BF12C2741892299D00478BCB /* easyLevel.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C2731892299D00478BCB /* easyLevel.png */; };
 		BF12C276189229DF00478BCB /* mediumLevel.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C275189229DF00478BCB /* mediumLevel.png */; };
 		BF12C2781892357800478BCB /* easyCage-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C2771892357800478BCB /* easyCage-hd.png */; };
 		BF12C27A18923C5200478BCB /* levelSelectBackground-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF12C27918923C5200478BCB /* levelSelectBackground-hd.png */; };
@@ -141,7 +139,6 @@
 		BFB4259B18862CFA002DD826 /* tutorials.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB4259A18862CFA002DD826 /* tutorials.png */; };
 		BFB425A118862DDE002DD826 /* StartMenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB425A018862DDE002DD826 /* StartMenuLayer.mm */; };
 		BFB425A418865A9C002DD826 /* OopsDNE.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB425A318865A9C002DD826 /* OopsDNE.mm */; };
-		BFB425A618865B93002DD826 /* Easy.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB425A518865B93002DD826 /* Easy.png */; };
 		BFB425A818865B99002DD826 /* OopsDNE.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB425A718865B99002DD826 /* OopsDNE.png */; };
 		BFB425AA1886600F002DD826 /* levelSelectBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB425A91886600F002DD826 /* levelSelectBackground.png */; };
 		BFB425AD1886FB5D002DD826 /* goLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB425AB1886FB5D002DD826 /* goLeft.png */; };
@@ -310,8 +307,6 @@
 		ABB719EF1887568D004D2FCA /* watermelon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = watermelon.png; sourceTree = "<group>"; };
 		BF12C2611892191500478BCB /* gameBackground-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gameBackground-hd.png"; sourceTree = "<group>"; };
 		BF12C2651892237600478BCB /* menuBackground-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuBackground-hd.png"; sourceTree = "<group>"; };
-		BF12C2711892297300478BCB /* easy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = easy.png; sourceTree = "<group>"; };
-		BF12C2731892299D00478BCB /* easyLevel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = easyLevel.png; sourceTree = "<group>"; };
 		BF12C275189229DF00478BCB /* mediumLevel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mediumLevel.png; sourceTree = "<group>"; };
 		BF12C2771892357800478BCB /* easyCage-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "easyCage-hd.png"; sourceTree = "<group>"; };
 		BF12C27918923C5200478BCB /* levelSelectBackground-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "levelSelectBackground-hd.png"; sourceTree = "<group>"; };
@@ -356,7 +351,6 @@
 		BFB425A018862DDE002DD826 /* StartMenuLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StartMenuLayer.mm; sourceTree = "<group>"; };
 		BFB425A218865A9C002DD826 /* OopsDNE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OopsDNE.h; sourceTree = "<group>"; };
 		BFB425A318865A9C002DD826 /* OopsDNE.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OopsDNE.mm; sourceTree = "<group>"; };
-		BFB425A518865B93002DD826 /* Easy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Easy.png; sourceTree = "<group>"; };
 		BFB425A718865B99002DD826 /* OopsDNE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OopsDNE.png; sourceTree = "<group>"; };
 		BFB425A91886600F002DD826 /* levelSelectBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = levelSelectBackground.png; sourceTree = "<group>"; };
 		BFB425AB1886FB5D002DD826 /* goLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goLeft.png; sourceTree = "<group>"; };
@@ -514,7 +508,6 @@
 				BFB4259A18862CFA002DD826 /* tutorials.png */,
 				BFB425AF188702D4002DD826 /* level1.png */,
 				BFB425B0188702D4002DD826 /* level2.png */,
-				BFB425A518865B93002DD826 /* Easy.png */,
 				BFB425A718865B99002DD826 /* OopsDNE.png */,
 				BFB4259818862CF2002DD826 /* gameBackground.png */,
 			);
@@ -728,8 +721,6 @@
 				915693CB18920C4000B5C44A /* launch_button_bigger.png */,
 				BF12C2611892191500478BCB /* gameBackground-hd.png */,
 				BF12C28D189316D600478BCB /* play-hd.png */,
-				BF12C2711892297300478BCB /* easy.png */,
-				BF12C2731892299D00478BCB /* easyLevel.png */,
 				BF12C28F1893263700478BCB /* squirrel-hd.png */,
 				BF12C28118930AD300478BCB /* fluffy1.png */,
 				BF12C28218930AD300478BCB /* fluffysprites.plist */,
@@ -925,7 +916,6 @@
 				ABB719E91887567B004D2FCA /* pineapple.png in Resources */,
 				AB23A84A1893186D00127A5D /* next_level.png in Resources */,
 				BF196D06188F1CE9008CB197 /* snore1.png in Resources */,
-				BF12C2741892299D00478BCB /* easyLevel.png in Resources */,
 				BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */,
 				BF196D12188F1EE9008CB197 /* snoringframes.png in Resources */,
 				DCC1A3AF13A94F1A005BD75D /* config.lua in Resources */,
@@ -967,7 +957,6 @@
 				AB9BA6441890672E00D66681 /* apple_level-hd.png in Resources */,
 				AB39204F1892205000E4830D /* silver_star.png in Resources */,
 				BFB4259B18862CFA002DD826 /* tutorials.png in Resources */,
-				BFB425A618865B93002DD826 /* Easy.png in Resources */,
 				AB9E13821889CA4B001F6EA8 /* rock.png in Resources */,
 				BF39176E1887A20400EF99E6 /* bullet.png in Resources */,
 				ABB719E01887565E004D2FCA /* banana-hd.png in Resources */,
@@ -1027,7 +1016,6 @@
 				914BE9E71889BDF40085E989 /* lock.png in Resources */,
 				AB9E597A188B261100B7D315 /* level_select_button@2x.png in Resources */,
 				AB9BA6451890672E00D66681 /* apple_level.png in Resources */,
-				BF12C2721892297300478BCB /* easy.png in Resources */,
 				AB3920481892205000E4830D /* gold_star-hd.png in Resources */,
 				914BE9E81889BDF40085E989 /* lock-hd.png in Resources */,
 				BF4E9609188A23760000B4FE /* cannonheadx.png in Resources */,
