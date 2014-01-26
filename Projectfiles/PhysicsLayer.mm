@@ -23,6 +23,7 @@
 #import "HUDLayer.h"
 #import "StartMenuLayer.h"
 #import "LoseScene.h"
+#import "Squirrel.h"
 //#import "cocos2d.m"
 
 
@@ -454,6 +455,48 @@ NSMutableDictionary *levelDict;
             }
         }
         
+        if ([level objectForKey:@"Squirrels"]){
+            NSArray *obstacles= [level objectForKey:@"Squirrels"];
+            for (NSDictionary *obstacle in obstacles){
+                NSString *sName = [obstacle objectForKey:@"spriteName"];
+                Squirrel *obstacle2 = [[Squirrel alloc] initWithSquirrel: sName];
+                NSNumber *x = [obstacle objectForKey:@"x"];
+                NSNumber *y = [obstacle objectForKey:@"y"];
+                obstacle2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
+                obstacle2.tag = 5;
+                
+                [self addChild:obstacle2 z:1];
+                
+                // Create block body
+                b2BodyDef obstacleBodyDef;
+                obstacleBodyDef.type = b2_kinematicBody;
+
+                obstacleBodyDef.position.Set([x floatValue]*scaleX/PTM_RATIO, [y floatValue]*scaleY/PTM_RATIO);
+                obstacleBodyDef.userData = (__bridge void*)obstacle2;
+                b2Body *obstacleBody = world->CreateBody(&obstacleBodyDef);
+                
+                // Create block shape
+                b2PolygonShape obstacleShape;
+                obstacleShape.SetAsBox(obstacle2.contentSize.width/PTM_RATIO/2,
+                                       obstacle2.contentSize.height/PTM_RATIO/2);
+                
+                // Create shape definition and add to body
+                b2FixtureDef obstacleShapeDef;
+                obstacleShapeDef.shape = &obstacleShape;
+                obstacleShapeDef.density = 10.0;
+                obstacleShapeDef.friction = 0.0;
+                obstacleShapeDef.restitution = 0.1f;
+                obstacleShapeDef.isSensor = true;
+                obstacleBody->CreateFixture(&obstacleShapeDef);
+                
+                b2Vec2 force = b2Vec2(0, 3);
+                obstacleBody->SetLinearVelocity(force);
+                //_body->ApplyLinearImpulse(force, ballBodyDef.position);
+                //printf("Applying Linear Impulse!");
+                //obstacleBody->ApplyLinearImpulse(force, obstacleBodyDef.position);
+            }
+        }
+
         NSArray *fruits = [level objectForKey:@"Fruits"];
         
         for (NSDictionary *fruit in fruits){
@@ -765,20 +808,44 @@ NSMutableDictionary *levelDict;
     std::vector<b2Body *>toDestroy;
     for(b2Body *b = world->GetBodyList(); b; b=b->GetNext()) {
         if (b->GetUserData() != NULL) {
-            ballData = (__bridge CCSprite *)(b->GetUserData());
-            ballData.position = ccp(b->GetPosition().x * PTM_RATIO,
+            CCSprite *sprite = (__bridge CCSprite *) b->GetUserData();
+            // sprite is a ball
+            if (sprite.tag == 1){
+                //ballData = (__bridge CCSprite *)(b->GetUserData());
+                sprite.position = ccp(b->GetPosition().x * PTM_RATIO,
                                     b->GetPosition().y * PTM_RATIO);
-            ballData.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
+                sprite.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
 
-            if (ballData.position.x <= 0){
-                toDestroy.push_back(b);
-                if (bulletCounter == 0){
-                    NSLog(@"YOU LOST!!!!, %f\n", ballData.position.x);
-                    [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
+                if (sprite.position.x <= 0){
+                    toDestroy.push_back(b);
+                    if (bulletCounter == 0){
+                        NSLog(@"YOU LOST!!!!, %f\n", sprite.position.x);
+                        [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
+                    }
                 }
-            }
             // if ball is going too fast, turn on damping
             //we should do this!!
+            }
+            
+            else if (sprite.tag == 5 && sprite.position.y >= 290){
+                float velocity = b->GetLinearVelocity().y;
+                if (velocity > 0) {
+                    velocity *= -1;
+                    b2Vec2 force = b2Vec2(0, velocity);
+                    b->SetLinearVelocity(force);
+                }
+
+            }
+            
+            else if (sprite.tag == 5 && sprite.position.y <= 80){
+                float velocity = b->GetLinearVelocity().y;
+                if (velocity < 0) {
+                    velocity *= -1;
+                    b2Vec2 force = b2Vec2(0, velocity);
+                    b->SetLinearVelocity(force);
+                }
+                
+            }
         }
     }
     
@@ -1169,11 +1236,34 @@ int counter = 1;
 
             }
             
+            //Sprite A = squirrel, Sprite B = ball
+            else if ([spriteA isKindOfClass:[Squirrel class]] && spriteB.tag == 1 ) {
+                if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
+                    toDestroy.push_back(bodyB);
+                    if (bulletCounter <=0)
+                    {
+                        [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
+                    }
+                }
+            }
+            
+            //Sprite A = ball, Sprite B = squirrel
+            else if (spriteA.tag == 1 && [spriteA isKindOfClass:[Squirrel class]] ) {
+                if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) == toDestroy.end()) {
+                    toDestroy.push_back(bodyA);
+                    if (bulletCounter <=0)
+                    {
+                        [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
+                    }
+                }
+                
+            }
+            
             //Sprite A = fluffy, Sprite B = ball
             else if ([spriteA isKindOfClass:[Fluffy class]] && spriteB.tag == 1 ) {
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
                     toDestroy.push_back(bodyB);
-
+                    
                     //NSLog(@"Hit Fluffy!");
                     levelCompleted = [self checkLevelCompleted];
                     //NSLog(@"THE CURRENT LEVEL IS: %d", currentLevel);
@@ -1182,7 +1272,7 @@ int counter = 1;
                         [[CCDirector sharedDirector] replaceScene: (CCScene*)[NextLevelScene sceneWithLevel: currentLevel]];
                         counter = 1;
                     }
-                
+                    
                     else {
                         if (bulletCounter <=0)
                         {
@@ -1190,9 +1280,10 @@ int counter = 1;
                             [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
                         }
                     }
-               // NSLog(@"Hit Fluffy!");
+                    // NSLog(@"Hit Fluffy!");
                 }
             }
+            
             
             
         }

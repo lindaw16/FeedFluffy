@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Squirrels</key>
+	<array>
+		<dict>
+			<key>x</key>
+			<integer>150</integer>
+			<key>y</key>
+			<integer>80</integer>
+			<key>speed</key>
+			<integer>0</integer>
+			<key>spriteName</key>
+			<string>leftsquirrel</string>
+		</dict>
+	</array>
+	<key>Balls</key>
+	<integer>3</integer>
+	<key>Gold</key>
+	<integer>1</integer>
+	<key>Silver</key>
+	<integer>2</integer>
+	<key>Bronze</key>
+	<integer>3</integer>
+	<key>Goal</key>
+	<dict>
+		<key>apple</key>
+		<integer>1</integer>
+	</dict>
+	<key>Fluffy</key>
+	<dict>
+		<key>x</key>
+		<integer>470</integer>
+		<key>y</key>
+		<integer>190</integer>
+	</dict>
+	<key>Fruits</key>
+	<array>
+		<dict>
+			<key>x</key>
+			<integer>230</integer>
+			<key>y</key>
+			<integer>190</integer>
+			<key>spriteName</key>
+			<string>apple</string>
+		</dict>
+	</array>
+</dict>
+</plist>
