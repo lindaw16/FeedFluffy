@@ -82,7 +82,8 @@ CCSprite * menuBall;
 //CGSize winSize;
 
 NSDictionary *goal;
-NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
+//NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
+NSMutableDictionary *goalProgress;
 
 NSMutableDictionary *levelDict;
 
@@ -168,6 +169,7 @@ NSMutableDictionary *levelDict;
         ballsUsed = 0;
         //[self stopAllActions];
             currentLevel = level;
+            goalProgress = [[NSMutableDictionary alloc] init];
             [self updateLevel];
         [self displayFoodCollect];
            // NSLog(@"THE LEVELLLLL IS %d", currentLevel);
@@ -366,7 +368,6 @@ NSMutableDictionary *levelDict;
         goal = [level objectForKey:@"Goal"];
         
         // create new dictionary that keeps track of the level progress
-        
         for (NSString *key in goal){
             [goalProgress setObject:@0 forKey:key];
         }
@@ -631,7 +632,9 @@ NSMutableDictionary *levelDict;
     ballsUsed++;
     //_nextProjectile = [CCSprite spriteWithFile:@"bullet.png"];
     _nextProjectile = [CCSprite spriteWithFile:@"ball.png"];
+    
     _nextProjectile.tag = 1;
+ 
     
     _nextProjectile.position = _player.position;
 
@@ -767,10 +770,12 @@ NSMutableDictionary *levelDict;
                                     b->GetPosition().y * PTM_RATIO);
             ballData.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
 
-            if (ballData.position.x <= 0 && bulletCounter <= 0){
+            if (ballData.position.x <= 0){
                 toDestroy.push_back(b);
-                NSLog(@"YOU LOST!!!!, %f\n", ballData.position.x);
-                [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
+                if (bulletCounter == 0){
+                    NSLog(@"YOU LOST!!!!, %f\n", ballData.position.x);
+                    [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
+                }
             }
             // if ball is going too fast, turn on damping
             //we should do this!!
