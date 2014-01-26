@@ -15,6 +15,9 @@ CCMenuItemImage * left;
 CCMenuItemImage * right;
 float priorX = 1000;
 float priorY = 1000;
+//CGSize winSize = [CCDirector sharedDirector].winSize;
+
+
 
 @implementation LevelSelectLayer
 
@@ -64,7 +67,12 @@ float priorY = 1000;
 	//[myMenu alignItemsVertically];
     //menuItem1.position = ccp(240,95);
     left.position = ccp(40, 30);
-    right.position = ccp(440, 30);
+    right.position = ccp(528, 30);
+    
+    
+    //NSLog(@"%f by %f", winSize.height, winSize.width);
+    
+    
 //    //tutorials.position = ccp(170,170);
 //    level1.position = ccp(120, 150);
 //    level2.position = ccp(180, 150);
@@ -86,13 +94,19 @@ float priorY = 1000;
 
 
 -(id) init{
+ 
     //    instanceOfMyClass = self;
     if ((self = [super init])){
         //[self scheduleUpdate];
         
+        //CGSize size = [[CCDirector sharedDirector] winSize];
+        
+        
         //CCSprite *sprite = [CCSprite spriteWithFile:@"eevee.png"];
         CCSprite *sprite = [CCSprite spriteWithFile:@"levelSelectBackground.png"];
         sprite.anchorPoint = CGPointZero;
+
+        
         [self addChild:sprite z:-1];
         
         [self setUpMenus];
