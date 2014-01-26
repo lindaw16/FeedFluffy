@@ -10,6 +10,10 @@
 
 @interface LevelSelectLayer : CCLayer
 {
+    CCSprite * background;
+    CCSprite * selSprite;
+    NSMutableArray * movableSprites;
+    
 }
 
 -(void) update:(ccTime)delta;
