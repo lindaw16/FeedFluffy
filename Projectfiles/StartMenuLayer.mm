@@ -51,7 +51,17 @@ int NUM_LEVELS = 20;
     CCSprite * fluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
     fluffy.anchorPoint = CGPointZero;
     //fluffy.position = CGPointMake(190.0f, 60.0f);
-    fluffy.position = CGPointMake(250.0f, 50.0f);
+    
+    if (IsIphone5)
+    {
+        fluffy.position = CGPointMake(250.0f, 50.0f);
+    }
+    else {
+        fluffy.position = CGPointMake(211.0f, 40.0f);
+    }
+
+    
+    
     
     
 
@@ -93,7 +103,12 @@ int NUM_LEVELS = 20;
     //bonus.position = ccp(100, 80);
     //achievements.position = ccp(375, 80);
     
+    if (IsIphone5){
     playButton.position = ccp(460,230);
+    }
+    else {
+        playButton.position = ccp (388,230);
+    }
     //bonus.position = ccp(120, 80);
     //achievements.position = ccp(420, 80);
     //fluffy.position = ccp(200, 80);

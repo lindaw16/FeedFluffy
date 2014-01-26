@@ -26,7 +26,7 @@
 
 -(id)initWithLevel: (int) level{
     if( (self=[super init] )) {
-        CCLabelTTF *label = [CCLabelTTF labelWithString:@"You didn't feed Fluffy"
+        CCLabelTTF *label = [CCLabelTTF labelWithString:@"You didn't feed Fluffy!"
                                                fontName:@"Marker Felt"
                                                fontSize:30];
         label.position = ccp(240,250);
