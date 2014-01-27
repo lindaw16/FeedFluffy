@@ -62,11 +62,26 @@ CCSprite * fluffy;
 
     
     
+    CCSprite *orange = [CCSprite spriteWithFile:@"orange.png"];
+    CCSprite *strawberry = [CCSprite spriteWithFile:@"strawberry.png"];
+CCSprite *lemon = [CCSprite spriteWithFile:@"lemon.png"];
+    CCSprite *pear = [CCSprite spriteWithFile:@"pear.png"];
     
+    CCRotateTo * rotLeft = [CCRotateBy actionWithDuration:0.1 angle:-4.0];
+    CCRotateTo * rotCenter = [CCRotateBy actionWithDuration:0.1 angle:0.0];
+    CCRotateTo * rotRight = [CCRotateBy actionWithDuration:0.1 angle:4.0];
+    CCSequence * rotSeq = [CCSequence actions:rotLeft, rotCenter, rotRight, rotCenter, nil];
+    [orange runAction:[CCRepeatForever actionWithAction:rotSeq]];
+    orange.position = ccp(100,100);
+    strawberry.position = ccp(200,200);
+    lemon.position = ccp(50,50);
+    pear.position = ccp(20,150);
     
-
-    
-    
+    [self addChild:orange];
+    [self addChild:strawberry];
+    [self addChild:lemon];
+    [self addChild:pear
+     ];
     
     //Create an animation from the set of frames
     
@@ -104,7 +119,7 @@ CCSprite * fluffy;
     //achievements.position = ccp(375, 80);
     
     if (IsIphone5){
-    playButton.position = ccp(460,230);
+    playButton.position = ccp(450,245);
     }
     else {
         playButton.position = ccp (388,230);
@@ -198,7 +213,7 @@ CCSprite * fluffy;
         sprite.anchorPoint = CGPointZero;
         [self addChild:sprite z:-1];
         
-        [self scheduleUpdate];
+        //[self scheduleUpdate];
         [self setUpMenus];
         
     }
@@ -230,20 +245,20 @@ CCSprite * fluffy;
     [super onExit];
 }
 
-- (void) update:(ccTime)dt
-{
-    
-    //move fluffy only in the x direction by a fixed amount every frame
-    fluffy.position = ccp( fluffy.position.x + 100*dt, fluffy.position.y );
-    
-    if (fluffy.position.x > 480+32)
-    {
-        
-        //if fluffy reaches the edge of the screen, loop around
-        fluffy.position = ccp( -32, fluffy.position.y );
-        
-    }
-}
+//- (void) update:(ccTime)dt
+//{
+//    
+//    //move fluffy only in the x direction by a fixed amount every frame
+//    fluffy.position = ccp( fluffy.position.x + 100*dt, fluffy.position.y );
+//    
+//    if (fluffy.position.x > 480+32)
+//    {
+//        
+//        //if fluffy reaches the edge of the screen, loop around
+//        fluffy.position = ccp( -32, fluffy.position.y );
+//        
+//    }
+//}
 
 
 
