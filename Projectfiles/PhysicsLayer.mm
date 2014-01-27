@@ -389,11 +389,16 @@ NSMutableDictionary *levelDict;
         ///NSLog(@"ScaleX : %f", scaleX);
         NSDictionary *fluffy = [level objectForKey:@"Fluffy"];
         Fluffy *fluffy2 = [[Fluffy alloc] initWithFluffyImage];
-        NSNumber *x = [fluffy objectForKey:@"x"];
-        NSNumber *y = [fluffy objectForKey:@"y"];
+//        NSNumber *x = [fluffy objectForKey:@"x"];
+//        NSNumber *y = [fluffy objectForKey:@"y"];
         //fluffy2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
-                fluffy2.position = CGPointMake(560, 190);
-
+        //fluffy2.position = CGPointMake(560, 190);
+        
+        fluffy2.position = ccp(winSize.width - 16, 190);
+//        float *x = fluffy2.position.x;
+//        float *y = fluffy2.position.y;
+        
+        
         //fluffy2.position = ccpMult(fluffy2.position, scale);
         fluffy2.tag = 3;
         //NSLog(@"Scale = %d", [scale.x floatValue]);
@@ -403,7 +408,8 @@ NSMutableDictionary *levelDict;
         // Create block body
         b2BodyDef fluffyBodyDef;
         fluffyBodyDef.type = b2_dynamicBody;
-        fluffyBodyDef.position.Set([x floatValue] * scaleX/PTM_RATIO, [y floatValue]*scaleY/PTM_RATIO);
+        //fluffyBodyDef.position.Set([x floatValue] * scaleX/PTM_RATIO, [y floatValue]*scaleY/PTM_RATIO);
+        fluffyBodyDef.position.Set(fluffy2.position.x /PTM_RATIO, fluffy2.position.y/PTM_RATIO);
         fluffyBodyDef.userData = (__bridge void*)fluffy2;
         b2Body *fluffyBody = world->CreateBody(&fluffyBodyDef);
         
@@ -1345,7 +1351,7 @@ int counter = 1;
     int bary = cageBottom;
     
     ccColor4F bottomColor = ccc4f(0, 0, 0, 1);
-    ccDrawSolidRect( ccp(barx, bary), ccp(480, bary + 5), bottomColor);
+    ccDrawSolidRect( ccp(barx, bary), ccp(568, bary + 5), bottomColor);
 }
 
 

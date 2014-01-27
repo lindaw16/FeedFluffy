@@ -198,7 +198,7 @@ CCSprite * fluffy;
         sprite.anchorPoint = CGPointZero;
         [self addChild:sprite z:-1];
         
-        [self scheduleUpdate];
+        //[self scheduleUpdate];
         [self setUpMenus];
         
     }
@@ -230,20 +230,20 @@ CCSprite * fluffy;
     [super onExit];
 }
 
-- (void) update:(ccTime)dt
-{
-    
-    //move fluffy only in the x direction by a fixed amount every frame
-    fluffy.position = ccp( fluffy.position.x + 100*dt, fluffy.position.y );
-    
-    if (fluffy.position.x > 480+32)
-    {
-        
-        //if fluffy reaches the edge of the screen, loop around
-        fluffy.position = ccp( -32, fluffy.position.y );
-        
-    }
-}
+//- (void) update:(ccTime)dt
+//{
+//    
+//    //move fluffy only in the x direction by a fixed amount every frame
+//    fluffy.position = ccp( fluffy.position.x + 100*dt, fluffy.position.y );
+//    
+//    if (fluffy.position.x > 480+32)
+//    {
+//        
+//        //if fluffy reaches the edge of the screen, loop around
+//        fluffy.position = ccp( -32, fluffy.position.y );
+//        
+//    }
+//}
 
 
 
