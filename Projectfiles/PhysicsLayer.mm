@@ -239,7 +239,7 @@ NSMutableDictionary *levelDict;
     
         
         cannonHead = [CCSprite spriteWithFile:@"cannon-head-cropped.png"];
-        cannonHead.position = ccp(_player.position.x + 30, _player.position.y - 0.5);
+        cannonHead.position = ccp(_player.position.x + 15, _player.position.y - 0.5);
         [self addChild:cannonHead z:1];
         
 //        CCSprite *cage = [CCSprite spriteWithFile: @"cage.png"];
