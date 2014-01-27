@@ -66,22 +66,26 @@ CCSprite * fluffy;
     CCSprite *strawberry = [CCSprite spriteWithFile:@"strawberry.png"];
 CCSprite *lemon = [CCSprite spriteWithFile:@"lemon.png"];
     CCSprite *pear = [CCSprite spriteWithFile:@"pear.png"];
+    CCSprite *lemon2 = [CCSprite spriteWithFile:@"lemon.png"];
     
-    CCRotateTo * rotLeft = [CCRotateBy actionWithDuration:0.1 angle:-4.0];
-    CCRotateTo * rotCenter = [CCRotateBy actionWithDuration:0.1 angle:0.0];
-    CCRotateTo * rotRight = [CCRotateBy actionWithDuration:0.1 angle:4.0];
-    CCSequence * rotSeq = [CCSequence actions:rotLeft, rotCenter, rotRight, rotCenter, nil];
-    [orange runAction:[CCRepeatForever actionWithAction:rotSeq]];
-    orange.position = ccp(100,100);
-    strawberry.position = ccp(200,200);
-    lemon.position = ccp(50,50);
-    pear.position = ccp(20,150);
+    
+    orange.position = ccp(430,36);
+    strawberry.position = ccp(470,40);
+    lemon.position = ccp(170,30);
+    pear.position = ccp(220,30);
+    lemon.rotation = -15.0;
+    lemon2.position = ccp(520, 25);
+    lemon2.rotation = 15.0;
+    orange.rotation = -10.0;
+    strawberry.rotation = 10.0;
+
     
     [self addChild:orange];
     [self addChild:strawberry];
     [self addChild:lemon];
     [self addChild:pear
      ];
+    [self addChild:lemon2];
     
     //Create an animation from the set of frames
     
