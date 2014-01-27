@@ -29,10 +29,7 @@
 
 /*
  * Sprite Tags
- * 1: 
- * 2:
- * 3: the cannon
- * 4: the bullet
+ *
  */
 
 /* BUG LIST
@@ -393,6 +390,7 @@ NSMutableDictionary *levelDict;
 //        NSNumber *y = [fluffy objectForKey:@"y"];
         //fluffy2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
         //fluffy2.position = CGPointMake(560, 190);
+
         
         fluffy2.position = ccp(winSize.width - 16, 190);
 //        float *x = fluffy2.position.x;
