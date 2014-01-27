@@ -80,6 +80,7 @@ BOOL levelCompleted;
 
         CCLabelTTF *ballCountLabel;
 CCSprite * menuBall;
+NSMutableDictionary *labels = [[NSMutableDictionary alloc] init];
 //CGSize winSize;
 
 NSDictionary *goal;
@@ -582,7 +583,7 @@ NSMutableDictionary *levelDict;
 //    CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
 //    menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, menuBall.contentSize.height/PTM_RATIO/2+30);
 
-   
+
     NSString* levelString2 = [NSString stringWithFormat:@"%i", currentLevel];
     NSString *levelName = [@"level" stringByAppendingString:levelString2];
     NSString *path = [[NSBundle mainBundle] pathForResource:levelName ofType:@"plist"];
@@ -599,55 +600,40 @@ NSMutableDictionary *levelDict;
         NSString *fruit = [keys objectAtIndex: i];
         int numFruits = [[goal objectForKey:fruit] intValue];
         int goalProgressValue = [[goalProgress objectForKey:fruit] intValue];
-        //NSLog(@"Fruitname: %@" ,fruit);
-          //  NSLog(@"FRUITSNUM###: %d \n", numFruits);
-            //        NSLog(@"Before Creating Image\n");
-        /*NSString *fruitSpriteName = [fruit stringByAppendingString:@".png"];
-        
-        
-        CCSprite *fruity = [CCSprite spriteWithFile:fruitSpriteName];
-                    NSLog(@"After Sprite Image Created!! \n");
-        NSLog(@"Layer!: %d", layer);
-        [self addChild:fruity z:layer];
-        [self addChild: starLabel z:layer];
-        fruity.position = ccp(fruity.contentSize.width/PTM_RATIO/2 + gapFruit,fruity.contentSize.height/PTM_RATIO/2 + gapFruit);
-        starLabel.string = [NSString stringWithFormat:@" X %d",numFruits];
-        starLabel.position = ccp(starLabel.contentSize.width/PTM_RATIO/2 + gapLabel,starLabel.contentSize.height/PTM_RATIO/2 + gapLabel);
-        gapFruit += 50;
-        gapLabel +=60;
-        layer++;*/
+        CCLabelTTF *label;
         
         Fruit *fruit2 = [[Fruit alloc] initWithFruit:fruit ];
         fruit2.position = ccp(fruit2.contentSize.width/PTM_RATIO/2 + gapFruit,fruit2.contentSize.height/PTM_RATIO/2 + yOffset);
         [self addChild: fruit2 z: 5];
         
         NSString *numFruitsDisplay = [NSString stringWithFormat: @"X %d", numFruits - goalProgressValue];
-        CCLabelTTF *label = [CCLabelTTF labelWithString:@"food"
+        label = [CCLabelTTF labelWithString:@"food"
                                                fontName:@"Marker Felt"
                                                fontSize:18.0];
         label.position = ccp(starLabel.contentSize.width/PTM_RATIO/2 + gapLabel,starLabel.contentSize.height/PTM_RATIO/2 + yOffset);
         
          label.string = [NSString stringWithFormat:@"X %d", numFruits - goalProgressValue];
         [self addChild: label z:10];
+        [labels setObject: label forKey:fruit];
         gapFruit += 80;
         gapLabel +=80;
 
         
     }
-    
-    
-    
-    
-
-        //star_rank.position = ccp(star_rank.contentSize.width/PTM_RATIO/2+510, star_rank.contentSize.height/PTM_RATIO/2 +35);
-
-    
-    
-   // starLabel.string = [NSString stringWithFormat:@" X %d","];
-    
-    
-    //[_hud incrementLevel:[NSString stringWithFormat:@"Lives: %d", currentLevel]];
 }
+
+    - (void) updateFoodCollect {
+
+        for (NSString *fruit in labels){
+            int numFruits = [[goal objectForKey:fruit] intValue];
+            int goalProgressValue = [[goalProgress objectForKey:fruit] intValue];
+            CCLabelTTF *label = [labels objectForKey:fruit];
+            label.string = [NSString stringWithFormat:@"X %d", numFruits - goalProgressValue];
+        }
+
+    }
+
+
 
 - (void)updateBallCount {
     CCLabelTTF *ballCountLabel;
@@ -696,7 +682,7 @@ NSMutableDictionary *levelDict;
     b2CircleShape circle;
     //circle.m_radius = 26.0/PTM_RATIO;
     //circle.m_radius = 9.0/PTM_RATIO;
-    circle.m_radius = 20.0/PTM_RATIO;
+    circle.m_radius = 15.0/PTM_RATIO;
     
     b2FixtureDef ballShapeDef;
     ballShapeDef.shape = &circle;
@@ -709,7 +695,7 @@ NSMutableDictionary *levelDict;
     float radianAngle = CC_DEGREES_TO_RADIANS(angleInDegrees);
     [_player runAction:[CCSequence actions:[CCCallBlock actionWithBlock:^{[self addChild:_nextProjectile];_nextProjectile = nil;}],nil]];
     //this determines the speed of the ball projectile
-    b2Vec2 force = b2Vec2(5 * cos(radianAngle), 5 * sin(radianAngle));
+    b2Vec2 force = b2Vec2(3 * cos(radianAngle), 3 * sin(radianAngle));
     
     //_body->ApplyLinearImpulse(force, ballBodyDef.position);
     printf("Applying Linear Impulse!");
@@ -1192,7 +1178,7 @@ int counter = 1;
                     [goalProgress setObject:[NSNumber numberWithInt: fruitNum] forKey:fruitName];
                     int fruitNum2 = [[goalProgress objectForKey:fruitName] intValue];
                     //NSLog(@"Hit Fruit");
-                    [self displayFoodCollect];
+                    [self updateFoodCollect];
                 }
             }
             
@@ -1211,7 +1197,7 @@ int counter = 1;
                     [goalProgress setObject:[NSNumber numberWithInt: fruitNum] forKey:fruitName];
                     int fruitNum2 = [[goalProgress objectForKey:fruitName] intValue];
                    // NSLog(@"Hit Fruit");
-                    [self displayFoodCollect];
+                    [self updateFoodCollect];
                 }
             }
             

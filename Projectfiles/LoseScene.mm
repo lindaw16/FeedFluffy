@@ -26,6 +26,10 @@
 
 -(id)initWithLevel: (int) level{
     if( (self=[super init] )) {
+        CCSprite *bg = [CCSprite spriteWithFile:@"pause_background.png"];
+        bg.anchorPoint = CGPointZero;
+        [self addChild:bg];
+        
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"You didn't feed Fluffy!"
                                                fontName:@"Marker Felt"
                                                fontSize:30];
