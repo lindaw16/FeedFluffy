@@ -3,8 +3,8 @@
 //  TheRealFluffy
 //
 //  Created by Linda Wang on 1/14/14.
-//
-//
+
+
 
 #import "LevelSelectLayer.h"
 #import "PhysicsLayer.h"
@@ -257,14 +257,14 @@ float priorY = 1000;
 //	[super dealloc];
 //#endif
 //}
+//
+//
+//@end
 
 
-@end
 
 
-
-
-
+//
 ////
 ////  LevelSelectLayer.m
 ////  TheRealFluffy
@@ -428,9 +428,9 @@ float priorY = 1000;
 //	[super dealloc];
 //#endif
 //}
-//
-//
-//@end
+
+
+@end
 
 
 
