@@ -242,7 +242,7 @@ NSMutableDictionary *levelDict;
     
         
         cannonHead = [CCSprite spriteWithFile:@"cannon-head-cropped.png"];
-        cannonHead.position = ccp(_player.position.x + 20, _player.position.y - 0.5);
+        cannonHead.position = ccp(_player.position.x + 20, _player.position.y - 60);
         [self addChild:cannonHead z:1];
         
 //        CCSprite *cage = [CCSprite spriteWithFile: @"cage.png"];
@@ -395,7 +395,7 @@ NSMutableDictionary *levelDict;
         //fluffy2.position = CGPointMake(560, 190);
 
         
-        fluffy2.position = ccp(winSize.width - 16, 190);
+        fluffy2.position = ccp(winSize.width - 16, 130);
 //        float *x = fluffy2.position.x;
 //        float *y = fluffy2.position.y;
         
@@ -1079,6 +1079,7 @@ int counter = 1;
             //if (offset.x <= 0) return;
             angleInDegrees = atan2(deltaY, deltaX) * 180 / M_PI;
             
+            NSLog(@"angle in degrees %f", angleInDegrees);
             
             if ( angleInDegrees < 50 && angleInDegrees > -50)
             {
