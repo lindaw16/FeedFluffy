@@ -13,6 +13,10 @@
 
 #import "PhysicsLayer.h"
 
+
+
+@implementation EasyLevelLayer
+
 int numLevels = 12;
 int numCol = 4;
 //int numRow;
@@ -21,9 +25,6 @@ const float PTM = 32.0f;
 int leftMargin = 120;
 int topMargin = 240;
 CCSprite *level;
-
-
-@implementation EasyLevelLayer
 
 +(id) scene
 {

@@ -25,6 +25,7 @@
 		917E7AC7188F1D4F004C4217 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 917E7AC3188F1D4F004C4217 /* 1.png */; };
 		919F04231890BE89008BADF4 /* button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 919F04221890BE89008BADF4 /* button@2x.png */; };
 		91A40077189735430043B996 /* pauseButton2.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A40076189735430043B996 /* pauseButton2.png */; };
+		91A4007D189877BA0043B996 /* MediumLevelLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91A4007C189877BA0043B996 /* MediumLevelLayer.mm */; };
 		AB23A836189317A500127A5D /* level_select-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB23A834189317A500127A5D /* level_select-hd.png */; };
 		AB23A837189317A500127A5D /* level_select2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB23A835189317A500127A5D /* level_select2-hd.png */; };
 		AB23A83A189317E900127A5D /* main_menu-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB23A838189317E900127A5D /* main_menu-hd.png */; };
@@ -257,6 +258,8 @@
 		917E7AC3188F1D4F004C4217 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		919F04221890BE89008BADF4 /* button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button@2x.png"; sourceTree = "<group>"; };
 		91A40076189735430043B996 /* pauseButton2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pauseButton2.png; sourceTree = "<group>"; };
+		91A4007B189877BA0043B996 /* MediumLevelLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediumLevelLayer.h; sourceTree = "<group>"; };
+		91A4007C189877BA0043B996 /* MediumLevelLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MediumLevelLayer.mm; sourceTree = "<group>"; };
 		AB23A834189317A500127A5D /* level_select-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_select-hd.png"; sourceTree = "<group>"; };
 		AB23A835189317A500127A5D /* level_select2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_select2-hd.png"; sourceTree = "<group>"; };
 		AB23A838189317E900127A5D /* main_menu-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu-hd.png"; sourceTree = "<group>"; };
@@ -739,6 +742,8 @@
 				ABA136081894BBCE008D4DCE /* Squirrel.m */,
 				914BE9D91889BC9F0085E989 /* EasyLevelLayer.h */,
 				914BE9DA1889BC9F0085E989 /* EasyLevelLayer.mm */,
+				91A4007B189877BA0043B996 /* MediumLevelLayer.h */,
+				91A4007C189877BA0043B996 /* MediumLevelLayer.mm */,
 				BFB4259F18862DDE002DD826 /* StartMenuLayer.h */,
 				BFB425A018862DDE002DD826 /* StartMenuLayer.mm */,
 				AB9E2D011888D5B600F99EAB /* MyContactListener.h */,
@@ -1170,6 +1175,7 @@
 				ABA18ADE18903B3800B05B35 /* NextLevelScene.mm in Sources */,
 				DCC1A3A913A94F1A005BD75D /* AppDelegate.m in Sources */,
 				ABB719CF18871CCA004D2FCA /* Fluffy.m in Sources */,
+				91A4007D189877BA0043B996 /* MediumLevelLayer.mm in Sources */,
 				DCC1A3AB13A94F1A005BD75D /* PhysicsLayer.mm in Sources */,
 				BFB4259718862C92002DD826 /* LevelSelectLayer.mm in Sources */,
 				ABB719DD188744B9004D2FCA /* Fruit.m in Sources */,
