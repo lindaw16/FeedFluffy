@@ -234,7 +234,7 @@ NSMutableDictionary *levelDict;
         
         
         _player = [CCSprite spriteWithFile:@"cannon-body2.png"];
-        _player.position = ccp(_player.contentSize.width/2 - 4, winSize.height/2 + 32);
+        _player.position = ccp(_player.contentSize.width/2 - 4, winSize.height/2 -28);
         
         
         [self addChild:_player z:1];
@@ -242,7 +242,7 @@ NSMutableDictionary *levelDict;
     
         
         cannonHead = [CCSprite spriteWithFile:@"cannon-head-cropped.png"];
-        cannonHead.position = ccp(_player.position.x + 20, _player.position.y - 60);
+        cannonHead.position = ccp(_player.position.x + 20, _player.position.y - 0.5);
         [self addChild:cannonHead z:1];
         
 //        CCSprite *cage = [CCSprite spriteWithFile: @"cage.png"];
@@ -298,7 +298,8 @@ NSMutableDictionary *levelDict;
         CCMenuItem *starMenuItem = [CCMenuItemImage
                                     itemWithNormalImage:@"launch_button_bigger.png" selectedImage:@"launch_button_bigger.png"
                                     target:self selector:@selector(starButtonTapped:)];
-        starMenuItem.position = ccp(starMenuItem.contentSize.width/PTM_RATIO/2+40, starMenuItem.contentSize.height/PTM_RATIO/2+30);
+        starMenuItem.position = ccp(starMenuItem.contentSize.width/PTM_RATIO/2+40, winSize.height - starMenuItem.contentSize.height/PTM_RATIO/ 2 - 30 );
+        
         //starMenuItem.position = ccp(50,30);
         CCMenu *starMenu = [CCMenu menuWithItems:starMenuItem, nil];
         starMenu.position = CGPointZero;
@@ -541,7 +542,8 @@ NSMutableDictionary *levelDict;
         }
 
         ballCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@" X %d", bulletCounter]fontName:@"Marker Felt" fontSize:18.0];
-        ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, ballCountLabel.contentSize.height/PTM_RATIO/2+30);
+        //ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, ballCountLabel.contentSize.height/PTM_RATIO/2+30);
+        ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2 + 150, winSize.height - ballCountLabel.contentSize.height/PTM_RATIO/2 - 30);
         
         //menuBall = [CCSprite spriteWithFile:@"bullet.png"];
         menuBall = [CCSprite spriteWithFile:@"ball.png"];
@@ -648,11 +650,11 @@ NSMutableDictionary *levelDict;
     //NSLog(@"Update Lives is being called!!!\n");
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     ballCountLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:18.0];
-    ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, ballCountLabel.contentSize.height/PTM_RATIO/2+30);
+    ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, winSize.height - ballCountLabel.contentSize.height/PTM_RATIO/2+30);
     
     //CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
     CCSprite * menuBall = [CCSprite spriteWithFile:@"ball.png"];
-    menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, menuBall.contentSize.height/PTM_RATIO/2+30);
+    menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, winSize.height - 30);
     
 
     [self addChild:menuBall z:10];
