@@ -17,7 +17,12 @@ float priorX = 1000;
 float priorY = 1000;
 //CGSize winSize;
 
-
+CGPoint translation;
+CGPoint oldTouchLocation;
+CGPoint touchLocation;
+float translationTracker;
+CGPoint startLocation;
+CGPoint endLocation;
 @implementation LevelSelectLayer
 
 
@@ -66,7 +71,8 @@ float priorY = 1000;
     
     CCSprite * newSprite = nil;
     for (CCSprite *sprite in movableSprites) {
-        if (CGRectContainsPoint(sprite.boundingBox, touchLocation)) {
+        if (CGRectContainsPoint(sprite.boundingBox, touchLocation) and abs(translation.x) < 1.5) {
+            //translationTracker = 0.0;
             [[CCDirector sharedDirector] replaceScene: (CCScene*)[[EasyLevelLayer alloc] init]];
             break;
         }
@@ -74,8 +80,15 @@ float priorY = 1000;
 }
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
-    [self selectSpriteForTouch:touchLocation];
+    
+       // NSLog(@"CCTouche Began!!!\n");
+    CGPoint touchLocation = [touch locationInView: [touch view]];
+    touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
+    touchLocation = [self convertToNodeSpace:touchLocation];
+    
+    startLocation = touchLocation;
+    
+
     return TRUE;
     
 }
@@ -95,22 +108,58 @@ float priorY = 1000;
         
         CGPoint newPos = ccpAdd(self.position, translation);
         self.position = [self boundLayerPos:newPos];
+        //translationTracker = 0.0;
     }
 }
 
-- (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
-    CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
+-(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+
+    //NSLog(@"CCTouche Ended!!!\n");
     
-    CGPoint oldTouchLocation = [touch previousLocationInView:touch.view];
+    CGPoint touchLocation = [touch locationInView: [touch view]];
+    touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
+    touchLocation = [self convertToNodeSpace:touchLocation];
+    endLocation = touchLocation;
+    
+    //NSLog(@"Difference between start/end, %f \n", startLocation.x - endLocation.x);
+    //NSLog(@"dif %d", abs(-4.8));
+    if ((startLocation.x - endLocation.x) < 0.1 and (startLocation.x - endLocation.x) > -0.1) {
+        // Swipe
+        for (CCSprite *sprite in movableSprites) {
+            if (CGRectContainsPoint(sprite.boundingBox, touchLocation)) {
+                //translationTracker = 0.0;
+                [[CCDirector sharedDirector] replaceScene: (CCScene*)[[EasyLevelLayer alloc] init]];
+                break;
+            }
+        }
+
+        //[self panForTranslation:translation];
+    }
+    
+    
+}
+
+
+
+- (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
+    touchLocation = [self convertTouchToNodeSpace:touch];
+    
+    oldTouchLocation = [touch previousLocationInView:touch.view];
     oldTouchLocation = [[CCDirector sharedDirector] convertToGL:oldTouchLocation];
     oldTouchLocation = [self convertToNodeSpace:oldTouchLocation];
     
-    CGPoint translation = ccpSub(touchLocation, oldTouchLocation);
-    if (translation.x > 1.0)
+    translation = ccpSub(touchLocation, oldTouchLocation);
+    //NSLog(@"Translating movement!! %f \n", translation.x);
+    if (abs(translation.x) > 1.5)
     {
+        translationTracker = translation.x;
         
+        [self panForTranslation:translation];
+
     }
-    [self panForTranslation:translation];
+   
+    
+    
 }
 
 -(void) onExit {
