@@ -1088,7 +1088,7 @@ int counter = 1;
             //Steps taken to 
             if (cannonCounter ==0)
             {
-                cannonHead.position = ccp(cannonHead.position.x - 6.0, y);
+                cannonHead.position = ccp(cannonHead.position.x - 4.0, y);
                 cannonCounter = 1;
             }
         
