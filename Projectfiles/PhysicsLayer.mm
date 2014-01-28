@@ -58,6 +58,7 @@ bool ButtonTapped = false;
 int currentLevel;
 int ballsUsed;
 
+int cannonCounter = 0;
 CCSprite *ballData;
 
 //for dialog boxes
@@ -1068,7 +1069,7 @@ int counter = 1;
             //make sure the cannon does not move offscreen
             if (pos.y < 238 && pos.y > 20)
             {
-                //NSLog(@"CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
+                NSLog(@"CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
                 
                 _player.position = ccp(_player.position.x, y+5);
                 _nextProjectile.position = _player.position;
@@ -1082,7 +1083,15 @@ int counter = 1;
         if (pos.x>=cageLeft+5 && pos.x <=80 && pos.y > 20 && pos.y < 238)
         {
 
+               NSLog(@"CANNON ROTATED??>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
             
+            //Steps taken to 
+            if (cannonCounter ==0)
+            {
+                cannonHead.position = ccp(cannonHead.position.x - 6.0, y);
+                cannonCounter = 1;
+            }
+        
             float deltaY = pos.y - _player.position.y;
             float deltaX = pos.x - _player.position.x;
             
@@ -1229,6 +1238,7 @@ int counter = 1;
                     if (levelCompleted){
                         [[CCDirector sharedDirector] replaceScene: (CCScene*)[NextLevelScene sceneWithLevel: currentLevel]];
                         counter = 1;
+                        cannonCounter = 0;
                     }
                 
                     else {
@@ -1236,6 +1246,7 @@ int counter = 1;
                         {
                             //NSLog(@"LAST BULLET - DISAPPEARED!\n");
                             [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
+                            cannonCounter = 0;
                         }
                     }
                     //NSLog(@"Hit Fluffy!");
@@ -1250,6 +1261,7 @@ int counter = 1;
                     if (bulletCounter <=0)
                     {
                         [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
+                        cannonCounter = 0;
                     }
                 }
             }
@@ -1261,6 +1273,7 @@ int counter = 1;
                     if (bulletCounter <=0)
                     {
                         [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
+                        cannonCounter = 0;
                     }
                 }
                 
@@ -1278,6 +1291,7 @@ int counter = 1;
                         //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
                         [[CCDirector sharedDirector] replaceScene: (CCScene*)[NextLevelScene sceneWithLevel: currentLevel]];
                         counter = 1;
+                        cannonCounter = 0;
                     }
                     
                     else {
@@ -1285,6 +1299,7 @@ int counter = 1;
                         {
                             NSLog(@"LAST BULLET - DISAPPEARED!\n");
                             [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
+                            cannonCounter = 0;
                         }
                     }
                     // NSLog(@"Hit Fluffy!");
