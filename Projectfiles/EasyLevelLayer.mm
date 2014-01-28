@@ -160,6 +160,8 @@ CCSprite *level;
         //bg.anchorPoint = CGPointZero;
         if (IsIphone5){
             bg.position = ccp(284, 140);
+            bg.scaleX = 1.2;
+            bg.scaleY = 1.2;
         }
         else {
         bg.position = ccp(240, 140);
