@@ -834,7 +834,7 @@ NSMutableDictionary *levelDict;
             //we should do this!!
             }
             
-            else if (sprite.tag == 5 && sprite.position.y >= 290){
+            else if (sprite.tag == 5 && sprite.position.y >= 230){
                 float velocity = b->GetLinearVelocity().y;
                 if (velocity > 0) {
                     velocity *= -1;
@@ -844,7 +844,7 @@ NSMutableDictionary *levelDict;
 
             }
             
-            else if (sprite.tag == 5 && sprite.position.y <= 80){
+            else if (sprite.tag == 5 && sprite.position.y <= 30){
                 float velocity = b->GetLinearVelocity().y;
                 if (velocity < 0) {
                     velocity *= -1;
