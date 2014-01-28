@@ -123,7 +123,7 @@ CCSprite *level;
         else {
             level = [CCMenuItemImage itemWithNormalImage:@"apple_level.png" selectedImage:@"apple_level.png" target:self selector: @selector(doNothing:)];
             CCSprite *lock = [CCSprite spriteWithFile:@"lock.png"];
-            lock.position = ccp(x,y);
+            lock.position = ccp(x,y-3);
             [self addChild: lock z:3];
             
             [myLevels addChild: level];
