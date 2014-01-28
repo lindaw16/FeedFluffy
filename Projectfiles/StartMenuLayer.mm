@@ -64,25 +64,37 @@ CCSprite * fluffy;
     
     CCSprite *orange = [CCSprite spriteWithFile:@"orange.png"];
     CCSprite *strawberry = [CCSprite spriteWithFile:@"strawberry.png"];
-CCSprite *lemon = [CCSprite spriteWithFile:@"lemon.png"];
+CCSprite *apple = [CCSprite spriteWithFile:@"apple.png"];
     CCSprite *pear = [CCSprite spriteWithFile:@"pear.png"];
     CCSprite *lemon2 = [CCSprite spriteWithFile:@"lemon.png"];
     
-    
+    if (IsIphone5){
     orange.position = ccp(430,36);
     strawberry.position = ccp(470,40);
-    lemon.position = ccp(170,30);
+    apple.position = ccp(150,30);
     pear.position = ccp(220,30);
-    lemon.rotation = -15.0;
     lemon2.position = ccp(520, 25);
+    }
+    
+    else{
+        orange.position = ccp(380,30);
+        strawberry.position = ccp(430,33);
+        apple.position = ccp(140,30);
+        pear.position = ccp(200,30);
+        lemon2.position = ccp(520, 25);
+    }
+    apple.rotation = -15.0;
     lemon2.rotation = 15.0;
     orange.rotation = -10.0;
-    strawberry.rotation = 10.0;
+    strawberry.rotation = 13.0;
 
+    
+    
+    
     
     [self addChild:orange];
     [self addChild:strawberry];
-    [self addChild:lemon];
+    [self addChild:apple];
     [self addChild:pear
      ];
     [self addChild:lemon2];
