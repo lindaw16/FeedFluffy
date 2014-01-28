@@ -551,15 +551,15 @@ NSMutableDictionary *levelDict;
 
         ballCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@" X %d", bulletCounter]fontName:@"Marker Felt" fontSize:18.0];
         //ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, ballCountLabel.contentSize.height/PTM_RATIO/2+30);
-        ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2 + 150, winSize.height - ballCountLabel.contentSize.height/PTM_RATIO/2 - 30);
+        //ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2 + 150, winSize.height - ballCountLabel.contentSize.height/PTM_RATIO/2 - 30);
         
         //menuBall = [CCSprite spriteWithFile:@"bullet.png"];
         menuBall = [CCSprite spriteWithFile:@"ball.png"];
-        menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+120, menuBall.contentSize.height/PTM_RATIO/2+30);
+        //menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+120, menuBall.contentSize.height/PTM_RATIO/2+30);
         
         ballCountLabel.string = [NSString stringWithFormat:@" X %d", bulletCounter];
-        [self addChild: ballCountLabel z:10];
-        [self addChild:menuBall z:10];
+        //[self addChild: ballCountLabel z:10];
+        //[self addChild:menuBall z:10];
         
         [self setUpMenus];
         
@@ -581,7 +581,7 @@ NSMutableDictionary *levelDict;
     //NSLog(@"Update Lives is being called!!!\n");
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     CCLabelTTF *levelLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:18.0];
-    levelLabel.position = ccp(levelLabel.contentSize.width +250, 290);
+    levelLabel.position = ccp(levelLabel.contentSize.width +100, 290);
 
     [self addChild: levelLabel z:10];
     levelLabel.string = [NSString stringWithFormat:@"Level: %d", currentLevel];
@@ -607,8 +607,8 @@ NSMutableDictionary *levelDict;
     NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:path];
     
     goal = [level objectForKey:@"Goal"];
-    int gapFruit = 220;
-    int gapLabel = 260;
+    int gapFruit = 0;
+    int gapLabel = 0;
     int yOffset = 32;
     int layer = 10;
     NSArray *keys = [goal allKeys];
@@ -620,14 +620,15 @@ NSMutableDictionary *levelDict;
         CCLabelTTF *label;
         
         Fruit *fruit2 = [[Fruit alloc] initWithFruit:fruit ];
-        fruit2.position = ccp(fruit2.contentSize.width/PTM_RATIO/2 + gapFruit,fruit2.contentSize.height/PTM_RATIO/2 + yOffset);
+        //fruit2.position = ccp(fruit2.contentSize.width/PTM_RATIO/2 + gapFruit,fruit2.contentSize.height/PTM_RATIO/2 + yOffset);
+        fruit2.position = ccp(230+gapFruit, 290);
         [self addChild: fruit2 z: 5];
         
         NSString *numFruitsDisplay = [NSString stringWithFormat: @"X %d", numFruits - goalProgressValue];
         label = [CCLabelTTF labelWithString:@"food"
                                                fontName:@"Marker Felt"
                                                fontSize:18.0];
-        label.position = ccp(starLabel.contentSize.width/PTM_RATIO/2 + gapLabel,starLabel.contentSize.height/PTM_RATIO/2 + yOffset);
+        label.position = ccp(265+gapLabel,290);
         
          label.string = [NSString stringWithFormat:@"X %d", numFruits - goalProgressValue];
         [self addChild: label z:10];
