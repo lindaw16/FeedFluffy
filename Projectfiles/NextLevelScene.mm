@@ -33,7 +33,14 @@
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"Level Completed!"
                                                fontName:@"Marker Felt"
                                                fontSize:30];
-        label.position = ccp(240,250);
+        
+        if (IsIphone5)
+        {
+        label.position = ccp(284,260);
+        }
+        else{
+        label.position = ccp(240,270);
+        }
         [self addChild: label];
         [CCMenuItemFont setFontName:@"Courier New"];
         [CCMenuItemFont setFontSize:20];
@@ -59,11 +66,28 @@
                                                             selector:@selector(GoToMainMenu:)];
         
         CCMenu *menu= [CCMenu menuWithItems: nextlevel, replay, levels, quit, nil];
+        
+        if (IsIphone5)
+        {
         menu.position = CGPointZero;
-        nextlevel.position = ccp(200, 160);
-        replay.position = ccp(320, 160);
-        levels.position = ccp(200, 100);
-        quit.position = ccp(320,100);
+        nextlevel.position = ccp(225, 150);
+        replay.position = ccp(345, 150);
+        levels.position = ccp(225, 90);
+        quit.position = ccp(345,90);
+        }
+        
+        else{
+            menu.position = CGPointZero;
+            nextlevel.position = ccp(185, 150);
+            replay.position = ccp(305, 150);
+            levels.position = ccp(185, 90);
+            quit.position = ccp(305,90);
+        }
+        
+
+        
+        
+        
         //[menu alignItemsVerticallyWithPadding:12.5f];
         
         [self addChild:menu];
@@ -86,7 +110,16 @@
             rank = [CCSprite spriteWithFile:@"bronze_star_big.png"];
         }
         
-        rank.position = ccp(240, 200);
+        
+        if (IsIphone5){
+            rank.position = ccp(284,205);
+        }
+        else{
+        rank.position = ccp(240, 210);
+        }
+        
+        [rank setScaleX:0.8];
+        [rank setScaleY:0.8];
         [self addChild: rank z:3];
 
 
