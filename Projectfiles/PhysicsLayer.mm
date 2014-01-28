@@ -320,18 +320,27 @@ NSMutableDictionary *levelDict;
                                                    selectedImage: @"pauseButton2.png"
                                                           target:self
                                                         selector:@selector(pause:)];
-        CCMenu *PauseButton = [CCMenu menuWithItems: Pause, nil];
+        CCMenuItem *Restart= [CCMenuItemImage itemWithNormalImage:@"pauseButton2.png"
+                                                   selectedImage: @"pauseButton2.png"
+                                                          target:self
+                                                        selector:@selector(restart:)];
+        CCMenu *PauseButton = [CCMenu menuWithItems: Pause, Restart, nil];
         //Pause.tag = level;
         Pause.scaleX = 0.7;
         Pause.scaleY = 0.7;
+        
+        Restart.scaleX = 0.7;
+        Restart.scaleY = 0.7;
         if (IsIphone5)
         {
-        PauseButton.position = ccp(483, 292);
+        //PauseButton.position = ccp(483, 292);
         }
         else{
         
         }
-        //Pause.position = ccp(460, 295);
+        PauseButton.position = CGPointZero;
+        Pause.position = ccp(460, 295);
+        Restart.position = ccp(500, 295);
         [self schedule:@selector(tick:) interval:1.0f/60.0f];
         [self addChild:PauseButton z:7];
         
@@ -741,6 +750,28 @@ NSMutableDictionary *levelDict;
     [[CCDirector sharedDirector] pushScene: (CCScene*)[PauseScene sceneWithLevel: currentLevel]];
 }
 
+-(void) restart: (CCMenuItem *) sender{
+    //int level = sender.tag;
+    //[[CCDirector sharedDirector] pushScene:[PauseScene node]];
+    //NSLog(@"LEVELLLL %d", level);
+    //[[CCDirector sharedDirector] pushScene: (CCScene*)[PauseScene sceneWithLevel: currentLevel]];
+    [[CCDirector sharedDirector] replaceScene: (CCScene*)[PhysicsLayer sceneWithLevel:currentLevel]];
+    //unschedule selectors to get dealloc to fire off
+    [self unscheduleAllSelectors];
+    //remove all textures to free up additional memory. Textures get retained even if the sprite gets released and it doesn't show as a leak. This was my big memory saver
+    [[CCTextureCache sharedTextureCache] removeAllTextures];
+    [super onExit];
+}
+
+-(void) autoRestart {
+    [[CCDirector sharedDirector] replaceScene: (CCScene*)[PhysicsLayer sceneWithLevel:currentLevel]];
+    //unschedule selectors to get dealloc to fire off
+    [self unscheduleAllSelectors];
+    //remove all textures to free up additional memory. Textures get retained even if the sprite gets released and it doesn't show as a leak. This was my big memory saver
+    [[CCTextureCache sharedTextureCache] removeAllTextures];
+    [super onExit];
+}
+
 -(BOOL) checkLevelCompleted {
     //NSLog(@"CHECKING IF LEVEL IS COMPLETED");
     
@@ -825,10 +856,11 @@ NSMutableDictionary *levelDict;
 
                 if (sprite.position.x <= 0){
                     toDestroy.push_back(b);
-                    if (bulletCounter == 0){
+                    //if (bulletCounter == 0){
                         NSLog(@"YOU LOST!!!!, %f\n", sprite.position.x);
-                        [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
-                    }
+                        //[[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
+                        [self autoRestart];
+                    //}
                 }
             // if ball is going too fast, turn on damping
             //we should do this!!
@@ -1439,12 +1471,13 @@ int counter = 1;
 //    [self removeChild:myTut cleanup: YES];
 //
 //}
--(void) onExit {
+
+/*-(void) onExit {
     //unschedule selectors to get dealloc to fire off
     [self unscheduleAllSelectors];
     //remove all textures to free up additional memory. Textures get retained even if the sprite gets released and it doesn't show as a leak. This was my big memory saver
     [[CCTextureCache sharedTextureCache] removeAllTextures];
     [super onExit];
-}
+}*/
 
 @end
