@@ -315,13 +315,21 @@ NSMutableDictionary *levelDict;
         
         // pause menu
         
-        CCMenuItem *Pause = [CCMenuItemImage itemWithNormalImage:@"pause.png"
-                                                   selectedImage: @"pause.png"
+        CCMenuItem *Pause = [CCMenuItemImage itemWithNormalImage:@"pauseButton2.png"
+                                                   selectedImage: @"pauseButton2.png"
                                                           target:self
                                                         selector:@selector(pause:)];
         CCMenu *PauseButton = [CCMenu menuWithItems: Pause, nil];
         //Pause.tag = level;
-        PauseButton.position = ccp(460, 295);
+        Pause.scaleX = 0.7;
+        Pause.scaleY = 0.7;
+        if (IsIphone5)
+        {
+        PauseButton.position = ccp(483, 292);
+        }
+        else{
+        
+        }
         //Pause.position = ccp(460, 295);
         [self schedule:@selector(tick:) interval:1.0f/60.0f];
         [self addChild:PauseButton z:7];
@@ -573,7 +581,7 @@ NSMutableDictionary *levelDict;
     //NSLog(@"Update Lives is being called!!!\n");
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     CCLabelTTF *levelLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:18.0];
-    levelLabel.position = ccp(levelLabel.contentSize.width +10, 295);
+    levelLabel.position = ccp(levelLabel.contentSize.width +250, 290);
 
     [self addChild: levelLabel z:10];
     levelLabel.string = [NSString stringWithFormat:@"Level: %d", currentLevel];
