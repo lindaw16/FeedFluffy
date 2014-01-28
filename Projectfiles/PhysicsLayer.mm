@@ -48,7 +48,7 @@ const int TILESIZE = 32;
 const int TILESET_COLUMNS = 9;
 const int TILESET_ROWS = 19;
 const int cageLeft = 30;
-const int cageBottom = 60;
+const int cageBottom = 260;
 int bulletCounter;
 int gold;
 int silver;
@@ -215,10 +215,13 @@ NSMutableDictionary *levelDict;
         
 //        groundBox.Set(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
 //        _groundBody->CreateFixture(&groundBoxDef);
-//        
+//
         //adding this back in case we need it later
         //groundBox.Set(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
         //_groundBody->CreateFixture(&groundBoxDef);
+        
+        groundBox.Set(b2Vec2(0, 0), b2Vec2(winSize.width/PTM_RATIO, 0));
+        _groundBody->CreateFixture(&groundBoxDef);
         
         
         groundBox.Set(b2Vec2(0, winSize.height/PTM_RATIO), b2Vec2(winSize.width/PTM_RATIO, winSize.height/PTM_RATIO));
@@ -239,7 +242,7 @@ NSMutableDictionary *levelDict;
     
         
         cannonHead = [CCSprite spriteWithFile:@"cannon-head-cropped.png"];
-        cannonHead.position = ccp(_player.position.x + 15, _player.position.y - 0.5);
+        cannonHead.position = ccp(_player.position.x + 20, _player.position.y - 0.5);
         [self addChild:cannonHead z:1];
         
 //        CCSprite *cage = [CCSprite spriteWithFile: @"cage.png"];
@@ -1219,7 +1222,7 @@ int counter = 1;
                     else {
                         if (bulletCounter <=0)
                         {
-                            NSLog(@"LAST BULLET - DISAPPEARED!\n");
+                            //NSLog(@"LAST BULLET - DISAPPEARED!\n");
                             [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
                         }
                     }

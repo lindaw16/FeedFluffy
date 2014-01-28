@@ -15,7 +15,7 @@ CCMenuItemImage * left;
 CCMenuItemImage * right;
 float priorX = 1000;
 float priorY = 1000;
-
+//CGSize winSize;
 
 
 @implementation LevelSelectLayer
@@ -23,7 +23,7 @@ float priorY = 1000;
 
 -(id) init {
     if((self = [super init])) {
-        CGSize winSize = [CCDirector sharedDirector].winSize;
+        //CGSize winSize = [CCDirector sharedDirector].winSize;
         
         [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_RGB565];
         background = [CCSprite spriteWithFile:@"levelSelectBackground.png"];
@@ -49,6 +49,9 @@ float priorY = 1000;
         right.position = ccp(440, 30);
         [self addChild:left];
         [self addChild:right];
+        
+        
+        //NSLog(@"asdfsadf %d, %d", winSize.height, winSize.width);
         
     }
     self.touchEnabled = YES;
