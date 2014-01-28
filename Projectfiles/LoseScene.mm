@@ -10,6 +10,7 @@
 #import "PhysicsLayer.h"
 #import "StartMenuLayer.h"
 #import "LevelSelectLayer.h"
+#import "EasyLevelLayer.h"
 
 @implementation LoseScene
 
@@ -96,7 +97,7 @@
     //[[CCDirector sharedDirector] popScene];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade
                                                transitionWithDuration:1
-                                               scene:[LevelSelectLayer node]]
+                                               scene:[EasyLevelLayer node]]
      ];
 }
 

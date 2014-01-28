@@ -106,6 +106,10 @@ float priorY = 1000;
     oldTouchLocation = [self convertToNodeSpace:oldTouchLocation];
     
     CGPoint translation = ccpSub(touchLocation, oldTouchLocation);
+    if (translation.x > 1.0)
+    {
+        
+    }
     [self panForTranslation:translation];
 }
 
