@@ -36,10 +36,16 @@
         bg.anchorPoint = CGPointZero;
         [self addChild:bg];
 
-        CCLabelTTF *label = [CCLabelTTF labelWithString:@"Paused"
+        CCLabelTTF *label = [CCLabelTTF labelWithString:@"Paused!"
                                                fontName:@"Marker Felt"
                                                fontSize:30];
+       
+        if (IsIphone5){
+            label.position = ccp(284, 250);
+        }
+        else{
         label.position = ccp(240,250);
+        }
         [self addChild: label];
         [CCMenuItemFont setFontName:@"Courier New"];
         [CCMenuItemFont setFontSize:20];
@@ -64,12 +70,22 @@
                                                            selector:@selector(GoToMainMenu:)];
         
         CCMenu *menu= [CCMenu menuWithItems: resume, restart, level, quit, nil];
-        menu.position = CGPointZero;
-        resume.position = ccp(200, 160);
-        restart.position = ccp(320, 160);
-        level.position = ccp(200, 100);
-        quit.position = ccp(320,100);
         
+        if (IsIphone5)
+        {
+        menu.position = CGPointZero;
+        resume.position = ccp(225, 160);
+        restart.position = ccp(345, 160);
+        level.position = ccp(225, 100);
+        quit.position = ccp(345,100);
+        }
+        else {
+            menu.position = CGPointZero;
+            resume.position = ccp(185, 160);
+            restart.position = ccp(305, 160);
+            level.position = ccp(185, 100);
+            quit.position = ccp(305,100);
+        }
         //[menu alignItemsVerticallyWithPadding:12.5f];
         
         [self addChild:menu];
