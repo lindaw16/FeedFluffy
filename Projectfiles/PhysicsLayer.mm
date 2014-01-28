@@ -1065,7 +1065,7 @@ int counter = 1;
         if (CGRectContainsPoint(_player.boundingBox, pos))
         {
             //make sure the cannon does not move offscreen
-            if (pos.y < 280 && pos.y > cageBottom + 20)
+            if (pos.y < 238 && pos.y > 20)
             {
                 //NSLog(@"CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
                 
@@ -1078,7 +1078,7 @@ int counter = 1;
         }
         
         
-        if (pos.x>=cageLeft+5 and pos.x <=80 )
+        if (pos.x>=cageLeft+5 && pos.x <=80 && pos.y > 20 && pos.y < 238)
         {
 
             
