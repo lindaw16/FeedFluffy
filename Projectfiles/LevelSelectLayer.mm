@@ -34,8 +34,10 @@ float priorY = 1000;
         movableSprites = [[NSMutableArray alloc] init];
         NSArray *images = [NSArray arrayWithObjects:@"easyCage.png", @"easyCage.png", @"easyCage.png", nil];
         for(int i = 0; i < images.count; ++i) {
+            
             NSString *image = [images objectAtIndex:i];
             CCSprite *sprite = [CCSprite spriteWithFile:image];
+            sprite.scaleY = 0.7;
             float offsetFraction = ((float)(i+1))/(images.count+1);
             sprite.position = ccp(170+gap, 170);
             [self addChild:sprite];
