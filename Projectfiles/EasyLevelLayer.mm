@@ -153,6 +153,7 @@ CCSprite *level;
     {
         //numRow = numLevels / numCol + 1;
         
+        CGSize winSize = [CCDirector sharedDirector].winSize;
         
         CCSprite *bg = [CCSprite spriteWithFile:@"bg.png"];
         
