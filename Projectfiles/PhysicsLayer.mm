@@ -1373,7 +1373,7 @@ int counter = 1;
     int x = cageLeft;
     int y = 0;
     //why can't I use winSize here?
-    ccDrawSolidRect( ccp(x, y), ccp(x + 10, y+ 350) , buttonColor);
+    ccDrawSolidRect( ccp(x, y), ccp(x + 10, y+ 260) , buttonColor);
     
     int barx = 0;
     int bary = cageBottom;
