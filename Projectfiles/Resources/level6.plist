@@ -8,7 +8,7 @@
 			<key>x</key>
 			<integer>150</integer>
 			<key>y</key>
-			<integer>80</integer>
+			<integer>20</integer>
 			<key>speed</key>
 			<integer>0</integer>
 			<key>spriteName</key>
@@ -41,7 +41,7 @@
 			<key>x</key>
 			<integer>230</integer>
 			<key>y</key>
-			<integer>190</integer>
+			<integer>130</integer>
 			<key>spriteName</key>
 			<string>apple</string>
 		</dict>

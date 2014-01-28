@@ -30,7 +30,7 @@
 			<key>x</key>
 			<integer>120</integer>
 			<key>y</key>
-			<integer>230</integer>
+			<integer>170</integer>
 			<key>spriteName</key>
 			<string>pear</string>
 		</dict>
@@ -38,7 +38,7 @@
 			<key>x</key>
 			<integer>230</integer>
 			<key>y</key>
-			<integer>120</integer>
+			<integer>90</integer>
 			<key>spriteName</key>
 			<string>orange</string>
 		</dict>
