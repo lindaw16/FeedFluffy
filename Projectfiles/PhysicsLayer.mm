@@ -128,8 +128,13 @@ NSMutableDictionary *levelDict;
     
     CCSprite * thesnores = [CCSprite spriteWithSpriteFrameName:@"snore1.png"];
     thesnores.anchorPoint = CGPointZero;
-    thesnores.position = CGPointMake(380.0f, 120.0f);
+    thesnores.position = CGPointMake(450.0f, 120.0f);
     
+    CCSprite *sleepingFluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
+    sleepingFluffy.position = ccp(510, 135);
+    sleepingFluffy.scaleX = 0.5;
+    sleepingFluffy.scaleY = 0.5;
+    [self addChild:sleepingFluffy];
     //Create an animation from the set of frames
     
     //CCAnimation *wagging = [CCAnimation animationWithFrames: waggingFrames delay:0.1f];
