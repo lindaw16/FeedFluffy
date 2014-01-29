@@ -25,6 +25,7 @@
 #import "LoseScene.h"
 #import "Squirrel.h"
 #import "Bomb.h"
+#import "SimpleAudioEngine.h"
 //#import "cocos2d.m"
 
 
@@ -157,6 +158,9 @@ NSMutableDictionary *levelDict;
         HUDLayer *hud;
 
         _hud = hud;
+        
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"onemorenight.mp3"];
+        
         
         NSLog(@"DISPLAYING STARSSSSS\n");
         angleInDegrees = 0;

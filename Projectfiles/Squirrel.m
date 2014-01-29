@@ -18,4 +18,9 @@
     return self;
 }
 
++(void) runSquirrel
+{
+
+}
+
 @end

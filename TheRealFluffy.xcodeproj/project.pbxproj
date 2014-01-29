@@ -176,6 +176,7 @@
 		BF4E960F188A367E0000B4FE /* dialog3.png in Resources */ = {isa = PBXBuildFile; fileRef = BF4E960D188A367E0000B4FE /* dialog3.png */; };
 		BF63D6EC1884ADF600F3D3F3 /* menuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */; };
 		BF63D6EE1884AFAC00F3D3F3 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = BF63D6ED1884AFAC00F3D3F3 /* play.png */; };
+		BF7B4B311898C5E000DF2A48 /* onemorenight.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B301898C5E000DF2A48 /* onemorenight.mp3 */; };
 		BFB4259718862C92002DD826 /* LevelSelectLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB4259618862C92002DD826 /* LevelSelectLayer.mm */; };
 		BFB4259918862CF2002DD826 /* gameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB4259818862CF2002DD826 /* gameBackground.png */; };
 		BFB4259B18862CFA002DD826 /* tutorials.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB4259A18862CFA002DD826 /* tutorials.png */; };
@@ -431,6 +432,7 @@
 		BF4E960D188A367E0000B4FE /* dialog3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialog3.png; sourceTree = "<group>"; };
 		BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackground.png; sourceTree = "<group>"; };
 		BF63D6ED1884AFAC00F3D3F3 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		BF7B4B301898C5E000DF2A48 /* onemorenight.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onemorenight.mp3; sourceTree = "<group>"; };
 		BFB4259518862C92002DD826 /* LevelSelectLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSelectLayer.h; sourceTree = "<group>"; };
 		BFB4259618862C92002DD826 /* LevelSelectLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LevelSelectLayer.mm; sourceTree = "<group>"; };
 		BFB4259818862CF2002DD826 /* gameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground.png; sourceTree = "<group>"; };
@@ -771,6 +773,7 @@
 				914BE9D91889BC9F0085E989 /* EasyLevelLayer.h */,
 				914BE9DA1889BC9F0085E989 /* EasyLevelLayer.mm */,
 				91A4007B189877BA0043B996 /* MediumLevelLayer.h */,
+				AB9EC46118947B580030B830 /* LoseScene.h */,
 				91A4007C189877BA0043B996 /* MediumLevelLayer.mm */,
 				BFB4259F18862DDE002DD826 /* StartMenuLayer.h */,
 				BFB425A018862DDE002DD826 /* StartMenuLayer.mm */,
@@ -786,7 +789,6 @@
 				AB7821C5188A5515008F51B8 /* PauseScene.mm */,
 				ABA18ADC18903B3800B05B35 /* NextLevelScene.h */,
 				ABA18ADD18903B3800B05B35 /* NextLevelScene.mm */,
-				AB9EC46118947B580030B830 /* LoseScene.h */,
 				AB9EC46218947B580030B830 /* LoseScene.mm */,
 				BFB425A218865A9C002DD826 /* OopsDNE.h */,
 				BFB425A318865A9C002DD826 /* OopsDNE.mm */,
@@ -816,6 +818,7 @@
 			isa = PBXGroup;
 			children = (
 				ABA0B9F01898C08300043D1C /* menu_background_music.mp3 */,
+				BF7B4B301898C5E000DF2A48 /* onemorenight.mp3 */,
 				91A4008C18989C390043B996 /* bomb-hd.png */,
 				91A4008A18989C2B0043B996 /* bomb.png */,
 				91A40088189893940043B996 /* alterLaunchButton.png */,
@@ -1150,6 +1153,7 @@
 				AB9EC448189474C20030B830 /* level_select.png in Resources */,
 				BF4E9607188A1FD10000B4FE /* cannonx.png in Resources */,
 				BF4E960B188A26F30000B4FE /* dialog2.png in Resources */,
+				BF7B4B311898C5E000DF2A48 /* onemorenight.mp3 in Resources */,
 				911975BA1888618F0070C1AE /* ButtonStar.png in Resources */,
 				BF12C28518930AD300478BCB /* fluffysprites.plist in Resources */,
 				91A4008B18989C2B0043B996 /* bomb.png in Resources */,
