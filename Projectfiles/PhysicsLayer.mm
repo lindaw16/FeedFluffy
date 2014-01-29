@@ -835,22 +835,11 @@ NSMutableDictionary *levelDict;
     
     NSLog(@"After Game before calculation: best stars is %d and last star was %d", [[levelDict objectForKey:@"best_stars"] intValue],[[levelDict objectForKey:@"last_stars"] intValue]);
     
-    
+    // random score formula, will probably change later
+    int score = 1000 * numFruitCollected + (60 - seconds)*10;
+    NSLog(@"Score: %d", score);
     int stars;
-    /*if (ballsUsed < bestBalls){
-        [levelDict setObject:[NSNumber numberWithInt:ballsUsed] forKey:@"best_balls"];
-        int bestBalls = [[levelDict objectForKey:@"best_balls"] intValue];
-        NSLog(@"best_balls: %d", bestBalls);
-    }
-    if (ballsUsed <= gold){
-        stars = 3;
-    }
-    else if (ballsUsed <= silver){
-        stars = 2;
-    }
-    else {
-        stars = 1;
-    }*/
+
     [levelDict setObject:[NSNumber numberWithInt:seconds] forKey:@"last_time"];
     if (seconds < bestTime){
         [levelDict setObject:[NSNumber numberWithInt:seconds] forKey:@"best_time"];
