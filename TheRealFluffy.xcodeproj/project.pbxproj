@@ -37,6 +37,7 @@
 		91A400921898A1B20043B996 /* explosion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91A400911898A1B20043B996 /* explosion.plist */; };
 		91A400941898C5770043B996 /* gameBackground2.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A400931898C5770043B996 /* gameBackground2.png */; };
 		91A4009618998AAB0043B996 /* restartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A4009518998AAB0043B996 /* restartButton.png */; };
+		91A4009A1899AB640043B996 /* firebutton2.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A400991899AB640043B996 /* firebutton2.png */; };
 		AB23A836189317A500127A5D /* level_select-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB23A834189317A500127A5D /* level_select-hd.png */; };
 		AB23A837189317A500127A5D /* level_select2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB23A835189317A500127A5D /* level_select2-hd.png */; };
 		AB23A83A189317E900127A5D /* main_menu-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB23A838189317E900127A5D /* main_menu-hd.png */; };
@@ -289,6 +290,7 @@
 		91A400911898A1B20043B996 /* explosion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = explosion.plist; path = Resources/explosion.plist; sourceTree = "<group>"; };
 		91A400931898C5770043B996 /* gameBackground2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground2.png; sourceTree = "<group>"; };
 		91A4009518998AAB0043B996 /* restartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restartButton.png; sourceTree = "<group>"; };
+		91A400991899AB640043B996 /* firebutton2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = firebutton2.png; sourceTree = "<group>"; };
 		AB23A834189317A500127A5D /* level_select-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_select-hd.png"; sourceTree = "<group>"; };
 		AB23A835189317A500127A5D /* level_select2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_select2-hd.png"; sourceTree = "<group>"; };
 		AB23A838189317E900127A5D /* main_menu-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu-hd.png"; sourceTree = "<group>"; };
@@ -825,6 +827,7 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				91A400991899AB640043B996 /* firebutton2.png */,
 				91A4009518998AAB0043B996 /* restartButton.png */,
 				BF7B4B321898D58200DF2A48 /* squirrelUp.plist */,
 				BF7B4B331898D58200DF2A48 /* squirrelUp.png */,
@@ -1030,6 +1033,7 @@
 				91A4008318987AC70043B996 /* mediumCage.png in Resources */,
 				91A40089189893940043B996 /* alterLaunchButton.png in Resources */,
 				AB9F7F051890C3870032BCBD /* launch_button.png in Resources */,
+				91A4009A1899AB640043B996 /* firebutton2.png in Resources */,
 				BF22E3D5188472C9007E26DF /* hungryEevee.png in Resources */,
 				AB300ABE18939B560055A914 /* cannon-head-cropped-hd.png in Resources */,
 				AB9C90FB1892FBCA00C1A96E /* silver_star-hd.png in Resources */,
@@ -1318,9 +1322,9 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CLANG_ENABLE_OBJC_ARC[arch=*]" = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Linda Wang (98H3U2N8C4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Linda Wang (98H3U2N8C4)";
-				PROVISIONING_PROFILE = "E73C399C-EC7D-4F98-B6A6-DAF6FB1FB4A1";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1329,9 +1333,9 @@
 			baseConfigurationReference = DCFA90F013B4F811009DD35A /* BuildSettings-Release-iOS.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Linda Wang (98H3U2N8C4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Linda Wang (98H3U2N8C4)";
-				PROVISIONING_PROFILE = "E73C399C-EC7D-4F98-B6A6-DAF6FB1FB4A1";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

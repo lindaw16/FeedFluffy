@@ -300,11 +300,12 @@ NSMutableDictionary *levelDict;
         
         // Standard method to create a button
         CCMenuItem *starMenuItem = [CCMenuItemImage
-                                    itemWithNormalImage:@"alterLaunchButton.png" selectedImage:@"alterLaunchButton.png"
+                                    itemWithNormalImage:@"firebutton2.png" selectedImage:@"firebutton2.png"
                                     target:self selector:@selector(starButtonTapped:)];
-        starMenuItem.position = ccp(starMenuItem.contentSize.width/PTM_RATIO/2+35, winSize.height - starMenuItem.contentSize.height/PTM_RATIO/ 2 - 30 );
-        starMenuItem.scaleX = 0.35;
-        starMenuItem.scaleY = 0.35;
+        starMenuItem.position = ccp(starMenuItem.contentSize.width/PTM_RATIO/2+35, winSize.height - starMenuItem.contentSize.height/PTM_RATIO/ 2 - 26 );
+        starMenuItem.scaleX = 0.65;
+        starMenuItem.scaleY = 0.65;
+                
         //starMenuItem.position = ccp(50,30);
         CCMenu *starMenu = [CCMenu menuWithItems:starMenuItem, nil];
         starMenu.position = CGPointZero;
@@ -1258,7 +1259,7 @@ int counter = 1;
         
         if (pos.x>=cageLeft+5 && pos.x <=80 && pos.y > 20 && pos.y < 238)
         {
-
+            //CGRect tempBoundingBox = CGRectInset(cannonHead.boundingBox, cannonHead.boundingBox.wi / 0.8, ball.boundingBox.height / 0.8);
             if (CGRectContainsPoint(cannonHead.boundingBox, pos)){
             NSLog(@"CANNON ROTATED??>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
                 NSLog(@"Cannon Counter!!! %d", cannonCounter);

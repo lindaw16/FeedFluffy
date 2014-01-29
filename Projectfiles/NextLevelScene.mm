@@ -119,10 +119,16 @@
         CCSprite *rank;
         if (stars == 3){
             rank = [CCSprite spriteWithFile:@"gold_star_big.png"];
+            [rank setScaleX:0.8];
+            [rank setScaleY:0.8];
 
         }
         else if (stars == 2){
             rank = [CCSprite spriteWithFile:@"silver_star_big.png"];
+         
+            [rank setScaleX:0.5];
+            [rank setScaleY:0.5];
+
         }
         else if (stars == 1){
             rank = [CCSprite spriteWithFile:@"bronze_star.png"];
@@ -136,9 +142,7 @@
         rank.position = ccp(240, 210);
         }
         
-        [rank setScaleX:0.8];
-        [rank setScaleY:0.8];
-        [self addChild: rank z:3];
+                [self addChild: rank z:3];
 
 
     }
