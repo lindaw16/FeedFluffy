@@ -10,4 +10,7 @@
 
 @interface Squirrel : CCSprite
 -(id) initWithSquirrel: (NSString *) squirrel;
++(void) squirrelUp;
++(void) squirrelDown;
+
 @end

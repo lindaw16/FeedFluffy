@@ -18,9 +18,15 @@
     return self;
 }
 
-+(void) runSquirrel
++(void) squirrelUp
 {
+    NSLog(@"it's GOING UP!");
+    
+}
 
++(void) squirrelDown
+{
+    NSLog(@"it's GOING DOWN!");
 }
 
 @end

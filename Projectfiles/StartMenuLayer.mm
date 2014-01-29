@@ -65,7 +65,7 @@ CCSprite * fluffy;
     
     CCSprite *orange = [CCSprite spriteWithFile:@"orange.png"];
     CCSprite *strawberry = [CCSprite spriteWithFile:@"strawberry.png"];
-CCSprite *apple = [CCSprite spriteWithFile:@"apple.png"];
+    CCSprite *apple = [CCSprite spriteWithFile:@"apple.png"];
     CCSprite *pear = [CCSprite spriteWithFile:@"pear.png"];
     CCSprite *lemon2 = [CCSprite spriteWithFile:@"lemon.png"];
     
@@ -168,7 +168,7 @@ CCSprite *apple = [CCSprite spriteWithFile:@"apple.png"];
 //        [self addChild: label z:3];
 //        [self addChild: label2 z:3];
         
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"menu_background_music.mp3"];
+        //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"menu_background_music.mp3"];
         
         CCSprite * squirrel = [CCSprite spriteWithFile:@"rightsquirrel.png"];
         squirrel.anchorPoint = CGPointZero;
