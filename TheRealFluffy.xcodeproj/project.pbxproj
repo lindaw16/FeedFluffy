@@ -36,6 +36,7 @@
 		91A4009018989DEE0043B996 /* Bomb.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91A4008F18989DEE0043B996 /* Bomb.mm */; };
 		91A400921898A1B20043B996 /* explosion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91A400911898A1B20043B996 /* explosion.plist */; };
 		91A400941898C5770043B996 /* gameBackground2.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A400931898C5770043B996 /* gameBackground2.png */; };
+		91A4009618998AAB0043B996 /* restartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A4009518998AAB0043B996 /* restartButton.png */; };
 		AB23A836189317A500127A5D /* level_select-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB23A834189317A500127A5D /* level_select-hd.png */; };
 		AB23A837189317A500127A5D /* level_select2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB23A835189317A500127A5D /* level_select2-hd.png */; };
 		AB23A83A189317E900127A5D /* main_menu-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB23A838189317E900127A5D /* main_menu-hd.png */; };
@@ -287,6 +288,7 @@
 		91A4008F18989DEE0043B996 /* Bomb.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Bomb.mm; sourceTree = "<group>"; };
 		91A400911898A1B20043B996 /* explosion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = explosion.plist; path = Resources/explosion.plist; sourceTree = "<group>"; };
 		91A400931898C5770043B996 /* gameBackground2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground2.png; sourceTree = "<group>"; };
+		91A4009518998AAB0043B996 /* restartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restartButton.png; sourceTree = "<group>"; };
 		AB23A834189317A500127A5D /* level_select-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_select-hd.png"; sourceTree = "<group>"; };
 		AB23A835189317A500127A5D /* level_select2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_select2-hd.png"; sourceTree = "<group>"; };
 		AB23A838189317E900127A5D /* main_menu-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu-hd.png"; sourceTree = "<group>"; };
@@ -823,6 +825,7 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				91A4009518998AAB0043B996 /* restartButton.png */,
 				BF7B4B321898D58200DF2A48 /* squirrelUp.plist */,
 				BF7B4B331898D58200DF2A48 /* squirrelUp.png */,
 				91A400931898C5770043B996 /* gameBackground2.png */,
@@ -1154,6 +1157,7 @@
 				BF12C276189229DF00478BCB /* mediumLevel.png in Resources */,
 				AB9EC4561894767E0030B830 /* restart.png in Resources */,
 				ABA0B9F11898C08300043D1C /* menu_background_music.mp3 in Resources */,
+				91A4009618998AAB0043B996 /* restartButton.png in Resources */,
 				ABB719F01887568D004D2FCA /* watermelon-hd.png in Resources */,
 				ABB719E51887566E004D2FCA /* grapes.png in Resources */,
 				AB9C91051893085B00C1A96E /* apple-hd.png in Resources */,
