@@ -24,6 +24,7 @@
 #import "StartMenuLayer.h"
 #import "LoseScene.h"
 #import "Squirrel.h"
+#import "Bomb.h"
 //#import "cocos2d.m"
 
 
@@ -518,6 +519,49 @@ NSMutableDictionary *levelDict;
             }
         }
 
+//        if ([level objectForKey:@"Bomb"]){
+//            NSArray *bombs= [level objectForKey:@"Bomb"];
+//            for (NSDictionary *bomb in bombs){
+//                NSString *sName = [bomb objectForKey:@"spriteName"];
+//                CCParticleSystemQuad* bombPic = [CCParticleSystemQuad particleWithFile:@"bomb.png"];
+//                [self addChild:bombPic z:1 tag:1];
+//                CCParticleSystem* particle_system = [CCParticleSystem particleWithFile:@"explosion.plist"];
+//                //Bomb *obstacle2 = [[Bomb alloc] initWithFile:: sName];
+//                NSNumber *x = [bomb objectForKey:@"x"];
+//                NSNumber *y = [bomb objectForKey:@"y"];
+//                bombPic.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
+//                bombPic.tag = 4;
+//                
+//                [self addChild:bombPic z:1];
+//                
+//                // Create block body
+//                b2BodyDef obstacleBodyDef;
+//                obstacleBodyDef.type = b2_staticBody;
+//                obstacleBodyDef.position.Set([x floatValue]*scaleX/PTM_RATIO, [y floatValue]*scaleY/PTM_RATIO);
+//                obstacleBodyDef.userData = (__bridge void*)bombPic;
+//                b2Body *obstacleBody = world->CreateBody(&obstacleBodyDef);
+//                
+//                // Create block shape
+//                b2PolygonShape obstacleShape;
+//                obstacleShape.SetAsBox(bombPic.contentSize.width/PTM_RATIO/2,
+//                                       bombPic.contentSize.height/PTM_RATIO/2);
+//                
+//                // Create shape definition and add to body
+//                b2FixtureDef obstacleShapeDef;
+//                obstacleShapeDef.shape = &obstacleShape;
+//                obstacleShapeDef.density = 10.0;
+//                obstacleShapeDef.friction = 0.0;
+//                obstacleShapeDef.restitution = 0.1f;
+//                obstacleShapeDef.isSensor = false;
+//                obstacleBody->CreateFixture(&obstacleShapeDef);
+//            }
+//        }
+//
+//        
+        
+        
+        
+        
         NSArray *fruits = [level objectForKey:@"Fruits"];
         
         for (NSDictionary *fruit in fruits){

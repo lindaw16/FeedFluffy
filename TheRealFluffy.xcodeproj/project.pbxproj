@@ -31,6 +31,10 @@
 		91A4008318987AC70043B996 /* mediumCage.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A4008018987AC70043B996 /* mediumCage.png */; };
 		91A4008518987AD60043B996 /* mediumCage-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A4008418987AD50043B996 /* mediumCage-hd.png */; };
 		91A40089189893940043B996 /* alterLaunchButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A40088189893940043B996 /* alterLaunchButton.png */; };
+		91A4008B18989C2B0043B996 /* bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A4008A18989C2B0043B996 /* bomb.png */; };
+		91A4008D18989C390043B996 /* bomb-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A4008C18989C390043B996 /* bomb-hd.png */; };
+		91A4009018989DEE0043B996 /* Bomb.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91A4008F18989DEE0043B996 /* Bomb.mm */; };
+		91A400921898A1B20043B996 /* explosion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91A400911898A1B20043B996 /* explosion.plist */; };
 		AB23A836189317A500127A5D /* level_select-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB23A834189317A500127A5D /* level_select-hd.png */; };
 		AB23A837189317A500127A5D /* level_select2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB23A835189317A500127A5D /* level_select2-hd.png */; };
 		AB23A83A189317E900127A5D /* main_menu-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB23A838189317E900127A5D /* main_menu-hd.png */; };
@@ -272,6 +276,11 @@
 		91A4008018987AC70043B996 /* mediumCage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mediumCage.png; sourceTree = "<group>"; };
 		91A4008418987AD50043B996 /* mediumCage-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mediumCage-hd.png"; sourceTree = "<group>"; };
 		91A40088189893940043B996 /* alterLaunchButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alterLaunchButton.png; sourceTree = "<group>"; };
+		91A4008A18989C2B0043B996 /* bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bomb.png; sourceTree = "<group>"; };
+		91A4008C18989C390043B996 /* bomb-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bomb-hd.png"; sourceTree = "<group>"; };
+		91A4008E18989DEE0043B996 /* Bomb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bomb.h; sourceTree = "<group>"; };
+		91A4008F18989DEE0043B996 /* Bomb.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Bomb.mm; sourceTree = "<group>"; };
+		91A400911898A1B20043B996 /* explosion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = explosion.plist; path = Resources/explosion.plist; sourceTree = "<group>"; };
 		AB23A834189317A500127A5D /* level_select-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_select-hd.png"; sourceTree = "<group>"; };
 		AB23A835189317A500127A5D /* level_select2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_select2-hd.png"; sourceTree = "<group>"; };
 		AB23A838189317E900127A5D /* main_menu-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu-hd.png"; sourceTree = "<group>"; };
@@ -752,6 +761,9 @@
 		DCC1A38C13A94F1A005BD75D /* Projectfiles */ = {
 			isa = PBXGroup;
 			children = (
+				91A400911898A1B20043B996 /* explosion.plist */,
+				91A4008E18989DEE0043B996 /* Bomb.h */,
+				91A4008F18989DEE0043B996 /* Bomb.mm */,
 				ABA136071894BBCE008D4DCE /* Squirrel.h */,
 				ABA136081894BBCE008D4DCE /* Squirrel.m */,
 				914BE9D91889BC9F0085E989 /* EasyLevelLayer.h */,
@@ -801,6 +813,8 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				91A4008C18989C390043B996 /* bomb-hd.png */,
+				91A4008A18989C2B0043B996 /* bomb.png */,
 				91A40088189893940043B996 /* alterLaunchButton.png */,
 				91A4008418987AD50043B996 /* mediumCage-hd.png */,
 				91A4007E18987AC70043B996 /* hardCage-hd.png */,
@@ -1029,6 +1043,7 @@
 				DCC1A10813A94ED5005BD75D /* Icon@2x.png in Resources */,
 				BF12C2A51894949D00478BCB /* goLeft-hd.png in Resources */,
 				AB954FEA1895BB3100E2993F /* rock-hd.png in Resources */,
+				91A400921898A1B20043B996 /* explosion.plist in Resources */,
 				BF12C2781892357800478BCB /* easyCage-hd.png in Resources */,
 				AB3920471892205000E4830D /* gold_star_big.png in Resources */,
 				AB9C91031893085200C1A96E /* apple.png in Resources */,
@@ -1133,8 +1148,10 @@
 				BF4E960B188A26F30000B4FE /* dialog2.png in Resources */,
 				911975BA1888618F0070C1AE /* ButtonStar.png in Resources */,
 				BF12C28518930AD300478BCB /* fluffysprites.plist in Resources */,
+				91A4008B18989C2B0043B996 /* bomb.png in Resources */,
 				BF12C27A18923C5200478BCB /* levelSelectBackground-hd.png in Resources */,
 				AB9C910A18930C0D00C1A96E /* lemon-hd.png in Resources */,
+				91A4008D18989C390043B996 /* bomb-hd.png in Resources */,
 				BF12C2941893270F00478BCB /* leftsquirrel-hd.png in Resources */,
 				91A4008118987AC70043B996 /* hardCage-hd.png in Resources */,
 				AB9EC446189474B90030B830 /* level_select2.png in Resources */,
@@ -1218,6 +1235,7 @@
 				ABB719DA18873FBF004D2FCA /* Obstacle.m in Sources */,
 				DC2A3EC4149A30B400EF78B0 /* Box2DDebugLayer.mm in Sources */,
 				AB9E2D031888D5B600F99EAB /* MyContactListener.mm in Sources */,
+				91A4009018989DEE0043B996 /* Bomb.mm in Sources */,
 				914BE9DB1889BCA00085E989 /* EasyLevelLayer.mm in Sources */,
 				AB9EC46318947B580030B830 /* LoseScene.mm in Sources */,
 			);
