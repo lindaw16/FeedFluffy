@@ -5,24 +5,24 @@
 	<key>Balls</key>
 	<integer>6</integer>
 	<key>Gold</key>
-	<integer>1</integer>
-	<key>Silver</key>
 	<integer>3</integer>
+	<key>Silver</key>
+	<integer>2</integer>
 	<key>Bronze</key>
-	<integer>6</integer>
+	<integer>1</integer>
 	<key>Obstacles</key>
 	<array>
 		<dict>
 			<key>x</key>
-			<integer>100</integer>
+			<integer>340</integer>
 			<key>y</key>
-			<integer>40</integer>
+			<integer>220</integer>
 			<key>spriteName</key>
 			<string>rock</string>
 		</dict>
 		<dict>
 			<key>x</key>
-			<integer>120</integer>
+			<integer>100</integer>
 			<key>y</key>
 			<integer>220</integer>
 			<key>spriteName</key>
@@ -46,7 +46,11 @@
 	</dict>
 	<key>Goal</key>
 	<dict>
-		<key>apple</key>
+		<key>orange</key>
+		<integer>1</integer>
+		<key>pear</key>
+		<integer>1</integer>
+		<key>strawberry</key>
 		<integer>1</integer>
 	</dict>
 	<key>Fruits</key>
@@ -55,9 +59,9 @@
 			<key>x</key>
 			<integer>270</integer>
 			<key>y</key>
-			<integer>140</integer>
+			<integer>130</integer>
 			<key>spriteName</key>
-			<string>apple</string>
+			<string>orange</string>
 		</dict>
 		<dict>
 			<key>x</key>
@@ -65,7 +69,15 @@
 			<key>y</key>
 			<integer>130</integer>
 			<key>spriteName</key>
-			<string>apple</string>
+			<string>pear</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>380</integer>
+			<key>y</key>
+			<integer>160</integer>
+			<key>spriteName</key>
+			<string>strawberry</string>
 		</dict>
 	</array>
 </dict>
