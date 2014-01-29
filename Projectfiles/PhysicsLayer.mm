@@ -307,7 +307,9 @@ NSMutableDictionary *levelDict;
         starMenu.position = CGPointZero;
         [self addChild:starMenu z:2];
         
-        CCSprite *meep = [CCSprite spriteWithFile:@"gameBackground.png"];
+        CCSprite *meep = [CCSprite spriteWithFile:@"gameBackground2.png"];
+        meep.scaleY = 3.5;
+        
         meep.anchorPoint = CGPointZero;
         [self addChild:meep z:-1];
         
@@ -770,7 +772,7 @@ NSMutableDictionary *levelDict;
     float radianAngle = CC_DEGREES_TO_RADIANS(angleInDegrees);
     [_player runAction:[CCSequence actions:[CCCallBlock actionWithBlock:^{[self addChild:_nextProjectile];_nextProjectile = nil;}],nil]];
     //this determines the speed of the ball projectile
-    b2Vec2 force = b2Vec2(3 * cos(radianAngle), 3 * sin(radianAngle));
+    b2Vec2 force = b2Vec2(2 * cos(radianAngle), 2 * sin(radianAngle));
     
     //_body->ApplyLinearImpulse(force, ballBodyDef.position);
     printf("Applying Linear Impulse!");
