@@ -57,6 +57,7 @@ int cannonRadius = 5.0/PTM_RATIO;
 bool ButtonTapped = false;
 int currentLevel;
 int ballsUsed;
+int numFruitCollected;
 
 int cannonCounter = 0;
 CCSprite *ballData;
@@ -161,18 +162,18 @@ NSMutableDictionary *levelDict;
         
         CGSize size = [[CCDirector sharedDirector] winSize];
         
+        numFruitCollected = 0;
         //label.position = ccp(size.width/2, size.height/2);
         
         //[self addChild:	label];
         
         
         ballsUsed = 0;
-        //[self stopAllActions];
-            currentLevel = level;
-            goalProgress = [[NSMutableDictionary alloc] init];
-            [self updateLevel];
+        currentLevel = level;
+        goalProgress = [[NSMutableDictionary alloc] init];
+        [self updateLevel];
         [self displayFoodCollect];
-           // NSLog(@"THE LEVELLLLL IS %d", currentLevel);
+
 
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
         NSString *levelString = [@"level" stringByAppendingFormat:@"%d", currentLevel];
@@ -183,10 +184,7 @@ NSMutableDictionary *levelDict;
         
         
         NSLog(@"Before Game: best stars is %d and last star was %d", [[levelDict objectForKey:@"best_stars"] intValue],[[levelDict objectForKey:@"last_stars"] intValue]);
-        
-        
-        //NSString *levelString =[@"level" stringByAppendingFormat:@"%d", currentLevel];
-        //NSLog(@"LEVEL COMPLETED? %d", [[defaults objectForKey:levelString] intValue]);
+    
 
         
         _MoveableSpriteTouch=FALSE;
@@ -280,10 +278,6 @@ NSMutableDictionary *levelDict;
         }
         
         //Adding the display for the number of projectiles remaingin
-        
-
-        
-        //NSLog(@"Update Lives is being called!!!\n");
         
         //ballCountLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:18.0];
 
@@ -428,7 +422,6 @@ NSMutableDictionary *levelDict;
         // Create block body
         b2BodyDef fluffyBodyDef;
         fluffyBodyDef.type = b2_dynamicBody;
-        //fluffyBodyDef.position.Set([x floatValue] * scaleX/PTM_RATIO, [y floatValue]*scaleY/PTM_RATIO);
         fluffyBodyDef.position.Set(fluffy2.position.x /PTM_RATIO, fluffy2.position.y/PTM_RATIO);
         fluffyBodyDef.userData = (__bridge void*)fluffy2;
         b2Body *fluffyBody = world->CreateBody(&fluffyBodyDef);
@@ -708,8 +701,6 @@ NSMutableDictionary *levelDict;
     _body = world->CreateBody(&ballBodyDef);
     
     b2CircleShape circle;
-    //circle.m_radius = 26.0/PTM_RATIO;
-    //circle.m_radius = 9.0/PTM_RATIO;
     circle.m_radius = 15.0/PTM_RATIO;
     
     b2FixtureDef ballShapeDef;
@@ -744,46 +735,36 @@ NSMutableDictionary *levelDict;
 }
 
 -(void) pause: (CCMenuItem *) sender{
-    //int level = sender.tag;
-    //[[CCDirector sharedDirector] pushScene:[PauseScene node]];
-    //NSLog(@"LEVELLLL %d", level);
     [[CCDirector sharedDirector] pushScene: (CCScene*)[PauseScene sceneWithLevel: currentLevel]];
 }
 
 -(void) restart: (CCMenuItem *) sender{
-    //int level = sender.tag;
-    //[[CCDirector sharedDirector] pushScene:[PauseScene node]];
-    //NSLog(@"LEVELLLL %d", level);
-    //[[CCDirector sharedDirector] pushScene: (CCScene*)[PauseScene sceneWithLevel: currentLevel]];
-    [[CCDirector sharedDirector] replaceScene: (CCScene*)[PhysicsLayer sceneWithLevel:currentLevel]];
+    [[CCDirector sharedDirector] replaceScene: [CCTransitionFade transitionWithDuration:0.5 scene:[PhysicsLayer sceneWithLevel:currentLevel]]];
     //unschedule selectors to get dealloc to fire off
     [self unscheduleAllSelectors];
-    //remove all textures to free up additional memory. Textures get retained even if the sprite gets released and it doesn't show as a leak. This was my big memory saver
     [[CCTextureCache sharedTextureCache] removeAllTextures];
     [super onExit];
 }
 
 -(void) autoRestart {
-    [[CCDirector sharedDirector] replaceScene: (CCScene*)[PhysicsLayer sceneWithLevel:currentLevel]];
-    //unschedule selectors to get dealloc to fire off
+    [[CCDirector sharedDirector] replaceScene: [CCTransitionFade transitionWithDuration:0.5 scene:[PhysicsLayer sceneWithLevel:currentLevel]]];
     [self unscheduleAllSelectors];
-    //remove all textures to free up additional memory. Textures get retained even if the sprite gets released and it doesn't show as a leak. This was my big memory saver
     [[CCTextureCache sharedTextureCache] removeAllTextures];
     [super onExit];
 }
 
 -(BOOL) checkLevelCompleted {
-    //NSLog(@"CHECKING IF LEVEL IS COMPLETED");
-    
 
-    for (NSString *key in goal){
+    /*for (NSString *key in goal){
         int goalValue = [[goal objectForKey:key] intValue];
         int goalProgressValue = [[goalProgress objectForKey:key] intValue];
-        //NSLog(@"BALLS USED: %d", ballsUsed);
-        //NSLog(@"%d", goalValue);
         if (goalProgressValue < goalValue) {
             return NO;
         }
+    }*/
+    
+    if (numFruitCollected == 0){
+        return NO;
     }
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     NSString *levelString = [@"level" stringByAppendingFormat:@"%d", currentLevel];
@@ -803,7 +784,7 @@ NSMutableDictionary *levelDict;
     
     
     int stars;
-    if (ballsUsed < bestBalls){
+    /*if (ballsUsed < bestBalls){
         [levelDict setObject:[NSNumber numberWithInt:ballsUsed] forKey:@"best_balls"];
         int bestBalls = [[levelDict objectForKey:@"best_balls"] intValue];
         NSLog(@"best_balls: %d", bestBalls);
@@ -816,15 +797,20 @@ NSMutableDictionary *levelDict;
     }
     else {
         stars = 1;
+    }*/
+    if (numFruitCollected >= gold){
+        stars = 3;
+    }
+    else if (numFruitCollected >= silver) {
+        stars = 2;
+    }
+    else if (numFruitCollected >= bronze) {
+        stars = 1;
     }
     
     [levelDict setObject:[NSNumber numberWithInt: stars] forKey:@"last_stars"];
     if (stars > bestStars){
-       // NSLog(@"HELLO!!!!!");
         bestStars = stars;
-
-        //int bestStars = [[levelDict objectForKey:@"best_stars"] intValue];
-        //NSLog(@"best_stars: %d", bestStars);
     }
     [levelDict setObject:[NSNumber numberWithInt: bestStars] forKey:@"best_stars"];
     
@@ -849,7 +835,6 @@ NSMutableDictionary *levelDict;
             CCSprite *sprite = (__bridge CCSprite *) b->GetUserData();
             // sprite is a ball
             if (sprite.tag == 1){
-                //ballData = (__bridge CCSprite *)(b->GetUserData());
                 sprite.position = ccp(b->GetPosition().x * PTM_RATIO,
                                     b->GetPosition().y * PTM_RATIO);
                 sprite.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
@@ -857,7 +842,6 @@ NSMutableDictionary *levelDict;
                 if (sprite.position.x <= 0){
                     toDestroy.push_back(b);
                     //if (bulletCounter == 0){
-                        NSLog(@"YOU LOST!!!!, %f\n", sprite.position.x);
                         //[[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
                         [self autoRestart];
                     //}
@@ -866,6 +850,7 @@ NSMutableDictionary *levelDict;
             //we should do this!!
             }
             
+            // sprite is a squirrel, set top boundary
             else if (sprite.tag == 5 && sprite.position.y >= 230){
                 float velocity = b->GetLinearVelocity().y;
                 if (velocity > 0) {
@@ -876,6 +861,7 @@ NSMutableDictionary *levelDict;
 
             }
             
+            // sprite is a squirrel, set bottom boundary
             else if (sprite.tag == 5 && sprite.position.y <= 30){
                 float velocity = b->GetLinearVelocity().y;
                 if (velocity < 0) {
@@ -1201,19 +1187,11 @@ int counter = 1;
 	}
     
     //check contacts
-    //check contacts
     std::vector<b2Body *>toDestroy;
     std::vector<MyContact>::iterator pos2;
     for (pos2=_contactListener->_contacts.begin();
          pos2 != _contactListener->_contacts.end(); ++pos2) {
         MyContact contact = *pos2;
-        
-        /*if ((contact.fixtureA == _bottomFixture && contact.fixtureB == _ballFixture) ||
-         (contact.fixtureA == _ballFixture && contact.fixtureB == _bottomFixture)) {
-         //NSLog(@"Ball hit bottom!");
-         CCScene *gameOverScene = [GameOverLayer sceneWithWon:NO];
-         [[CCDirector sharedDirector] replaceScene:gameOverScene];
-         }*/
         
         b2Body *bodyA = contact.fixtureA->GetBody();
         b2Body *bodyB = contact.fixtureB->GetBody();
@@ -1223,21 +1201,18 @@ int counter = 1;
             
             //Sprite A = ball, Sprite B = fruit
             if (spriteA.tag == 1 && [spriteB isKindOfClass:[Fruit class]]) {
-            //if (spriteA.tag == 1 && spriteB.tag == 2) {
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) == toDestroy.end()) {
                     toDestroy.push_back(bodyB);
                     
                     Fruit *fruit = (Fruit*) spriteB;
                     NSString *fruitName = fruit.fruitName;
-                    //NSLog(fruitName);
+                    numFruitCollected++;
+                    
                     int num = [[goal objectForKey:fruitName] intValue];
-                    //NSLog(@"%d", num);
                     int fruitNum = [[goalProgress objectForKey:fruitName] intValue];
-                    //NSLog(@"%d", fruitNum);
                     fruitNum++;
                     [goalProgress setObject:[NSNumber numberWithInt: fruitNum] forKey:fruitName];
                     int fruitNum2 = [[goalProgress objectForKey:fruitName] intValue];
-                    //NSLog(@"Hit Fruit");
                     [self updateFoodCollect];
                 }
             }
@@ -1248,15 +1223,13 @@ int counter = 1;
                     toDestroy.push_back(bodyA);
                     Fruit *fruit = (Fruit*) spriteA;
                     NSString *fruitName = fruit.fruitName;
-                    //NSLog(fruitName);
+                    numFruitCollected++;
+                    
                     int num = [[goal objectForKey:fruitName] intValue];
-                    //NSLog(@"%d", num);
                     int fruitNum = [[goalProgress objectForKey:fruitName] intValue];
-                   // NSLog(@"%d", fruitNum);
                     fruitNum++;
                     [goalProgress setObject:[NSNumber numberWithInt: fruitNum] forKey:fruitName];
                     int fruitNum2 = [[goalProgress objectForKey:fruitName] intValue];
-                   // NSLog(@"Hit Fruit");
                     [self updateFoodCollect];
                 }
             }
@@ -1276,12 +1249,10 @@ int counter = 1;
                     else {
                         if (bulletCounter <=0)
                         {
-                            //NSLog(@"LAST BULLET - DISAPPEARED!\n");
                             [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
                             cannonCounter = 0;
                         }
                     }
-                    //NSLog(@"Hit Fluffy!");
                 }
 
             }
@@ -1316,11 +1287,8 @@ int counter = 1;
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
                     toDestroy.push_back(bodyB);
                     
-                    //NSLog(@"Hit Fluffy!");
                     levelCompleted = [self checkLevelCompleted];
-                    //NSLog(@"THE CURRENT LEVEL IS: %d", currentLevel);
                     if (levelCompleted){
-                        //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
                         [[CCDirector sharedDirector] replaceScene: (CCScene*)[NextLevelScene sceneWithLevel: currentLevel]];
                         counter = 1;
                         cannonCounter = 0;
@@ -1334,7 +1302,6 @@ int counter = 1;
                             cannonCounter = 0;
                         }
                     }
-                    // NSLog(@"Hit Fluffy!");
                 }
             }
             

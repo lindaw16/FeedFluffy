@@ -5,14 +5,18 @@
 	<key>Balls</key>
 	<integer>3</integer>
 	<key>Gold</key>
-	<integer>1</integer>
+	<integer>3</integer>
 	<key>Silver</key>
 	<integer>2</integer>
 	<key>Bronze</key>
-	<integer>3</integer>
+	<integer>1</integer>
 	<key>Goal</key>
 	<dict>
 		<key>apple</key>
+		<integer>1</integer>
+		<key>orange</key>
+		<integer>1</integer>
+		<key>lemon</key>
 		<integer>1</integer>
 	</dict>
 	<key>Fluffy</key>
@@ -31,6 +35,22 @@
 			<integer>130</integer>
 			<key>spriteName</key>
 			<string>apple</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>300</integer>
+			<key>y</key>
+			<integer>130</integer>
+			<key>spriteName</key>
+			<string>lemon</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>160</integer>
+			<key>y</key>
+			<integer>130</integer>
+			<key>spriteName</key>
+			<string>orange</string>
 		</dict>
 	</array>
 </dict>
