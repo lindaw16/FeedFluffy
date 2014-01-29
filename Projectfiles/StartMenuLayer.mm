@@ -10,6 +10,7 @@
 #import "PhysicsLayer.h"
 #import "LevelSelectLayer.h"
 #import "OopsDNE.h"
+#import "SimpleAudioEngine.h"
 
 int NUM_LEVELS = 20;
 CCSprite * fluffy;
@@ -167,6 +168,7 @@ CCSprite *apple = [CCSprite spriteWithFile:@"apple.png"];
 //        [self addChild: label z:3];
 //        [self addChild: label2 z:3];
         
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"menu_background_music.mp3"];
         
         CCSprite * squirrel = [CCSprite spriteWithFile:@"rightsquirrel.png"];
         squirrel.anchorPoint = CGPointZero;
@@ -212,6 +214,8 @@ CCSprite *apple = [CCSprite spriteWithFile:@"apple.png"];
             NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
             //levelDict = [[NSMutableDictionary alloc] init];
             [levelDict setObject:@NO forKey: @"completed"];
+            [levelDict setObject:@0 forKey: @"last_time"];
+            [levelDict setObject:@1000000 forKey: @"best_time"];
             [levelDict setObject:@0 forKey: @"last_stars"];
             [levelDict setObject:[NSNumber numberWithInt: 0] forKey: @"best_stars"];
             [levelDict setObject:@0 forKey: @"last_score"];
