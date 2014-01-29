@@ -59,6 +59,7 @@ bool ButtonTapped = false;
 int currentLevel;
 int ballsUsed;
 int numFruitCollected;
+int seconds;
 
 int cannonCounter = 0;
 CCSprite *ballData;
@@ -168,7 +169,7 @@ NSMutableDictionary *levelDict;
         
         //[self addChild:	label];
         
-        
+        seconds = 0;
         ballsUsed = 0;
         currentLevel = level;
         goalProgress = [[NSMutableDictionary alloc] init];
@@ -620,11 +621,17 @@ NSMutableDictionary *levelDict;
         [self enableBox2dDebugDrawing];
         
         [self scheduleUpdate];
+        
+        // timer, call every second
+        [self schedule:@selector(countSeconds:) interval:1.0];
     }
     return self;
 }
 
-// DETECT COLLISIONS BETWEEN BALL AND FOOD!
+- (void) countSeconds:(ccTime)dt{
+    seconds++;
+}
+
 - (void)updateLevel {
     //NSLog(@"Update Lives is being called!!!\n");
     CGSize winSize = [[CCDirector sharedDirector] winSize];
@@ -822,6 +829,7 @@ NSMutableDictionary *levelDict;
     [levelDict setObject:[NSNumber numberWithInteger:ballsUsed] forKey:@"last_balls"];
     int bestBalls = [[levelDict objectForKey:@"best_balls"] intValue];
     int bestStars = [[levelDict objectForKey:@"best_stars"] intValue];
+    int bestTime = [[levelDict objectForKey:@"best_time"] intValue];
     //NSLog(@"best_balls: %d", bestBalls);
    // NSLog(@"best_stars: %d", bestStars);
     
@@ -843,6 +851,10 @@ NSMutableDictionary *levelDict;
     else {
         stars = 1;
     }*/
+    [levelDict setObject:[NSNumber numberWithInt:seconds] forKey:@"last_time"];
+    if (seconds < bestTime){
+        [levelDict setObject:[NSNumber numberWithInt:seconds] forKey:@"best_time"];
+    }
     if (numFruitCollected >= gold){
         stars = 3;
     }
@@ -1288,6 +1300,7 @@ int counter = 1;
                     BOOL levelCompleted = [self checkLevelCompleted];
 
                     if (levelCompleted){
+                        NSLog(@"@SECONDS: %d", seconds);
                         [[CCDirector sharedDirector] replaceScene: (CCScene*)[NextLevelScene sceneWithLevel: currentLevel]];
                         counter = 1;
                         cannonCounter = 0;
@@ -1336,6 +1349,7 @@ int counter = 1;
                     
                     levelCompleted = [self checkLevelCompleted];
                     if (levelCompleted){
+                        NSLog(@"@SECONDS: %d", seconds);
                         [[CCDirector sharedDirector] replaceScene: (CCScene*)[NextLevelScene sceneWithLevel: currentLevel]];
                         counter = 1;
                         cannonCounter = 0;

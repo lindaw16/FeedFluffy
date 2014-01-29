@@ -98,6 +98,22 @@
         NSString *levelString = [@"level" stringByAppendingFormat:@"%d", level];
         NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
         levelDict = [defaults objectForKey:levelString];
+        int time = [[levelDict objectForKey:@"last_time"] intValue];
+        int bestTime = [[levelDict objectForKey:@"best_time"] intValue];
+        
+        NSString *timeString = [@"Time: " stringByAppendingFormat: @"%d", time];
+        CCLabelTTF *timeLabel = [CCLabelTTF labelWithString:timeString
+                                               fontName:@"Marker Felt"
+                                               fontSize:30];
+        NSString *bestTimeString = [@"Your best time: " stringByAppendingFormat: @"%d", bestTime];
+        CCLabelTTF *bestTimeLabel = [CCLabelTTF labelWithString:bestTimeString
+                                                   fontName:@"Marker Felt"
+                                                   fontSize:30];
+        timeLabel.position = ccp(200, 70);
+        bestTimeLabel.position = ccp(250, 50);
+        [self addChild: timeLabel z:3];
+        [self addChild: bestTimeLabel z:3];
+        
         int stars = [[levelDict objectForKey:@"last_stars"] intValue];
         NSLog(@"STARS: %d", stars);
         CCSprite *rank;

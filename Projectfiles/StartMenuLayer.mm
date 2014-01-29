@@ -212,6 +212,8 @@ CCSprite *apple = [CCSprite spriteWithFile:@"apple.png"];
             NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
             //levelDict = [[NSMutableDictionary alloc] init];
             [levelDict setObject:@NO forKey: @"completed"];
+            [levelDict setObject:@0 forKey: @"last_time"];
+            [levelDict setObject:@1000000 forKey: @"best_time"];
             [levelDict setObject:@0 forKey: @"last_stars"];
             [levelDict setObject:[NSNumber numberWithInt: 0] forKey: @"best_stars"];
             [levelDict setObject:@0 forKey: @"last_score"];
