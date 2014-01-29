@@ -297,10 +297,11 @@ NSMutableDictionary *levelDict;
         
         // Standard method to create a button
         CCMenuItem *starMenuItem = [CCMenuItemImage
-                                    itemWithNormalImage:@"launch_button_bigger.png" selectedImage:@"launch_button_bigger.png"
+                                    itemWithNormalImage:@"alterLaunchButton.png" selectedImage:@"alterLaunchButton.png"
                                     target:self selector:@selector(starButtonTapped:)];
-        starMenuItem.position = ccp(starMenuItem.contentSize.width/PTM_RATIO/2+40, winSize.height - starMenuItem.contentSize.height/PTM_RATIO/ 2 - 30 );
-        
+        starMenuItem.position = ccp(starMenuItem.contentSize.width/PTM_RATIO/2+35, winSize.height - starMenuItem.contentSize.height/PTM_RATIO/ 2 - 30 );
+        starMenuItem.scaleX = 0.35;
+        starMenuItem.scaleY = 0.35;
         //starMenuItem.position = ccp(50,30);
         CCMenu *starMenu = [CCMenu menuWithItems:starMenuItem, nil];
         starMenu.position = CGPointZero;
