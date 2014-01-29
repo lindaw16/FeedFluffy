@@ -125,7 +125,7 @@
             rank = [CCSprite spriteWithFile:@"silver_star_big.png"];
         }
         else if (stars == 1){
-            rank = [CCSprite spriteWithFile:@"bronze_star_big.png"];
+            rank = [CCSprite spriteWithFile:@"bronze_star.png"];
         }
         
         

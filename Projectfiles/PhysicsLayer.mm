@@ -250,6 +250,7 @@ NSMutableDictionary *levelDict;
         
         cannonHead = [CCSprite spriteWithFile:@"cannon-head-cropped.png"];
         cannonHead.position = ccp(_player.position.x + 20, _player.position.y - 0.5);
+        
         [self addChild:cannonHead z:1];
         
 //        CCSprite *cage = [CCSprite spriteWithFile: @"cage.png"];
@@ -869,10 +870,14 @@ else{
 }
 
 -(void) autoRestart {
+    cannonCounter = 0;
+    NSLog(@"Restart moving ENABLED................\n");
+    cannonHead.position = ccp(cannonHead.position.x - 4.0, cannonHead.position.y);
     [[CCDirector sharedDirector] replaceScene: [CCTransitionFade transitionWithDuration:0.5 scene:[PhysicsLayer sceneWithLevel:currentLevel]]];
     [self unscheduleAllSelectors];
     [[CCTextureCache sharedTextureCache] removeAllTextures];
     [super onExit];
+    cannonCounter = 0;
 }
 
 -(BOOL) checkLevelCompleted {
@@ -1254,12 +1259,15 @@ int counter = 1;
         if (pos.x>=cageLeft+5 && pos.x <=80 && pos.y > 20 && pos.y < 238)
         {
 
-               NSLog(@"CANNON ROTATED??>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
+            if (CGRectContainsPoint(cannonHead.boundingBox, pos)){
+            NSLog(@"CANNON ROTATED??>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
+                NSLog(@"Cannon Counter!!! %d", cannonCounter);
             
             //Steps taken to 
             if (cannonCounter ==0)
             {
-                cannonHead.position = ccp(cannonHead.position.x - 4.0, y);
+            NSLog(@"CANNON being pushed back\n");
+                cannonHead.position = ccp(cannonHead.position.x - 5.0, y);
                 cannonCounter = 1;
             }
         
@@ -1283,6 +1291,7 @@ int counter = 1;
                 }
                 cannonHead.anchorPoint = ccp(0.3,0.3);
                 cannonHead.rotation = -angleInDegrees;
+            }
             }
         }
     }
