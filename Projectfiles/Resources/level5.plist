@@ -5,11 +5,11 @@
 	<key>Balls</key>
 	<integer>6</integer>
 	<key>Gold</key>
-	<integer>1</integer>
-	<key>Silver</key>
 	<integer>3</integer>
+	<key>Silver</key>
+	<integer>2</integer>
 	<key>Bronze</key>
-	<integer>6</integer>
+	<integer>1</integer>
 	<key>Obstacles</key>
 	<array>
 		<dict>
@@ -56,6 +56,22 @@
 			<integer>270</integer>
 			<key>y</key>
 			<integer>140</integer>
+			<key>spriteName</key>
+			<string>apple</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>330</integer>
+			<key>y</key>
+			<integer>70</integer>
+			<key>spriteName</key>
+			<string>apple</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>420</integer>
+			<key>y</key>
+			<integer>100</integer>
 			<key>spriteName</key>
 			<string>apple</string>
 		</dict>

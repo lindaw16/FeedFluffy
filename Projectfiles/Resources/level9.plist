@@ -13,38 +13,61 @@
 	<key>Goal</key>
 	<dict>
 		<key>apple</key>
-		<integer>3</integer>
+		<integer>1</integer>
 	</dict>
 	<key>Fluffy</key>
 	<dict>
 		<key>x</key>
 		<integer>470</integer>
 		<key>y</key>
-		<integer>130</integer>
+		<integer>190</integer>
 	</dict>
+	<key>Squirrels</key>
+	<array>
+		<dict>
+			<key>x</key>
+			<integer>150</integer>
+			<key>y</key>
+			<integer>20</integer>
+			<key>speed</key>
+			<integer>0</integer>
+			<key>spriteName</key>
+			<string>leftsquirrel</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>350</integer>
+			<key>y</key>
+			<integer>120</integer>
+			<key>speed</key>
+			<integer>0</integer>
+			<key>spriteName</key>
+			<string>leftsquirrel</string>
+		</dict>
+	</array>
 	<key>Fruits</key>
 	<array>
 		<dict>
 			<key>x</key>
-			<integer>250</integer>
-			<key>y</key>
 			<integer>230</integer>
+			<key>y</key>
+			<integer>130</integer>
 			<key>spriteName</key>
 			<string>apple</string>
 		</dict>
 		<dict>
 			<key>x</key>
-			<integer>140</integer>
+			<integer>90</integer>
 			<key>y</key>
-			<integer>190</integer>
+			<integer>130</integer>
 			<key>spriteName</key>
 			<string>apple</string>
 		</dict>
 		<dict>
 			<key>x</key>
-			<integer>360</integer>
+			<integer>410</integer>
 			<key>y</key>
-			<integer>190</integer>
+			<integer>130</integer>
 			<key>spriteName</key>
 			<string>apple</string>
 		</dict>

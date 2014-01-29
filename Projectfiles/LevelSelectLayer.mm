@@ -10,6 +10,7 @@
 #import "PhysicsLayer.h"
 #import "OopsDNE.h"
 #import "EasyLevelLayer.h"
+#import "MediumLevelLayer.h"
 
 CCMenuItemImage * left;
 CCMenuItemImage * right;
@@ -17,7 +18,12 @@ float priorX = 1000;
 float priorY = 1000;
 //CGSize winSize;
 
-
+CGPoint translation;
+CGPoint oldTouchLocation;
+CGPoint touchLocation;
+float translationTracker;
+CGPoint startLocation;
+CGPoint endLocation;
 @implementation LevelSelectLayer
 
 
@@ -31,18 +37,21 @@ float priorY = 1000;
         [self addChild:background];
         [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_Default];
         int gap = 0;
+        int tagCounter = 0;
         movableSprites = [[NSMutableArray alloc] init];
-        NSArray *images = [NSArray arrayWithObjects:@"easyCage.png", @"easyCage.png", @"easyCage.png", nil];
+        NSArray *images = [NSArray arrayWithObjects:@"easyCage.png", @"mediumCage.png", @"hardCage.png", nil];
         for(int i = 0; i < images.count; ++i) {
             
             NSString *image = [images objectAtIndex:i];
             CCSprite *sprite = [CCSprite spriteWithFile:image];
+            sprite.tag = tagCounter;
             sprite.scaleY = 0.7;
             float offsetFraction = ((float)(i+1))/(images.count+1);
             sprite.position = ccp(170+gap, 170);
             [self addChild:sprite];
             [movableSprites addObject:sprite];
             gap +=250;
+            tagCounter+=1;
         }
         
         left = [CCMenuItemImage itemWithNormalImage:@"goLeft.png" selectedImage: @"goLeft.png" target:self selector:@selector(goLeft:)];
@@ -66,16 +75,39 @@ float priorY = 1000;
     
     CCSprite * newSprite = nil;
     for (CCSprite *sprite in movableSprites) {
-        if (CGRectContainsPoint(sprite.boundingBox, touchLocation)) {
+        if (CGRectContainsPoint(sprite.boundingBox, touchLocation) and abs(translation.x) < 1.5) {
+            NSLog(@"SPrite taggin!!!!!!!!!!!!!! %d", sprite.tag);
+            if (sprite.tag ==0){
+                NSLog(@")(*&)*&*(&(*&)(*&)(*&)(*&)(*&)(*&)(*&)*&)(*&)(*&)(*&)*&)*&(Inside Easy Level Layer \n");
             [[CCDirector sharedDirector] replaceScene: (CCScene*)[[EasyLevelLayer alloc] init]];
+            }
+            else if (sprite.tag ==1) {
+                NSLog(@"Inside Medium Level Layer \n");
+
+            [[CCDirector sharedDirector] replaceScene: (CCScene*)[[MediumLevelLayer alloc] init]];
+            }
+            else if (sprite.tag ==2)
+            {
+                NSLog(@"Inside Hard Level Layer \n");
+            [[CCDirector sharedDirector] replaceScene: (CCScene*)[[MediumLevelLayer alloc] init]];
+            }
+            //translationTracker = 0.0;
+            
             break;
         }
     }
 }
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
-    [self selectSpriteForTouch:touchLocation];
+    
+       // NSLog(@"CCTouche Began!!!\n");
+    CGPoint touchLocation = [touch locationInView: [touch view]];
+    touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
+    touchLocation = [self convertToNodeSpace:touchLocation];
+    
+    startLocation = touchLocation;
+    
+
     return TRUE;
     
 }
@@ -95,22 +127,76 @@ float priorY = 1000;
         
         CGPoint newPos = ccpAdd(self.position, translation);
         self.position = [self boundLayerPos:newPos];
+        //translationTracker = 0.0;
     }
 }
 
-- (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
-    CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
+-(void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+
+    //NSLog(@"CCTouche Ended!!!\n");
     
-    CGPoint oldTouchLocation = [touch previousLocationInView:touch.view];
+    CGPoint touchLocation = [touch locationInView: [touch view]];
+    touchLocation = [[CCDirector sharedDirector] convertToGL: touchLocation];
+    touchLocation = [self convertToNodeSpace:touchLocation];
+    endLocation = touchLocation;
+    
+    //NSLog(@"Difference between start/end, %f \n", startLocation.x - endLocation.x);
+    //NSLog(@"dif %d", abs(-4.8));
+    if ((startLocation.x - endLocation.x) < 0.1 and (startLocation.x - endLocation.x) > -0.1) {
+        // Swipe
+        for (CCSprite *sprite in movableSprites) {
+            if (CGRectContainsPoint(sprite.boundingBox, touchLocation)) {
+                //translationTracker = 0.0;
+                
+                if (sprite.tag ==0){
+                    NSLog(@")(*&)*&*(&(*&)(*&)(*&)(*&)(*&)(*&)(*&)*&)(*&)(*&)(*&)*&)*&(Inside Easy Level Layer \n");
+                    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[EasyLevelLayer alloc] init]];
+                }
+                else if (sprite.tag ==1) {
+                    NSLog(@"Inside Medium Level Layer \n");
+                    
+                    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[MediumLevelLayer alloc] init]];
+                }
+                else if (sprite.tag ==2)
+                {
+                    NSLog(@"Inside Hard Level Layer \n");
+                    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[MediumLevelLayer alloc] init]];
+                }
+                //translationTracker = 0.0;
+                
+                break;
+
+                
+            }
+        }
+
+        //[self panForTranslation:translation];
+    }
+    
+    
+}
+
+
+
+- (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
+    touchLocation = [self convertTouchToNodeSpace:touch];
+    
+    oldTouchLocation = [touch previousLocationInView:touch.view];
     oldTouchLocation = [[CCDirector sharedDirector] convertToGL:oldTouchLocation];
     oldTouchLocation = [self convertToNodeSpace:oldTouchLocation];
     
-    CGPoint translation = ccpSub(touchLocation, oldTouchLocation);
-    if (translation.x > 1.0)
+    translation = ccpSub(touchLocation, oldTouchLocation);
+    //NSLog(@"Translating movement!! %f \n", translation.x);
+    if (abs(translation.x) > 1.5)
     {
+        translationTracker = translation.x;
         
+        [self panForTranslation:translation];
+
     }
-    [self panForTranslation:translation];
+   
+    
+    
 }
 
 -(void) onExit {
