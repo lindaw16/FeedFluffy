@@ -10,6 +10,7 @@
 #import "PhysicsLayer.h"
 #import "OopsDNE.h"
 #import "EasyLevelLayer.h"
+#import "MediumLevelLayer.h"
 
 CCMenuItemImage * left;
 CCMenuItemImage * right;
@@ -36,18 +37,21 @@ CGPoint endLocation;
         [self addChild:background];
         [CCTexture2D setDefaultAlphaPixelFormat:kCCTexture2DPixelFormat_Default];
         int gap = 0;
+        int tagCounter = 0;
         movableSprites = [[NSMutableArray alloc] init];
-        NSArray *images = [NSArray arrayWithObjects:@"easyCage.png", @"easyCage.png", @"easyCage.png", nil];
+        NSArray *images = [NSArray arrayWithObjects:@"easyCage.png", @"mediumCage.png", @"hardCage.png", nil];
         for(int i = 0; i < images.count; ++i) {
             
             NSString *image = [images objectAtIndex:i];
             CCSprite *sprite = [CCSprite spriteWithFile:image];
+            sprite.tag = tagCounter;
             sprite.scaleY = 0.7;
             float offsetFraction = ((float)(i+1))/(images.count+1);
             sprite.position = ccp(170+gap, 170);
             [self addChild:sprite];
             [movableSprites addObject:sprite];
             gap +=250;
+            tagCounter+=1;
         }
         
         left = [CCMenuItemImage itemWithNormalImage:@"goLeft.png" selectedImage: @"goLeft.png" target:self selector:@selector(goLeft:)];
@@ -72,8 +76,23 @@ CGPoint endLocation;
     CCSprite * newSprite = nil;
     for (CCSprite *sprite in movableSprites) {
         if (CGRectContainsPoint(sprite.boundingBox, touchLocation) and abs(translation.x) < 1.5) {
-            //translationTracker = 0.0;
+            NSLog(@"SPrite taggin!!!!!!!!!!!!!! %d", sprite.tag);
+            if (sprite.tag ==0){
+                NSLog(@")(*&)*&*(&(*&)(*&)(*&)(*&)(*&)(*&)(*&)*&)(*&)(*&)(*&)*&)*&(Inside Easy Level Layer \n");
             [[CCDirector sharedDirector] replaceScene: (CCScene*)[[EasyLevelLayer alloc] init]];
+            }
+            else if (sprite.tag ==1) {
+                NSLog(@"Inside Medium Level Layer \n");
+
+            [[CCDirector sharedDirector] replaceScene: (CCScene*)[[MediumLevelLayer alloc] init]];
+            }
+            else if (sprite.tag ==2)
+            {
+                NSLog(@"Inside Hard Level Layer \n");
+            [[CCDirector sharedDirector] replaceScene: (CCScene*)[[MediumLevelLayer alloc] init]];
+            }
+            //translationTracker = 0.0;
+            
             break;
         }
     }
@@ -128,8 +147,26 @@ CGPoint endLocation;
         for (CCSprite *sprite in movableSprites) {
             if (CGRectContainsPoint(sprite.boundingBox, touchLocation)) {
                 //translationTracker = 0.0;
-                [[CCDirector sharedDirector] replaceScene: (CCScene*)[[EasyLevelLayer alloc] init]];
+                
+                if (sprite.tag ==0){
+                    NSLog(@")(*&)*&*(&(*&)(*&)(*&)(*&)(*&)(*&)(*&)*&)(*&)(*&)(*&)*&)*&(Inside Easy Level Layer \n");
+                    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[EasyLevelLayer alloc] init]];
+                }
+                else if (sprite.tag ==1) {
+                    NSLog(@"Inside Medium Level Layer \n");
+                    
+                    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[MediumLevelLayer alloc] init]];
+                }
+                else if (sprite.tag ==2)
+                {
+                    NSLog(@"Inside Hard Level Layer \n");
+                    [[CCDirector sharedDirector] replaceScene: (CCScene*)[[MediumLevelLayer alloc] init]];
+                }
+                //translationTracker = 0.0;
+                
                 break;
+
+                
             }
         }
 
