@@ -39,27 +39,37 @@ CGPoint endLocation;
         int gap = 0;
         int tagCounter = 0;
         movableSprites = [[NSMutableArray alloc] init];
-        NSArray *images = [NSArray arrayWithObjects:@"easyCage.png", @"mediumCage.png", @"hardCage.png", nil];
+        NSArray *images = [NSArray arrayWithObjects:@"easyCage.png", @"mediumCage.png", nil];
         for(int i = 0; i < images.count; ++i) {
             
             NSString *image = [images objectAtIndex:i];
             CCSprite *sprite = [CCSprite spriteWithFile:image];
             sprite.tag = tagCounter;
+            if (IsIphone5){
             sprite.scaleY = 0.7;
             float offsetFraction = ((float)(i+1))/(images.count+1);
             sprite.position = ccp(170+gap, 170);
             [self addChild:sprite];
+                gap+=250;
+            }
+            else{
+                sprite.scaleX = 0.9;
+                sprite.scaleY = 0.7;
+            sprite.position = ccp(140+gap, 170);
+                [self addChild:sprite];
+                gap +=210;
+            }
             [movableSprites addObject:sprite];
-            gap +=250;
+            
             tagCounter+=1;
         }
         
-        left = [CCMenuItemImage itemWithNormalImage:@"goLeft.png" selectedImage: @"goLeft.png" target:self selector:@selector(goLeft:)];
-        right = [CCMenuItemImage itemWithNormalImage:@"goRight.png" selectedImage: @"goRight.png" target:self selector:@selector(goRight:)];
-        left.position = ccp(40, 30);
-        right.position = ccp(440, 30);
-        [self addChild:left];
-        [self addChild:right];
+//        left = [CCMenuItemImage itemWithNormalImage:@"goLeft.png" selectedImage: @"goLeft.png" target:self selector:@selector(goLeft:)];
+//        right = [CCMenuItemImage itemWithNormalImage:@"goRight.png" selectedImage: @"goRight.png" target:self selector:@selector(goRight:)];
+//        left.position = ccp(40, 30);
+//        right.position = ccp(440, 30);
+//        [self addChild:left];
+//        [self addChild:right];
         
         
         //NSLog(@"asdfsadf %d, %d", winSize.height, winSize.width);
@@ -86,12 +96,6 @@ CGPoint endLocation;
 
             [[CCDirector sharedDirector] replaceScene: (CCScene*)[[MediumLevelLayer alloc] init]];
             }
-            else if (sprite.tag ==2)
-            {
-                NSLog(@"Inside Hard Level Layer \n");
-            [[CCDirector sharedDirector] replaceScene: (CCScene*)[[MediumLevelLayer alloc] init]];
-            }
-            //translationTracker = 0.0;
             
             break;
         }
@@ -154,17 +158,17 @@ CGPoint endLocation;
                 //translationTracker = 0.0;
                 
                 if (sprite.tag ==0){
-                    NSLog(@")(*&)*&*(&(*&)(*&)(*&)(*&)(*&)(*&)(*&)*&)(*&)(*&)(*&)*&)*&(Inside Easy Level Layer \n");
+                    //NSLog(@")(*&)*&*(&(*&)(*&)(*&)(*&)(*&)(*&)(*&)*&)(*&)(*&)(*&)*&)*&(Inside Easy Level Layer \n");
                     [[CCDirector sharedDirector] replaceScene: (CCScene*)[[EasyLevelLayer alloc] init]];
                 }
                 else if (sprite.tag ==1) {
-                    NSLog(@"Inside Medium Level Layer \n");
+                    //NSLog(@"Inside Medium Level Layer \n");
                     
                     [[CCDirector sharedDirector] replaceScene: (CCScene*)[[MediumLevelLayer alloc] init]];
                 }
                 else if (sprite.tag ==2)
                 {
-                    NSLog(@"Inside Hard Level Layer \n");
+                    
                     [[CCDirector sharedDirector] replaceScene: (CCScene*)[[MediumLevelLayer alloc] init]];
                 }
                 //translationTracker = 0.0;

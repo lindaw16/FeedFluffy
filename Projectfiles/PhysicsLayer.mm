@@ -317,27 +317,39 @@ NSMutableDictionary *levelDict;
                                                    selectedImage: @"pauseButton2.png"
                                                           target:self
                                                         selector:@selector(pause:)];
-        CCMenuItem *Restart= [CCMenuItemImage itemWithNormalImage:@"pauseButton2.png"
-                                                    selectedImage: @"pauseButton2.png"
+        CCMenuItem *Restart= [CCMenuItemImage itemWithNormalImage:@"restartButton.png"
+                                                    selectedImage: @"restartButton.png"
                                                            target:self
                                                          selector:@selector(restart:)];
         CCMenu *PauseButton = [CCMenu menuWithItems: Pause, Restart, nil];
         //Pause.tag = level;
-        Pause.scaleX = 0.7;
-        Pause.scaleY = 0.7;
         
-        Restart.scaleX = 0.7;
-        Restart.scaleY = 0.7;
         if (IsIphone5)
         {
+            Pause.scaleX = 0.7;
+            Pause.scaleY = 0.7;
+            
+            Restart.scaleX = 0.3;
+            Restart.scaleY = 0.3;
+            
+            Pause.position = ccp(480, 290);
+            Restart.position = ccp(530, 290);
+            
             //PauseButton.position = ccp(483, 292);
         }
         else{
+            Pause.position = ccp(410, 290);
+            Restart.position = ccp(455, 290);
+            Pause.scaleX = 0.6;
+            Pause.scaleY = 0.6;
             
+            Restart.scaleX = 0.25;
+            Restart.scaleY = 0.25;
         }
+
         PauseButton.position = CGPointZero;
-        Pause.position = ccp(460, 295);
-        Restart.position = ccp(500, 295);
+       // Pause.position = ccp(460, 295);
+        //Restart.position = ccp(500, 295);
         [self schedule:@selector(tick:) interval:1.0f/60.0f];
         [self addChild:PauseButton z:7];
         
@@ -676,17 +688,27 @@ NSMutableDictionary *levelDict;
         
         Fruit *fruit2 = [[Fruit alloc] initWithFruit:fruit ];
         //fruit2.position = ccp(fruit2.contentSize.width/PTM_RATIO/2 + gapFruit,fruit2.contentSize.height/PTM_RATIO/2 + yOffset);
-        fruit2.position = ccp(230+gapFruit, 290);
+        if (IsIphone5){
+            fruit2.position = ccp(230+gapFruit, 290);
+        }
+        else{
+            fruit2.position = ccp(170+gapFruit, 290);
+        }
         [self addChild: fruit2 z: 5];
         
         NSString *numFruitsDisplay = [NSString stringWithFormat: @"X %d", numFruits - goalProgressValue];
         label = [CCLabelTTF labelWithString:@"food"
                                    fontName:@"Marker Felt"
                                    fontSize:18.0];
-        label.position = ccp(265+gapLabel,290);
-        
+        if (IsIphone5){
+            label.position = ccp(265+gapLabel,290);
+        }
+        else{
+            label.position = ccp(205+gapLabel,290);
+        }
         label.string = [NSString stringWithFormat:@"X %d", numFruits - goalProgressValue];
         [self addChild: label z:10];
+
         [labels setObject: label forKey:fruit];
         gapFruit += 80;
         gapLabel +=80;
