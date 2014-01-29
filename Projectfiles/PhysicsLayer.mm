@@ -842,6 +842,8 @@ NSMutableDictionary *levelDict;
 
                 if (sprite.position.x <= 0){
                     toDestroy.push_back(b);
+                    cannonCounter = 0;
+
                     //if (bulletCounter == 0){
                         //[[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
                         [self autoRestart];
