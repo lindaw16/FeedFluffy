@@ -28,23 +28,23 @@
 	<array>
 		<dict>
 			<key>x</key>
-			<integer>120</integer>
+			<integer>100</integer>
 			<key>y</key>
-			<integer>170</integer>
+			<integer>190</integer>
 			<key>spriteName</key>
 			<string>pear</string>
 		</dict>
 		<dict>
 			<key>x</key>
-			<integer>230</integer>
+			<integer>420</integer>
 			<key>y</key>
-			<integer>90</integer>
+			<integer>130</integer>
 			<key>spriteName</key>
 			<string>orange</string>
 		</dict>
 		<dict>
 			<key>x</key>
-			<integer>180</integer>
+			<integer>130</integer>
 			<key>y</key>
 			<integer>130</integer>
 			<key>spriteName</key>
