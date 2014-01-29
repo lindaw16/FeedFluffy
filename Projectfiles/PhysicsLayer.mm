@@ -570,7 +570,7 @@ NSMutableDictionary *levelDict;
         [self setTouchEnabled:YES];
         //[self setAccelerometerEnabled:NO];
         
-        [self enableBox2dDebugDrawing];
+        //[self enableBox2dDebugDrawing];
         
         [self scheduleUpdate];
     }
