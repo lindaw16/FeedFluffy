@@ -88,11 +88,11 @@ CGPoint endLocation;
         if (CGRectContainsPoint(sprite.boundingBox, touchLocation) and abs(translation.x) < 1.5) {
             NSLog(@"SPrite taggin!!!!!!!!!!!!!! %d", sprite.tag);
             if (sprite.tag ==0){
-                NSLog(@")(*&)*&*(&(*&)(*&)(*&)(*&)(*&)(*&)(*&)*&)(*&)(*&)(*&)*&)*&(Inside Easy Level Layer \n");
+                //NSLog(@")(*&)*&*(&(*&)(*&)(*&)(*&)(*&)(*&)(*&)*&)(*&)(*&)(*&)*&)*&(Inside Easy Level Layer \n");
             [[CCDirector sharedDirector] replaceScene: (CCScene*)[[EasyLevelLayer alloc] init]];
             }
             else if (sprite.tag ==1) {
-                NSLog(@"Inside Medium Level Layer \n");
+                //NSLog(@"Inside Medium Level Layer \n");
 
             [[CCDirector sharedDirector] replaceScene: (CCScene*)[[MediumLevelLayer alloc] init]];
             }
@@ -151,7 +151,7 @@ CGPoint endLocation;
     //if ((startLocation.x - endLocation.x) < 3.0 and (startLocation.x - endLocation.x) > -3.0) {
 
 
-    if ((startLocation.x - endLocation.x) < 0.1 and (startLocation.x - endLocation.x) > -0.1) {
+    
         // Swipe
         for (CCSprite *sprite in movableSprites) {
             if (CGRectContainsPoint(sprite.boundingBox, touchLocation)) {
@@ -180,7 +180,7 @@ CGPoint endLocation;
         }
 
         //[self panForTranslation:translation];
-    }
+    
     
     
 }

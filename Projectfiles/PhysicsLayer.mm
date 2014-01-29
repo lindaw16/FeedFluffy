@@ -128,13 +128,24 @@ NSMutableDictionary *levelDict;
     
     CCSprite * thesnores = [CCSprite spriteWithSpriteFrameName:@"snore1.png"];
     thesnores.anchorPoint = CGPointZero;
-    thesnores.position = CGPointMake(450.0f, 120.0f);
     
-    CCSprite *sleepingFluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
+    
+    if (IsIphone5){
+    thesnores.position = CGPointMake(450.0f, 120.0f);
+        CCSprite *sleepingFluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
     sleepingFluffy.position = ccp(510, 135);
     sleepingFluffy.scaleX = 0.5;
     sleepingFluffy.scaleY = 0.5;
     [self addChild:sleepingFluffy];
+    }
+    else {
+        thesnores.position = CGPointMake(378.0f, 120.0f);
+        CCSprite *sleepingFluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
+        sleepingFluffy.position = ccp(420, 135);
+        sleepingFluffy.scaleX = 0.5;
+        sleepingFluffy.scaleY = 0.5;
+        [self addChild:sleepingFluffy];
+    }
     //Create an animation from the set of frames
     
     //CCAnimation *wagging = [CCAnimation animationWithFrames: waggingFrames delay:0.1f];
@@ -653,8 +664,13 @@ NSMutableDictionary *levelDict;
     //NSLog(@"Update Lives is being called!!!\n");
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     CCLabelTTF *levelLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:18.0];
+    if (IsIphone5)
+    {
     levelLabel.position = ccp(levelLabel.contentSize.width +100, 290);
-    
+    }
+    else{
+    levelLabel.position = ccp(levelLabel.contentSize.width +75, 290);
+    }
     [self addChild: levelLabel z:10];
     levelLabel.string = [NSString stringWithFormat:@"Level: %d", currentLevel];
     
