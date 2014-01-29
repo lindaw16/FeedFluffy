@@ -140,9 +140,9 @@ CGPoint endLocation;
     touchLocation = [self convertToNodeSpace:touchLocation];
     endLocation = touchLocation;
     
-    //NSLog(@"Difference between start/end, %f \n", startLocation.x - endLocation.x);
+    NSLog(@"Difference between start/end, %f \n", startLocation.x - endLocation.x);
     //NSLog(@"dif %d", abs(-4.8));
-    if ((startLocation.x - endLocation.x) < 0.1 and (startLocation.x - endLocation.x) > -0.1) {
+    if ((startLocation.x - endLocation.x) < 0.5 and (startLocation.x - endLocation.x) > -0.5) {
         // Swipe
         for (CCSprite *sprite in movableSprites) {
             if (CGRectContainsPoint(sprite.boundingBox, touchLocation)) {
