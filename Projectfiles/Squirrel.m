@@ -9,24 +9,32 @@
 #import "Squirrel.h"
 
 @implementation Squirrel
--(id) initWithSquirrel: (NSString *) squirrel
+-(id) initWithSquirrel: (CCSprite *) squirrel
 {
-    NSString *spriteName = [squirrel stringByAppendingString:@".png"];
-    if ((self = [super initWithFile:spriteName])){
-        
+//    NSString *spriteName = [squirrel stringByAppendingString:@".png"];
+//    if ((self = [super initWithFile:spriteName])){
+//        
+    
+    if ((self = [super init]))
+    {
+    
+        squirrel = [CCSprite spriteWithSpriteFrameName:@"squirrelUp1.png"];
+        squirrel.anchorPoint = CGPointZero;
+        squirrel.position = CGPointMake(0, 0);
     }
+        
     return self;
 }
 
 +(void) squirrelUp
 {
-    NSLog(@"it's GOING UP!");
+    //NSLog(@"it's GOING UP!");
     
 }
 
 +(void) squirrelDown
 {
-    NSLog(@"it's GOING DOWN!");
+    //NSLog(@"it's GOING DOWN!");
 }
 
 @end

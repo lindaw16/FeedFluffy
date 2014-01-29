@@ -61,6 +61,8 @@ int currentLevel;
 int ballsUsed;
 int numFruitCollected;
 int seconds;
+Obstacle *obstacle2;
+//CCSprite *obstacle2;
 
 int cannonCounter = 0;
 CCSprite *ballData;
@@ -453,7 +455,7 @@ NSMutableDictionary *levelDict;
             NSArray *obstacles= [level objectForKey:@"Obstacles"];
             for (NSDictionary *obstacle in obstacles){
                 NSString *sName = [obstacle objectForKey:@"spriteName"];
-                Obstacle *obstacle2 = [[Obstacle alloc] initWithObstacle: sName];
+                obstacle2 = [[Obstacle alloc] initWithObstacle: sName];
                 NSNumber *x = [obstacle objectForKey:@"x"];
                 NSNumber *y = [obstacle objectForKey:@"y"];
                 obstacle2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
@@ -481,14 +483,49 @@ NSMutableDictionary *levelDict;
                 obstacleShapeDef.restitution = 0.1f;
                 obstacleShapeDef.isSensor = false;
                 obstacleBody->CreateFixture(&obstacleShapeDef);
+                
+                
+                
             }
         }
         
         if ([level objectForKey:@"Squirrels"]){
             NSArray *obstacles= [level objectForKey:@"Squirrels"];
             for (NSDictionary *obstacle in obstacles){
+                
+                
+                if ([obstacle objectForKey:@"up"])
+                {
+                    //initiate up squirrel frames
+                    //NSLog(@"BANANANAASSSSS");
+                    
+                    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"squirrelUp.plist"];
+                    CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"squirrelUp.png"];
+                    
+                    [self addChild:spriteSheet];
+                    
+                    runUpFrames = [NSMutableArray array];
+                    
+                    for(int i = 1; i <= 2; ++i)
+                    {
+                        [runUpFrames addObject:
+                         [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName: [NSString stringWithFormat:@"squirrelUp%d.png", i]]];
+                    }
+                    
+                }
+                
+                
+                
+                
                 NSString *sName = [obstacle objectForKey:@"spriteName"];
                 Squirrel *obstacle2 = [[Squirrel alloc] initWithSquirrel: sName];
+                
+                
+                
+                
+                
+                
+                
                 NSNumber *x = [obstacle objectForKey:@"x"];
                 NSNumber *y = [obstacle objectForKey:@"y"];
                 obstacle2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
@@ -523,6 +560,10 @@ NSMutableDictionary *levelDict;
                 //_body->ApplyLinearImpulse(force, ballBodyDef.position);
                 //printf("Applying Linear Impulse!");
                 //obstacleBody->ApplyLinearImpulse(force, obstacleBodyDef.position);
+                
+                
+
+                
             }
         }
 
@@ -772,7 +813,7 @@ NSMutableDictionary *levelDict;
     float radianAngle = CC_DEGREES_TO_RADIANS(angleInDegrees);
     [_player runAction:[CCSequence actions:[CCCallBlock actionWithBlock:^{[self addChild:_nextProjectile];_nextProjectile = nil;}],nil]];
     //this determines the speed of the ball projectile
-    b2Vec2 force = b2Vec2(2 * cos(radianAngle), 2 * sin(radianAngle));
+    b2Vec2 force = b2Vec2(3 * cos(radianAngle), 3 * sin(radianAngle));
     
     //_body->ApplyLinearImpulse(force, ballBodyDef.position);
     printf("Applying Linear Impulse!");
@@ -911,6 +952,8 @@ NSMutableDictionary *levelDict;
             //mental note to move if statements up
             else if (sprite.tag == 5)
             {
+                
+                
                 float velocity = b->GetLinearVelocity().y;
                 //NSLog(@"Velocity yo %f", velocity);
                 if (sprite.position.y >= 230){
@@ -935,19 +978,26 @@ NSMutableDictionary *levelDict;
                 if (velocity > 0)
                 {
                     [Squirrel squirrelUp];
-                    NSLog(@"SQUIRRELUP");
+                    //NSLog(@"SQUIRRELUP");
                 }
                 
                 else if (velocity < 0)
                 {
                     [Squirrel squirrelDown];
-                    NSLog(@"SQUIRRELDOWN");
+                    //NSLog(@"SQUIRRELDOWN");
                 }
                 else
                 {
-                    NSLog(@"why would it actually ever be 0?");
+                    //NSLog(@"why would it actually ever be 0?");
                 }
             
+                
+                
+                
+                [self removeChild: obstacle2];
+                
+                
+                
             }
 
             

@@ -5,6 +5,8 @@
 	<key>Squirrels</key>
 	<array>
 		<dict>
+			<key>up</key>
+			<true/>
 			<key>x</key>
 			<integer>150</integer>
 			<key>y</key>

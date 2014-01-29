@@ -178,6 +178,8 @@
 		BF63D6EC1884ADF600F3D3F3 /* menuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */; };
 		BF63D6EE1884AFAC00F3D3F3 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = BF63D6ED1884AFAC00F3D3F3 /* play.png */; };
 		BF7B4B311898C5E000DF2A48 /* onemorenight.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B301898C5E000DF2A48 /* onemorenight.mp3 */; };
+		BF7B4B341898D58200DF2A48 /* squirrelUp.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B321898D58200DF2A48 /* squirrelUp.plist */; };
+		BF7B4B351898D58200DF2A48 /* squirrelUp.png in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B331898D58200DF2A48 /* squirrelUp.png */; };
 		BFB4259718862C92002DD826 /* LevelSelectLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB4259618862C92002DD826 /* LevelSelectLayer.mm */; };
 		BFB4259918862CF2002DD826 /* gameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB4259818862CF2002DD826 /* gameBackground.png */; };
 		BFB4259B18862CFA002DD826 /* tutorials.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB4259A18862CFA002DD826 /* tutorials.png */; };
@@ -435,6 +437,8 @@
 		BF63D6EB1884ADF600F3D3F3 /* menuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackground.png; sourceTree = "<group>"; };
 		BF63D6ED1884AFAC00F3D3F3 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		BF7B4B301898C5E000DF2A48 /* onemorenight.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onemorenight.mp3; sourceTree = "<group>"; };
+		BF7B4B321898D58200DF2A48 /* squirrelUp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = squirrelUp.plist; path = Squirrel/SquirrelUp/squirrelUp.plist; sourceTree = "<group>"; };
+		BF7B4B331898D58200DF2A48 /* squirrelUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = squirrelUp.png; path = Squirrel/SquirrelUp/squirrelUp.png; sourceTree = "<group>"; };
 		BFB4259518862C92002DD826 /* LevelSelectLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSelectLayer.h; sourceTree = "<group>"; };
 		BFB4259618862C92002DD826 /* LevelSelectLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LevelSelectLayer.mm; sourceTree = "<group>"; };
 		BFB4259818862CF2002DD826 /* gameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground.png; sourceTree = "<group>"; };
@@ -819,6 +823,8 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BF7B4B321898D58200DF2A48 /* squirrelUp.plist */,
+				BF7B4B331898D58200DF2A48 /* squirrelUp.png */,
 				91A400931898C5770043B996 /* gameBackground2.png */,
 				ABA0B9F01898C08300043D1C /* menu_background_music.mp3 */,
 				BF7B4B301898C5E000DF2A48 /* onemorenight.mp3 */,
@@ -1061,6 +1067,7 @@
 				AB300ABD18939B560055A914 /* cannon-body2-hd.png in Resources */,
 				AB9E5980188B261100B7D315 /* resume_button@2x.png in Resources */,
 				BF12C2921893270500478BCB /* rightsquirrel-hd.png in Resources */,
+				BF7B4B341898D58200DF2A48 /* squirrelUp.plist in Resources */,
 				ABB719E91887567B004D2FCA /* pineapple.png in Resources */,
 				AB23A84A1893186D00127A5D /* next_level-hd.png in Resources */,
 				BF196D06188F1CE9008CB197 /* snore1.png in Resources */,
@@ -1163,6 +1170,7 @@
 				91A4008B18989C2B0043B996 /* bomb.png in Resources */,
 				BF12C27A18923C5200478BCB /* levelSelectBackground-hd.png in Resources */,
 				AB9C910A18930C0D00C1A96E /* lemon-hd.png in Resources */,
+				BF7B4B351898D58200DF2A48 /* squirrelUp.png in Resources */,
 				91A4008D18989C390043B996 /* bomb-hd.png in Resources */,
 				BF12C2941893270F00478BCB /* leftsquirrel-hd.png in Resources */,
 				91A4008118987AC70043B996 /* hardCage-hd.png in Resources */,
