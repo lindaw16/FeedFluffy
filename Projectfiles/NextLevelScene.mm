@@ -81,6 +81,19 @@
         
         
         [self addChild: label];
+        CCLabelTTF *feedingFluffy = [CCLabelTTF labelWithString:@"Feeding Fluffy: 50"
+                                               fontName:@"Marker Felt"
+                                               fontSize:18];
+        feedingFluffy.position = ccp(200,180);
+        
+        CCLabelTTF *timeBonus= [CCLabelTTF labelWithString:@"Time Bonus: 50"
+                                                       fontName:@"Marker Felt"
+                                                       fontSize:18];
+        timeBonus.position = ccp(200,120);
+        
+        [self addChild:feedingFluffy];
+        [self addChild: timeBonus];
+        
         [CCMenuItemFont setFontName:@"Courier New"];
         [CCMenuItemFont setFontSize:20];
         
@@ -109,18 +122,18 @@
         if (IsIphone5)
         {
         menu.position = CGPointZero;
-        nextlevel.position = ccp(225, 150);
-        replay.position = ccp(345, 150);
-        levels.position = ccp(225, 90);
-        quit.position = ccp(345,90);
+        nextlevel.position = ccp(155, 50);
+        replay.position = ccp(295, 50);
+        levels.position = ccp(435, 50);
+        //quit.position = ccp(345,90);
         }
         
         else{
             menu.position = CGPointZero;
-            nextlevel.position = ccp(185, 150);
-            replay.position = ccp(305, 150);
-            levels.position = ccp(185, 90);
-            quit.position = ccp(305,90);
+            nextlevel.position = ccp(120, 60);
+            replay.position = ccp(220, 60);
+            levels.position = ccp(320, 60);
+            //quit.position = ccp(305,90);
         }
         
 
