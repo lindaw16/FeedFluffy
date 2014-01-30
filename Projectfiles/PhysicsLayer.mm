@@ -515,16 +515,15 @@ NSMutableDictionary *levelDict;
                 
                 NSNumber *x = [obstacle objectForKey:@"x"];
                 NSNumber *y = [obstacle objectForKey:@"y"];
-                Squirrel *obstacle2 = [[Squirrel alloc] initWithSquirrel: sName];
+                [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"squirrelUp.plist"];
+                CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"squirrelUp.png"];
+                [self addChild: spriteSheet];
+                
+                Squirrel *obstacle2 = [[Squirrel alloc] initWithSquirrel:sName];
 
 
                 obstacle2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
                 obstacle2.tag = 5;
-                
-                
-                
-                
-                
                 
                 [self addChild:obstacle2 z:1];
                 
@@ -550,7 +549,7 @@ NSMutableDictionary *levelDict;
                 obstacleShapeDef.isSensor = true;
                 obstacleBody->CreateFixture(&obstacleShapeDef);
                 
-                b2Vec2 force = b2Vec2(0, 0);
+                b2Vec2 force = b2Vec2(0, 3);
                 obstacleBody->SetLinearVelocity(force);
                 //_body->ApplyLinearImpulse(force, ballBodyDef.position);
                 //printf("Applying Linear Impulse!");
@@ -656,7 +655,7 @@ NSMutableDictionary *levelDict;
         [self setTouchEnabled:YES];
         //[self setAccelerometerEnabled:NO];
         
-        [self enableBox2dDebugDrawing];
+        //[self enableBox2dDebugDrawing];
         
         [self scheduleUpdate];
         

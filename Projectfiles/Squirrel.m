@@ -53,48 +53,31 @@
 @implementation Squirrel
 -(id) initWithSquirrel: (NSString *) squirrel
 {
-    //Add a comment to this line
-        //NSString *spriteName = [squirrel stringByAppendingString:@".png"];
-        if ((self = [super init])){
-            
-            [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"squirrelUp.plist"];
-            CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"squirrelUp.png"];
-            
-            [self addChild: spriteSheet];
-            
-            runUpFrames = [NSMutableArray array];
-            
-            for(int i = 1; i <= 2; ++i)
-            {
-                [runUpFrames addObject:
-                 [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName: [NSString stringWithFormat:@"SquirrelUp%d.png", i]]];
-            }
-            
-            
-            
-            CCSprite * sprite = [CCSprite spriteWithSpriteFrameName:@"SquirrelUp1.png"];
 
-            sprite.anchorPoint = CGPointZero;
-            sprite.position = ccp(100, 100);
-            
-            //Create an animation from the set of frames you created earlier
-            
-            CCAnimation *running = [CCAnimation animationWithSpriteFrames: runUpFrames delay:0.5f];
-            
-            
-            runUp = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:running]];
-            running.restoreOriginalFrame = NO;
-            
-            //tell the bear to run the taunting action
-            [sprite runAction:runUp];
-            
-            [self addChild:sprite z:5];
-            
-            
-            
+    if( (self=[super initWithSpriteFrameName:@"SquirrelUp1.png"]))
+    {
+        runUpFrames = [NSMutableArray array];
         
-            }
-        return self;
+        for(int i = 1; i <= 2; ++i)
+        {
+            [runUpFrames addObject:
+             [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName: [NSString stringWithFormat:@"SquirrelUp%d.png", i]]];
+        }
+        
+        //Create an animation from the set of frames you created earlier
+        
+        CCAnimation *running = [CCAnimation animationWithSpriteFrames: runUpFrames delay:0.5f];
+        
+        
+        runUp = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:running]];
+        running.restoreOriginalFrame = NO;
+        
+        //tell the bear to run the taunting action
+        [self runAction:runUp];
+
+    }
+    return self;
+        //return self;
     }
 
 @end
