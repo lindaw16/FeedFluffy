@@ -15,5 +15,6 @@
 }
 +(id) sceneWithLevel: (int) level;
 -(id) initWithLevel: (int) level;
+-(void) draw;
 
 @end
