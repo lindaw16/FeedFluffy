@@ -195,6 +195,7 @@
 		BF7B4B3D1899C86F00DF2A48 /* SquirrelUp1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B3C1899C86F00DF2A48 /* SquirrelUp1.png */; };
 		BF7B4B401899ED6D00DF2A48 /* easyCageLabelled-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B3E1899ED6D00DF2A48 /* easyCageLabelled-hd.png */; };
 		BF7B4B411899ED6D00DF2A48 /* hardCageLabelled-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B3F1899ED6D00DF2A48 /* hardCageLabelled-hd.png */; };
+		BF7B4B451899F2C000DF2A48 /* levelMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B441899F2C000DF2A48 /* levelMusic.mp3 */; };
 		BFB4259718862C92002DD826 /* LevelSelectLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB4259618862C92002DD826 /* LevelSelectLayer.mm */; };
 		BFB4259918862CF2002DD826 /* gameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB4259818862CF2002DD826 /* gameBackground.png */; };
 		BFB4259B18862CFA002DD826 /* tutorials.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB4259A18862CFA002DD826 /* tutorials.png */; };
@@ -470,6 +471,7 @@
 		BF7B4B3C1899C86F00DF2A48 /* SquirrelUp1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SquirrelUp1.png; path = Squirrel/SquirrelUp/SquirrelUp1.png; sourceTree = "<group>"; };
 		BF7B4B3E1899ED6D00DF2A48 /* easyCageLabelled-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "easyCageLabelled-hd.png"; sourceTree = "<group>"; };
 		BF7B4B3F1899ED6D00DF2A48 /* hardCageLabelled-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hardCageLabelled-hd.png"; sourceTree = "<group>"; };
+		BF7B4B441899F2C000DF2A48 /* levelMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = levelMusic.mp3; sourceTree = "<group>"; };
 		BFB4259518862C92002DD826 /* LevelSelectLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSelectLayer.h; sourceTree = "<group>"; };
 		BFB4259618862C92002DD826 /* LevelSelectLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LevelSelectLayer.mm; sourceTree = "<group>"; };
 		BFB4259818862CF2002DD826 /* gameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground.png; sourceTree = "<group>"; };
@@ -867,6 +869,7 @@
 				BF7B4B321898D58200DF2A48 /* squirrelUp.plist */,
 				BF7B4B331898D58200DF2A48 /* squirrelUp.png */,
 				BF7B4B3C1899C86F00DF2A48 /* SquirrelUp1.png */,
+				BF7B4B441899F2C000DF2A48 /* levelMusic.mp3 */,
 				91A400931898C5770043B996 /* gameBackground2.png */,
 				ABA0B9F01898C08300043D1C /* menu_background_music.mp3 */,
 				BF7B4B301898C5E000DF2A48 /* onemorenight.mp3 */,
@@ -1091,6 +1094,7 @@
 				BF30E0071888DDB1000773E5 /* cannon-body.png in Resources */,
 				ABB719D318872546004D2FCA /* level1.plist in Resources */,
 				BF196CFA188EF27D008CB197 /* cage.png in Resources */,
+				BF7B4B451899F2C000DF2A48 /* levelMusic.mp3 in Resources */,
 				AB9C910D18930C0D00C1A96E /* orange.png in Resources */,
 				BF12C28C18930C3F00478BCB /* fluffyframes-hd.png in Resources */,
 				AB49BD92188F9F3D00795F1D /* level4.plist in Resources */,
