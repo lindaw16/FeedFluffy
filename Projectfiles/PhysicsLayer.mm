@@ -138,7 +138,7 @@ int dialogCounter = 0;
     
     
     if (IsIphone5){
-    thesnores.position = CGPointMake(450.0f, 120.0f);
+    thesnores.position = CGPointMake(478.0f, 120.0f);
 //        CCSprite *sleepingFluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
 //    sleepingFluffy.position = ccp(510, 135);
 //    sleepingFluffy.scaleX = 0.5;
@@ -146,7 +146,7 @@ int dialogCounter = 0;
 //    [self addChild:sleepingFluffy];
     }
     else {
-        thesnores.position = CGPointMake(378.0f, 120.0f);
+        thesnores.position = CGPointMake(405.0f, 120.0f);
 //        CCSprite *sleepingFluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
 //        sleepingFluffy.position = ccp(420, 135);
 //        sleepingFluffy.scaleX = 0.5;
