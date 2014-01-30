@@ -864,14 +864,16 @@ int dialogCounter = 0;
     ballShapeDef.friction = 0.0f;
     ballShapeDef.restitution = 1.0f;
     _body->CreateFixture(&ballShapeDef);
-    if (angleInDegrees > 52.0)
-    {
-        angleInDegrees = 49.0;
-    }
-    if (angleInDegrees < -52.0)
-    {
-        angleInDegrees = -50.0;
-    }
+    NSLog(@"BEFORE %f", angleInDegrees);
+//    if (angleInDegrees > 52.0)
+//    {
+//        NSLog(@"SDF:LKJDSLFKJSD:FJSDLFJ");
+//        angleInDegrees = 49.0;
+//    }
+//    if (angleInDegrees < -52.0)
+//    {
+//        angleInDegrees = -50.0;
+//    }
     float radianAngle = CC_DEGREES_TO_RADIANS(angleInDegrees);
     [_player runAction:[CCSequence actions:[CCCallBlock actionWithBlock:^{[self addChild:_nextProjectile];_nextProjectile = nil;}],nil]];
     //this determines the speed of the ball projectile
@@ -1317,7 +1319,7 @@ int counter = 1;
             
             NSLog(@"angle in degrees %f", angleInDegrees);
             
-            if ( angleInDegrees < 50 && angleInDegrees > -50)
+            if ( angleInDegrees < 70 && angleInDegrees > -70)
             {
                 //dont let the cannon rotate too far
                 
