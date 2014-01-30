@@ -38,6 +38,7 @@
 		91A400941898C5770043B996 /* gameBackground2.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A400931898C5770043B996 /* gameBackground2.png */; };
 		91A4009618998AAB0043B996 /* restartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A4009518998AAB0043B996 /* restartButton.png */; };
 		91A4009A1899AB640043B996 /* firebutton2.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A400991899AB640043B996 /* firebutton2.png */; };
+		91A4009E1899D72C0043B996 /* level7.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91A4009D1899D72C0043B996 /* level7.plist */; };
 		AB23A836189317A500127A5D /* level_select-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB23A834189317A500127A5D /* level_select-hd.png */; };
 		AB23A837189317A500127A5D /* level_select2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB23A835189317A500127A5D /* level_select2-hd.png */; };
 		AB23A83A189317E900127A5D /* main_menu-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB23A838189317E900127A5D /* main_menu-hd.png */; };
@@ -292,6 +293,7 @@
 		91A400931898C5770043B996 /* gameBackground2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground2.png; sourceTree = "<group>"; };
 		91A4009518998AAB0043B996 /* restartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restartButton.png; sourceTree = "<group>"; };
 		91A400991899AB640043B996 /* firebutton2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = firebutton2.png; sourceTree = "<group>"; };
+		91A4009D1899D72C0043B996 /* level7.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level7.plist; sourceTree = "<group>"; };
 		AB23A834189317A500127A5D /* level_select-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_select-hd.png"; sourceTree = "<group>"; };
 		AB23A835189317A500127A5D /* level_select2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_select2-hd.png"; sourceTree = "<group>"; };
 		AB23A838189317E900127A5D /* main_menu-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu-hd.png"; sourceTree = "<group>"; };
@@ -916,6 +918,7 @@
 				BF39176918878CA400EF99E6 /* fruits */,
 				BF39176818878C9200EF99E6 /* backgrounds */,
 				ABB719D218872546004D2FCA /* level1.plist */,
+				91A4009D1899D72C0043B996 /* level7.plist */,
 				AB49BD8F188F991600795F1D /* level2.plist */,
 				ABB719D418872D0A004D2FCA /* level3.plist */,
 				AB49BD91188F9F3D00795F1D /* level4.plist */,
@@ -1072,6 +1075,7 @@
 				BF12C2781892357800478BCB /* easyCage-hd.png in Resources */,
 				AB3920471892205000E4830D /* gold_star_big.png in Resources */,
 				AB9C91031893085200C1A96E /* apple.png in Resources */,
+				91A4009E1899D72C0043B996 /* level7.plist in Resources */,
 				DCC1A10B13A94ED5005BD75D /* iTunesArtwork in Resources */,
 				AB9C910B18930C0D00C1A96E /* lemon.png in Resources */,
 				AB300ABD18939B560055A914 /* cannon-body2-hd.png in Resources */,
