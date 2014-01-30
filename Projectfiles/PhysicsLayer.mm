@@ -147,10 +147,10 @@ int dialogCounter = 0;
 {
     //we should probably put the pause button and star button here??
     if (currentLevel ==1 && dialogCounter ==0){
-        [ModalAlert Tell:@"You must send the orange to Fluffy, Or else he'll get all in a huff-y. Collect more fruits with one ball. Or better - collect them all, And Fluffy will grow up big and buffy. Drag the cannon or its head to change its position and angle. Press the launch button to go. Good luck!" onLayer:self okBlock:^{
-            
+        [ModalAlert Tell:@"You must send the orange to Fluffy\n"@"Or else he'll get all in a huff-y.\n"@" Collect more fruits with one ball, \n"@"Or better yet- collect them all, \n"@"And Fluffy will grow up big and buffy. \n\n"@"Drag the cannon or its head to change its position and angle. Press the launch button to go. Good luck!" onLayer:self okBlock:^{
             
         }];
+
         dialogCounter = 1;
     }
     
