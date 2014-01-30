@@ -120,9 +120,9 @@
         
         else{
             menu.position = CGPointZero;
-            nextlevel.position = ccp(120, 60);
-            replay.position = ccp(220, 60);
-            levels.position = ccp(320, 60);
+            nextlevel.position = ccp(130, 60);
+            replay.position = ccp(230, 60);
+            levels.position = ccp(330, 60);
             //quit.position = ccp(305,90);
         }
         
