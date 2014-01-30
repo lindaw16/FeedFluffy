@@ -100,6 +100,11 @@
 		AB9E13821889CA4B001F6EA8 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9E13811889CA4B001F6EA8 /* rock.png */; };
 		AB9E13841889CF26001F6EA8 /* level5.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB9E13831889CF26001F6EA8 /* level5.plist */; };
 		AB9E2D031888D5B600F99EAB /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = AB9E2D021888D5B600F99EAB /* MyContactListener.mm */; };
+		AB9E45B8189B07610019524F /* level11.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB9E45B7189B07610019524F /* level11.plist */; };
+		AB9E45BA189B091A0019524F /* level12.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB9E45B9189B091A0019524F /* level12.plist */; };
+		AB9E45BE189B09F00019524F /* rock0-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9E45BB189B09EF0019524F /* rock0-hd.png */; };
+		AB9E45BF189B09F00019524F /* rock2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9E45BC189B09EF0019524F /* rock2-hd.png */; };
+		AB9E45C0189B09F00019524F /* rock4-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9E45BD189B09EF0019524F /* rock4-hd.png */; };
 		AB9E597A188B261100B7D315 /* level_select_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9E5972188B261100B7D315 /* level_select_button@2x.png */; };
 		AB9E597C188B261100B7D315 /* main_menu_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9E5974188B261100B7D315 /* main_menu_button@2x.png */; };
 		AB9E597D188B261100B7D315 /* main_menu_button2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9E5975188B261100B7D315 /* main_menu_button2@2x.png */; };
@@ -373,6 +378,11 @@
 		AB9E13831889CF26001F6EA8 /* level5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level5.plist; sourceTree = "<group>"; };
 		AB9E2D011888D5B600F99EAB /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContactListener.h; sourceTree = "<group>"; };
 		AB9E2D021888D5B600F99EAB /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyContactListener.mm; sourceTree = "<group>"; };
+		AB9E45B7189B07610019524F /* level11.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level11.plist; sourceTree = "<group>"; };
+		AB9E45B9189B091A0019524F /* level12.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level12.plist; sourceTree = "<group>"; };
+		AB9E45BB189B09EF0019524F /* rock0-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rock0-hd.png"; sourceTree = "<group>"; };
+		AB9E45BC189B09EF0019524F /* rock2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rock2-hd.png"; sourceTree = "<group>"; };
+		AB9E45BD189B09EF0019524F /* rock4-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rock4-hd.png"; sourceTree = "<group>"; };
 		AB9E5972188B261100B7D315 /* level_select_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_select_button@2x.png"; sourceTree = "<group>"; };
 		AB9E5974188B261100B7D315 /* main_menu_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu_button@2x.png"; sourceTree = "<group>"; };
 		AB9E5975188B261100B7D315 /* main_menu_button2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu_button2@2x.png"; sourceTree = "<group>"; };
@@ -969,8 +979,13 @@
 				91A4009D1899D72C0043B996 /* level7.plist */,
 				AB5C6D9B189750F200F0C395 /* level8.plist */,
 				ABA0B9EC1898A15A00043D1C /* level9.plist */,
+				AB9E45B7189B07610019524F /* level11.plist */,
+				AB9E45B9189B091A0019524F /* level12.plist */,
 				AB9E13811889CA4B001F6EA8 /* rock.png */,
 				AB954FE91895BB3100E2993F /* rock-hd.png */,
+				AB9E45BB189B09EF0019524F /* rock0-hd.png */,
+				AB9E45BC189B09EF0019524F /* rock2-hd.png */,
+				AB9E45BD189B09EF0019524F /* rock4-hd.png */,
 				BF22E3D81884785D007E26DF /* hungryEeveeMouth.png */,
 				BF22E3D4188472C9007E26DF /* hungryEevee.png */,
 				ABA0E6C01899E83D0097FAF5 /* pause_background35-hd.png */,
@@ -1137,6 +1152,7 @@
 				BF7B4B341898D58200DF2A48 /* squirrelUp.plist in Resources */,
 				ABB719E91887567B004D2FCA /* pineapple.png in Resources */,
 				AB23A84A1893186D00127A5D /* next_level-hd.png in Resources */,
+				AB9E45C0189B09F00019524F /* rock4-hd.png in Resources */,
 				BF196D06188F1CE9008CB197 /* snore1.png in Resources */,
 				BF22E3D91884785D007E26DF /* hungryEeveeMouth.png in Resources */,
 				AB300AB7189398270055A914 /* ball-hd.png in Resources */,
@@ -1185,6 +1201,7 @@
 				BF12C2621892191500478BCB /* gameBackground-hd.png in Resources */,
 				AB9FBB89188B190000992502 /* main_menu_button.png in Resources */,
 				AB9BA6441890672E00D66681 /* apple_level-hd.png in Resources */,
+				AB9E45B8189B07610019524F /* level11.plist in Resources */,
 				AB39204F1892205000E4830D /* silver_star.png in Resources */,
 				BFB4259B18862CFA002DD826 /* tutorials.png in Resources */,
 				AB9E13821889CA4B001F6EA8 /* rock.png in Resources */,
@@ -1206,6 +1223,7 @@
 				AB9FBB8A188B190000992502 /* main_menu_button2.png in Resources */,
 				AB5C6D9C189750F200F0C395 /* level8.plist in Resources */,
 				BF12C2A61894949D00478BCB /* goRight-hd.png in Resources */,
+				AB9E45BE189B09F00019524F /* rock0-hd.png in Resources */,
 				BFB425B1188702D4002DD826 /* level1.png in Resources */,
 				ABA0E6C51899E9380097FAF5 /* pause_background-hd.png in Resources */,
 				ABB719E81887567B004D2FCA /* pineapple-hd.png in Resources */,
@@ -1273,6 +1291,7 @@
 				AB23A84B1893186D00127A5D /* next_level2-hd.png in Resources */,
 				914BE9E41889BDF40085E989 /* bg@2x.png in Resources */,
 				91A40077189735430043B996 /* pauseButton2.png in Resources */,
+				AB9E45BA189B091A0019524F /* level12.plist in Resources */,
 				914BE9E51889BDF40085E989 /* button.png in Resources */,
 				914BE9E71889BDF40085E989 /* lock.png in Resources */,
 				AB9EC450189475D00030B830 /* next_level2.png in Resources */,
@@ -1284,6 +1303,7 @@
 				AB9EC44C189475380030B830 /* main_menu2.png in Resources */,
 				AB9EC460189477740030B830 /* pear.png in Resources */,
 				BF4E9609188A23760000B4FE /* cannonheadx.png in Resources */,
+				AB9E45BF189B09F00019524F /* rock2-hd.png in Resources */,
 				917E7AC4188F1D4F004C4217 /* 4.png in Resources */,
 				917E7AC5188F1D4F004C4217 /* 3.png in Resources */,
 				BF12C28E189316D600478BCB /* play-hd.png in Resources */,
