@@ -885,6 +885,7 @@ NSMutableDictionary *levelDict;
     int bestTime = [[levelDict objectForKey:@"best_time"] intValue];
     //NSLog(@"best_balls: %d", bestBalls);
     // NSLog(@"best_stars: %d", bestStars);
+    //
     
     NSLog(@"After Game before calculation: best stars is %d and last star was %d", [[levelDict objectForKey:@"best_stars"] intValue],[[levelDict objectForKey:@"last_stars"] intValue]);
     
