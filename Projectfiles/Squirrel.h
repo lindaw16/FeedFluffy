@@ -22,7 +22,7 @@
 
 }
 
--(id) initWithSquirrel: (NSString *) squirrel;
+-(id) initWithSquirrel: (NSString *) squirrel: (CGPoint) location;
 //+(void) squirrelUp;
 //+(void) squirrelDown;
 

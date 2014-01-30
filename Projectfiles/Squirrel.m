@@ -45,13 +45,13 @@
 //  TheRealFluffy
 //
 //  Created by Clare on 1/25/14.
-//
+///Users/Linda/Kobold2D/Kobold2D-2.1.0/TheRealFluffy/Projectfiles/Squirrel.m
 //
 
 #import "Squirrel.h"
 
 @implementation Squirrel
--(id) initWithSquirrel: (NSString *) squirrel
+-(id) initWithSquirrel: (NSString *) squirrel : (CGPoint) location
 {
     //Add a comment to this line
         //NSString *spriteName = [squirrel stringByAppendingString:@".png"];
@@ -75,7 +75,8 @@
             CCSprite * sprite = [CCSprite spriteWithSpriteFrameName:@"SquirrelUp1.png"];
 
             sprite.anchorPoint = CGPointZero;
-            sprite.position = ccp(100, 100);
+            //sprite.position = ccp(100, 100);
+            sprite.position = location;
             
             //Create an animation from the set of frames you created earlier
             
@@ -88,7 +89,7 @@
             //tell the bear to run the taunting action
             [sprite runAction:runUp];
             
-            [self addChild:sprite z:5];
+            [self addChild:sprite];
             
             
             
