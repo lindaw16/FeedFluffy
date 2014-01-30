@@ -425,9 +425,9 @@ int dialogCounter = 0;
             // NSLog(@"this is the currenet level %d", currentLevel);
             //message = [CCSprite spriteWithFile:@"tutorial1.png"];
             //message = [CCSprite spriteWithFile:[NSString stringWithFormat:@"tutorial%d.png", currentLevel]];
-            message = [CCSprite spriteWithFile:[NSString stringWithFormat:@"tutorial%d.png", level]];
-            message.position = ccp(220, 140);
-            [self addChild:message z:1];
+            //message = [CCSprite spriteWithFile:[NSString stringWithFormat:@"tutorial%d.png", level]];
+            //message.position = ccp(220, 140);
+            //[self addChild:message z:1];
         }
         // NSLog(@"this is the currenet level %d but i'm not inside the if statement", currentLevel);
         

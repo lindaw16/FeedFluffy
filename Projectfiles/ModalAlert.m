@@ -32,7 +32,7 @@
 
 #define kDialogTag 1234
 #define kAnimationTime 0.4f
-#define kDialogImg @"BlueModal.png"
+#define kDialogImg @"BlueModal2.png"
 #define kButtonImg @"okbutton.png"
 #define kFontName @"MarkerFelt-Thin"
 
