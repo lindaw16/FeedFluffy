@@ -12,6 +12,7 @@
 //#import "LevelSelectLayer.h"
 
 #import "PhysicsLayer.h"
+#import "StartMenuLayer.h"
 
 
 
@@ -155,7 +156,7 @@ CCSprite *level;
     if (IsIphone5) { quit.position = ccp(284, 20);}
     else{quit.position = ccp(240, 20);}
     
-    [self addChild: quit];
+    [myLevels addChild: quit];
     
     [self addChild: myLevels z:1];
     
@@ -203,7 +204,17 @@ CCSprite *level;
     
 }
 
+-(void) GoToMainMenu: (id) sender {
 
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade
+                                               
+                                               transitionWithDuration:1
+                                               
+                                               scene:[StartMenuLayer node]]
+     
+     ];
+    
+}
 
 //-(id) init{
 //    //    instanceOfMyClass = self;

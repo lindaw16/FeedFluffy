@@ -52,7 +52,7 @@ CCSprite *level2;
     myLevels.position = ccp(0, 0);
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     
-    for (int i = 0; i < numLevels2; i++)
+    for (int i = 13; i < numLevels2+13; i++)
     {
         //        if (! [NSString stringWithFormat:@"level%dLocked", i])
         
@@ -75,13 +75,13 @@ CCSprite *level2;
         int currentLevelCompleted = [[levelDict objectForKey:@"completed"] intValue];
         int x;
         if (IsIphone5){
-            x = leftMargin2 + 110 * (i % numCol2);
+            x = leftMargin2 + 110 * ((i - 13) % numCol2);
             
         }
         else{
-            x = leftMargin2 + 80 * (i % numCol2);
+            x = leftMargin2 + 80 * ((i - 13)% numCol2);
         }
-        int y =  topMargin2 - (i/numCol2)*75;
+        int y =  topMargin2 - ((i - 13)/numCol2)*75;
         
         //level.position = ccp(leftMargin2 + 80 * (i % numCol2), topMargin2 - (i/ numCol2) * 60);
         //[myLevels addChild: level];
