@@ -39,6 +39,11 @@
 		91A4009618998AAB0043B996 /* restartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A4009518998AAB0043B996 /* restartButton.png */; };
 		91A4009A1899AB640043B996 /* firebutton2.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A400991899AB640043B996 /* firebutton2.png */; };
 		91A4009E1899D72C0043B996 /* level7.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91A4009D1899D72C0043B996 /* level7.plist */; };
+		91A400AC1899E2510043B996 /* ModalAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A400AB1899E2510043B996 /* ModalAlert.m */; };
+		91A400B11899E2720043B996 /* dialogButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A400AD1899E2720043B996 /* dialogButton.png */; };
+		91A400B21899E2720043B996 /* dialogBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A400AE1899E2720043B996 /* dialogBox.png */; };
+		91A400B31899E2730043B996 /* dialogBox-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A400AF1899E2720043B996 /* dialogBox-hd.png */; };
+		91A400B41899E2730043B996 /* dialogButton-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A400B01899E2720043B996 /* dialogButton-hd.png */; };
 		AB23A836189317A500127A5D /* level_select-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB23A834189317A500127A5D /* level_select-hd.png */; };
 		AB23A837189317A500127A5D /* level_select2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB23A835189317A500127A5D /* level_select2-hd.png */; };
 		AB23A83A189317E900127A5D /* main_menu-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB23A838189317E900127A5D /* main_menu-hd.png */; };
@@ -294,6 +299,12 @@
 		91A4009518998AAB0043B996 /* restartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restartButton.png; sourceTree = "<group>"; };
 		91A400991899AB640043B996 /* firebutton2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = firebutton2.png; sourceTree = "<group>"; };
 		91A4009D1899D72C0043B996 /* level7.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level7.plist; sourceTree = "<group>"; };
+		91A400AA1899E2510043B996 /* ModalAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalAlert.h; sourceTree = "<group>"; };
+		91A400AB1899E2510043B996 /* ModalAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalAlert.m; sourceTree = "<group>"; };
+		91A400AD1899E2720043B996 /* dialogButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialogButton.png; sourceTree = "<group>"; };
+		91A400AE1899E2720043B996 /* dialogBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialogBox.png; sourceTree = "<group>"; };
+		91A400AF1899E2720043B996 /* dialogBox-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialogBox-hd.png"; sourceTree = "<group>"; };
+		91A400B01899E2720043B996 /* dialogButton-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialogButton-hd.png"; sourceTree = "<group>"; };
 		AB23A834189317A500127A5D /* level_select-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_select-hd.png"; sourceTree = "<group>"; };
 		AB23A835189317A500127A5D /* level_select2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "level_select2-hd.png"; sourceTree = "<group>"; };
 		AB23A838189317E900127A5D /* main_menu-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_menu-hd.png"; sourceTree = "<group>"; };
@@ -779,6 +790,8 @@
 		DCC1A38C13A94F1A005BD75D /* Projectfiles */ = {
 			isa = PBXGroup;
 			children = (
+				91A400AA1899E2510043B996 /* ModalAlert.h */,
+				91A400AB1899E2510043B996 /* ModalAlert.m */,
 				91A400911898A1B20043B996 /* explosion.plist */,
 				91A4008E18989DEE0043B996 /* Bomb.h */,
 				91A4008F18989DEE0043B996 /* Bomb.mm */,
@@ -831,6 +844,10 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				91A400AD1899E2720043B996 /* dialogButton.png */,
+				91A400AE1899E2720043B996 /* dialogBox.png */,
+				91A400AF1899E2720043B996 /* dialogBox-hd.png */,
+				91A400B01899E2720043B996 /* dialogButton-hd.png */,
 				91A400991899AB640043B996 /* firebutton2.png */,
 				91A4009518998AAB0043B996 /* restartButton.png */,
 				BF7B4B321898D58200DF2A48 /* squirrelUp.plist */,
@@ -1076,6 +1093,7 @@
 				AB3920471892205000E4830D /* gold_star_big.png in Resources */,
 				AB9C91031893085200C1A96E /* apple.png in Resources */,
 				91A4009E1899D72C0043B996 /* level7.plist in Resources */,
+				91A400B41899E2730043B996 /* dialogButton-hd.png in Resources */,
 				DCC1A10B13A94ED5005BD75D /* iTunesArtwork in Resources */,
 				AB9C910B18930C0D00C1A96E /* lemon.png in Resources */,
 				AB300ABD18939B560055A914 /* cannon-body2-hd.png in Resources */,
@@ -1156,6 +1174,7 @@
 				ABB719E81887567B004D2FCA /* pineapple-hd.png in Resources */,
 				BFB425B8188727AA002DD826 /* Bonus.png in Resources */,
 				91A4008218987AC70043B996 /* hardCage.png in Resources */,
+				91A400B31899E2730043B996 /* dialogBox-hd.png in Resources */,
 				AB9E13841889CF26001F6EA8 /* level5.plist in Resources */,
 				AB3920491892205000E4830D /* gold_star.png in Resources */,
 				AB9E597E188B261100B7D315 /* restart_button@2x.png in Resources */,
@@ -1164,6 +1183,7 @@
 				BF12C2661892237600478BCB /* menuBackground-hd.png in Resources */,
 				BF196D01188EFCAC008CB197 /* ok2.png in Resources */,
 				AB7821C8188A56A7008F51B8 /* pause.png in Resources */,
+				91A400B11899E2720043B996 /* dialogButton.png in Resources */,
 				AB300ABA1893993D0055A914 /* easyCage.png in Resources */,
 				91A400941898C5770043B996 /* gameBackground2.png in Resources */,
 				BF12C276189229DF00478BCB /* mediumLevel.png in Resources */,
@@ -1207,6 +1227,7 @@
 				914BE9E31889BDF40085E989 /* bg.png in Resources */,
 				AB23A8471893186200127A5D /* replay2-hd.png in Resources */,
 				BF12C28B18930C3F00478BCB /* fluffyframes-hd.plist in Resources */,
+				91A400B21899E2720043B996 /* dialogBox.png in Resources */,
 				BF196D20188F8696008CB197 /* tutorial1.png in Resources */,
 				919F04231890BE89008BADF4 /* button@2x.png in Resources */,
 				AB23A84B1893186D00127A5D /* next_level2-hd.png in Resources */,
@@ -1273,6 +1294,7 @@
 				AB9E2D031888D5B600F99EAB /* MyContactListener.mm in Sources */,
 				91A4009018989DEE0043B996 /* Bomb.mm in Sources */,
 				914BE9DB1889BCA00085E989 /* EasyLevelLayer.mm in Sources */,
+				91A400AC1899E2510043B996 /* ModalAlert.m in Sources */,
 				AB9EC46318947B580030B830 /* LoseScene.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

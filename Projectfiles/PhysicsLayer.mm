@@ -25,6 +25,7 @@
 #import "LoseScene.h"
 #import "Squirrel.h"
 #import "Bomb.h"
+#import "ModalAlert.h"
 //#import "cocos2d.m"
 
 
@@ -120,10 +121,17 @@ NSMutableDictionary *levelDict;
 	return scene;
 }
 
-
+int dialogCounter = 0;
 -(void) setUpMenus
 {
     //we should probably put the pause button and star button here??
+    if (currentLevel ==1 && dialogCounter ==0){
+        [ModalAlert Tell:@"You must send the orange to Fluffy, Or else he'll get all in a huff-y. Collect more fruits with one ball. Or better - collect them all, And Fluffy will grow up big and buffy. Drag the cannon or its head to change its position and angle. Press the launch button to go. Good luck!" onLayer:self okBlock:^{
+            
+            
+        }];
+        dialogCounter = 1;
+    }
     
     CCSprite * thesnores = [CCSprite spriteWithSpriteFrameName:@"snore1.png"];
     thesnores.anchorPoint = CGPointZero;
