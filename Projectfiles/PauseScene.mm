@@ -66,8 +66,7 @@
         
         //CCMenuItem *Quit = [CCMenuItemFont itemFromString:@"Main Menu"
                                                    //target:self selector:@selector(GoToMainMenu:)];
-        CCMenuItemImage *quit = [CCMenuItemImage itemWithNormalImage: @"main_menu.png" selectedImage: @"main_menu2.png" target:self
-                                                           selector:@selector(GoToMainMenu:)];
+        CCMenuItemImage *quit = [CCMenuItemImage itemWithNormalImage: @"main_menu.png" selectedImage: @"main_menu2.png" target:self selector:@selector(GoToMainMenu:)];
         
         CCMenu *menu= [CCMenu menuWithItems: resume, restart, level, quit, nil];
         

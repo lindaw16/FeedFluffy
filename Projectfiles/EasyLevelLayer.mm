@@ -23,7 +23,7 @@ int numCol = 4;
 const float PTM = 32.0f;
 
 int leftMargin = 120;
-int topMargin = 240;
+int topMargin = 220;
 CCSprite *level;
 
 +(id) scene
@@ -141,6 +141,19 @@ CCSprite *level;
     }
     
     //CCMenu * myLevels = [CCMenu menuWithItems: level1, level2, level3, level4, level5, nil];
+    
+    CCLabelTTF *label = [CCLabelTTF labelWithString:@"Easy!"
+                                           fontName:@"Marker Felt"
+                                           fontSize:50];
+    
+    if (IsIphone5) { label.position = ccp(284,280);}
+    else{label.position = ccp(240,270); }
+    [self addChild: label];
+    
+    CCMenuItemImage *quit = [CCMenuItemImage itemWithNormalImage: @"main_menu.png" selectedImage: @"main_menu2.png" target:self selector:@selector(GoToMainMenu:)];
+    
+    quit.position = ccp(80, 270);
+    [self addChild: quit];
     
     [self addChild: myLevels z:1];
     
