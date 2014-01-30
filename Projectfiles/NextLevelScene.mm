@@ -165,7 +165,7 @@
         [self addChild: bestTimeLabel z:3];
         
         int stars = [[levelDict objectForKey:@"last_stars"] intValue];
-        NSLog(@"STARS: %d", stars);
+
         CCSprite *rank;
         if (stars == 3){
             rank = [CCSprite spriteWithFile:@"gold_star_big.png"];

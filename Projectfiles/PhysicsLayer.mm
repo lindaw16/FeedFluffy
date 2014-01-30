@@ -61,6 +61,7 @@ int currentLevel;
 int ballsUsed;
 int numFruitCollected;
 int seconds;
+BOOL orangeCollected;
 
 int cannonCounter = 0;
 CCSprite *ballData;
@@ -182,7 +183,6 @@ int dialogCounter = 0;
         
         _hud = hud;
         
-        NSLog(@"DISPLAYING STARSSSSS\n");
         angleInDegrees = 0;
         //CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello Levels!!" fontName:@"Marker Felt" fontSize:48.0];
         
@@ -191,6 +191,7 @@ int dialogCounter = 0;
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"levelMusic.mp3"];
         
         numFruitCollected = 0;
+        orangeCollected = NO;
         //label.position = ccp(size.width/2, size.height/2);
         
         //[self addChild:	label];
@@ -872,15 +873,7 @@ int dialogCounter = 0;
 
 -(BOOL) checkLevelCompleted {
     
-    /*for (NSString *key in goal){
-     int goalValue = [[goal objectForKey:key] intValue];
-     int goalProgressValue = [[goalProgress objectForKey:key] intValue];
-     if (goalProgressValue < goalValue) {
-     return NO;
-     }
-     }*/
-    
-    if (numFruitCollected == 0){
+    if (orangeCollected == 0){
         return NO;
     }
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
@@ -895,28 +888,15 @@ int dialogCounter = 0;
     int bestBalls = [[levelDict objectForKey:@"best_balls"] intValue];
     int bestStars = [[levelDict objectForKey:@"best_stars"] intValue];
     int bestTime = [[levelDict objectForKey:@"best_time"] intValue];
+    int bestScore = [[levelDict objectForKey:@"best_score"] intValue];
     //NSLog(@"best_balls: %d", bestBalls);
     // NSLog(@"best_stars: %d", bestStars);
     //
     
     //NSLog(@"After Game before calculation: best stars is %d and last star was %d", [[levelDict objectForKey:@"best_stars"] intValue],[[levelDict objectForKey:@"last_stars"] intValue]);
     
-    
     int stars;
-    /*if (ballsUsed < bestBalls){
-     [levelDict setObject:[NSNumber numberWithInt:ballsUsed] forKey:@"best_balls"];
-     int bestBalls = [[levelDict objectForKey:@"best_balls"] intValue];
-     NSLog(@"best_balls: %d", bestBalls);
-     }
-     if (ballsUsed <= gold){
-     stars = 3;
-     }
-     else if (ballsUsed <= silver){
-     stars = 2;
-     }
-     else {
-     stars = 1;
-     }*/
+
     [levelDict setObject:[NSNumber numberWithInt:seconds] forKey:@"last_time"];
     if (seconds < bestTime){
         [levelDict setObject:[NSNumber numberWithInt:seconds] forKey:@"best_time"];
@@ -930,6 +910,15 @@ int dialogCounter = 0;
     else if (numFruitCollected >= bronze) {
         stars = 1;
     }
+    
+    // formula for scoring: time left * number of stars + 50 for completing
+    int score = (60 - seconds) * stars * 10 + 50;
+    [levelDict setObject:[NSNumber numberWithInt:score] forKey:@"last_score"];
+    
+    if (score > bestScore){
+        [levelDict setObject:[NSNumber numberWithInt:score] forKey:@"best_score"];
+    }
+    NSLog(@"SCORE: %d", score);
     
     [levelDict setObject:[NSNumber numberWithInt: stars] forKey:@"last_stars"];
     if (stars > bestStars){
@@ -999,7 +988,7 @@ int dialogCounter = 0;
                         b->SetLinearVelocity(force);
                     }
                 
-                NSLog(@"A:KJDSF:DJSFLJSDF:JDSFKSDF:J %f, %f", sprite.position.x, sprite.position.y);
+                //NSLog(@"A:KJDSF:DJSFLJSDF:JDSFKSDF:J %f, %f", sprite.position.x, sprite.position.y);
                     
             
             
@@ -1344,6 +1333,11 @@ int counter = 1;
                     
                     Fruit *fruit = (Fruit*) spriteB;
                     NSString *fruitName = fruit.fruitName;
+
+                    if ([fruitName isEqualToString:@"orange"]){
+                        orangeCollected = YES;
+                    }
+                    
                     numFruitCollected++;
                     
                     int num = [[goal objectForKey:fruitName] intValue];
@@ -1351,6 +1345,7 @@ int counter = 1;
                     fruitNum++;
                     [goalProgress setObject:[NSNumber numberWithInt: fruitNum] forKey:fruitName];
                     int fruitNum2 = [[goalProgress objectForKey:fruitName] intValue];
+                    
                     [self updateFoodCollect];
                 }
             }
@@ -1362,6 +1357,10 @@ int counter = 1;
                     Fruit *fruit = (Fruit*) spriteA;
                     NSString *fruitName = fruit.fruitName;
                     numFruitCollected++;
+                    
+                    if ([fruitName isEqualToString:@"orange"]){
+                        orangeCollected = YES;
+                    }
                     
                     int num = [[goal objectForKey:fruitName] intValue];
                     int fruitNum = [[goalProgress objectForKey:fruitName] intValue];
