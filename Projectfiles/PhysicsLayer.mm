@@ -850,15 +850,24 @@ int dialogCounter = 0;
     ballShapeDef.friction = 0.0f;
     ballShapeDef.restitution = 1.0f;
     _body->CreateFixture(&ballShapeDef);
-    
-    
+    if (angleInDegrees > 52.0)
+    {
+        angleInDegrees = 52.0;
+    }
+    if (angleInDegrees < -52.0)
+    {
+        angleInDegrees = -52.0;
+    }
     float radianAngle = CC_DEGREES_TO_RADIANS(angleInDegrees);
     [_player runAction:[CCSequence actions:[CCCallBlock actionWithBlock:^{[self addChild:_nextProjectile];_nextProjectile = nil;}],nil]];
     //this determines the speed of the ball projectile
     b2Vec2 force = b2Vec2(2 * cos(radianAngle), 2 * sin(radianAngle));
     
     //_body->ApplyLinearImpulse(force, ballBodyDef.position);
-    printf("Applying Linear Impulse!");
+    printf("Applying Linear Impulse!\n");
+    printf("Angle in Degrees %f,", angleInDegrees);
+    
+
     _body->ApplyLinearImpulse(force, ballBodyDef.position);
     // Move projectile to actual endpoint
     /*[_nextProjectile runAction:
@@ -1286,12 +1295,14 @@ int counter = 1;
             float deltaY = pos.y - _player.position.y;
             float deltaX = pos.x - _player.position.x;
             
+                if (deltaY < 50.0 && deltaY > -55.0) {
+                NSLog(@"DeltaY, %f", deltaY);
             // Bail out if you are shooting down or backwards
             //if (offset.x <= 0) return;
             angleInDegrees = atan2(deltaY, deltaX) * 180 / M_PI;
             
             NSLog(@"angle in degrees %f", angleInDegrees);
-            if (deltaY)
+            
             if ( angleInDegrees < 50 && angleInDegrees > -50)
             {
                 //dont let the cannon rotate too far
@@ -1304,6 +1315,7 @@ int counter = 1;
                 cannonHead.anchorPoint = ccp(0.3,0.3);
                 cannonHead.rotation = -angleInDegrees;
             }
+        }
         }
         }
     }
