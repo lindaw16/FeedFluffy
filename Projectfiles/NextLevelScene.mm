@@ -28,6 +28,19 @@
 
 -(id)initWithLevel: (int) level{
     if( (self=[super init] )) {
+        
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"fluffyframes.plist"];
+        CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"fluffyframes.png"];
+        [self addChild:spriteSheet];
+        waggingFrames = [NSMutableArray array];
+        for(int i = 1; i <= 6; ++i)
+        {
+            [waggingFrames addObject:
+             [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName: [NSString stringWithFormat:@"fluffy%d.png", i]]];
+        }
+        
+        
+        
         CCSprite *bg = [CCSprite spriteWithFile:@"pause_background.png"];
         bg.anchorPoint = CGPointZero;
         [self addChild:bg];
@@ -38,23 +51,35 @@
     
         
         
+
+        
+        CCSprite *fluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
+        fluffy.anchorPoint = CGPointZero;
+        fluffy.scaleX = 0.7;
+        fluffy.scaleY = 0.7;
+        
+        
+        CCAnimation *wagging = [CCAnimation animationWithSpriteFrames: waggingFrames delay:0.2f];
+        wag = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:wagging]];
+        wagging.restoreOriginalFrame = NO;
+        [fluffy runAction:wag];
+        [self addChild:fluffy z:1];
+        
+        
         if (IsIphone5)
         {
             label.position = ccp(284,260);
-            CCSprite *sleepingFluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
-            sleepingFluffy.position = ccp(510, 135);
-            sleepingFluffy.scaleX = 0.5;
-            sleepingFluffy.scaleY = 0.5;
-            [self addChild:sleepingFluffy];
+            fluffy.position = ccp(350, 170);
         }
         else{
             label.position = ccp(240,270);
-            CCSprite *sleepingFluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
-            sleepingFluffy.position = ccp(420, 135);
-            sleepingFluffy.scaleX = 0.5;
-            sleepingFluffy.scaleY = 0.5;
-            [self addChild:sleepingFluffy];
+            fluffy.position = ccp(420, 135);
         }
+        
+        
+    
+        
+        
         [self addChild: label];
         [CCMenuItemFont setFontName:@"Courier New"];
         [CCMenuItemFont setFontSize:20];

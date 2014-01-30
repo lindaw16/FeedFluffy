@@ -9,6 +9,11 @@
 #import "CCLayer.h"
 
 @interface NextLevelScene : CCLayer
+{
+    CCAction *wag;
+    NSMutableArray *waggingFrames;
+}
 +(id) sceneWithLevel: (int) level;
 -(id) initWithLevel: (int) level;
+
 @end
