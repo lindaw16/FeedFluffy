@@ -82,6 +82,7 @@ b2Body *_body;
 CGPoint realDest;
 BOOL levelCompleted;
 
+CGPoint bombPos;
 CCLabelTTF *ballCountLabel;
 CCSprite * menuBall;
 NSMutableDictionary *labels = [[NSMutableDictionary alloc] init];
@@ -605,7 +606,7 @@ int dialogCounter = 0;
                 NSNumber *y = [bomb objectForKey:@"y"];
                 bomb2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
                 //obstacle2.tag = 4;
-                
+                bombPos = bomb2.position;
                 [self addChild:bomb2 z:1];
                 // Create block body
                 b2BodyDef obstacleBodyDef;
@@ -1478,7 +1479,7 @@ int counter = 1;
                     CCParticleSystemQuad *starsEffect;
                     for(NSString *stars in starsArray) {
                         starsEffect = [CCParticleSystemQuad particleWithFile:stars];
-                        starsEffect.position = ccp(400,140);
+                        starsEffect.position = bombPos;
                         if (lock){
                         [self addChild:starsEffect z:1];
                             [starsEffect setLife:1.5];

@@ -2,6 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Squirrels</key>
+	<array>
+		<dict>
+			<key>up</key>
+			<true/>
+			<key>x</key>
+			<integer>400</integer>
+			<key>y</key>
+			<integer>20</integer>
+			<key>speed</key>
+			<integer>0</integer>
+			<key>spriteName</key>
+			<string>leftsquirrel</string>
+		</dict>
+	</array>
 	<key>Gold</key>
 	<integer>3</integer>
 	<key>Silver</key>
