@@ -57,7 +57,7 @@
 			<key>y</key>
 			<integer>30</integer>
 			<key>spriteName</key>
-			<string>orange</string>
+			<string>pear</string>
 		</dict>
 		<dict>
 			<key>x</key>
@@ -65,7 +65,7 @@
 			<key>y</key>
 			<integer>80</integer>
 			<key>spriteName</key>
-			<string>apple</string>
+			<string>orange</string>
 		</dict>
 	</array>
 </dict>
