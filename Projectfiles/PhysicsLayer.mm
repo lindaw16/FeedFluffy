@@ -148,7 +148,7 @@ int dialogCounter = 0;
 {
     //we should probably put the pause button and star button here??
     if (currentLevel ==1 && dialogCounter ==0){
-        [ModalAlert Tell:@"You must send the orange to Fluffy\n"@"Or else he'll get all in a huff-y.\n"@" Collect more fruits with one ball, \n"@"Or better yet- collect them all, \n"@"And Fluffy will grow up big and buffy. \n\n"@"Drag the cannon or its head to change its position and angle. Press the launch button to go. Good luck!" onLayer:self okBlock:^{
+        [ModalAlert Tell:@"You must send the orange to Fluffy\n"@"Or else he'll get all in a huff-y.\n"@" Collect more fruits with one ball, \n"@"Or better yet- collect them all! \n"@"And Fluffy will grow up big and buffy. \n\n"@"Drag the cannon or its head to change its position and angle. Press the shoot button to go. Good luck!" onLayer:self okBlock:^{
             
         }];
 
@@ -341,11 +341,11 @@ int dialogCounter = 0;
         
         // Standard method to create a button
         CCMenuItem *starMenuItem = [CCMenuItemImage
-                                    itemWithNormalImage:@"alterLaunchButton.png" selectedImage:@"alterLaunchButton.png"
+                                    itemWithNormalImage:@"ShootButton.png" selectedImage:@"ShootButton.png"
                                     target:self selector:@selector(starButtonTapped:)];
         starMenuItem.position = ccp(starMenuItem.contentSize.width/PTM_RATIO/2+35, winSize.height - starMenuItem.contentSize.height/PTM_RATIO/ 2 - 30 );
-        starMenuItem.scaleX = 0.35;
-        starMenuItem.scaleY = 0.35;
+        starMenuItem.scaleX = 0.8;
+        starMenuItem.scaleY = 0.8;
         //starMenuItem.position = ccp(50,30);
         CCMenu *starMenu = [CCMenu menuWithItems:starMenuItem, nil];
         starMenu.position = CGPointZero;
@@ -981,8 +981,12 @@ int tickCounter = 0;
     
 
     //[mTimeLbl setString:[NSString stringWithFormat:@"%.2d:%.2d:%.2d",hours, min,sec]];
+    if (IsIphone5){
     mTimeLbl.position = ccp(500,50);
-    
+    }
+    else{
+    mTimeLbl.position = ccp(420,50);
+    }
     world->Step(dt, 10, 10);
     std::vector<b2Body *>toDestroy;
     for(b2Body *b = world->GetBodyList(); b; b=b->GetNext()) {
@@ -1465,9 +1469,9 @@ int counter = 1;
                         starsEffect.position = ccp(400,140);
                         if (lock){
                         [self addChild:starsEffect z:1];
-                            [starsEffect setLife:2];
+                            [starsEffect setLife:1.5];
                             lock = false;
-                            [self performSelector:@selector(autoRestart) withObject:nil afterDelay:3.0f];
+                            [self performSelector:@selector(autoRestart) withObject:nil afterDelay:2.5f];
 
                         }
                        
@@ -1491,9 +1495,9 @@ int counter = 1;
                         NSLog(@"Before adding child \n");
                         if (lock){
                             [self addChild:starsEffect z:1];
-                            [starsEffect setLife:2];
+                            [starsEffect setLife:1.5];
                             lock = false;
-                            [self performSelector:@selector(autoRestart) withObject:nil afterDelay:3.0f];
+                            [self performSelector:@selector(autoRestart) withObject:nil afterDelay:2.5f];
                         }
                         
                     }

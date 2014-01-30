@@ -27,6 +27,8 @@
 	<dict>
 		<key>apple</key>
 		<integer>1</integer>
+		<key>orange</key>
+		<integer>1</integer>
 	</dict>
 	<key>Fluffy</key>
 	<dict>

@@ -11,7 +11,9 @@
 	<key>Goal</key>
 	<dict>
 		<key>apple</key>
-		<integer>3</integer>
+		<integer>1</integer>
+		<key>orange</key>
+		<integer>1</integer>
 	</dict>
 	<key>Fluffy</key>
 	<dict>
@@ -28,7 +30,7 @@
 			<key>y</key>
 			<integer>130</integer>
 			<key>spriteName</key>
-			<string>orange</string>
+			<string>apple</string>
 		</dict>
 		<dict>
 			<key>x</key>
@@ -36,15 +38,16 @@
 			<key>y</key>
 			<integer>230</integer>
 			<key>spriteName</key>
-			<string>apple</string>
+			<string>orange</string>
 		</dict>
+	</array>
+	<key>Bomb</key>
+	<array>
 		<dict>
 			<key>x</key>
-			<integer>350</integer>
+			<integer>310</integer>
 			<key>y</key>
-			<integer>175</integer>
-			<key>spriteName</key>
-			<string>apple</string>
+			<integer>130</integer>
 		</dict>
 	</array>
 </dict>
