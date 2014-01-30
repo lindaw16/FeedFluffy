@@ -51,6 +51,14 @@
 	<array>
 		<dict>
 			<key>x</key>
+			<integer>400</integer>
+			<key>y</key>
+			<integer>200</integer>
+			<key>spriteName</key>
+			<string>orange</string>
+		</dict>
+		<dict>
+			<key>x</key>
 			<integer>270</integer>
 			<key>y</key>
 			<integer>140</integer>
@@ -63,7 +71,7 @@
 			<key>y</key>
 			<integer>130</integer>
 			<key>spriteName</key>
-			<string>apple</string>
+			<string>lemon</string>
 		</dict>
 	</array>
 </dict>

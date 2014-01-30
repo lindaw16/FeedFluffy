@@ -45,6 +45,14 @@
 			<key>spriteName</key>
 			<string>apple</string>
 		</dict>
+		<dict>
+			<key>x</key>
+			<integer>230</integer>
+			<key>y</key>
+			<integer>40</integer>
+			<key>spriteName</key>
+			<string>orange</string>
+		</dict>
 	</array>
 </dict>
 </plist>

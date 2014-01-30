@@ -27,6 +27,7 @@
 #import "Bomb.h"
 #import "ModalAlert.h"
 #import "SimpleAudioEngine.h"
+
 //#import "cocos2d.m"
 
 
@@ -71,7 +72,7 @@ CCSprite *message;
 CCMenuItemImage *tapHere;
 CCMenu * myTut;
 int showDialog = 1;
-
+int ExplosionCounter = 0;
 
 float angleRadians;
 float angleInDegrees;
@@ -594,45 +595,45 @@ int dialogCounter = 0;
             }
         }
         
-        //        if ([level objectForKey:@"Bomb"]){
-        //            NSArray *bombs= [level objectForKey:@"Bomb"];
-        //            for (NSDictionary *bomb in bombs){
-        //                NSString *sName = [bomb objectForKey:@"spriteName"];
-        //                CCParticleSystemQuad* bombPic = [CCParticleSystemQuad particleWithFile:@"bomb.png"];
-        //                [self addChild:bombPic z:1 tag:1];
-        //                CCParticleSystem* particle_system = [CCParticleSystem particleWithFile:@"explosion.plist"];
-        //                //Bomb *obstacle2 = [[Bomb alloc] initWithFile:: sName];
-        //                NSNumber *x = [bomb objectForKey:@"x"];
-        //                NSNumber *y = [bomb objectForKey:@"y"];
-        //                bombPic.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
-        //                bombPic.tag = 4;
-        //
-        //                [self addChild:bombPic z:1];
-        //
-        //                // Create block body
-        //                b2BodyDef obstacleBodyDef;
-        //                obstacleBodyDef.type = b2_staticBody;
-        //                obstacleBodyDef.position.Set([x floatValue]*scaleX/PTM_RATIO, [y floatValue]*scaleY/PTM_RATIO);
-        //                obstacleBodyDef.userData = (__bridge void*)bombPic;
-        //                b2Body *obstacleBody = world->CreateBody(&obstacleBodyDef);
-        //
-        //                // Create block shape
-        //                b2PolygonShape obstacleShape;
-        //                obstacleShape.SetAsBox(bombPic.contentSize.width/PTM_RATIO/2,
-        //                                       bombPic.contentSize.height/PTM_RATIO/2);
-        //
-        //                // Create shape definition and add to body
-        //                b2FixtureDef obstacleShapeDef;
-        //                obstacleShapeDef.shape = &obstacleShape;
-        //                obstacleShapeDef.density = 10.0;
-        //                obstacleShapeDef.friction = 0.0;
-        //                obstacleShapeDef.restitution = 0.1f;
-        //                obstacleShapeDef.isSensor = false;
-        //                obstacleBody->CreateFixture(&obstacleShapeDef);
-        //            }
-        //        }
-        //
-        //
+        if ([level objectForKey:@"Bomb"]){
+            NSLog(@"Entering bomb?\n");
+            NSArray *bombs= [level objectForKey:@"Bomb"];
+            for (NSDictionary *bomb in bombs){
+//                NSString *sName = [bomb objectForKey:@"spriteName"];
+                Bomb *bomb2 = [[Bomb alloc] initWithBomb:@"bomb"];
+                NSNumber *x = [bomb objectForKey:@"x"];
+                NSNumber *y = [bomb objectForKey:@"y"];
+                bomb2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
+                //obstacle2.tag = 4;
+                
+                [self addChild:bomb2 z:1];
+                // Create block body
+                b2BodyDef obstacleBodyDef;
+                obstacleBodyDef.type = b2_kinematicBody;
+                
+                obstacleBodyDef.position.Set([x floatValue]*scaleX/PTM_RATIO, [y floatValue]*scaleY/PTM_RATIO);
+                obstacleBodyDef.userData = (__bridge void*)bomb2;
+                b2Body *obstacleBody = world->CreateBody(&obstacleBodyDef);
+                
+                // Create block shape
+                b2PolygonShape obstacleShape;
+                obstacleShape.SetAsBox(bomb2.contentSize.width/PTM_RATIO/2,
+                                       bomb2.contentSize.height/PTM_RATIO/2);
+                
+                // Create shape definition and add to body
+                b2FixtureDef obstacleShapeDef;
+                obstacleShapeDef.shape = &obstacleShape;
+                obstacleShapeDef.density = 10.0;
+                obstacleShapeDef.friction = 0.0;
+                obstacleShapeDef.restitution = 0.1f;
+                obstacleShapeDef.isSensor = true;
+                obstacleBody->CreateFixture(&obstacleShapeDef);
+                
+               
+            }
+        }
+        
+        
         
         
         
@@ -887,6 +888,8 @@ int dialogCounter = 0;
 }
 
 -(void) autoRestart {
+    
+  
     [[CCDirector sharedDirector] replaceScene: [CCTransitionFade transitionWithDuration:0.5 scene:[PhysicsLayer sceneWithLevel:currentLevel]]];
     [self unscheduleAllSelectors];
     [[CCTextureCache sharedTextureCache] removeAllTextures];
@@ -1449,6 +1452,59 @@ int counter = 1;
                 
             }
             
+            //Sprite A = bomb, Sprite B = ball
+            else if ([spriteA isKindOfClass:[Bomb class]] && spriteB.tag == 1 ) {
+                BOOL lock = true;
+                if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
+                    toDestroy.push_back(bodyB);
+                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                    NSArray *starsArray = [NSArray arrayWithObjects:@"explosion.plist", nil];
+                    CCParticleSystemQuad *starsEffect;
+                    for(NSString *stars in starsArray) {
+                        starsEffect = [CCParticleSystemQuad particleWithFile:stars];
+                        starsEffect.position = ccp(400,140);
+                        if (lock){
+                        [self addChild:starsEffect z:1];
+                            [starsEffect setLife:2];
+                            lock = false;
+                            [self performSelector:@selector(autoRestart) withObject:nil afterDelay:3.0f];
+
+                        }
+                       
+                    }
+                   
+                }
+                
+            }
+            
+            //Sprite A = ball, Sprite B = bomb
+            else if (spriteA.tag == 1 && [spriteA isKindOfClass:[Bomb class]] ) {
+                BOOL lock = true;
+                 CCParticleSystemQuad *starsEffect;
+                if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) == toDestroy.end()) {
+                    toDestroy.push_back(bodyA);
+                   AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                    NSArray *starsArray = [NSArray arrayWithObjects:@"explosion.plist", nil];
+                    for(NSString *stars in starsArray) {
+                        starsEffect = [CCParticleSystemQuad particleWithFile:stars];
+                        starsEffect.position = ccp(400,140);
+                        NSLog(@"Before adding child \n");
+                        if (lock){
+                            [self addChild:starsEffect z:1];
+                            [starsEffect setLife:2];
+                            lock = false;
+                            [self performSelector:@selector(autoRestart) withObject:nil afterDelay:3.0f];
+                        }
+                        
+                    }
+            }
+            }
+            
+            
+            
+            
+            
+            
             //Sprite A = fluffy, Sprite B = ball
             else if ([spriteA isKindOfClass:[Fluffy class]] && spriteB.tag == 1 ) {
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
@@ -1456,6 +1512,7 @@ int counter = 1;
                     
                     levelCompleted = [self checkLevelCompleted];
                     if (levelCompleted){
+                        
                         [[CCDirector sharedDirector] replaceScene: (CCScene*)[NextLevelScene sceneWithLevel: currentLevel]];
                         counter = 1;
                         cannonCounter = 0;
@@ -1474,6 +1531,7 @@ int counter = 1;
         
     }
     
+
     //[self displayFoodCollect];
     std::vector<b2Body *>::iterator pos3;
     for (pos3 = toDestroy.begin(); pos3 != toDestroy.end(); ++pos3) {

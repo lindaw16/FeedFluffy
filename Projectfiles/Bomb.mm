@@ -14,23 +14,16 @@
 
 
 
--(id)initWithWorld:(b2World *)world
+
+
+-(id) initWithBomb: (NSString *) bomb
 {
-    NSString *file = @"bomb.png";
-    
-    CGSize screen = [[CCDirector sharedDirector] winSize];
-    
-//    CCParticleSystemQuad *bomb = [CCParticleSystemQuad ];
-    
-    if ((self = [super initWithFile:file]))
-    {
-        CCParticleSystemQuad* bomb = [CCParticleSystemQuad particleWithFile:@"bomb.png"];
-        [self addChild:bomb z:1 tag:1];
-        CCParticleSystem* particle_system = [CCParticleSystemQuad particleWithFile:@"explosion.plist"];
-        //particle_system.splurt = [CCParticleSystemQuad particleWithFile:@"explosion.plist"];
-        [self addChild:particle_system];
+    NSString *spriteName = [bomb stringByAppendingString:@".png"];
+    if ((self = [super initWithFile:spriteName])){
+        
     }
     return self;
 }
+
 
 @end

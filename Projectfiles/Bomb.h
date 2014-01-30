@@ -10,8 +10,10 @@
 #import "cocos2d.h"
 //#import "PolygonSprite.h"
 
-@interface Bomb : CCParticleSystemQuad {
-    
-}
+#import "CCSprite.h"
+
+@interface Bomb : CCSprite
+
+-(id) initWithBomb: (NSString *) bomb;
 
 @end

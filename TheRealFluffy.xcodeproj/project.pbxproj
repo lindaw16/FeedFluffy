@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		910445CC189A1CAD00556B2F /* BlueModal2.png in Resources */ = {isa = PBXBuildFile; fileRef = 910445CB189A1CAD00556B2F /* BlueModal2.png */; };
+		910445D0189A34A400556B2F /* level10.plist in Resources */ = {isa = PBXBuildFile; fileRef = 910445CF189A34A300556B2F /* level10.plist */; };
+		910445D4189AC94600556B2F /* ShootButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 910445D3189AC94600556B2F /* ShootButton.png */; };
 		911975BA1888618F0070C1AE /* ButtonStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 911975B81888618F0070C1AE /* ButtonStar.png */; };
 		911975BB1888618F0070C1AE /* ButtonStarSel.png in Resources */ = {isa = PBXBuildFile; fileRef = 911975B91888618F0070C1AE /* ButtonStarSel.png */; };
 		914BE9CD188969C70085E989 /* cannon-head-cropped.png in Resources */ = {isa = PBXBuildFile; fileRef = 914BE9CC188969C70085E989 /* cannon-head-cropped.png */; };
@@ -269,6 +271,8 @@
 
 /* Begin PBXFileReference section */
 		910445CB189A1CAD00556B2F /* BlueModal2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueModal2.png; sourceTree = "<group>"; };
+		910445CF189A34A300556B2F /* level10.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level10.plist; sourceTree = "<group>"; };
+		910445D3189AC94600556B2F /* ShootButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShootButton.png; sourceTree = "<group>"; };
 		911975B81888618F0070C1AE /* ButtonStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonStar.png; sourceTree = "<group>"; };
 		911975B91888618F0070C1AE /* ButtonStarSel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonStarSel.png; sourceTree = "<group>"; };
 		912F81ED18839C0300838683 /* Box2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box2D.h; sourceTree = "<group>"; };
@@ -684,6 +688,7 @@
 		BF39176A18878CE000EF99E6 /* additional buttons */ = {
 			isa = PBXGroup;
 			children = (
+				910445D3189AC94600556B2F /* ShootButton.png */,
 				914BE9D0188990390085E989 /* cannon-body2.png */,
 				914BE9CC188969C70085E989 /* cannon-head-cropped.png */,
 				BF30E0051888DDB1000773E5 /* cannon-body.png */,
@@ -854,6 +859,7 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				910445CF189A34A300556B2F /* level10.plist */,
 				910445CB189A1CAD00556B2F /* BlueModal2.png */,
 				91A400BF189A144B0043B996 /* okbutton.png */,
 				91A400AE1899E2720043B996 /* dialogBox.png */,
@@ -1110,6 +1116,7 @@
 				AB954FEA1895BB3100E2993F /* rock-hd.png in Resources */,
 				91A400921898A1B20043B996 /* explosion.plist in Resources */,
 				910445CC189A1CAD00556B2F /* BlueModal2.png in Resources */,
+				910445D0189A34A400556B2F /* level10.plist in Resources */,
 				BF12C2781892357800478BCB /* easyCage-hd.png in Resources */,
 				AB3920471892205000E4830D /* gold_star_big.png in Resources */,
 				ABA0E6C71899E9470097FAF5 /* pause_background.png in Resources */,
@@ -1238,6 +1245,7 @@
 				911975BB1888618F0070C1AE /* ButtonStarSel.png in Resources */,
 				AB39204C1892205000E4830D /* orange-hd.png in Resources */,
 				914BE9CD188969C70085E989 /* cannon-head-cropped.png in Resources */,
+				910445D4189AC94600556B2F /* ShootButton.png in Resources */,
 				BF12C2CC18960FC400478BCB /* cage-hd.png in Resources */,
 				BF12C28618930AD300478BCB /* fluffysprites.png in Resources */,
 				BF12C28418930AD300478BCB /* fluffy1.png in Resources */,
