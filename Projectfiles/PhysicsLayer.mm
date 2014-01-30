@@ -1274,7 +1274,7 @@ int counter = 1;
         {
             
             //NSLog(@"CANNON ROTATED??>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
-            if (cannonCounter ==0 && pos.y > _player.position.y + 4.0){}
+            if (cannonCounter ==0 && (pos.y > _player.position.y + 4.0 || pos.y < _player.position.y - 4.0)){}
             else{
             //Steps taken to
             if (cannonCounter ==0)

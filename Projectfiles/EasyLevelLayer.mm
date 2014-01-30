@@ -144,7 +144,7 @@ CCSprite *level;
     
     CCLabelTTF *label = [CCLabelTTF labelWithString:@"Easy!"
                                            fontName:@"Marker Felt"
-                                           fontSize:50];
+                                           fontSize:47];
     
     if (IsIphone5) { label.position = ccp(284,280);}
     else{label.position = ccp(240,270); }
@@ -152,7 +152,9 @@ CCSprite *level;
     
     CCMenuItemImage *quit = [CCMenuItemImage itemWithNormalImage: @"main_menu.png" selectedImage: @"main_menu2.png" target:self selector:@selector(GoToMainMenu:)];
     
-    quit.position = ccp(80, 270);
+    if (IsIphone5) { quit.position = ccp(284, 20);}
+    else{quit.position = ccp(240, 20);}
+    
     [self addChild: quit];
     
     [self addChild: myLevels z:1];
