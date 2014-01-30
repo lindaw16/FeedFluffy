@@ -1291,7 +1291,7 @@ int counter = 1;
             angleInDegrees = atan2(deltaY, deltaX) * 180 / M_PI;
             
             NSLog(@"angle in degrees %f", angleInDegrees);
-            
+            if (deltaY)
             if ( angleInDegrees < 50 && angleInDegrees > -50)
             {
                 //dont let the cannon rotate too far

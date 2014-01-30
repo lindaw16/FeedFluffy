@@ -120,9 +120,9 @@
         
         else{
             menu.position = CGPointZero;
-            nextlevel.position = ccp(130, 60);
-            replay.position = ccp(230, 60);
-            levels.position = ccp(330, 60);
+            nextlevel.position = ccp(150, 50);
+            replay.position = ccp(250, 50);
+            levels.position = ccp(350, 50);
             //quit.position = ccp(305,90);
         }
         
@@ -166,8 +166,8 @@
         else if (stars == 2){
             rank = [CCSprite spriteWithFile:@"silver_star_big.png"];
          
-            [rank setScaleX:0.5];
-            [rank setScaleY:0.5];
+            [rank setScaleX:0.4];
+            [rank setScaleY:0.4];
 
         }
         else if (stars == 1){
@@ -176,10 +176,10 @@
         
         
         if (IsIphone5){
-            rank.position = ccp(284,235);
+            rank.position = ccp(284,265);
         }
         else{
-        rank.position = ccp(240, 210);
+        rank.position = ccp(240, 240);
         }
         
                 [self addChild: rank z:3];
@@ -187,6 +187,7 @@
         CCLabelTTF *feedingFluffy = [CCLabelTTF labelWithString:@"Feeding Fluffy: 50"
                                                        fontName:@"Marker Felt"
                                                        fontSize:18];
+       
         feedingFluffy.position = ccp(240,185);
         
         
@@ -195,7 +196,15 @@
         
         NSString *timeString = [[[@"Time Bonus: " stringByAppendingFormat: @"%d", 60 - time] stringByAppendingFormat: @" x %d x 10 = ", stars] stringByAppendingFormat: @"%d", (60-time)*stars*10];
         CCLabelTTF *timeBonus = [CCLabelTTF labelWithString:timeString fontName:@"Marker Felt" fontSize:18];
-        timeBonus.position = ccp(270,150);
+        
+        if (IsIphone5)
+        {
+                    timeBonus.position = ccp(270,150);        }
+        else{
+        timeBonus.position = ccp(240,150);
+        }
+
+
         
         [self addChild: timeBonus];
         
@@ -208,9 +217,18 @@
         CCLabelTTF *bestScoreLabel = [CCLabelTTF labelWithString:bestScoreString
                                                         fontName:@"Marker Felt"
                                                         fontSize:18];
-        scoreLabel.position = ccp(240, 90);
-        bestScoreLabel.position = ccp(390, 90);
-        [self addChild: scoreLabel z:3];
+        
+        
+        if (IsIphone5)
+        {
+            scoreLabel.position = ccp(240, 90);
+            bestScoreLabel.position = ccp(390, 90);
+      }
+        else{
+            scoreLabel.position = ccp(180, 90);
+            bestScoreLabel.position = ccp(330, 90);
+        }
+                [self addChild: scoreLabel z:3];
         [self addChild: bestScoreLabel z:3];
 
     }
@@ -219,7 +237,13 @@
 
 -(void) draw {
     ccColor4F lineColor = ccc4f(1, 1, 1, 1);
+    if (IsIphone5)
+    {
     ccDrawSolidRect( ccp(180,120), ccp(350, 123) , lineColor);
+    }
+    else{
+    ccDrawSolidRect( ccp(150,120), ccp(320, 123) , lineColor);
+    }
 }
 
 -(void) resume: (id) sender {
