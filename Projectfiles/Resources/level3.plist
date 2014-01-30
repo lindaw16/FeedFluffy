@@ -8,33 +8,23 @@
 	<integer>2</integer>
 	<key>Bronze</key>
 	<integer>1</integer>
+	<key>Goal</key>
+	<dict>
+		<key>apple</key>
+		<integer>3</integer>
+	</dict>
 	<key>Fluffy</key>
 	<dict>
 		<key>x</key>
 		<integer>470</integer>
 		<key>y</key>
-		<integer>190</integer>
-	</dict>
-	<key>Goal</key>
-	<dict>
-		<key>pear</key>
-		<integer>1</integer>
-		<key>orange</key>
-		<integer>1</integer>
+		<integer>130</integer>
 	</dict>
 	<key>Fruits</key>
 	<array>
 		<dict>
 			<key>x</key>
-			<integer>100</integer>
-			<key>y</key>
-			<integer>190</integer>
-			<key>spriteName</key>
-			<string>pear</string>
-		</dict>
-		<dict>
-			<key>x</key>
-			<integer>420</integer>
+			<integer>140</integer>
 			<key>y</key>
 			<integer>130</integer>
 			<key>spriteName</key>
@@ -42,11 +32,19 @@
 		</dict>
 		<dict>
 			<key>x</key>
-			<integer>130</integer>
+			<integer>240</integer>
 			<key>y</key>
-			<integer>130</integer>
+			<integer>230</integer>
 			<key>spriteName</key>
-			<string>orange</string>
+			<string>apple</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>350</integer>
+			<key>y</key>
+			<integer>175</integer>
+			<key>spriteName</key>
+			<string>apple</string>
 		</dict>
 	</array>
 </dict>
