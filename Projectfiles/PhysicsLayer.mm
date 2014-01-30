@@ -853,11 +853,11 @@ int dialogCounter = 0;
     _body->CreateFixture(&ballShapeDef);
     if (angleInDegrees > 52.0)
     {
-        angleInDegrees = 52.0;
+        angleInDegrees = 49.0;
     }
     if (angleInDegrees < -52.0)
     {
-        angleInDegrees = -52.0;
+        angleInDegrees = -50.0;
     }
     float radianAngle = CC_DEGREES_TO_RADIANS(angleInDegrees);
     [_player runAction:[CCSequence actions:[CCCallBlock actionWithBlock:^{[self addChild:_nextProjectile];_nextProjectile = nil;}],nil]];
