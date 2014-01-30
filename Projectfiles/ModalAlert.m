@@ -32,8 +32,8 @@
 
 #define kDialogTag 1234
 #define kAnimationTime 0.4f
-#define kDialogImg @"dialogBox.png"
-#define kButtonImg @"dialogButton.png"
+#define kDialogImg @"BlueModal2.png"
+#define kButtonImg @"okbutton.png"
 #define kFontName @"MarkerFelt-Thin"
 
 // class that implements a black colored layer that will cover the whole screen 
@@ -88,6 +88,8 @@
     
     // create the cover layer that "hides" the current application
     CCLayerColor *coverLayer = [CoverLayer new];
+//    coverLayer.scaleX = 0.8;
+//    coverLayer.scaleY = 0.9;
     [layer addChild:coverLayer z:INT_MAX]; // put to the very top to block application touches
     [coverLayer runAction:[CCFadeTo actionWithDuration:kAnimationTime opacity:80]]; // smooth fade-in to dim with semi-transparency
     
@@ -96,7 +98,8 @@
     dialog.tag = kDialogTag;
     dialog.position = ccp(coverLayer.contentSize.width/2, coverLayer.contentSize.height/2);
     dialog.opacity = 220; // make it a bit transparent for a cooler look
-    
+    //dialog.scaleX = 0.2;
+    //dialog.scaleY = 0.2;
     // add the alert text
     CGSize msgSize = CGSizeMake(dialog.contentSize.width * 0.9, dialog.contentSize.height * 0.55);
     float fontSize = 14.0;
@@ -164,7 +167,7 @@
 }
 
 + (void) Tell: (NSString *) statement onLayer: (CCLayer *) layer okBlock: (void(^)())okBlock {
-    [self ShowAlert:statement onLayer:layer withOpt1:@"Ok" withOpt1Block: okBlock andOpt2:nil withOpt2Block:nil];
+    [self ShowAlert:statement onLayer:layer withOpt1:@"" withOpt1Block: okBlock andOpt2:nil withOpt2Block:nil];
 }
 
 @end
