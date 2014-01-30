@@ -92,6 +92,25 @@ NSMutableDictionary *goalProgress;
 
 NSMutableDictionary *levelDict;
 
+
+
+
+
+//Timers:
+CCLabelTTF          *mTimeLbl;
+float               mTimeInSec;
+int digit_min;
+
+int digit_sec;
+
+int min2;
+
+int sec;
+
+
+
+
+
 @interface PhysicsLayer (PrivateMethods)
 -(void) enableBox2dDebugDrawing;
 -(void) addSomeJoinedBodies:(CGPoint)pos;
@@ -138,7 +157,8 @@ int dialogCounter = 0;
     CCSprite * thesnores = [CCSprite spriteWithSpriteFrameName:@"snore1.png"];
     thesnores.anchorPoint = CGPointZero;
     
-    
+    mTimeLbl = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%.2d:%.2d",min2,sec] fontName:@"Marker Felt" fontSize:18.0];
+    [self addChild:mTimeLbl];
     if (IsIphone5){
     thesnores.position = CGPointMake(478.0f, 120.0f);
 //        CCSprite *sleepingFluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
@@ -377,6 +397,8 @@ int dialogCounter = 0;
         PauseButton.position = CGPointZero;
        // Pause.position = ccp(460, 295);
         //Restart.position = ccp(500, 295);
+        mTimeInSec = 0.0f;
+        [self schedule:@selector(tick:)];
         [self schedule:@selector(tick:) interval:1.0f/60.0f];
         [self addChild:PauseButton z:7];
         
@@ -937,8 +959,26 @@ int dialogCounter = 0;
     return YES;
 }
 
-
+int tickCounter = 0;
 - (void)tick:(ccTime) dt {
+    
+    
+    mTimeInSec +=dt;
+    
+    digit_min = mTimeInSec/60.0f;
+    
+     digit_sec = ((int)mTimeInSec%60);
+    
+     min2 = (int)digit_min;
+    
+     sec = (int)digit_sec;
+    //mTimeLbl.string = [@"%.2d:%.2d:%.2d",hours, min,sec];
+    
+    [mTimeLbl setString: [NSString stringWithFormat:@"%.2d:%.2d",min2,sec]];
+    
+
+    //[mTimeLbl setString:[NSString stringWithFormat:@"%.2d:%.2d:%.2d",hours, min,sec]];
+    mTimeLbl.position = ccp(500,50);
     
     world->Step(dt, 10, 10);
     std::vector<b2Body *>toDestroy;
