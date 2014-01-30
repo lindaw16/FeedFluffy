@@ -189,6 +189,8 @@
 		BF7B4B341898D58200DF2A48 /* squirrelUp.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B321898D58200DF2A48 /* squirrelUp.plist */; };
 		BF7B4B351898D58200DF2A48 /* squirrelUp.png in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B331898D58200DF2A48 /* squirrelUp.png */; };
 		BF7B4B3D1899C86F00DF2A48 /* SquirrelUp1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B3C1899C86F00DF2A48 /* SquirrelUp1.png */; };
+		BF7B4B401899ED6D00DF2A48 /* easyCageLabelled-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B3E1899ED6D00DF2A48 /* easyCageLabelled-hd.png */; };
+		BF7B4B411899ED6D00DF2A48 /* hardCageLabelled-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B3F1899ED6D00DF2A48 /* hardCageLabelled-hd.png */; };
 		BFB4259718862C92002DD826 /* LevelSelectLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB4259618862C92002DD826 /* LevelSelectLayer.mm */; };
 		BFB4259918862CF2002DD826 /* gameBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB4259818862CF2002DD826 /* gameBackground.png */; };
 		BFB4259B18862CFA002DD826 /* tutorials.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB4259A18862CFA002DD826 /* tutorials.png */; };
@@ -458,6 +460,8 @@
 		BF7B4B321898D58200DF2A48 /* squirrelUp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = squirrelUp.plist; path = Squirrel/SquirrelUp/squirrelUp.plist; sourceTree = "<group>"; };
 		BF7B4B331898D58200DF2A48 /* squirrelUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = squirrelUp.png; path = Squirrel/SquirrelUp/squirrelUp.png; sourceTree = "<group>"; };
 		BF7B4B3C1899C86F00DF2A48 /* SquirrelUp1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SquirrelUp1.png; path = Squirrel/SquirrelUp/SquirrelUp1.png; sourceTree = "<group>"; };
+		BF7B4B3E1899ED6D00DF2A48 /* easyCageLabelled-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "easyCageLabelled-hd.png"; sourceTree = "<group>"; };
+		BF7B4B3F1899ED6D00DF2A48 /* hardCageLabelled-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hardCageLabelled-hd.png"; sourceTree = "<group>"; };
 		BFB4259518862C92002DD826 /* LevelSelectLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSelectLayer.h; sourceTree = "<group>"; };
 		BFB4259618862C92002DD826 /* LevelSelectLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LevelSelectLayer.mm; sourceTree = "<group>"; };
 		BFB4259818862CF2002DD826 /* gameBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground.png; sourceTree = "<group>"; };
@@ -848,6 +852,8 @@
 				91A400AE1899E2720043B996 /* dialogBox.png */,
 				91A400AF1899E2720043B996 /* dialogBox-hd.png */,
 				91A400B01899E2720043B996 /* dialogButton-hd.png */,
+				BF7B4B3E1899ED6D00DF2A48 /* easyCageLabelled-hd.png */,
+				BF7B4B3F1899ED6D00DF2A48 /* hardCageLabelled-hd.png */,
 				91A400991899AB640043B996 /* firebutton2.png */,
 				91A4009518998AAB0043B996 /* restartButton.png */,
 				BF7B4B321898D58200DF2A48 /* squirrelUp.plist */,
@@ -1120,6 +1126,7 @@
 				BFC2DCE41885FE3200A1D673 /* comments in Resources */,
 				AB23A8461893186200127A5D /* replay-hd.png in Resources */,
 				AB23A83F1893184B00127A5D /* resume2-hd.png in Resources */,
+				BF7B4B411899ED6D00DF2A48 /* hardCageLabelled-hd.png in Resources */,
 				AB3920461892205000E4830D /* gold_star_big-hd.png in Resources */,
 				AB9E5981188B261100B7D315 /* resume_button2@2x.png in Resources */,
 				AB300AB3189396A40055A914 /* strawberry-hd.png in Resources */,
@@ -1140,6 +1147,7 @@
 				BF196D11188F1EE9008CB197 /* snoringframes.plist in Resources */,
 				AB9E597C188B261100B7D315 /* main_menu_button@2x.png in Resources */,
 				BF12C28A18930C3F00478BCB /* fluffy1-hd.png in Resources */,
+				BF7B4B401899ED6D00DF2A48 /* easyCageLabelled-hd.png in Resources */,
 				AB9FBB8C188B190000992502 /* restart_button2.png in Resources */,
 				BF196D02188EFCAC008CB197 /* ok3.png in Resources */,
 				BFB425B618872304002DD826 /* Achievements.png in Resources */,

@@ -39,14 +39,14 @@ CGPoint endLocation;
         int gap = 0;
         int tagCounter = 0;
         movableSprites = [[NSMutableArray alloc] init];
-        NSArray *images = [NSArray arrayWithObjects:@"easyCage.png", @"mediumCage.png", nil];
+        NSArray *images = [NSArray arrayWithObjects:@"easyCageLabelled.png", @"hardCageLabelled.png", nil];
         for(int i = 0; i < images.count; ++i) {
             
             NSString *image = [images objectAtIndex:i];
             CCSprite *sprite = [CCSprite spriteWithFile:image];
             sprite.tag = tagCounter;
             if (IsIphone5){
-            sprite.scaleY = 0.7;
+            //sprite.scaleY = 0.7;
             float offsetFraction = ((float)(i+1))/(images.count+1);
             sprite.position = ccp(170+gap, 170);
             [self addChild:sprite];
@@ -54,7 +54,7 @@ CGPoint endLocation;
             }
             else{
                 sprite.scaleX = 0.9;
-                sprite.scaleY = 0.7;
+                //sprite.scaleY = 0.7;
             sprite.position = ccp(140+gap, 170);
                 [self addChild:sprite];
                 gap +=210;
