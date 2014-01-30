@@ -45,14 +45,14 @@
 //  TheRealFluffy
 //
 //  Created by Clare on 1/25/14.
-//
+///Users/Linda/Kobold2D/Kobold2D-2.1.0/TheRealFluffy/Projectfiles/Squirrel.m
 //
 
 #import "Squirrel.h"
 
 @implementation Squirrel
--(id) initWithSquirrel: (NSString *) squirrel
-{
+-(id) initWithSquirrel: (NSString *) squirrel {
+
 
     if( (self=[super initWithSpriteFrameName:@"SquirrelUp1.png"]))
     {

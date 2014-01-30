@@ -201,7 +201,7 @@ NSMutableDictionary *levelDict;
         
         
         
-        NSLog(@"Before Game: best stars is %d and last star was %d", [[levelDict objectForKey:@"best_stars"] intValue],[[levelDict objectForKey:@"last_stars"] intValue]);
+        //NSLog(@"Before Game: best stars is %d and last star was %d", [[levelDict objectForKey:@"best_stars"] intValue],[[levelDict objectForKey:@"last_stars"] intValue]);
         
         
         
@@ -515,14 +515,19 @@ NSMutableDictionary *levelDict;
                 
                 NSNumber *x = [obstacle objectForKey:@"x"];
                 NSNumber *y = [obstacle objectForKey:@"y"];
+
                 [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"squirrelUp.plist"];
                 CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"squirrelUp.png"];
                 [self addChild: spriteSheet];
                 
                 Squirrel *obstacle2 = [[Squirrel alloc] initWithSquirrel:sName];
 
+                //CGPoint squirrelLoc = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
+                //Squirrel *obstacle2 = [[Squirrel alloc] initWithSquirrel: sName : squirrelLoc];
 
-                obstacle2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
+
+
+                //obstacle2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
                 obstacle2.tag = 5;
                 
                 [self addChild:obstacle2 z:1];
@@ -886,7 +891,7 @@ NSMutableDictionary *levelDict;
     // NSLog(@"best_stars: %d", bestStars);
     //
     
-    NSLog(@"After Game before calculation: best stars is %d and last star was %d", [[levelDict objectForKey:@"best_stars"] intValue],[[levelDict objectForKey:@"last_stars"] intValue]);
+    //NSLog(@"After Game before calculation: best stars is %d and last star was %d", [[levelDict objectForKey:@"best_stars"] intValue],[[levelDict objectForKey:@"last_stars"] intValue]);
     
     
     int stars;
@@ -930,7 +935,7 @@ NSMutableDictionary *levelDict;
     [defaults synchronize];
     
     
-    NSLog(@"After Game: best stars is %d and last star was %d", [[levelDict objectForKey:@"best_stars"] intValue],[[levelDict objectForKey:@"last_stars"] intValue]);
+    //NSLog(@"After Game: best stars is %d and last star was %d", [[levelDict objectForKey:@"best_stars"] intValue],[[levelDict objectForKey:@"last_stars"] intValue]);
     
     return YES;
 }
@@ -963,24 +968,35 @@ NSMutableDictionary *levelDict;
             }
             
             // sprite is a squirrel, set top boundary
-            else if (sprite.tag == 5 && sprite.position.y >= 230){
-                float velocity = b->GetLinearVelocity().y;
-                if (velocity > 0) {
-                    velocity *= -1;
-                    b2Vec2 force = b2Vec2(0, velocity);
-                    b->SetLinearVelocity(force);
+            
+            if (sprite.tag == 5)
+            {
+                if (sprite.position.y >= 230){
+                
+                    float velocity = b->GetLinearVelocity().y;
+                    if (velocity > 0) {
+                        velocity *= -1;
+                        b2Vec2 force = b2Vec2(0, velocity);
+                        b->SetLinearVelocity(force);
+                    }
+                    
                 }
                 
-            }
+                // sprite is a squirrel, set bottom boundary
+                else if (sprite.position.y <= 30){
+                    float velocity = b->GetLinearVelocity().y;
+                    if (velocity < 0) {
+                        velocity *= -1;
+                        b2Vec2 force = b2Vec2(0, velocity);
+                        b->SetLinearVelocity(force);
+                    }
+                
+                NSLog(@"A:KJDSF:DJSFLJSDF:JDSFKSDF:J %f, %f", sprite.position.x, sprite.position.y);
+                    
             
-            // sprite is a squirrel, set bottom boundary
-            else if (sprite.tag == 5 && sprite.position.y <= 30){
-                float velocity = b->GetLinearVelocity().y;
-                if (velocity < 0) {
-                    velocity *= -1;
-                    b2Vec2 force = b2Vec2(0, velocity);
-                    b->SetLinearVelocity(force);
-                }
+            
+            }
+
                 
             }
         }
@@ -1199,7 +1215,7 @@ int counter = 1;
             //make sure the cannon does not move offscreen
             if (pos.y < 238 && pos.y > 20)
             {
-                NSLog(@"CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
+                //NSLog(@"CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
                 
                 _player.position = ccp(_player.position.x, y+5);
                 _nextProjectile.position = _player.position;
@@ -1213,8 +1229,9 @@ int counter = 1;
         if (pos.x>=cageLeft+5 && pos.x <=80 && pos.y > 20 && pos.y < 238)
         {
             
-            NSLog(@"CANNON ROTATED??>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
-            
+            //NSLog(@"CANNON ROTATED??>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
+            if (cannonCounter ==0 && pos.y > _player.position.y + 4.0){}
+            else{
             //Steps taken to
             if (cannonCounter ==0)
             {
@@ -1243,6 +1260,7 @@ int counter = 1;
                 cannonHead.anchorPoint = ccp(0.3,0.3);
                 cannonHead.rotation = -angleInDegrees;
             }
+        }
         }
     }
     
@@ -1353,7 +1371,7 @@ int counter = 1;
                     BOOL levelCompleted = [self checkLevelCompleted];
                     
                     if (levelCompleted){
-                        NSLog(@"@SECONDS: %d", seconds);
+                        //NSLog(@"@SECONDS: %d", seconds);
                         [[CCDirector sharedDirector] replaceScene: (CCScene*)[NextLevelScene sceneWithLevel: currentLevel]];
                         counter = 1;
                         cannonCounter = 0;
@@ -1402,7 +1420,7 @@ int counter = 1;
                     
                     levelCompleted = [self checkLevelCompleted];
                     if (levelCompleted){
-                        NSLog(@"@SECONDS: %d", seconds);
+                        //NSLog(@"@SECONDS: %d", seconds);
                         [[CCDirector sharedDirector] replaceScene: (CCScene*)[NextLevelScene sceneWithLevel: currentLevel]];
                         counter = 1;
                         cannonCounter = 0;
@@ -1411,7 +1429,7 @@ int counter = 1;
                     else {
                         if (bulletCounter <=0)
                         {
-                            NSLog(@"LAST BULLET - DISAPPEARED!\n");
+                            //NSLog(@"LAST BULLET - DISAPPEARED!\n");
                             [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
                             cannonCounter = 0;
                         }
@@ -1429,7 +1447,7 @@ int counter = 1;
     //NSLog(@"BALL data position, %f\n", ballData.position.x);
     if (bulletCounter <=0 && ballData.position.x <= 25.0)
     {
-        NSLog(@"LAST BULLET - DISAPPEARED!\n");
+        //NSLog(@"LAST BULLET - DISAPPEARED!\n");
     }
     
     
