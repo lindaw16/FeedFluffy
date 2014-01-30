@@ -89,7 +89,7 @@
         CCLabelTTF *timeBonus= [CCLabelTTF labelWithString:@"Time Bonus: 50"
                                                        fontName:@"Marker Felt"
                                                        fontSize:18];
-        timeBonus.position = ccp(200,120);
+        timeBonus.position = ccp(181.5,120);
         
         [self addChild:feedingFluffy];
         [self addChild: timeBonus];
@@ -114,10 +114,10 @@
         
         //CCMenuItem *Quit = [CCMenuItemFont itemFromString:@"Main Menu"
         //target:self selector:@selector(GoToMainMenu:)];
-        CCMenuItemImage *quit = [CCMenuItemImage itemWithNormalImage: @"main_menu.png" selectedImage: @"main_menu2.png" target:self
-                                                            selector:@selector(GoToMainMenu:)];
+//        CCMenuItemImage *quit = [CCMenuItemImage itemWithNormalImage: @"main_menu.png" selectedImage: @"main_menu2.png" target:self
+//                                                            selector:@selector(GoToMainMenu:)];
         
-        CCMenu *menu= [CCMenu menuWithItems: nextlevel, replay, levels, quit, nil];
+        CCMenu *menu= [CCMenu menuWithItems: nextlevel, replay, levels, nil];
         
         if (IsIphone5)
         {
@@ -154,11 +154,11 @@
         NSString *timeString = [@"Time: " stringByAppendingFormat: @"%d", time];
         CCLabelTTF *timeLabel = [CCLabelTTF labelWithString:timeString
                                                fontName:@"Marker Felt"
-                                               fontSize:30];
+                                               fontSize:20];
         NSString *bestTimeString = [@"Your best time: " stringByAppendingFormat: @"%d", bestTime];
         CCLabelTTF *bestTimeLabel = [CCLabelTTF labelWithString:bestTimeString
                                                    fontName:@"Marker Felt"
-                                                   fontSize:30];
+                                                   fontSize:20];
         timeLabel.position = ccp(200, 70);
         bestTimeLabel.position = ccp(250, 50);
         [self addChild: timeLabel z:3];
