@@ -2,27 +2,39 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Squirrels</key>
-	<array>
-		<dict>
-			<key>up</key>
-			<true/>
-			<key>x</key>
-			<integer>400</integer>
-			<key>y</key>
-			<integer>20</integer>
-			<key>speed</key>
-			<integer>0</integer>
-			<key>spriteName</key>
-			<string>leftsquirrel</string>
-		</dict>
-	</array>
 	<key>Gold</key>
-	<integer>3</integer>
-	<key>Silver</key>
 	<integer>2</integer>
+	<key>Silver</key>
+	<integer>5</integer>
 	<key>Bronze</key>
 	<integer>1</integer>
+	<key>Obstacles</key>
+	<array>
+		<dict>
+			<key>x</key>
+			<integer>150</integer>
+			<key>y</key>
+			<integer>150</integer>
+			<key>spriteName</key>
+			<string>rock2</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>150</integer>
+			<key>y</key>
+			<integer>100</integer>
+			<key>spriteName</key>
+			<string>rock2</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>150</integer>
+			<key>y</key>
+			<integer>50</integer>
+			<key>spriteName</key>
+			<string>rock2</string>
+		</dict>
+	</array>
 	<key>Fluffy</key>
 	<dict>
 		<key>x</key>
@@ -34,36 +46,24 @@
 	<dict>
 		<key>apple</key>
 		<integer>1</integer>
-		<key>lemon</key>
-		<integer>1</integer>
-		<key>strawberry</key>
-		<integer>1</integer>
 	</dict>
 	<key>Fruits</key>
 	<array>
 		<dict>
 			<key>x</key>
-			<integer>120</integer>
+			<integer>330</integer>
 			<key>y</key>
-			<integer>190</integer>
+			<integer>200</integer>
 			<key>spriteName</key>
-			<string>lemon</string>
+			<string>apple</string>
 		</dict>
 		<dict>
 			<key>x</key>
-			<integer>220</integer>
+			<integer>420</integer>
 			<key>y</key>
-			<integer>30</integer>
+			<integer>100</integer>
 			<key>spriteName</key>
 			<string>orange</string>
-		</dict>
-		<dict>
-			<key>x</key>
-			<integer>320</integer>
-			<key>y</key>
-			<integer>190</integer>
-			<key>spriteName</key>
-			<string>strawberry</string>
 		</dict>
 	</array>
 </dict>

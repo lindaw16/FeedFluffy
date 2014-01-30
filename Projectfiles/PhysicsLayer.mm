@@ -111,8 +111,6 @@ int sec;
 
 
 
-
-
 @interface PhysicsLayer (PrivateMethods)
 -(void) enableBox2dDebugDrawing;
 -(void) addSomeJoinedBodies:(CGPoint)pos;
@@ -149,12 +147,27 @@ int dialogCounter = 0;
 {
     //we should probably put the pause button and star button here??
     if (currentLevel ==1 && dialogCounter ==0){
-        [ModalAlert Tell:@"You must send the orange to Fluffy\n"@"Or else he'll get all in a huff-y.\n"@" Collect more fruits with one ball, \n"@"Or better yet- collect them all! \n"@"And Fluffy will grow up big and buffy. \n\n"@"Drag the cannon or its head to change its position and angle. Press the shoot button to go. Good luck!" onLayer:self okBlock:^{
+        
+        [ModalAlert Tell:@"You must send the orange to Fluffy\n"@"Or else he'll get all in a huff-y.\n"@" Collect more fruits with one ball, \n"@"Or better yet- collect them all, \n"@"And Fluffy will grow up big and buffy. \n\n"@"Drag the cannon or its head to change its position and angle. Press the launch button to go. Good luck!" onLayer:self okBlock:^{
             
         }];
-
-        dialogCounter = 1;
+        
+        dialogCounter++; // =1
     }
+    
+    else if (currentLevel == 4  && dialogCounter == 1)
+    {
+        if (currentLevel ==1 && dialogCounter ==0){
+            
+            [ModalAlert Tell:@"Watch out for these boulders! You will bounce off of them." onLayer:self okBlock:^{
+                
+            }];
+            
+            dialogCounter++; //=2
+        }
+        
+    }
+    
     
     CCSprite * thesnores = [CCSprite spriteWithSpriteFrameName:@"snore1.png"];
     thesnores.anchorPoint = CGPointZero;
