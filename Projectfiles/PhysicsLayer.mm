@@ -50,7 +50,6 @@ const int TILESET_COLUMNS = 9;
 const int TILESET_ROWS = 19;
 const int cageLeft = 30;
 const int cageBottom = 260;
-int bulletCounter;
 int gold;
 int silver;
 int bronze;
@@ -406,7 +405,6 @@ NSMutableDictionary *levelDict;
         NSString *path = [[NSBundle mainBundle] pathForResource:levelName ofType:@"plist"];
         NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:path];
         
-        bulletCounter = [[level objectForKey:@"Balls"] intValue];
         gold = [[level objectForKey:@"Gold"] intValue];
         silver = [[level objectForKey:@"Silver"] intValue];
         bronze = [[level objectForKey:@"Bronze"] intValue];
@@ -640,15 +638,14 @@ NSMutableDictionary *levelDict;
             fruitBody->CreateFixture(&fruitShapeDef);
         }
         
-        ballCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@" X %d", bulletCounter]fontName:@"Marker Felt" fontSize:18.0];
+
         //ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, ballCountLabel.contentSize.height/PTM_RATIO/2+30);
         //ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2 + 150, winSize.height - ballCountLabel.contentSize.height/PTM_RATIO/2 - 30);
         
         //menuBall = [CCSprite spriteWithFile:@"bullet.png"];
         menuBall = [CCSprite spriteWithFile:@"ball.png"];
         //menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+120, menuBall.contentSize.height/PTM_RATIO/2+30);
-        
-        ballCountLabel.string = [NSString stringWithFormat:@" X %d", bulletCounter];
+
         //[self addChild: ballCountLabel z:10];
         //[self addChild:menuBall z:10];
         
@@ -778,12 +775,12 @@ NSMutableDictionary *levelDict;
     menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, winSize.height - 30);
     
     
-    [self addChild:menuBall z:10];
+   // [self addChild:menuBall z:10];
     
     
     
-    ballCountLabel.string = [NSString stringWithFormat:@"X: %d", bulletCounter];
-    [self addChild: ballCountLabel z:10];
+   // ballCountLabel.string = [NSString stringWithFormat:@"X: %d", bulletCounter];
+    //[self addChild: ballCountLabel z:10];
     
     //[_hud incrementLevel:[NSString stringWithFormat:@"Lives: %d", currentLevel]];
 }
@@ -836,8 +833,8 @@ NSMutableDictionary *levelDict;
      [node removeFromParentAndCleanup:YES];
      }],
      nil]];*/
-    bulletCounter--;
-    [ballCountLabel setString:[NSString stringWithFormat:@" X %d", bulletCounter]];
+   // bulletCounter--;
+   // [ballCountLabel setString:[NSString stringWithFormat:@" X %d", bulletCounter]];
     
     //angleInDegrees = 0;
     ButtonTapped = false;
@@ -1186,7 +1183,7 @@ int counter = 1;
         
         
         //Checking if 3 bullets have already been used - if so, then no more bullet are thrown.
-        if  (bulletCounter<=0) return;
+        //if  (bulletCounter<=0) return;
         
         _MoveableSpriteTouch = FALSE;
         
@@ -1378,11 +1375,8 @@ int counter = 1;
                     }
                     
                     else {
-                        if (bulletCounter <=0)
-                        {
-                            [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
-                            cannonCounter = 0;
-                        }
+                        [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
+                        cannonCounter = 0;
                     }
                 }
                 
@@ -1392,11 +1386,7 @@ int counter = 1;
             else if ([spriteA isKindOfClass:[Squirrel class]] && spriteB.tag == 1 ) {
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
                     toDestroy.push_back(bodyB);
-                    if (bulletCounter <=0)
-                    {
-                        [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
-                        cannonCounter = 0;
-                    }
+                    [self autoRestart];
                 }
             }
             
@@ -1404,11 +1394,7 @@ int counter = 1;
             else if (spriteA.tag == 1 && [spriteA isKindOfClass:[Squirrel class]] ) {
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) == toDestroy.end()) {
                     toDestroy.push_back(bodyA);
-                    if (bulletCounter <=0)
-                    {
-                        [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
-                        cannonCounter = 0;
-                    }
+                    [self autoRestart];
                 }
                 
             }
@@ -1420,19 +1406,14 @@ int counter = 1;
                     
                     levelCompleted = [self checkLevelCompleted];
                     if (levelCompleted){
-                        //NSLog(@"@SECONDS: %d", seconds);
                         [[CCDirector sharedDirector] replaceScene: (CCScene*)[NextLevelScene sceneWithLevel: currentLevel]];
                         counter = 1;
                         cannonCounter = 0;
                     }
                     
                     else {
-                        if (bulletCounter <=0)
-                        {
-                            //NSLog(@"LAST BULLET - DISAPPEARED!\n");
-                            [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
-                            cannonCounter = 0;
-                        }
+                        [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
+                        cannonCounter = 0;
                     }
                 }
             }
@@ -1442,14 +1423,6 @@ int counter = 1;
         }
         
     }
-    
-    
-    //NSLog(@"BALL data position, %f\n", ballData.position.x);
-    if (bulletCounter <=0 && ballData.position.x <= 25.0)
-    {
-        //NSLog(@"LAST BULLET - DISAPPEARED!\n");
-    }
-    
     
     //[self displayFoodCollect];
     std::vector<b2Body *>::iterator pos3;
@@ -1461,7 +1434,6 @@ int counter = 1;
         }
         world->DestroyBody(body);
     }
-    //[self detectCollisions];
 }
 
 

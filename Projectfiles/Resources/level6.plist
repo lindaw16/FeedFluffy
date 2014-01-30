@@ -17,8 +17,6 @@
 			<string>leftsquirrel</string>
 		</dict>
 	</array>
-	<key>Balls</key>
-	<integer>3</integer>
 	<key>Gold</key>
 	<integer>1</integer>
 	<key>Silver</key>
