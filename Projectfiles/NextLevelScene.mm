@@ -35,13 +35,25 @@
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"Level Completed!"
                                                fontName:@"Marker Felt"
                                                fontSize:30];
+    
+        
         
         if (IsIphone5)
         {
-        label.position = ccp(284,260);
+            label.position = ccp(284,260);
+            CCSprite *sleepingFluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
+            sleepingFluffy.position = ccp(510, 135);
+            sleepingFluffy.scaleX = 0.5;
+            sleepingFluffy.scaleY = 0.5;
+            [self addChild:sleepingFluffy];
         }
         else{
-        label.position = ccp(240,270);
+            label.position = ccp(240,270);
+            CCSprite *sleepingFluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
+            sleepingFluffy.position = ccp(420, 135);
+            sleepingFluffy.scaleX = 0.5;
+            sleepingFluffy.scaleY = 0.5;
+            [self addChild:sleepingFluffy];
         }
         [self addChild: label];
         [CCMenuItemFont setFontName:@"Courier New"];

@@ -139,19 +139,19 @@ int dialogCounter = 0;
     
     if (IsIphone5){
     thesnores.position = CGPointMake(450.0f, 120.0f);
-        CCSprite *sleepingFluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
-    sleepingFluffy.position = ccp(510, 135);
-    sleepingFluffy.scaleX = 0.5;
-    sleepingFluffy.scaleY = 0.5;
-    [self addChild:sleepingFluffy];
+//        CCSprite *sleepingFluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
+//    sleepingFluffy.position = ccp(510, 135);
+//    sleepingFluffy.scaleX = 0.5;
+//    sleepingFluffy.scaleY = 0.5;
+//    [self addChild:sleepingFluffy];
     }
     else {
         thesnores.position = CGPointMake(378.0f, 120.0f);
-        CCSprite *sleepingFluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
-        sleepingFluffy.position = ccp(420, 135);
-        sleepingFluffy.scaleX = 0.5;
-        sleepingFluffy.scaleY = 0.5;
-        [self addChild:sleepingFluffy];
+//        CCSprite *sleepingFluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
+//        sleepingFluffy.position = ccp(420, 135);
+//        sleepingFluffy.scaleX = 0.5;
+//        sleepingFluffy.scaleY = 0.5;
+//        [self addChild:sleepingFluffy];
     }
     //Create an animation from the set of frames
     
