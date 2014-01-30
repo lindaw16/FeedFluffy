@@ -30,7 +30,7 @@
 			<key>x</key>
 			<integer>220</integer>
 			<key>y</key>
-			<integer>40</integer>
+			<integer>0</integer>
 			<key>spriteName</key>
 			<string>rock</string>
 		</dict>
@@ -55,9 +55,9 @@
 	<array>
 		<dict>
 			<key>x</key>
-			<integer>400</integer>
+			<integer>220</integer>
 			<key>y</key>
-			<integer>140</integer>
+			<integer>70</integer>
 		</dict>
 	</array>
 	<key>Fruits</key>
@@ -68,7 +68,7 @@
 			<key>y</key>
 			<integer>130</integer>
 			<key>spriteName</key>
-			<string>orange</string>
+			<string>pear</string>
 		</dict>
 		<dict>
 			<key>x</key>
@@ -76,13 +76,13 @@
 			<key>y</key>
 			<integer>130</integer>
 			<key>spriteName</key>
-			<string>pear</string>
+			<string>orange</string>
 		</dict>
 		<dict>
 			<key>x</key>
-			<integer>380</integer>
+			<integer>220</integer>
 			<key>y</key>
-			<integer>160</integer>
+			<integer>220</integer>
 			<key>spriteName</key>
 			<string>strawberry</string>
 		</dict>
