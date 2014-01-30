@@ -499,11 +499,21 @@ NSMutableDictionary *levelDict;
             NSArray *obstacles= [level objectForKey:@"Squirrels"];
             for (NSDictionary *obstacle in obstacles){
                 NSString *sName = [obstacle objectForKey:@"spriteName"];
-                Squirrel *obstacle2 = [[Squirrel alloc] initWithSquirrel: sName];
+                
+                
+                
                 NSNumber *x = [obstacle objectForKey:@"x"];
                 NSNumber *y = [obstacle objectForKey:@"y"];
+                Squirrel *obstacle2 = [[Squirrel alloc] initWithSquirrel: sName];
+
+
                 obstacle2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
                 obstacle2.tag = 5;
+                
+                
+                
+                
+                
                 
                 [self addChild:obstacle2 z:1];
                 
@@ -529,7 +539,7 @@ NSMutableDictionary *levelDict;
                 obstacleShapeDef.isSensor = true;
                 obstacleBody->CreateFixture(&obstacleShapeDef);
                 
-                b2Vec2 force = b2Vec2(0, 3);
+                b2Vec2 force = b2Vec2(0, 0);
                 obstacleBody->SetLinearVelocity(force);
                 //_body->ApplyLinearImpulse(force, ballBodyDef.position);
                 //printf("Applying Linear Impulse!");

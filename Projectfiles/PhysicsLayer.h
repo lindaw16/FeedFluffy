@@ -60,13 +60,7 @@ enum
     NSMutableArray *snoringFrames;
     
     
-    //Squirrels
-    
-    //run up
-    CCAction *runUp;
-    NSMutableArray *runUpFrames;
-    
-    //run down
+
     
 }
 
