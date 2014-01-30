@@ -26,6 +26,7 @@
 #import "Squirrel.h"
 #import "Bomb.h"
 #import "ModalAlert.h"
+#import "SimpleAudioEngine.h"
 //#import "cocos2d.m"
 
 
@@ -186,6 +187,8 @@ int dialogCounter = 0;
         //CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello Levels!!" fontName:@"Marker Felt" fontSize:48.0];
         
         CGSize size = [[CCDirector sharedDirector] winSize];
+        
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"levelMusic.mp3"];
         
         numFruitCollected = 0;
         //label.position = ccp(size.width/2, size.height/2);
