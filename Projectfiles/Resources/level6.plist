@@ -2,34 +2,87 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Squirrels</key>
-	<array>
-		<dict>
-			<key>up</key>
-			<true/>
-			<key>x</key>
-			<integer>150</integer>
-			<key>y</key>
-			<integer>20</integer>
-			<key>speed</key>
-			<integer>0</integer>
-			<key>spriteName</key>
-			<string>leftsquirrel</string>
-		</dict>
-	</array>
 	<key>Gold</key>
-	<integer>1</integer>
+	<integer>3</integer>
 	<key>Silver</key>
 	<integer>2</integer>
 	<key>Bronze</key>
-	<integer>3</integer>
-	<key>Goal</key>
-	<dict>
-		<key>apple</key>
-		<integer>1</integer>
-		<key>orange</key>
-		<integer>1</integer>
-	</dict>
+	<integer>1</integer>
+	<key>Obstacles</key>
+	<array>
+		<dict>
+			<key>x</key>
+			<integer>120</integer>
+			<key>y</key>
+			<integer>185</integer>
+			<key>spriteName</key>
+			<string>rock0</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>120</integer>
+			<key>y</key>
+			<integer>215</integer>
+			<key>spriteName</key>
+			<string>rock0</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>120</integer>
+			<key>y</key>
+			<integer>245</integer>
+			<key>spriteName</key>
+			<string>rock0</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>230</integer>
+			<key>y</key>
+			<integer>160</integer>
+			<key>spriteName</key>
+			<string>rock0</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>230</integer>
+			<key>y</key>
+			<integer>130</integer>
+			<key>spriteName</key>
+			<string>rock0</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>230</integer>
+			<key>y</key>
+			<integer>100</integer>
+			<key>spriteName</key>
+			<string>rock0</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>360</integer>
+			<key>y</key>
+			<integer>185</integer>
+			<key>spriteName</key>
+			<string>rock0</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>360</integer>
+			<key>y</key>
+			<integer>215</integer>
+			<key>spriteName</key>
+			<string>rock0</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>360</integer>
+			<key>y</key>
+			<integer>245</integer>
+			<key>spriteName</key>
+			<string>rock0</string>
+		</dict>
+	</array>
 	<key>Fluffy</key>
 	<dict>
 		<key>x</key>
@@ -37,23 +90,38 @@
 		<key>y</key>
 		<integer>190</integer>
 	</dict>
+	<key>Goal</key>
+	<dict>
+		<key>apple</key>
+		<integer>2</integer>
+		<key>orange</key>
+		<integer>1</integer>
+	</dict>
 	<key>Fruits</key>
 	<array>
 		<dict>
 			<key>x</key>
-			<integer>230</integer>
+			<integer>400</integer>
 			<key>y</key>
-			<integer>130</integer>
+			<integer>90</integer>
 			<key>spriteName</key>
-			<string>apple</string>
+			<string>orange</string>
 		</dict>
 		<dict>
 			<key>x</key>
 			<integer>230</integer>
 			<key>y</key>
-			<integer>40</integer>
+			<integer>230</integer>
 			<key>spriteName</key>
-			<string>orange</string>
+			<string>strawberry</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>290</integer>
+			<key>y</key>
+			<integer>150</integer>
+			<key>spriteName</key>
+			<string>pear</string>
 		</dict>
 	</array>
 </dict>
