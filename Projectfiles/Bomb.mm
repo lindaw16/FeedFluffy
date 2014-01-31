@@ -1,11 +1,10 @@
 //
 //  Bomb.m
-//  CutCutCut
+//  TheRealFluffy
 //
-//  Created by Allen Benson G Tan on 5/18/12.
-//  Copyright 2012 WhiteWidget Inc. All rights reserved.
+//  Created by Srinidhi Viswanathan on 1/23/14.
 //
-
+//
 #import "Bomb.h"
 
 

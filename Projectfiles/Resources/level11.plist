@@ -12,7 +12,7 @@
 	<array>
 		<dict>
 			<key>x</key>
-			<integer>140</integer>
+			<integer>240</integer>
 			<key>y</key>
 			<integer>220</integer>
 			<key>spriteName</key>
@@ -20,9 +20,25 @@
 		</dict>
 		<dict>
 			<key>x</key>
-			<integer>190</integer>
+			<integer>240</integer>
 			<key>y</key>
-			<integer>220</integer>
+			<integer>40</integer>
+			<key>spriteName</key>
+			<string>rock</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>110</integer>
+			<key>y</key>
+			<integer>130</integer>
+			<key>spriteName</key>
+			<string>rock</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>370</integer>
+			<key>y</key>
+			<integer>130</integer>
 			<key>spriteName</key>
 			<string>rock</string>
 		</dict>
@@ -45,19 +61,19 @@
 	<array>
 		<dict>
 			<key>x</key>
-			<integer>210</integer>
+			<integer>300</integer>
 			<key>y</key>
-			<integer>130</integer>
+			<integer>175</integer>
 			<key>spriteName</key>
-			<string>apple</string>
+			<string>orange</string>
 		</dict>
 		<dict>
 			<key>x</key>
-			<integer>330</integer>
+			<integer>180</integer>
 			<key>y</key>
-			<integer>30</integer>
+			<integer>175</integer>
 			<key>spriteName</key>
-			<string>pear</string>
+			<string>strawberry</string>
 		</dict>
 		<dict>
 			<key>x</key>
@@ -65,7 +81,7 @@
 			<key>y</key>
 			<integer>80</integer>
 			<key>spriteName</key>
-			<string>orange</string>
+			<string>apple</string>
 		</dict>
 	</array>
 </dict>
