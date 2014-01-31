@@ -206,6 +206,7 @@
 		BF7B4B53189B161700DF2A48 /* level2.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B4F189B161700DF2A48 /* level2.plist */; };
 		BF7B4B54189B161700DF2A48 /* level3.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B50189B161700DF2A48 /* level3.plist */; };
 		BF7B4B55189B161700DF2A48 /* level4.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B51189B161700DF2A48 /* level4.plist */; };
+		BF7B4B57189B2CBF00DF2A48 /* level15.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B56189B2CBF00DF2A48 /* level15.plist */; };
 		BFB4259718862C92002DD826 /* LevelSelectLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB4259618862C92002DD826 /* LevelSelectLayer.mm */; };
 		BFB4259B18862CFA002DD826 /* tutorials.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB4259A18862CFA002DD826 /* tutorials.png */; };
 		BFB425A118862DDE002DD826 /* StartMenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB425A018862DDE002DD826 /* StartMenuLayer.mm */; };
@@ -491,6 +492,7 @@
 		BF7B4B4F189B161700DF2A48 /* level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level2.plist; sourceTree = "<group>"; };
 		BF7B4B50189B161700DF2A48 /* level3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level3.plist; sourceTree = "<group>"; };
 		BF7B4B51189B161700DF2A48 /* level4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level4.plist; sourceTree = "<group>"; };
+		BF7B4B56189B2CBF00DF2A48 /* level15.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level15.plist; sourceTree = "<group>"; };
 		BFB4259518862C92002DD826 /* LevelSelectLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSelectLayer.h; sourceTree = "<group>"; };
 		BFB4259618862C92002DD826 /* LevelSelectLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LevelSelectLayer.mm; sourceTree = "<group>"; };
 		BFB4259A18862CFA002DD826 /* tutorials.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorials.png; sourceTree = "<group>"; };
@@ -984,6 +986,7 @@
 				AB9E45B7189B07610019524F /* level11.plist */,
 				AB9E45B9189B091A0019524F /* level12.plist */,
 				AB9E45C1189B14600019524F /* level13.plist */,
+				BF7B4B56189B2CBF00DF2A48 /* level15.plist */,
 				AB9E13811889CA4B001F6EA8 /* rock.png */,
 				AB954FE91895BB3100E2993F /* rock-hd.png */,
 				AB9E45BB189B09EF0019524F /* rock0-hd.png */,
@@ -1191,6 +1194,7 @@
 				AB9FBB8D188B190000992502 /* resume_button.png in Resources */,
 				DC2721B1160CB01100D88944 /* Default-568h@2x.png in Resources */,
 				BF4E960E188A367E0000B4FE /* dialog1.png in Resources */,
+				BF7B4B57189B2CBF00DF2A48 /* level15.plist in Resources */,
 				BFC2DCE8188609E900A1D673 /* apple2.png in Resources */,
 				BF196D11188F1EE9008CB197 /* snoringframes.plist in Resources */,
 				AB9E597C188B261100B7D315 /* main_menu_button@2x.png in Resources */,
