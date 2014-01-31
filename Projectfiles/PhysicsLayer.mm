@@ -87,16 +87,12 @@ CGPoint bombPos;
 CCLabelTTF *ballCountLabel;
 CCSprite * menuBall;
 NSMutableDictionary *labels = [[NSMutableDictionary alloc] init];
-//CGSize winSize;
+
 
 NSDictionary *goal;
-//NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
 NSMutableDictionary *goalProgress;
 
 NSMutableDictionary *levelDict;
-
-
-
 
 
 //Timers:
@@ -136,36 +132,35 @@ int sec;
     [scene addChild:hud z:2];
 	// 'layer' is an autorelease object.
     PhysicsLayer *layer = [[PhysicsLayer alloc] initWithLevel:level];
-    //NSLog(@"THE LEVEL IS %d", currentLevel);
 	[scene addChild: layer];
-    //NSLog(@"Successfully added first layer!!!!\n");
     
 	return scene;
 }
 
-int dialogCounter = 0;
+int tutorial1 = 0;
+int tutorial4 = 0;
 -(void) setUpMenus
 {
     //we should probably put the pause button and star button here??
-    if (currentLevel ==1 && dialogCounter ==0){
+    if (currentLevel ==1 && tutorial1 ==0){
         mTimeInSec = 60.0;
         [ModalAlert Tell:@"You must send the orange to Fluffy\n"@"Or else he'll get all in a huff-y.\n"@" Collect more fruits with one ball, \n"@"Or better yet- collect them all, \n"@"And Fluffy will grow up big and buffy. \n\n"@"Drag the cannon or its head to change its position and angle. Press the launch button to go. Good luck!" onLayer:self okBlock:^{
             
         }];
         
-        dialogCounter++; // =1
+        tutorial1 = 1; // =1
                 mTimeInSec = 60.0;
     }
     
-    else if (currentLevel == 4  && dialogCounter == 1)
+    else if (currentLevel == 4  && tutorial4 == 1)
     {
-        if (currentLevel ==1 && dialogCounter ==0){
+        if (currentLevel ==1 && tutorial4 ==0){
             
             [ModalAlert Tell:@"Watch out for these boulders! You will bounce off of them." onLayer:self okBlock:^{
                 
             }];
             
-            dialogCounter++; //=2
+            tutorial4 = 1; //=2
         }
         
     }
@@ -178,28 +173,16 @@ int dialogCounter = 0;
     [self addChild:mTimeLbl];
     if (IsIphone5){
     thesnores.position = CGPointMake(478.0f, 120.0f);
-//        CCSprite *sleepingFluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
-//    sleepingFluffy.position = ccp(510, 135);
-//    sleepingFluffy.scaleX = 0.5;
-//    sleepingFluffy.scaleY = 0.5;
-//    [self addChild:sleepingFluffy];
+
     }
     else {
         thesnores.position = CGPointMake(405.0f, 120.0f);
-//        CCSprite *sleepingFluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
-//        sleepingFluffy.position = ccp(420, 135);
-//        sleepingFluffy.scaleX = 0.5;
-//        sleepingFluffy.scaleY = 0.5;
-//        [self addChild:sleepingFluffy];
     }
     //Create an animation from the set of frames
     
-    //CCAnimation *wagging = [CCAnimation animationWithFrames: waggingFrames delay:0.1f];
     CCAnimation *snoring = [CCAnimation animationWithSpriteFrames: snoringFrames delay:0.9f];
     
     //Create an action with the animation that can then be assigned to a sprite
-    
-    //wag = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:wagging restoreOriginalFrame:NO]];
     snore = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:snoring]];
     snoring.restoreOriginalFrame = NO;
     
@@ -221,7 +204,6 @@ int dialogCounter = 0;
         _hud = hud;
         
         angleInDegrees = 0;
-        //CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello Levels!!" fontName:@"Marker Felt" fontSize:48.0];
         
         CGSize size = [[CCDirector sharedDirector] winSize];
         
@@ -229,9 +211,6 @@ int dialogCounter = 0;
 
         numFruitCollected = 0;
         orangeCollected = NO;
-        //label.position = ccp(size.width/2, size.height/2);
-        
-        //[self addChild:	label];
         
         seconds = 0;
         ballsUsed = 0;
@@ -246,12 +225,6 @@ int dialogCounter = 0;
         levelDict = [[NSMutableDictionary alloc] init];
         levelDict = [defaults objectForKey:levelString];
         levelCompleted = [[levelDict objectForKey:@"completed"] intValue];
-        
-        
-        
-        //NSLog(@"Before Game: best stars is %d and last star was %d", [[levelDict objectForKey:@"best_stars"] intValue],[[levelDict objectForKey:@"last_stars"] intValue]);
-        
-        
         
         _MoveableSpriteTouch=FALSE;
         self.touchEnabled = YES;
@@ -278,13 +251,6 @@ int dialogCounter = 0;
         _groundBody->CreateFixture(&groundBoxDef);
         
         
-        //        groundBox.Set(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
-        //        _groundBody->CreateFixture(&groundBoxDef);
-        //
-        //adding this back in case we need it later
-        //groundBox.Set(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
-        //_groundBody->CreateFixture(&groundBoxDef);
-        
         groundBox.Set(b2Vec2(0, 0), b2Vec2(winSize.width/PTM_RATIO, 0));
         _groundBody->CreateFixture(&groundBoxDef);
         
@@ -294,9 +260,6 @@ int dialogCounter = 0;
         
         groundBox.Set(b2Vec2(winSize.width/PTM_RATIO, winSize.height/PTM_RATIO), b2Vec2(winSize.width/PTM_RATIO, 0));
         _groundBody->CreateFixture(&groundBoxDef);
-        
-        
-        
         
         _player = [CCSprite spriteWithFile:@"cannon-body2.png"];
         _player.position = ccp(_player.contentSize.width/2 - 4, winSize.height/2 -28);
@@ -309,18 +272,7 @@ int dialogCounter = 0;
         cannonHead = [CCSprite spriteWithFile:@"cannon-head-cropped.png"];
         cannonHead.position = ccp(_player.position.x + 20, _player.position.y - 0.5);
         [self addChild:cannonHead z:1];
-        
-        //        CCSprite *cage = [CCSprite spriteWithFile: @"cage.png"];
-        //        cage.position = ccp(470, cageBottom + (winSize.height - cageBottom)/2);
-        //        [self addChild: cage z:1];
-        
-        //        CCSprite *temp = [CCSprite spriteWithFile: @"snore3.png"];
-        //        temp.position = ccp(430, cage.position.y - 30);
-        //        [self addChild: temp z:3];
-        
-        
-        
-        
+
         
         //Load the plist which tells Kobold2D how to properly parse your spritesheet. If on a retina device Kobold2D will automatically use bearframes-hd.plist
         
@@ -370,10 +322,6 @@ int dialogCounter = 0;
         CCSprite *meep = [CCSprite spriteWithFile:@"gameBackground.png"];
         meep.anchorPoint = CGPointZero;
         [self addChild:meep z:-1];
-        
-        //        CCSprite *bar = [CCSprite spriteWithFile: @"gameBar.png"];
-        //        bar.position = ccp(winSize.width / 2, 20);
-        //        [self addChild:bar z:1];
         
         // pause menu
         
@@ -437,17 +385,10 @@ int dialogCounter = 0;
         
         //if (currentLevel == 1 || currentLevel == 2 || currentLevel == 3) // add a list of tutorial levels :P
         if ( (level == 1 || level == 2 || level == 3 ) && levelCompleted == 0)
-            //if ([tutorialLevels containsObject: currentLevel])
+            
         {
-            // NSLog(@"this is the currenet level %d", currentLevel);
-            //message = [CCSprite spriteWithFile:@"tutorial1.png"];
-            //message = [CCSprite spriteWithFile:[NSString stringWithFormat:@"tutorial%d.png", currentLevel]];
-            //message = [CCSprite spriteWithFile:[NSString stringWithFormat:@"tutorial%d.png", level]];
-            //message.position = ccp(220, 140);
-            //[self addChild:message z:1];
+
         }
-        // NSLog(@"this is the currenet level %d but i'm not inside the if statement", currentLevel);
-        
         
         // plist level creation stuff
         

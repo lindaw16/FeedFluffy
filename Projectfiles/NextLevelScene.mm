@@ -30,7 +30,7 @@
 -(id)initWithLevel: (int) level{
     if( (self=[super init] )) {
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"LevelMusic.mp3" loop:YES];
-
+        
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"fluffyframes.plist"];
         CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"fluffyframes.png"];
         [self addChild:spriteSheet];
@@ -56,10 +56,10 @@
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"Level Completed!"
                                                fontName:@"Marker Felt"
                                                fontSize:30];
-    
         
         
-
+        
+        
         
         CCSprite *fluffy = [CCSprite spriteWithSpriteFrameName:@"fluffy1.png"];
         fluffy.anchorPoint = CGPointZero;
@@ -85,45 +85,45 @@
         }
         
         
-    
+        
         
         
         [self addChild: label];
-
-
+        
+        
         
         [CCMenuItemFont setFontName:@"Courier New"];
         [CCMenuItemFont setFontSize:20];
         
         CCMenuItemImage *nextlevel= [CCMenuItemImage itemWithNormalImage:@"next_level.png"
-                                                        selectedImage: @"next_level2.png" target:self
-                                                             selector:@selector(NextLevel:)];
+                                                           selectedImage: @"next_level2.png" target:self
+                                                                selector:@selector(NextLevel:)];
         nextlevel.tag = level;
         
         //CCMenuItem *Restart = [CCMenuItemFont itemFromString:@"Restart" target:self selector:@selector(Restart:)];
         CCMenuItemImage *replay = [CCMenuItemImage itemWithNormalImage: @"replay.png" selectedImage: @"replay2.png" target:self
-                                                               selector:@selector(Restart:)];
+                                                              selector:@selector(Restart:)];
         replay.tag = level;
         
         //CCMenuItem *Level = [CCMenuItemFont itemFromString:@"Level Select"
         //target:self selector:@selector(GoToLevels:)];
         CCMenuItemImage *levels = [CCMenuItemImage itemWithNormalImage: @"level_select.png" selectedImage: @"level_select2.png" target:self
-                                                             selector:@selector(GoToLevels:)];
+                                                              selector:@selector(GoToLevels:)];
         
         //CCMenuItem *Quit = [CCMenuItemFont itemFromString:@"Main Menu"
         //target:self selector:@selector(GoToMainMenu:)];
-//        CCMenuItemImage *quit = [CCMenuItemImage itemWithNormalImage: @"main_menu.png" selectedImage: @"main_menu2.png" target:self
-//                                                            selector:@selector(GoToMainMenu:)];
+        //        CCMenuItemImage *quit = [CCMenuItemImage itemWithNormalImage: @"main_menu.png" selectedImage: @"main_menu2.png" target:self
+        //                                                            selector:@selector(GoToMainMenu:)];
         
         CCMenu *menu= [CCMenu menuWithItems: nextlevel, replay, levels, nil];
         
         if (IsIphone5)
         {
-        menu.position = CGPointZero;
-        nextlevel.position = ccp(155, 50);
-        replay.position = ccp(295, 50);
-        levels.position = ccp(435, 50);
-        //quit.position = ccp(345,90);
+            menu.position = CGPointZero;
+            nextlevel.position = ccp(155, 50);
+            replay.position = ccp(295, 50);
+            levels.position = ccp(435, 50);
+            //quit.position = ccp(345,90);
         }
         
         else{
@@ -134,7 +134,7 @@
             //quit.position = ccp(305,90);
         }
         
-
+        
         
         
         
@@ -151,32 +151,32 @@
         int score = [[levelDict objectForKey:@"last_score"] intValue];
         int bestScore = [[levelDict objectForKey:@"best_score"] intValue];
         
-
+        
         /*NSString *bestTimeString = [@"Your best time: " stringByAppendingFormat: @"%d", bestTime];
-        CCLabelTTF *bestTimeLabel = [CCLabelTTF labelWithString:bestTimeString
-                                                   fontName:@"Marker Felt"
-                                                   fontSize:20];
-        timeLabel.position = ccp(200, 70);
-        bestTimeLabel.position = ccp(250, 50);
-        [self addChild: timeLabel z:3];
-        [self addChild: bestTimeLabel z:3];*/
-
+         CCLabelTTF *bestTimeLabel = [CCLabelTTF labelWithString:bestTimeString
+         fontName:@"Marker Felt"
+         fontSize:20];
+         timeLabel.position = ccp(200, 70);
+         bestTimeLabel.position = ccp(250, 50);
+         [self addChild: timeLabel z:3];
+         [self addChild: bestTimeLabel z:3];*/
+        
         
         int stars = [[levelDict objectForKey:@"last_stars"] intValue];
-
+        
         CCSprite *rank;
         if (stars == 3){
             rank = [CCSprite spriteWithFile:@"gold_star_big.png"];
             [rank setScaleX:0.6];
             [rank setScaleY:0.6];
-
+            
         }
         else if (stars == 2){
             rank = [CCSprite spriteWithFile:@"silver_star_big.png"];
-         
+            
             [rank setScaleX:0.6];
             [rank setScaleY:0.6];
-
+            
         }
         else if (stars == 1){
             rank = [CCSprite spriteWithFile:@"bronze_star_big.png"];
@@ -186,18 +186,18 @@
         
         
         if (IsIphone5){
-            rank.position = ccp(284,265);
+            rank.position = ccp(284,240);
         }
         else{
-        rank.position = ccp(240, 240);
+            rank.position = ccp(240, 240);
         }
         
-                [self addChild: rank z:3];
+        [self addChild: rank z:3];
         
         CCLabelTTF *feedingFluffy = [CCLabelTTF labelWithString:@"Feeding Fluffy: 50"
                                                        fontName:@"Marker Felt"
                                                        fontSize:18];
-       
+        
         feedingFluffy.position = ccp(240,185);
         
         
@@ -209,12 +209,12 @@
         
         if (IsIphone5)
         {
-                    timeBonus.position = ccp(270,150);        }
+            timeBonus.position = ccp(270,150);        }
         else{
-        timeBonus.position = ccp(240,150);
+            timeBonus.position = ccp(240,150);
         }
-
-
+        
+        
         
         [self addChild: timeBonus];
         
@@ -233,14 +233,14 @@
         {
             scoreLabel.position = ccp(240, 90);
             bestScoreLabel.position = ccp(390, 90);
-      }
+        }
         else{
             scoreLabel.position = ccp(180, 90);
             bestScoreLabel.position = ccp(330, 90);
         }
-                [self addChild: scoreLabel z:3];
+        [self addChild: scoreLabel z:3];
         [self addChild: bestScoreLabel z:3];
-
+        
     }
     return self;
 }
@@ -249,10 +249,10 @@
     ccColor4F lineColor = ccc4f(1, 1, 1, 1);
     if (IsIphone5)
     {
-    ccDrawSolidRect( ccp(180,120), ccp(350, 123) , lineColor);
+        ccDrawSolidRect( ccp(180,120), ccp(350, 123) , lineColor);
     }
     else{
-    ccDrawSolidRect( ccp(150,120), ccp(320, 123) , lineColor);
+        ccDrawSolidRect( ccp(150,120), ccp(320, 123) , lineColor);
     }
 }
 
