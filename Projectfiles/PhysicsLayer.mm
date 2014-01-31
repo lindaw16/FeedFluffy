@@ -139,6 +139,9 @@ int sec;
 
 int tutorial1 = 0;
 int tutorial4 = 0;
+int tutorial13 = 0;
+
+
 -(void) setUpMenus
 {
     //we should probably put the pause button and star button here??
@@ -148,21 +151,26 @@ int tutorial4 = 0;
             
         }];
         
-        tutorial1 = 1; // =1
+        tutorial1 = 1;
                 mTimeInSec = 60.0;
     }
     
-    else if (currentLevel == 4  && tutorial4 == 1)
+    else if (currentLevel == 4  && tutorial4 == 0)
     {
-        if (currentLevel ==1 && tutorial4 ==0){
-            
             [ModalAlert Tell:@"Watch out for these boulders! You will bounce off of them." onLayer:self okBlock:^{
                 
             }];
             
-            tutorial4 = 1; //=2
-        }
+            tutorial4 = 1;
+    }
+    
+    else if (currentLevel == 13 && tutorial13 == 0)
+    {
+        [ModalAlert Tell:@"The sneaky squirrels will eat Fluffy's food if they catch them!" onLayer:self okBlock:^{
+            
+        }];
         
+        tutorial13 = 1;
     }
     
     

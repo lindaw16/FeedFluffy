@@ -2,32 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Squirrels</key>
-	<array>
-		<dict>
-			<key>up</key>
-			<true/>
-			<key>x</key>
-			<integer>150</integer>
-			<key>y</key>
-			<integer>20</integer>
-			<key>speed</key>
-			<integer>0</integer>
-			<key>spriteName</key>
-			<string>leftsquirrel</string>
-		</dict>
-	</array>
 	<key>Gold</key>
-	<integer>1</integer>
+	<integer>3</integer>
 	<key>Silver</key>
 	<integer>2</integer>
 	<key>Bronze</key>
-	<integer>3</integer>
+	<integer>1</integer>
 	<key>Goal</key>
 	<dict>
 		<key>apple</key>
-		<integer>1</integer>
-		<key>orange</key>
 		<integer>1</integer>
 	</dict>
 	<key>Fluffy</key>
@@ -37,31 +20,54 @@
 		<key>y</key>
 		<integer>190</integer>
 	</dict>
+	<key>Squirrels</key>
+	<array>
+		<dict>
+			<key>x</key>
+			<integer>150</integer>
+			<key>y</key>
+			<integer>20</integer>
+			<key>speed</key>
+			<integer>0</integer>
+			<key>spriteName</key>
+			<string>leftsquirrel</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>350</integer>
+			<key>y</key>
+			<integer>120</integer>
+			<key>speed</key>
+			<integer>0</integer>
+			<key>spriteName</key>
+			<string>leftsquirrel</string>
+		</dict>
+	</array>
 	<key>Fruits</key>
 	<array>
 		<dict>
 			<key>x</key>
-			<integer>120</integer>
-			<key>y</key>
-			<integer>190</integer>
-			<key>spriteName</key>
-			<string>orange</string>
-		</dict>
-		<dict>
-			<key>x</key>
 			<integer>230</integer>
 			<key>y</key>
-			<integer>30</integer>
+			<integer>130</integer>
 			<key>spriteName</key>
-			<string>pear</string>
+			<string>apple</string>
 		</dict>
 		<dict>
 			<key>x</key>
-			<integer>340</integer>
+			<integer>90</integer>
 			<key>y</key>
-			<integer>190</integer>
+			<integer>130</integer>
 			<key>spriteName</key>
-			<string>strawberry</string>
+			<string>apple</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>410</integer>
+			<key>y</key>
+			<integer>130</integer>
+			<key>spriteName</key>
+			<string>orange</string>
 		</dict>
 	</array>
 </dict>
