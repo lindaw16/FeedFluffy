@@ -148,12 +148,13 @@ int dialogCounter = 0;
 {
     //we should probably put the pause button and star button here??
     if (currentLevel ==1 && dialogCounter ==0){
-        
+        mTimeInSec = 60.0;
         [ModalAlert Tell:@"You must send the orange to Fluffy\n"@"Or else he'll get all in a huff-y.\n"@" Collect more fruits with one ball, \n"@"Or better yet- collect them all, \n"@"And Fluffy will grow up big and buffy. \n\n"@"Drag the cannon or its head to change its position and angle. Press the launch button to go. Good luck!" onLayer:self okBlock:^{
             
         }];
         
         dialogCounter++; // =1
+                mTimeInSec = 60.0;
     }
     
     else if (currentLevel == 4  && dialogCounter == 1)
@@ -224,8 +225,8 @@ int dialogCounter = 0;
         
         CGSize size = [[CCDirector sharedDirector] winSize];
         
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"levelMusic.mp3"];
-        
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"levelMusic.mp3" loop:YES];
+
         numFruitCollected = 0;
         orangeCollected = NO;
         //label.position = ccp(size.width/2, size.height/2);
@@ -886,6 +887,10 @@ int dialogCounter = 0;
     
 
     _body->ApplyLinearImpulse(force, ballBodyDef.position);
+//    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Drop Cannon.wav"];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Drop Cannon.wav" loop:NO];
+    
+    
     // Move projectile to actual endpoint
     /*[_nextProjectile runAction:
      [CCSequence actions:
@@ -990,7 +995,6 @@ int dialogCounter = 0;
 
 int tickCounter = 0;
 - (void)tick:(ccTime) dt {
-    
     
     mTimeInSec -=dt;
     NSLog(@"MTIME IN SEC %f", mTimeInSec);
