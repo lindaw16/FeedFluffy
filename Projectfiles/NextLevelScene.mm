@@ -11,8 +11,6 @@
 #import "StartMenuLayer.h"
 #import "LevelSelectLayer.h"
 #import "EasyLevelLayer.h"
-#import "SimpleAudioEngine.h"
-
 
 @implementation NextLevelScene
 
@@ -29,8 +27,7 @@
 
 -(id)initWithLevel: (int) level{
     if( (self=[super init] )) {
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"LevelMusic.mp3" loop:YES];
-        
+
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"fluffyframes.plist"];
         CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"fluffyframes.png"];
         [self addChild:spriteSheet];
