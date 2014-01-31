@@ -139,7 +139,7 @@
 		ABA0E6C31899E83D0097FAF5 /* pause_background35.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA0E6C11899E83D0097FAF5 /* pause_background35.png */; };
 		ABA0E6C51899E9380097FAF5 /* pause_background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA0E6C41899E9380097FAF5 /* pause_background-hd.png */; };
 		ABA0E6C71899E9470097FAF5 /* pause_background.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA0E6C61899E9470097FAF5 /* pause_background.png */; };
-		ABA136061894BADD008D4DCE /* level6.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABA136051894BADD008D4DCE /* level6.plist */; };
+		ABA136061894BADD008D4DCE /* level20.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABA136051894BADD008D4DCE /* level20.plist */; };
 		ABA136091894BBCE008D4DCE /* Squirrel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA136081894BBCE008D4DCE /* Squirrel.m */; };
 		ABA18ADE18903B3800B05B35 /* NextLevelScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = ABA18ADD18903B3800B05B35 /* NextLevelScene.mm */; };
 		ABB719CF18871CCA004D2FCA /* Fluffy.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB719CE18871CCA004D2FCA /* Fluffy.m */; };
@@ -206,8 +206,8 @@
 		BF7B4B53189B161700DF2A48 /* level2.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B4F189B161700DF2A48 /* level2.plist */; };
 		BF7B4B54189B161700DF2A48 /* level3.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B50189B161700DF2A48 /* level3.plist */; };
 		BF7B4B55189B161700DF2A48 /* level4.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B51189B161700DF2A48 /* level4.plist */; };
-		BF7B4B57189B2CBF00DF2A48 /* level15.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B56189B2CBF00DF2A48 /* level15.plist */; };
 		BF7B4B5B189B2DFE00DF2A48 /* level5.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B5A189B2DFE00DF2A48 /* level5.plist */; };
+		BF7B4B5F189B300200DF2A48 /* level6.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF7B4B5E189B300200DF2A48 /* level6.plist */; };
 		BFB4259718862C92002DD826 /* LevelSelectLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB4259618862C92002DD826 /* LevelSelectLayer.mm */; };
 		BFB4259B18862CFA002DD826 /* tutorials.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB4259A18862CFA002DD826 /* tutorials.png */; };
 		BFB425A118862DDE002DD826 /* StartMenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB425A018862DDE002DD826 /* StartMenuLayer.mm */; };
@@ -421,7 +421,7 @@
 		ABA0E6C11899E83D0097FAF5 /* pause_background35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_background35.png; sourceTree = "<group>"; };
 		ABA0E6C41899E9380097FAF5 /* pause_background-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause_background-hd.png"; sourceTree = "<group>"; };
 		ABA0E6C61899E9470097FAF5 /* pause_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_background.png; sourceTree = "<group>"; };
-		ABA136051894BADD008D4DCE /* level6.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level6.plist; sourceTree = "<group>"; };
+		ABA136051894BADD008D4DCE /* level20.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level20.plist; sourceTree = "<group>"; };
 		ABA136071894BBCE008D4DCE /* Squirrel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Squirrel.h; sourceTree = "<group>"; };
 		ABA136081894BBCE008D4DCE /* Squirrel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Squirrel.m; sourceTree = "<group>"; };
 		ABA18ADC18903B3800B05B35 /* NextLevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextLevelScene.h; sourceTree = "<group>"; };
@@ -493,8 +493,8 @@
 		BF7B4B4F189B161700DF2A48 /* level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level2.plist; sourceTree = "<group>"; };
 		BF7B4B50189B161700DF2A48 /* level3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level3.plist; sourceTree = "<group>"; };
 		BF7B4B51189B161700DF2A48 /* level4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level4.plist; sourceTree = "<group>"; };
-		BF7B4B56189B2CBF00DF2A48 /* level15.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level15.plist; sourceTree = "<group>"; };
 		BF7B4B5A189B2DFE00DF2A48 /* level5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level5.plist; sourceTree = "<group>"; };
+		BF7B4B5E189B300200DF2A48 /* level6.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level6.plist; sourceTree = "<group>"; };
 		BFB4259518862C92002DD826 /* LevelSelectLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSelectLayer.h; sourceTree = "<group>"; };
 		BFB4259618862C92002DD826 /* LevelSelectLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LevelSelectLayer.mm; sourceTree = "<group>"; };
 		BFB4259A18862CFA002DD826 /* tutorials.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorials.png; sourceTree = "<group>"; };
@@ -981,7 +981,7 @@
 				BF7B4B51189B161700DF2A48 /* level4.plist */,
 				AB9E13831889CF26001F6EA8 /* levelNothing.plist */,
 				BF7B4B5A189B2DFE00DF2A48 /* level5.plist */,
-				ABA136051894BADD008D4DCE /* level6.plist */,
+				BF7B4B5E189B300200DF2A48 /* level6.plist */,
 				91A4009D1899D72C0043B996 /* level7.plist */,
 				AB5C6D9B189750F200F0C395 /* level8.plist */,
 				ABA0B9EC1898A15A00043D1C /* level9.plist */,
@@ -991,6 +991,9 @@
 				AB9E45B9189B091A0019524F /* level16.plist */,
 				AB9E45C1189B14600019524F /* level14.plist */,
 				AB9E45C5189B30410019524F /* level12.plist */,
+				AB9E45C3189B1CCC0019524F /* level13.plist */,
+				AB9E45C1189B14600019524F /* level14.plist */,
+				ABA136051894BADD008D4DCE /* level20.plist */,
 				AB9E13811889CA4B001F6EA8 /* rock.png */,
 				AB954FE91895BB3100E2993F /* rock-hd.png */,
 				AB9E45BB189B09EF0019524F /* rock0-hd.png */,
@@ -1199,7 +1202,7 @@
 				AB9FBB8D188B190000992502 /* resume_button.png in Resources */,
 				DC2721B1160CB01100D88944 /* Default-568h@2x.png in Resources */,
 				BF4E960E188A367E0000B4FE /* dialog1.png in Resources */,
-				BF7B4B57189B2CBF00DF2A48 /* level15.plist in Resources */,
+				BF7B4B5F189B300200DF2A48 /* level6.plist in Resources */,
 				BFC2DCE8188609E900A1D673 /* apple2.png in Resources */,
 				BF196D11188F1EE9008CB197 /* snoringframes.plist in Resources */,
 				AB9E597C188B261100B7D315 /* main_menu_button@2x.png in Resources */,
@@ -1279,7 +1282,7 @@
 				BF12C2941893270F00478BCB /* leftsquirrel-hd.png in Resources */,
 				91A4008118987AC70043B996 /* hardCage-hd.png in Resources */,
 				AB9EC446189474B90030B830 /* level_select2.png in Resources */,
-				ABA136061894BADD008D4DCE /* level6.plist in Resources */,
+				ABA136061894BADD008D4DCE /* level20.plist in Resources */,
 				911975BB1888618F0070C1AE /* ButtonStarSel.png in Resources */,
 				AB39204C1892205000E4830D /* orange-hd.png in Resources */,
 				914BE9CD188969C70085E989 /* cannon-head-cropped.png in Resources */,

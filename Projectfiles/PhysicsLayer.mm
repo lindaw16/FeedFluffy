@@ -82,6 +82,7 @@ b2Body *_body;
 CGPoint realDest;
 BOOL levelCompleted;
 
+bool timeCounter = false;
 CGPoint bombPos;
 CCLabelTTF *ballCountLabel;
 CCSprite * menuBall;
@@ -172,7 +173,7 @@ int dialogCounter = 0;
     CCSprite * thesnores = [CCSprite spriteWithSpriteFrameName:@"snore1.png"];
     thesnores.anchorPoint = CGPointZero;
     
-    mTimeLbl = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%.2d:%.2d",min2,sec] fontName:@"Marker Felt" fontSize:18.0];
+    mTimeLbl = [CCLabelTTF labelWithString:[NSString stringWithFormat:@":%.2d",int(mTimeInSec) ] fontName:@"Marker Felt" fontSize:18.0];
     [self addChild:mTimeLbl];
     if (IsIphone5){
     thesnores.position = CGPointMake(478.0f, 120.0f);
@@ -412,7 +413,7 @@ int dialogCounter = 0;
         PauseButton.position = CGPointZero;
        // Pause.position = ccp(460, 295);
         //Restart.position = ccp(500, 295);
-        mTimeInSec = 0.0f;
+        mTimeInSec = 60.0f;
         [self schedule:@selector(tick:)];
         [self schedule:@selector(tick:) interval:1.0f/60.0f];
         [self addChild:PauseButton z:7];
@@ -991,20 +992,30 @@ int tickCounter = 0;
 - (void)tick:(ccTime) dt {
     
     
-    mTimeInSec +=dt;
-    
+    mTimeInSec -=dt;
+    NSLog(@"MTIME IN SEC %f", mTimeInSec);
+    if ((int) mTimeInSec == 0)
+    {
+        mTimeInSec = 0.0;
+    }
     digit_min = mTimeInSec/60.0f;
     
-     digit_sec = ((int)mTimeInSec%60);
+    digit_sec = ((int)mTimeInSec%60);
     
-     min2 = (int)digit_min;
+    min2 = 1;
     
-     sec = (int)digit_sec;
+    sec = (int)digit_sec;
     //mTimeLbl.string = [@"%.2d:%.2d:%.2d",hours, min,sec];
     
-    [mTimeLbl setString: [NSString stringWithFormat:@"%.2d:%.2d",min2,sec]];
-    
-
+    if (timeCounter == true)
+    {
+        [mTimeLbl setString: [NSString stringWithFormat:@":%.2d",int(mTimeInSec)]];
+    }
+    if (timeCounter == false)
+    {
+        [mTimeLbl setString: [NSString stringWithFormat:@"%.2d:%.2d",min2, int(mTimeInSec)]];
+        timeCounter = true;
+    }
     //[mTimeLbl setString:[NSString stringWithFormat:@"%.2d:%.2d:%.2d",hours, min,sec]];
     if (IsIphone5){
     mTimeLbl.position = ccp(500,50);
