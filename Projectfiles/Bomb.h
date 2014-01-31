@@ -15,6 +15,6 @@
 
 @interface Bomb : CCSprite
 
--(id) initWithBomb: (NSString *) bomb;
+-(id) initWithBomb: (NSString *) mushroom;
 
 @end

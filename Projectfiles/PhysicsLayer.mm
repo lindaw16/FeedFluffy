@@ -225,7 +225,7 @@ int tutorial13 = 0;
         currentLevel = level;
         goalProgress = [[NSMutableDictionary alloc] init];
         [self updateLevel];
-        [self displayFoodCollect];
+        //[self displayFoodCollect];
         
         
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
@@ -638,31 +638,21 @@ int tutorial13 = 0;
             fruitBody->CreateFixture(&fruitShapeDef);
         }
         
-
-        //ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, ballCountLabel.contentSize.height/PTM_RATIO/2+30);
-        //ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2 + 150, winSize.height - ballCountLabel.contentSize.height/PTM_RATIO/2 - 30);
-        
-        //menuBall = [CCSprite spriteWithFile:@"bullet.png"];
         menuBall = [CCSprite spriteWithFile:@"ball.png"];
-        //menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+120, menuBall.contentSize.height/PTM_RATIO/2+30);
 
-        //[self addChild: ballCountLabel z:10];
-        //[self addChild:menuBall z:10];
         
         [self setUpMenus];
         
         
         [self schedule:@selector(tick:)];
-        //[self schedule:@selector(kick) interval:5.0];
         [self setTouchEnabled:YES];
-        //[self setAccelerometerEnabled:NO];
-        
-        //[self enableBox2dDebugDrawing];
+
         
         [self scheduleUpdate];
         
         // timer, call every second
         [self schedule:@selector(countSeconds:) interval:1.0];
+
     }
     return self;
 }
@@ -695,9 +685,6 @@ int tutorial13 = 0;
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     CCLabelTTF *starLabel = [CCLabelTTF labelWithString:@"Food" fontName:@"Marker Felt" fontSize:18.0];
     starLabel.position = ccp(starLabel.contentSize.width/PTM_RATIO/2+400, starLabel.contentSize.height/PTM_RATIO/2+30);
-    //
-    //    CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
-    //    menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, menuBall.contentSize.height/PTM_RATIO/2+30);
     
     
     NSString* levelString2 = [NSString stringWithFormat:@"%i", currentLevel];
@@ -834,8 +821,11 @@ int tutorial13 = 0;
     printf("Applying Linear Impulse!\n");
     printf("Angle in Degrees %f,", angleInDegrees);
     
-
+    [[SimpleAudioEngine sharedEngine] playEffect:@"drop_cannon.wav"];
+    //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"drop_cannon.wav" loop:NO];
     _body->ApplyLinearImpulse(force, ballBodyDef.position);
+
+
 //    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Drop Cannon.wav"];
     //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Drop Cannon.wav" loop:NO];
     
@@ -852,7 +842,7 @@ int tutorial13 = 0;
    // [ballCountLabel setString:[NSString stringWithFormat:@" X %d", bulletCounter]];
     
     //angleInDegrees = 0;
-    ButtonTapped = false;
+
 }
 
 -(void) pause: (CCMenuItem *) sender{
@@ -1385,7 +1375,7 @@ int counter = 1;
                     [goalProgress setObject:[NSNumber numberWithInt: fruitNum] forKey:fruitName];
                     int fruitNum2 = [[goalProgress objectForKey:fruitName] intValue];
                     
-                    [self updateFoodCollect];
+                    //[self updateFoodCollect];
                 }
             }
             

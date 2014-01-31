@@ -15,9 +15,9 @@
 
 
 
--(id) initWithBomb: (NSString *) bomb
+-(id) initWithBomb: (NSString *) mushroom
 {
-    NSString *spriteName = [bomb stringByAppendingString:@".png"];
+    NSString *spriteName = [mushroom stringByAppendingString:@".png"];
     if ((self = [super initWithFile:spriteName])){
         
     }

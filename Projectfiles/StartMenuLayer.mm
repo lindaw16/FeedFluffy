@@ -154,21 +154,8 @@ CCSprite * fluffy;
 -(id) init{
     //    instanceOfMyClass = self;
     if ((self = [super init])){
-        //[self scheduleUpdate];
         
-        
-//        CCLabelTTF *label = [CCLabelTTF labelWithString:[NSString stringWithFormat: @"the quick brown fox jumps over"]
-//                                               fontName:@"Yuanti SC"
-//                                               fontSize:20];
-//        CCLabelTTF *label2 = [CCLabelTTF labelWithString:[NSString stringWithFormat: @"the lazy dog 1 2 3 4 5 6 7 8 9 0"]
-//                                               fontName:@"Yuppy TC"
-//                                               fontSize:20];
-//        label.position = ccp(250, 280);
-//        label2.position = ccp(250, 250);
-//        [self addChild: label z:3];
-//        [self addChild: label2 z:3];
-        
-        //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"menu_background_music.mp3"];
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"level_music.mp3"];
         
         CCSprite * squirrel = [CCSprite spriteWithFile:@"rightsquirrel.png"];
         squirrel.anchorPoint = CGPointZero;

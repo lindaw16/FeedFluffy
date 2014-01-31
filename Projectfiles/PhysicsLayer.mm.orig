@@ -21,15 +21,19 @@
 #import "PauseScene.h"
 #import "NextLevelScene.h"
 #import "HUDLayer.h"
+#import "StartMenuLayer.h"
+#import "LoseScene.h"
+#import "Squirrel.h"
+#import "Bomb.h"
+#import "ModalAlert.h"
+#import "SimpleAudioEngine.h"
+
 //#import "cocos2d.m"
 
 
 /*
  * Sprite Tags
- * 1: 
- * 2:
- * 3: the cannon
- * 4: the bullet
+ *
  */
 
 /* BUG LIST
@@ -48,8 +52,7 @@ const int TILESIZE = 32;
 const int TILESET_COLUMNS = 9;
 const int TILESET_ROWS = 19;
 const int cageLeft = 30;
-const int cageBottom = 60;
-int bulletCounter;
+const int cageBottom = 260;
 int gold;
 int silver;
 int bronze;
@@ -57,15 +60,19 @@ int cannonRadius = 5.0/PTM_RATIO;
 bool ButtonTapped = false;
 int currentLevel;
 int ballsUsed;
+int numFruitCollected;
+int seconds;
+BOOL orangeCollected;
 
-
+int cannonCounter = 0;
+CCSprite *ballData;
 
 //for dialog boxes
 CCSprite *message;
 CCMenuItemImage *tapHere;
 CCMenu * myTut;
 int showDialog = 1;
-
+int ExplosionCounter = 0;
 
 float angleRadians;
 float angleInDegrees;
@@ -75,11 +82,31 @@ b2Body *_body;
 CGPoint realDest;
 BOOL levelCompleted;
 
-        CCLabelTTF *ballCountLabel;
-//CGSize winSize;
+bool timeCounter = false;
+CGPoint bombPos;
+CCLabelTTF *ballCountLabel;
+CCSprite * menuBall;
+NSMutableDictionary *labels = [[NSMutableDictionary alloc] init];
+
 
 NSDictionary *goal;
-NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
+NSMutableDictionary *goalProgress;
+
+NSMutableDictionary *levelDict;
+
+
+//Timers:
+CCLabelTTF          *mTimeLbl;
+float               mTimeInSec;
+int digit_min;
+
+int digit_sec;
+
+int min2;
+
+int sec;
+
+
 
 @interface PhysicsLayer (PrivateMethods)
 -(void) enableBox2dDebugDrawing;
@@ -105,30 +132,119 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     [scene addChild:hud z:2];
 	// 'layer' is an autorelease object.
     PhysicsLayer *layer = [[PhysicsLayer alloc] initWithLevel:level];
-    NSLog(@"THE LEVEL IS %d", currentLevel);
 	[scene addChild: layer];
-    NSLog(@"Successfully added first layer!!!!\n");
     
 	return scene;
 }
 
+<<<<<<< HEAD
+int tutorial1 = 0;
+int tutorial4 = 0;
+int tutorial13 = 0;
 
+
+=======
+>>>>>>> 9e5fe22758b4279534b9eafbd6ef9f08b644daa2
 -(void) setUpMenus
 {
-//we should probably put the pause button and star button here??
+    int tutorial1 = 0;
+    int tutorial4 = 0;
+    int tutorial13 = 0;
+    
+    if (currentLevel ==1 && tutorial1 ==0){
+        
+        mTimeInSec = 60.0;
+        
+        [ModalAlert Tell:@"You must send the orange to Fluffy\n"@"Or else he'll get all in a huff-y.\n"@" Collect more fruits with one ball, \n"@"Or better yet- collect them all, \n"@"And Fluffy will grow up big and buffy. \n\n"@"Drag the cannon or its head to change its position and angle. Press the launch button to go. Good luck!" onLayer:self okBlock:^{
+            
+            
+            
+        }];
+        
+<<<<<<< HEAD
+        tutorial1 = 1;
+                mTimeInSec = 60.0;
+    }
+    
+    else if (currentLevel == 4  && tutorial4 == 0)
+    {
+            [ModalAlert Tell:@"Watch out for these boulders! You will bounce off of them." onLayer:self okBlock:^{
+                
+            }];
+            
+            tutorial4 = 1;
+    }
+    
+    else if (currentLevel == 13 && tutorial13 == 0)
+    {
+        [ModalAlert Tell:@"The sneaky squirrels will eat Fluffy's food if they catch them!" onLayer:self okBlock:^{
+            
+        }];
+=======
+        
+        
+        tutorial1 = 1;
+        
+        mTimeInSec = 60.0;
+        
+    }
+    
+    
+    
+    else if (currentLevel == 4  && tutorial4 == 0)
+        
+    {
+        
+        [ModalAlert Tell:@"Watch out for these boulders! You will bounce off of them." onLayer:self okBlock:^{
+            
+            
+            
+        }];
+        
+        
+        
+        tutorial4 = 1;
+        
+    }
+    
+    
+    
+    else if (currentLevel == 13 && tutorial13 == 0)
+        
+    {
+        
+        [ModalAlert Tell:@"These sneaky squirrel will eat Fluffy's food if they catch them!" onLayer:self okBlock:^{
+            
+            
+            
+        }];
+        
+        
+        
+        tutorial13 = 1;
+>>>>>>> 9e5fe22758b4279534b9eafbd6ef9f08b644daa2
+        
+        tutorial13 = 1;
+    }
+    
     
     CCSprite * thesnores = [CCSprite spriteWithSpriteFrameName:@"snore1.png"];
     thesnores.anchorPoint = CGPointZero;
-    thesnores.position = CGPointMake(380.0f, 120.0f);
     
+    mTimeLbl = [CCLabelTTF labelWithString:[NSString stringWithFormat:@":%.2d",int(mTimeInSec) ] fontName:@"Marker Felt" fontSize:18.0];
+    [self addChild:mTimeLbl];
+    if (IsIphone5){
+    thesnores.position = CGPointMake(478.0f, 120.0f);
+
+    }
+    else {
+        thesnores.position = CGPointMake(405.0f, 120.0f);
+    }
     //Create an animation from the set of frames
     
-    //CCAnimation *wagging = [CCAnimation animationWithFrames: waggingFrames delay:0.1f];
     CCAnimation *snoring = [CCAnimation animationWithSpriteFrames: snoringFrames delay:0.9f];
     
     //Create an action with the animation that can then be assigned to a sprite
-    
-    //wag = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:wagging restoreOriginalFrame:NO]];
     snore = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:snoring]];
     snoring.restoreOriginalFrame = NO;
     
@@ -137,7 +253,7 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     [thesnores runAction:snore];
     
     [self addChild:thesnores z:2];
-
+    
 }
 
 
@@ -146,32 +262,31 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     
     if ((self = [super initWithColor:ccc4(255,255,255,255)])) {
         HUDLayer *hud;
+        
         _hud = hud;
-        //CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello Levels!!" fontName:@"Marker Felt" fontSize:48.0];
+        
+        angleInDegrees = 0;
         
         CGSize size = [[CCDirector sharedDirector] winSize];
         
-        //label.position = ccp(size.width/2, size.height/2);
-        
-        //[self addChild:	label];
-        
-        
-        
-        ballsUsed = 0;
-        [self stopAllActions];
-            currentLevel = level;
-            NSLog(@"THE LEVELLLLL IS %d", currentLevel);
+        //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"levelMusic.mp3" loop:YES];
 
+        numFruitCollected = 0;
+        orangeCollected = NO;
+        
+        seconds = 0;
+        ballsUsed = 0;
+        currentLevel = level;
+        goalProgress = [[NSMutableDictionary alloc] init];
+        [self updateLevel];
+        //[self displayFoodCollect];
+        
+        
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
         NSString *levelString = [@"level" stringByAppendingFormat:@"%d", currentLevel];
-        NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
+        levelDict = [[NSMutableDictionary alloc] init];
         levelDict = [defaults objectForKey:levelString];
         levelCompleted = [[levelDict objectForKey:@"completed"] intValue];
-        
-        
-        //NSString *levelString =[@"level" stringByAppendingFormat:@"%d", currentLevel];
-        //NSLog(@"LEVEL COMPLETED? %d", [[defaults objectForKey:levelString] intValue]);
-
         
         _MoveableSpriteTouch=FALSE;
         self.touchEnabled = YES;
@@ -198,12 +313,8 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         _groundBody->CreateFixture(&groundBoxDef);
         
         
-//        groundBox.Set(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
-//        _groundBody->CreateFixture(&groundBoxDef);
-//        
-        //adding this back in case we need it later
-        //groundBox.Set(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
-        //_groundBody->CreateFixture(&groundBoxDef);
+        groundBox.Set(b2Vec2(0, 0), b2Vec2(winSize.width/PTM_RATIO, 0));
+        _groundBody->CreateFixture(&groundBoxDef);
         
         
         groundBox.Set(b2Vec2(0, winSize.height/PTM_RATIO), b2Vec2(winSize.width/PTM_RATIO, winSize.height/PTM_RATIO));
@@ -212,32 +323,18 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         groundBox.Set(b2Vec2(winSize.width/PTM_RATIO, winSize.height/PTM_RATIO), b2Vec2(winSize.width/PTM_RATIO, 0));
         _groundBody->CreateFixture(&groundBoxDef);
         
-        
-        
-        
         _player = [CCSprite spriteWithFile:@"cannon-body2.png"];
-        _player.position = ccp(_player.contentSize.width/2 - 4, winSize.height/2 + 32);
+        _player.position = ccp(_player.contentSize.width/2 - 4, winSize.height/2 -28);
         
         
         [self addChild:_player z:1];
         
-    
+        
         
         cannonHead = [CCSprite spriteWithFile:@"cannon-head-cropped.png"];
-        cannonHead.position = ccp(_player.position.x + 30, _player.position.y - 0.5);
+        cannonHead.position = ccp(_player.position.x + 20, _player.position.y - 0.5);
         [self addChild:cannonHead z:1];
-        
-//        CCSprite *cage = [CCSprite spriteWithFile: @"cage.png"];
-//        cage.position = ccp(470, cageBottom + (winSize.height - cageBottom)/2);
-//        [self addChild: cage z:1];
-        
-//        CCSprite *temp = [CCSprite spriteWithFile: @"snore3.png"];
-//        temp.position = ccp(430, cage.position.y - 30);
-//        [self addChild: temp z:3];
-        
-        
-        
-        
+
         
         //Load the plist which tells Kobold2D how to properly parse your spritesheet. If on a retina device Kobold2D will automatically use bearframes-hd.plist
         
@@ -262,19 +359,8 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
         //Adding the display for the number of projectiles remaingin
         
-
-        
-        //NSLog(@"Update Lives is being called!!!\n");
-        
         //ballCountLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:18.0];
-
-<<<<<<< HEAD
-
         
-        
-        
-=======
->>>>>>> f8959188b2bf8636abafd2e1da82d954cf5ed544
         // Create contact listener
         _contactListener = new MyContactListener();
         world->SetContactListener(_contactListener);
@@ -285,9 +371,11 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         
         // Standard method to create a button
         CCMenuItem *starMenuItem = [CCMenuItemImage
-                                    itemWithNormalImage:@"launch_button_bigger.png" selectedImage:@"launch_button_bigger.png"
+                                    itemWithNormalImage:@"ShootButton.png" selectedImage:@"ShootButton.png"
                                     target:self selector:@selector(starButtonTapped:)];
-        starMenuItem.position = ccp(starMenuItem.contentSize.width/PTM_RATIO/2+30, starMenuItem.contentSize.height/PTM_RATIO/2+30);
+        starMenuItem.position = ccp(starMenuItem.contentSize.width/PTM_RATIO/2+35, winSize.height - starMenuItem.contentSize.height/PTM_RATIO/ 2 - 30 );
+        starMenuItem.scaleX = 0.8;
+        starMenuItem.scaleY = 0.8;
         //starMenuItem.position = ccp(50,30);
         CCMenu *starMenu = [CCMenu menuWithItems:starMenuItem, nil];
         starMenu.position = CGPointZero;
@@ -297,52 +385,72 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         meep.anchorPoint = CGPointZero;
         [self addChild:meep z:-1];
         
-//        CCSprite *bar = [CCSprite spriteWithFile: @"gameBar.png"];
-//        bar.position = ccp(winSize.width / 2, 20);
-//        [self addChild:bar z:1];
-        
         // pause menu
         
-        CCMenuItem *Pause = [CCMenuItemImage itemWithNormalImage:@"pause.png"
-                                                   selectedImage: @"pause.png"
+        CCMenuItem *Pause = [CCMenuItemImage itemWithNormalImage:@"pauseButton2.png"
+                                                   selectedImage: @"pauseButton2.png"
                                                           target:self
                                                         selector:@selector(pause:)];
-        CCMenu *PauseButton = [CCMenu menuWithItems: Pause, nil];
+        CCMenuItem *Restart= [CCMenuItemImage itemWithNormalImage:@"restartButton.png"
+                                                    selectedImage: @"restartButton.png"
+                                                           target:self
+                                                         selector:@selector(restart:)];
+        CCMenu *PauseButton = [CCMenu menuWithItems: Pause, Restart, nil];
         //Pause.tag = level;
-        PauseButton.position = ccp(460, 295);
-        //Pause.position = ccp(460, 295);
+        
+        if (IsIphone5)
+        {
+            Pause.scaleX = 0.7;
+            Pause.scaleY = 0.7;
+            
+            Restart.scaleX = 0.3;
+            Restart.scaleY = 0.3;
+            
+            Pause.position = ccp(480, 290);
+            Restart.position = ccp(530, 290);
+            
+            //PauseButton.position = ccp(483, 292);
+        }
+        else{
+            Pause.position = ccp(410, 290);
+            Restart.position = ccp(455, 290);
+            Pause.scaleX = 0.6;
+            Pause.scaleY = 0.6;
+            
+            Restart.scaleX = 0.25;
+            Restart.scaleY = 0.25;
+        }
+
+        PauseButton.position = CGPointZero;
+       // Pause.position = ccp(460, 295);
+        //Restart.position = ccp(500, 295);
+        mTimeInSec = 60.0f;
+        [self schedule:@selector(tick:)];
         [self schedule:@selector(tick:) interval:1.0f/60.0f];
         [self addChild:PauseButton z:7];
         
         
-//        if (level == 1 && showDialog == 1)
-//        {
-//            message = [CCSprite spriteWithFile:@"dialog1.png"];
-//            message.position = ccp(220, 140);
-//            [self addChild:message z:1];
-//        
-//            tapHere = [CCMenuItemImage itemWithNormalImage:@"ok1.png" selectedImage: @"ok1" target:self selector:@selector(cannonx:)];
-//            //tapHere = [CCSprite spriteWithFile:@"cannonx.png"];
-//            myTut = [CCMenu menuWithItems: tapHere, nil];
-//            //tapHere.position = ccp(100, 80);
-//            tapHere.position = ccp(250, 100);
-//            myTut.position = CGPointZero;
-//            [self addChild:myTut z:3];
-//        }
+        //        if (level == 1 && showDialog == 1)
+        //        {
+        //            message = [CCSprite spriteWithFile:@"dialog1.png"];
+        //            message.position = ccp(220, 140);
+        //            [self addChild:message z:1];
+        //
+        //            tapHere = [CCMenuItemImage itemWithNormalImage:@"ok1.png" selectedImage: @"ok1" target:self selector:@selector(cannonx:)];
+        //            //tapHere = [CCSprite spriteWithFile:@"cannonx.png"];
+        //            myTut = [CCMenu menuWithItems: tapHere, nil];
+        //            //tapHere.position = ccp(100, 80);
+        //            tapHere.position = ccp(250, 100);
+        //            myTut.position = CGPointZero;
+        //            [self addChild:myTut z:3];
+        //        }
         
         //if (currentLevel == 1 || currentLevel == 2 || currentLevel == 3) // add a list of tutorial levels :P
         if ( (level == 1 || level == 2 || level == 3 ) && levelCompleted == 0)
-        //if ([tutorialLevels containsObject: currentLevel])
+            
         {
-            NSLog(@"this is the currenet level %d", currentLevel);
-            //message = [CCSprite spriteWithFile:@"tutorial1.png"];
-            //message = [CCSprite spriteWithFile:[NSString stringWithFormat:@"tutorial%d.png", currentLevel]];
-            message = [CCSprite spriteWithFile:[NSString stringWithFormat:@"tutorial%d.png", level]];
-            message.position = ccp(220, 140);
-            [self addChild:message z:1];
+
         }
-        NSLog(@"this is the currenet level %d but i'm not inside the if statement", currentLevel);
-        
         
         // plist level creation stuff
         
@@ -351,7 +459,6 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         NSString *path = [[NSBundle mainBundle] pathForResource:levelName ofType:@"plist"];
         NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:path];
         
-        bulletCounter = [[level objectForKey:@"Balls"] intValue];
         gold = [[level objectForKey:@"Gold"] intValue];
         silver = [[level objectForKey:@"Silver"] intValue];
         bronze = [[level objectForKey:@"Bronze"] intValue];
@@ -359,7 +466,6 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         goal = [level objectForKey:@"Goal"];
         
         // create new dictionary that keeps track of the level progress
-        
         for (NSString *key in goal){
             [goalProgress setObject:@0 forKey:key];
         }
@@ -376,31 +482,37 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
         float scaleX = winSize.width / reference.width;
         float scaleY = winSize.height / reference.height;
         
-        NSLog(@"ScaleX : %f", scaleX);
+        ///NSLog(@"ScaleX : %f", scaleX);
         NSDictionary *fluffy = [level objectForKey:@"Fluffy"];
         Fluffy *fluffy2 = [[Fluffy alloc] initWithFluffyImage];
-        NSNumber *x = [fluffy objectForKey:@"x"];
-        NSNumber *y = [fluffy objectForKey:@"y"];
+        //        NSNumber *x = [fluffy objectForKey:@"x"];
+        //        NSNumber *y = [fluffy objectForKey:@"y"];
         //fluffy2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
-                fluffy2.position = CGPointMake(560, 190);
-
+        //fluffy2.position = CGPointMake(560, 190);
+        
+        
+        fluffy2.position = ccp(winSize.width - 16, 130);
+        //        float *x = fluffy2.position.x;
+        //        float *y = fluffy2.position.y;
+        
+        
         //fluffy2.position = ccpMult(fluffy2.position, scale);
         fluffy2.tag = 3;
         //NSLog(@"Scale = %d", [scale.x floatValue]);
         [self addChild:fluffy2 z:1];
-        NSLog(@"adf: %f", fluffy2.position.x);
+        //NSLog(@"adf: %f", fluffy2.position.x);
         
         // Create block body
         b2BodyDef fluffyBodyDef;
         fluffyBodyDef.type = b2_dynamicBody;
-        fluffyBodyDef.position.Set([x floatValue] * scaleX/PTM_RATIO, [y floatValue]*scaleY/PTM_RATIO);
+        fluffyBodyDef.position.Set(fluffy2.position.x /PTM_RATIO, fluffy2.position.y/PTM_RATIO);
         fluffyBodyDef.userData = (__bridge void*)fluffy2;
         b2Body *fluffyBody = world->CreateBody(&fluffyBodyDef);
         
         // Create block shape
         b2PolygonShape fluffyShape;
         fluffyShape.SetAsBox(fluffy2.contentSize.width/PTM_RATIO/2,
-                            fluffy2.contentSize.height/PTM_RATIO/2);
+                             fluffy2.contentSize.height/PTM_RATIO/2);
         
         // Create shape definition and add to body
         b2FixtureDef fluffyShapeDef;
@@ -420,21 +532,21 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
                 NSNumber *y = [obstacle objectForKey:@"y"];
                 obstacle2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
                 obstacle2.tag = 4;
-            
+                
                 [self addChild:obstacle2 z:1];
-            
+                
                 // Create block body
                 b2BodyDef obstacleBodyDef;
                 obstacleBodyDef.type = b2_staticBody;
                 obstacleBodyDef.position.Set([x floatValue]*scaleX/PTM_RATIO, [y floatValue]*scaleY/PTM_RATIO);
                 obstacleBodyDef.userData = (__bridge void*)obstacle2;
                 b2Body *obstacleBody = world->CreateBody(&obstacleBodyDef);
-            
+                
                 // Create block shape
                 b2PolygonShape obstacleShape;
                 obstacleShape.SetAsBox(obstacle2.contentSize.width/PTM_RATIO/2,
-                                 obstacle2.contentSize.height/PTM_RATIO/2);
-            
+                                       obstacle2.contentSize.height/PTM_RATIO/2);
+                
                 // Create shape definition and add to body
                 b2FixtureDef obstacleShapeDef;
                 obstacleShapeDef.shape = &obstacleShape;
@@ -445,6 +557,105 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
                 obstacleBody->CreateFixture(&obstacleShapeDef);
             }
         }
+        
+        if ([level objectForKey:@"Squirrels"]){
+            NSArray *obstacles= [level objectForKey:@"Squirrels"];
+            for (NSDictionary *obstacle in obstacles){
+                NSString *sName = [obstacle objectForKey:@"spriteName"];
+                
+                
+                
+                NSNumber *x = [obstacle objectForKey:@"x"];
+                NSNumber *y = [obstacle objectForKey:@"y"];
+
+                [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"squirrelUp.plist"];
+                CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"squirrelUp.png"];
+                [self addChild: spriteSheet];
+                
+                Squirrel *obstacle2 = [[Squirrel alloc] initWithSquirrel:sName];
+
+                //CGPoint squirrelLoc = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
+                //Squirrel *obstacle2 = [[Squirrel alloc] initWithSquirrel: sName : squirrelLoc];
+
+
+
+                //obstacle2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
+                obstacle2.tag = 5;
+                
+                [self addChild:obstacle2 z:1];
+                
+                // Create block body
+                b2BodyDef obstacleBodyDef;
+                obstacleBodyDef.type = b2_kinematicBody;
+                
+                obstacleBodyDef.position.Set([x floatValue]*scaleX/PTM_RATIO, [y floatValue]*scaleY/PTM_RATIO);
+                obstacleBodyDef.userData = (__bridge void*)obstacle2;
+                b2Body *obstacleBody = world->CreateBody(&obstacleBodyDef);
+                
+                // Create block shape
+                b2PolygonShape obstacleShape;
+                obstacleShape.SetAsBox(obstacle2.contentSize.width/PTM_RATIO/2,
+                                       obstacle2.contentSize.height/PTM_RATIO/2);
+                
+                // Create shape definition and add to body
+                b2FixtureDef obstacleShapeDef;
+                obstacleShapeDef.shape = &obstacleShape;
+                obstacleShapeDef.density = 10.0;
+                obstacleShapeDef.friction = 0.0;
+                obstacleShapeDef.restitution = 0.1f;
+                obstacleShapeDef.isSensor = true;
+                obstacleBody->CreateFixture(&obstacleShapeDef);
+                
+                b2Vec2 force = b2Vec2(0, 3);
+                obstacleBody->SetLinearVelocity(force);
+                //_body->ApplyLinearImpulse(force, ballBodyDef.position);
+                //printf("Applying Linear Impulse!");
+                //obstacleBody->ApplyLinearImpulse(force, obstacleBodyDef.position);
+            }
+        }
+        
+        if ([level objectForKey:@"Bomb"]){
+            NSLog(@"Entering bomb?\n");
+            NSArray *bombs= [level objectForKey:@"Bomb"];
+            for (NSDictionary *bomb in bombs){
+//                NSString *sName = [bomb objectForKey:@"spriteName"];
+                Bomb *bomb2 = [[Bomb alloc] initWithBomb:@"bomb"];
+                NSNumber *x = [bomb objectForKey:@"x"];
+                NSNumber *y = [bomb objectForKey:@"y"];
+                bomb2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
+                //obstacle2.tag = 4;
+                bombPos = bomb2.position;
+                [self addChild:bomb2 z:1];
+                // Create block body
+                b2BodyDef obstacleBodyDef;
+                obstacleBodyDef.type = b2_kinematicBody;
+                
+                obstacleBodyDef.position.Set([x floatValue]*scaleX/PTM_RATIO, [y floatValue]*scaleY/PTM_RATIO);
+                obstacleBodyDef.userData = (__bridge void*)bomb2;
+                b2Body *obstacleBody = world->CreateBody(&obstacleBodyDef);
+                
+                // Create block shape
+                b2PolygonShape obstacleShape;
+                obstacleShape.SetAsBox(bomb2.contentSize.width/PTM_RATIO/2,
+                                       bomb2.contentSize.height/PTM_RATIO/2);
+                
+                // Create shape definition and add to body
+                b2FixtureDef obstacleShapeDef;
+                obstacleShapeDef.shape = &obstacleShape;
+                obstacleShapeDef.density = 10.0;
+                obstacleShapeDef.friction = 0.0;
+                obstacleShapeDef.restitution = 0.1f;
+                obstacleShapeDef.isSensor = true;
+                obstacleBody->CreateFixture(&obstacleShapeDef);
+                
+               
+            }
+        }
+        
+        
+        
+        
+        
         
         NSArray *fruits = [level objectForKey:@"Fruits"];
         
@@ -480,37 +691,41 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
             fruitShapeDef.isSensor = true;
             fruitBody->CreateFixture(&fruitShapeDef);
         }
+        
+        menuBall = [CCSprite spriteWithFile:@"ball.png"];
 
-        ballCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"X: %d", bulletCounter]fontName:@"Marker Felt" fontSize:18.0];
-        ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, ballCountLabel.contentSize.height/PTM_RATIO/2+30);
-        
-        CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
-        menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, menuBall.contentSize.height/PTM_RATIO/2+30);
-        
-        ballCountLabel.string = [NSString stringWithFormat:@"X: %d", bulletCounter];
-        [self addChild: ballCountLabel z:10];
-        [self addChild:menuBall z:10];
         
         [self setUpMenus];
         
         
         [self schedule:@selector(tick:)];
-        //[self schedule:@selector(kick) interval:5.0];
         [self setTouchEnabled:YES];
-        //[self setAccelerometerEnabled:NO];
+
         
         [self scheduleUpdate];
+        
+        // timer, call every second
+        [self schedule:@selector(countSeconds:) interval:1.0];
+
     }
     return self;
 }
 
-// DETECT COLLISIONS BETWEEN BALL AND FOOD!
+- (void) countSeconds:(ccTime)dt{
+    seconds++;
+}
+
 - (void)updateLevel {
     //NSLog(@"Update Lives is being called!!!\n");
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     CCLabelTTF *levelLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:18.0];
-    levelLabel.position = ccp(levelLabel.contentSize.width/PTM_RATIO/2+90, levelLabel.contentSize.height/PTM_RATIO/2+30);
-
+    if (IsIphone5)
+    {
+    levelLabel.position = ccp(levelLabel.contentSize.width +100, 290);
+    }
+    else{
+    levelLabel.position = ccp(levelLabel.contentSize.width +75, 290);
+    }
     [self addChild: levelLabel z:10];
     levelLabel.string = [NSString stringWithFormat:@"Level: %d", currentLevel];
     
@@ -518,50 +733,122 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     //[_hud incrementLevel:[NSString stringWithFormat:@"Lives: %d", currentLevel]];
 }
 
+- (void)displayFoodCollect {
+    
+    //NSLog(@"Update Lives is being called!!!\n");
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    CCLabelTTF *starLabel = [CCLabelTTF labelWithString:@"Food" fontName:@"Marker Felt" fontSize:18.0];
+    starLabel.position = ccp(starLabel.contentSize.width/PTM_RATIO/2+400, starLabel.contentSize.height/PTM_RATIO/2+30);
+    
+    
+    NSString* levelString2 = [NSString stringWithFormat:@"%i", currentLevel];
+    NSString *levelName = [@"level" stringByAppendingString:levelString2];
+    NSString *path = [[NSBundle mainBundle] pathForResource:levelName ofType:@"plist"];
+    NSDictionary *level = [NSDictionary dictionaryWithContentsOfFile:path];
+    
+    goal = [level objectForKey:@"Goal"];
+    int gapFruit = 0;
+    int gapLabel = 0;
+    int yOffset = 32;
+    int layer = 10;
+    NSArray *keys = [goal allKeys];
+    int totalFruitCount = [goal count];
+    for (int i =0; i< totalFruitCount; i++){
+        NSString *fruit = [keys objectAtIndex: i];
+        int numFruits = [[goal objectForKey:fruit] intValue];
+        int goalProgressValue = [[goalProgress objectForKey:fruit] intValue];
+        CCLabelTTF *label;
+        
+        Fruit *fruit2 = [[Fruit alloc] initWithFruit:fruit ];
+        //fruit2.position = ccp(fruit2.contentSize.width/PTM_RATIO/2 + gapFruit,fruit2.contentSize.height/PTM_RATIO/2 + yOffset);
+        if (IsIphone5){
+            fruit2.position = ccp(230+gapFruit, 290);
+        }
+        else{
+            fruit2.position = ccp(170+gapFruit, 290);
+        }
+        [self addChild: fruit2 z: 5];
+        
+        NSString *numFruitsDisplay = [NSString stringWithFormat: @"X %d", numFruits - goalProgressValue];
+        label = [CCLabelTTF labelWithString:@"food"
+                                   fontName:@"Marker Felt"
+                                   fontSize:18.0];
+        if (IsIphone5){
+            label.position = ccp(265+gapLabel,290);
+        }
+        else{
+            label.position = ccp(205+gapLabel,290);
+        }
+        label.string = [NSString stringWithFormat:@"X %d", numFruits - goalProgressValue];
+        [self addChild: label z:10];
+
+        [labels setObject: label forKey:fruit];
+        gapFruit += 80;
+        gapLabel +=80;
+        
+        
+    }
+}
+
+- (void) updateFoodCollect {
+    
+    for (NSString *fruit in labels){
+        int numFruits = [[goal objectForKey:fruit] intValue];
+        int goalProgressValue = [[goalProgress objectForKey:fruit] intValue];
+        CCLabelTTF *label = [labels objectForKey:fruit];
+        label.string = [NSString stringWithFormat:@"X %d", numFruits - goalProgressValue];
+    }
+    
+}
+
+
+
 - (void)updateBallCount {
     CCLabelTTF *ballCountLabel;
     
     //NSLog(@"Update Lives is being called!!!\n");
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     ballCountLabel = [CCLabelTTF labelWithString:@"level" fontName:@"Marker Felt" fontSize:18.0];
-    ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, ballCountLabel.contentSize.height/PTM_RATIO/2+30);
+    ballCountLabel.position = ccp(ballCountLabel.contentSize.width/PTM_RATIO/2+150, winSize.height - ballCountLabel.contentSize.height/PTM_RATIO/2+30);
     
-    CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
-    menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, menuBall.contentSize.height/PTM_RATIO/2+30);
+    //CCSprite * menuBall = [CCSprite spriteWithFile:@"bullet.png"];
+    CCSprite * menuBall = [CCSprite spriteWithFile:@"ball.png"];
+    menuBall.position = ccp(menuBall.contentSize.width/PTM_RATIO/2+175, winSize.height - 30);
     
-
-    [self addChild:menuBall z:10];
-
-
-
-        ballCountLabel.string = [NSString stringWithFormat:@"X: %d", bulletCounter];
-        [self addChild: ballCountLabel z:10];
+    
+   // [self addChild:menuBall z:10];
+    
+    
+    
+   // ballCountLabel.string = [NSString stringWithFormat:@"X: %d", bulletCounter];
+    //[self addChild: ballCountLabel z:10];
     
     //[_hud incrementLevel:[NSString stringWithFormat:@"Lives: %d", currentLevel]];
 }
 
 - (void)starButtonTapped:(id)sender {
-    NSLog(@"Button tapped!!!!!!\n");
+    // NSLog(@"Button tapped!!!!!!\n");
     ballsUsed++;
-    _nextProjectile = [CCSprite spriteWithFile:@"bullet.png"];
+    //_nextProjectile = [CCSprite spriteWithFile:@"bullet.png"];
+    _nextProjectile = [CCSprite spriteWithFile:@"ball.png"];
+    
     _nextProjectile.tag = 1;
     
+    
     _nextProjectile.position = _player.position;
-
+    
     // Create ball body and shape
     
     ballBodyDef.type = b2_dynamicBody;
     //            ballBodyDef.position.Set(100/PTM_RATIO, 100/PTM_RATIO);
-    NSLog(@"in Position.SET\n");
+    // NSLog(@"in Position.SET\n");
     ballBodyDef.position.Set(_player.position.x/PTM_RATIO,_player.position.y/PTM_RATIO);
     ballBodyDef.userData = (__bridge void*)_nextProjectile;
     
     _body = world->CreateBody(&ballBodyDef);
     
     b2CircleShape circle;
-    //circle.m_radius = 26.0/PTM_RATIO;
-    //circle.m_radius = 9.0/PTM_RATIO;
-    circle.m_radius = 20.0/PTM_RATIO;
+    circle.m_radius = 15.0/PTM_RATIO;
     
     b2FixtureDef ballShapeDef;
     ballShapeDef.shape = &circle;
@@ -569,16 +856,33 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
     ballShapeDef.friction = 0.0f;
     ballShapeDef.restitution = 1.0f;
     _body->CreateFixture(&ballShapeDef);
-
-    
+    NSLog(@"BEFORE %f", angleInDegrees);
+//    if (angleInDegrees > 52.0)
+//    {
+//        NSLog(@"SDF:LKJDSLFKJSD:FJSDLFJ");
+//        angleInDegrees = 49.0;
+//    }
+//    if (angleInDegrees < -52.0)
+//    {
+//        angleInDegrees = -50.0;
+//    }
     float radianAngle = CC_DEGREES_TO_RADIANS(angleInDegrees);
     [_player runAction:[CCSequence actions:[CCCallBlock actionWithBlock:^{[self addChild:_nextProjectile];_nextProjectile = nil;}],nil]];
     //this determines the speed of the ball projectile
-    b2Vec2 force = b2Vec2(5 * cos(radianAngle), 5 * sin(radianAngle));
+    b2Vec2 force = b2Vec2(2 * cos(radianAngle), 2 * sin(radianAngle));
     
     //_body->ApplyLinearImpulse(force, ballBodyDef.position);
-    printf("Applying Linear Impulse!");
+    printf("Applying Linear Impulse!\n");
+    printf("Angle in Degrees %f,", angleInDegrees);
+    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"drop_cannon.wav"];
+    //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"drop_cannon.wav" loop:NO];
     _body->ApplyLinearImpulse(force, ballBodyDef.position);
+
+
+//    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Drop Cannon.wav"];
+    //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Drop Cannon.wav" loop:NO];
+    
     
     // Move projectile to actual endpoint
     /*[_nextProjectile runAction:
@@ -588,86 +892,201 @@ NSMutableDictionary *goalProgress  = [[NSMutableDictionary alloc] init];
      [node removeFromParentAndCleanup:YES];
      }],
      nil]];*/
-    bulletCounter--;
-    [ballCountLabel setString:[NSString stringWithFormat:@" X %d", bulletCounter]];
-
+   // bulletCounter--;
+   // [ballCountLabel setString:[NSString stringWithFormat:@" X %d", bulletCounter]];
     
-    ButtonTapped = false;
+    //angleInDegrees = 0;
+
 }
 
 -(void) pause: (CCMenuItem *) sender{
-    //int level = sender.tag;
-    //[[CCDirector sharedDirector] pushScene:[PauseScene node]];
-    //NSLog(@"LEVELLLL %d", level);
     [[CCDirector sharedDirector] pushScene: (CCScene*)[PauseScene sceneWithLevel: currentLevel]];
 }
 
--(BOOL) checkLevelCompleted {
-    //NSLog(@"CHECKING IF LEVEL IS COMPLETED");
+-(void) restart: (CCMenuItem *) sender{
+    [[CCDirector sharedDirector] replaceScene: [CCTransitionFade transitionWithDuration:0.5 scene:[PhysicsLayer sceneWithLevel:currentLevel]]];
+    //unschedule selectors to get dealloc to fire off
+    [self unscheduleAllSelectors];
+    [[CCTextureCache sharedTextureCache] removeAllTextures];
+    [super onExit];
+}
 
-    for (NSString *key in goal){
-        int goalValue = [[goal objectForKey:key] intValue];
-        int goalProgressValue = [[goalProgress objectForKey:key] intValue];
-        NSLog(@"BALLS USED: %d", ballsUsed);
-        //NSLog(@"%d", goalValue);
-        if (goalProgressValue < goalValue) {
-            return NO;
-        }
+-(void) autoRestart {
+    
+  
+    [[CCDirector sharedDirector] replaceScene: [CCTransitionFade transitionWithDuration:0.5 scene:[PhysicsLayer sceneWithLevel:currentLevel]]];
+    [self unscheduleAllSelectors];
+    [[CCTextureCache sharedTextureCache] removeAllTextures];
+    [super onExit];
+}
+
+-(BOOL) checkLevelCompleted {
+    
+    if (orangeCollected == 0){
+        return NO;
     }
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     NSString *levelString = [@"level" stringByAppendingFormat:@"%d", currentLevel];
-    NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
+    //NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
+    //levelDict = [[NSMutableDictionary alloc]init];
+    
+    NSMutableDictionary *levelDict = [[defaults objectForKey:levelString] mutableCopy];
     [levelDict setObject:@YES forKey:@"completed"];
+    
     [levelDict setObject:[NSNumber numberWithInteger:ballsUsed] forKey:@"last_balls"];
     int bestBalls = [[levelDict objectForKey:@"best_balls"] intValue];
     int bestStars = [[levelDict objectForKey:@"best_stars"] intValue];
-    NSLog(@"best_balls: %d", bestBalls);
-    NSLog(@"best_stars: %d", bestStars);
+    int bestTime = [[levelDict objectForKey:@"best_time"] intValue];
+    int bestScore = [[levelDict objectForKey:@"best_score"] intValue];
+    //NSLog(@"best_balls: %d", bestBalls);
+    // NSLog(@"best_stars: %d", bestStars);
+    //
+    
+    //NSLog(@"After Game before calculation: best stars is %d and last star was %d", [[levelDict objectForKey:@"best_stars"] intValue],[[levelDict objectForKey:@"last_stars"] intValue]);
+    
     int stars;
-    if (ballsUsed < bestBalls){
-        [levelDict setObject:[NSNumber numberWithInt:ballsUsed] forKey:@"best_balls"];
-        int bestBalls = [[levelDict objectForKey:@"best_balls"] intValue];
-        NSLog(@"best_balls: %d", bestBalls);
+
+    [levelDict setObject:[NSNumber numberWithInt:seconds] forKey:@"last_time"];
+    if (seconds < bestTime){
+        [levelDict setObject:[NSNumber numberWithInt:seconds] forKey:@"best_time"];
     }
-    if (ballsUsed <= gold){
+    if (numFruitCollected >= gold){
         stars = 3;
     }
-    else if (ballsUsed <= silver){
+    else if (numFruitCollected >= silver) {
         stars = 2;
     }
-    else {
+    else if (numFruitCollected >= bronze) {
         stars = 1;
     }
+    
+    // formula for scoring: time left * number of stars + 50 for completing
+    int score = (60 - seconds) * stars * 10 + 50;
+    [levelDict setObject:[NSNumber numberWithInt:score] forKey:@"last_score"];
+    
+    if (score > bestScore){
+        [levelDict setObject:[NSNumber numberWithInt:score] forKey:@"best_score"];
+    }
+    NSLog(@"SCORE: %d", score);
+    
     [levelDict setObject:[NSNumber numberWithInt: stars] forKey:@"last_stars"];
     if (stars > bestStars){
-        NSLog(@"HELLO!!!!!");
         bestStars = stars;
-
-        //int bestStars = [[levelDict objectForKey:@"best_stars"] intValue];
-        NSLog(@"best_stars: %d", bestStars);
     }
     [levelDict setObject:[NSNumber numberWithInt: bestStars] forKey:@"best_stars"];
     
-    [defaults setObject: levelDict forKey:levelString];
+    //[defaults setObject: levelDict forKey:levelString];
+    [defaults removeObjectForKey:levelString];
+    [defaults setObject:levelDict forKey: levelString];
     [defaults synchronize];
+    
+    
+    //NSLog(@"After Game: best stars is %d and last star was %d", [[levelDict objectForKey:@"best_stars"] intValue],[[levelDict objectForKey:@"last_stars"] intValue]);
     
     return YES;
 }
 
-
+int tickCounter = 0;
 - (void)tick:(ccTime) dt {
     
+    mTimeInSec -=dt;
+    NSLog(@"MTIME IN SEC %f", mTimeInSec);
+    if ((int) mTimeInSec == 0)
+    {
+        mTimeInSec = 0.0;
+    }
+    digit_min = mTimeInSec/60.0f;
+    
+    digit_sec = ((int)mTimeInSec%60);
+    
+    min2 = 1;
+    
+    sec = (int)digit_sec;
+    //mTimeLbl.string = [@"%.2d:%.2d:%.2d",hours, min,sec];
+    
+    if (timeCounter == true)
+    {
+        [mTimeLbl setString: [NSString stringWithFormat:@":%.2d",int(mTimeInSec)]];
+    }
+    if (timeCounter == false)
+    {
+        [mTimeLbl setString: [NSString stringWithFormat:@"%.2d:%.2d",min2, int(mTimeInSec)]];
+        timeCounter = true;
+    }
+    //[mTimeLbl setString:[NSString stringWithFormat:@"%.2d:%.2d:%.2d",hours, min,sec]];
+    if (IsIphone5){
+    mTimeLbl.position = ccp(500,50);
+    }
+    else{
+    mTimeLbl.position = ccp(420,50);
+    }
     world->Step(dt, 10, 10);
+    std::vector<b2Body *>toDestroy;
     for(b2Body *b = world->GetBodyList(); b; b=b->GetNext()) {
         if (b->GetUserData() != NULL) {
-            CCSprite *ballData = (__bridge CCSprite *)(b->GetUserData());
-            ballData.position = ccp(b->GetPosition().x * PTM_RATIO,
-                                    b->GetPosition().y * PTM_RATIO);
-            ballData.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
+            CCSprite *sprite = (__bridge CCSprite *) b->GetUserData();
+            // sprite is a ball
+            if (sprite.tag == 1){
+                sprite.position = ccp(b->GetPosition().x * PTM_RATIO,
+                                      b->GetPosition().y * PTM_RATIO);
+                sprite.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
+                
+                if (sprite.position.x <= 0){
+                    toDestroy.push_back(b);
+                    cannonCounter = 0;
+                    
+                    //if (bulletCounter == 0){
+                    //[[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
+                    [self autoRestart];
+                    //}
+                }
+                // if ball is going too fast, turn on damping
+                //we should do this!!
+            }
             
-            // if ball is going too fast, turn on damping
-            //we should do this!!
+            // sprite is a squirrel, set top boundary
+            
+            if (sprite.tag == 5)
+            {
+                if (sprite.position.y >= 230){
+                
+                    float velocity = b->GetLinearVelocity().y;
+                    if (velocity > 0) {
+                        velocity *= -1;
+                        b2Vec2 force = b2Vec2(0, velocity);
+                        b->SetLinearVelocity(force);
+                    }
+                    
+                }
+                
+                // sprite is a squirrel, set bottom boundary
+                else if (sprite.position.y <= 30){
+                    float velocity = b->GetLinearVelocity().y;
+                    if (velocity < 0) {
+                        velocity *= -1;
+                        b2Vec2 force = b2Vec2(0, velocity);
+                        b->SetLinearVelocity(force);
+                    }
+                
+                //NSLog(@"A:KJDSF:DJSFLJSDF:JDSFKSDF:J %f, %f", sprite.position.x, sprite.position.y);
+                    
+            
+            
+            }
+
+                
+            }
         }
+    }
+    
+    std::vector<b2Body *>::iterator pos2;
+    for (pos2 = toDestroy.begin(); pos2 != toDestroy.end(); ++pos2) {
+        b2Body *body = *pos2;
+        if (body->GetUserData() != NULL) {
+            CCSprite *sprite = (__bridge CCSprite *) body->GetUserData();
+            [self removeChild:sprite cleanup:YES];
+        }
+        world->DestroyBody(body);
     }
 }
 
@@ -820,7 +1239,7 @@ int counter = 1;
 -(void) update:(ccTime)delta
 {
     
-	CCDirector* director = [CCDirector sharedDirector];
+    CCDirector* director = [CCDirector sharedDirector];
     
     //do we have to check the current platform stuff?
     
@@ -829,38 +1248,39 @@ int counter = 1;
     
     //Create a point, pos, by asking input, our touch processor, where there has been a touch
     CGPoint pos = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
-    [self updateLevel];
+    //[self updateLevel];
+    
     //[self updateBallCount];
     int x = pos.x;
     int y = pos.y;
     
     CGPoint location;
-   // CGSize winSize;
+    // CGSize winSize;
     if (input.anyTouchBeganThisFrame) //someone's touching the screen!! :O
     {
         
-        printf("ANY-TOUCH-BEGAN-THIS-FRAME");
+        //printf("ANY-TOUCH-BEGAN-THIS-FRAME");
         
         
         //Checking if 3 bullets have already been used - if so, then no more bullet are thrown.
-        if  (bulletCounter<=0) return;
+        //if  (bulletCounter<=0) return;
         
         _MoveableSpriteTouch = FALSE;
         
         // Choose one of the touches to work with
-                
+        
         location = [self convertToNodeSpace:pos];
         //CGRect leftBorder = CGRectMake(cageLeft, 0, cageLeft+10, 350);
     }
     
     else if (input.anyTouchEndedThisFrame)
     {
-        printf("ended frame..........\n");
+        //printf("ended frame..........\n");
         if (currentLevel == 1 || currentLevel == 2 || currentLevel == 3) // add a list for later
         {
             [self removeChild: message];
         }
-
+        
     }
     
     
@@ -870,7 +1290,7 @@ int counter = 1;
         if (CGRectContainsPoint(_player.boundingBox, pos))
         {
             //make sure the cannon does not move offscreen
-            if (pos.y < 280 && pos.y > cageBottom + 20)
+            if (pos.y < 238 && pos.y > 20)
             {
                 //NSLog(@"CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
                 
@@ -883,19 +1303,31 @@ int counter = 1;
         }
         
         
-        if (pos.x>=cageLeft+5 and pos.x <=80 )
+        if (pos.x>=cageLeft+5 && pos.x <=80 && pos.y > 20 && pos.y < 238)
         {
-
+            
+            //NSLog(@"CANNON ROTATED??>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
+            if (cannonCounter ==0 && (pos.y > _player.position.y + 4.0 || pos.y < _player.position.y - 4.0)){}
+            else{
+            //Steps taken to
+            if (cannonCounter ==0)
+            {
+                cannonHead.position = ccp(cannonHead.position.x - 4.0, y);
+                cannonCounter = 1;
+            }
             
             float deltaY = pos.y - _player.position.y;
             float deltaX = pos.x - _player.position.x;
             
+                if (deltaY < 50.0 && deltaY > -55.0) {
+                NSLog(@"DeltaY, %f", deltaY);
             // Bail out if you are shooting down or backwards
             //if (offset.x <= 0) return;
             angleInDegrees = atan2(deltaY, deltaX) * 180 / M_PI;
             
+            NSLog(@"angle in degrees %f", angleInDegrees);
             
-            if ( angleInDegrees < 50 && angleInDegrees > -50)
+            if ( angleInDegrees < 70 && angleInDegrees > -70)
             {
                 //dont let the cannon rotate too far
                 
@@ -908,10 +1340,12 @@ int counter = 1;
                 cannonHead.rotation = -angleInDegrees;
             }
         }
+        }
+        }
     }
     
     
-///I really dont believe we need thisVVVV
+    ///I really dont believe we need thisVVVV
     
 	if (director.currentPlatformIsIOS)
 	{
@@ -963,19 +1397,11 @@ int counter = 1;
 	}
     
     //check contacts
-    //check contacts
     std::vector<b2Body *>toDestroy;
     std::vector<MyContact>::iterator pos2;
     for (pos2=_contactListener->_contacts.begin();
          pos2 != _contactListener->_contacts.end(); ++pos2) {
         MyContact contact = *pos2;
-        
-        /*if ((contact.fixtureA == _bottomFixture && contact.fixtureB == _ballFixture) ||
-         (contact.fixtureA == _ballFixture && contact.fixtureB == _bottomFixture)) {
-         //NSLog(@"Ball hit bottom!");
-         CCScene *gameOverScene = [GameOverLayer sceneWithWon:NO];
-         [[CCDirector sharedDirector] replaceScene:gameOverScene];
-         }*/
         
         b2Body *bodyA = contact.fixtureA->GetBody();
         b2Body *bodyB = contact.fixtureB->GetBody();
@@ -985,84 +1411,168 @@ int counter = 1;
             
             //Sprite A = ball, Sprite B = fruit
             if (spriteA.tag == 1 && [spriteB isKindOfClass:[Fruit class]]) {
-            //if (spriteA.tag == 1 && spriteB.tag == 2) {
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) == toDestroy.end()) {
                     toDestroy.push_back(bodyB);
                     
                     Fruit *fruit = (Fruit*) spriteB;
                     NSString *fruitName = fruit.fruitName;
-                    //NSLog(fruitName);
+
+                    if ([fruitName isEqualToString:@"orange"]){
+                        orangeCollected = YES;
+                    }
+                    
+                    numFruitCollected++;
+                    
                     int num = [[goal objectForKey:fruitName] intValue];
-                    NSLog(@"%d", num);
                     int fruitNum = [[goalProgress objectForKey:fruitName] intValue];
-                    NSLog(@"%d", fruitNum);
                     fruitNum++;
                     [goalProgress setObject:[NSNumber numberWithInt: fruitNum] forKey:fruitName];
                     int fruitNum2 = [[goalProgress objectForKey:fruitName] intValue];
-                    NSLog(@"Hit Fruit");
+                    
+                    //[self updateFoodCollect];
                 }
             }
             
             //Sprite A = fruit, Sprite B = ball
-            else if ([spriteA isKindOfClass:[Fruit class]] && spriteB.tag == 1) {
+            else if ([spriteA isKindOfClass:[Fruit class]] && spriteB.tag == 1 ) {
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
                     toDestroy.push_back(bodyA);
                     Fruit *fruit = (Fruit*) spriteA;
                     NSString *fruitName = fruit.fruitName;
-                    //NSLog(fruitName);
+                    numFruitCollected++;
+                    
+                    if ([fruitName isEqualToString:@"orange"]){
+                        orangeCollected = YES;
+                    }
+                    
                     int num = [[goal objectForKey:fruitName] intValue];
-                    NSLog(@"%d", num);
                     int fruitNum = [[goalProgress objectForKey:fruitName] intValue];
-                    NSLog(@"%d", fruitNum);
                     fruitNum++;
                     [goalProgress setObject:[NSNumber numberWithInt: fruitNum] forKey:fruitName];
                     int fruitNum2 = [[goalProgress objectForKey:fruitName] intValue];
-                    NSLog(@"Hit Fruit");
+                    [self updateFoodCollect];
                 }
             }
             
             //Sprite A = ball, Sprite B = fluffy
-            else if (spriteA.tag == 1 && [spriteA isKindOfClass:[Fluffy class]]) {
+            else if (spriteA.tag == 1 && [spriteA isKindOfClass:[Fluffy class]] ) {
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) == toDestroy.end()) {
                     toDestroy.push_back(bodyA);
                     BOOL levelCompleted = [self checkLevelCompleted];
-
+                    
                     if (levelCompleted){
-                        [[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
-                        counter = 1;
-                    }
-                
-                    else {
-                        NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
-                    }
-                    NSLog(@"Hit Fluffy!");
-                }
-
-            }
-            
-            //Sprite A = fluffy, Sprite B = ball
-            else if ([spriteA isKindOfClass:[Fluffy class]] && spriteB.tag == 1) {
-                if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
-                    toDestroy.push_back(bodyB);
-
-                    NSLog(@"Hit Fluffy!");
-                    levelCompleted = [self checkLevelCompleted];
-                    NSLog(@"THE CURRENT LEVEL IS: %d", currentLevel);
-                    if (levelCompleted){
-                        //[[CCDirector sharedDirector] replaceScene: (CCScene*)[[OopsDNE alloc] init]];
+                        //NSLog(@"@SECONDS: %d", seconds);
                         [[CCDirector sharedDirector] replaceScene: (CCScene*)[NextLevelScene sceneWithLevel: currentLevel]];
                         counter = 1;
+                        cannonCounter = 0;
                     }
-                
+                    
                     else {
-                        NSLog(@"YOU DIDN'T BEAT THE LEVEL!");
+                        [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
+                        cannonCounter = 0;
                     }
-                NSLog(@"Hit Fluffy!");
+                }
+                
+            }
+            
+            //Sprite A = squirrel, Sprite B = ball
+            else if ([spriteA isKindOfClass:[Squirrel class]] && spriteB.tag == 1 ) {
+                if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
+                    toDestroy.push_back(bodyB);
+                    [self autoRestart];
                 }
             }
+            
+            //Sprite A = ball, Sprite B = squirrel
+            else if (spriteA.tag == 1 && [spriteA isKindOfClass:[Squirrel class]] ) {
+                if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) == toDestroy.end()) {
+                    toDestroy.push_back(bodyA);
+                    [self autoRestart];
+                }
+                
+            }
+            
+            //Sprite A = bomb, Sprite B = ball
+            else if ([spriteA isKindOfClass:[Bomb class]] && spriteB.tag == 1 ) {
+                BOOL lock = true;
+                if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
+                    toDestroy.push_back(bodyB);
+                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                    NSArray *starsArray = [NSArray arrayWithObjects:@"explosion.plist", nil];
+                    CCParticleSystemQuad *starsEffect;
+                    for(NSString *stars in starsArray) {
+                        starsEffect = [CCParticleSystemQuad particleWithFile:stars];
+                        starsEffect.position = bombPos;
+                        if (lock){
+                        [self addChild:starsEffect z:1];
+                            [starsEffect setLife:1.5];
+                            lock = false;
+                            [self performSelector:@selector(autoRestart) withObject:nil afterDelay:2.5f];
+
+                        }
+                       
+                    }
+                   
+                }
+                
+            }
+            
+            //Sprite A = ball, Sprite B = bomb
+            else if (spriteA.tag == 1 && [spriteA isKindOfClass:[Bomb class]] ) {
+                BOOL lock = true;
+                 CCParticleSystemQuad *starsEffect;
+                if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) == toDestroy.end()) {
+                    toDestroy.push_back(bodyA);
+                   AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                    NSArray *starsArray = [NSArray arrayWithObjects:@"explosion.plist", nil];
+                    for(NSString *stars in starsArray) {
+                        starsEffect = [CCParticleSystemQuad particleWithFile:stars];
+                        starsEffect.position = ccp(400,140);
+                        NSLog(@"Before adding child \n");
+                        if (lock){
+                            [self addChild:starsEffect z:1];
+                            [starsEffect setLife:1.5];
+                            lock = false;
+                            [self performSelector:@selector(autoRestart) withObject:nil afterDelay:2.5f];
+                        }
+                        
+                    }
+            }
+            }
+            
+            
+            
+            
+            
+            
+            //Sprite A = fluffy, Sprite B = ball
+            else if ([spriteA isKindOfClass:[Fluffy class]] && spriteB.tag == 1 ) {
+                if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
+                    toDestroy.push_back(bodyB);
+                    
+                    levelCompleted = [self checkLevelCompleted];
+                    if (levelCompleted){
+                        
+                        [[CCDirector sharedDirector] replaceScene: (CCScene*)[NextLevelScene sceneWithLevel: currentLevel]];
+                        counter = 1;
+                        cannonCounter = 0;
+                    }
+                    
+                    else {
+                        [[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
+                        cannonCounter = 0;
+                    }
+                }
+            }
+            
+            
+            
         }
+        
     }
     
+
+    //[self displayFoodCollect];
     std::vector<b2Body *>::iterator pos3;
     for (pos3 = toDestroy.begin(); pos3 != toDestroy.end(); ++pos3) {
         b2Body *body = *pos3;
@@ -1072,7 +1582,6 @@ int counter = 1;
         }
         world->DestroyBody(body);
     }
-    //[self detectCollisions];
 }
 
 
@@ -1115,13 +1624,13 @@ int counter = 1;
     int x = cageLeft;
     int y = 0;
     //why can't I use winSize here?
-    ccDrawSolidRect( ccp(x, y), ccp(x + 10, y+ 350) , buttonColor);
+    ccDrawSolidRect( ccp(x, y), ccp(x + 10, y+ 260) , buttonColor);
     
     int barx = 0;
     int bary = cageBottom;
     
     ccColor4F bottomColor = ccc4f(0, 0, 0, 1);
-    ccDrawSolidRect( ccp(barx, bary), ccp(480, bary + 5), bottomColor);
+    ccDrawSolidRect( ccp(barx, bary), ccp(568, bary + 5), bottomColor);
 }
 
 
@@ -1160,19 +1669,19 @@ int counter = 1;
         [self addChild:myTut z:1];
     }
     
-//    if (showDialog <= 3){
-//        //message = [CCSprite spriteWithFile: [@"dialog" stringByAppendingFormat:@"%d", showDialog]];
-//        
-////        
-////        message.position = ccp(200, 110);
-////        myTut = [CCMenu menuWithItems: tapHere, nil];
-////        myTut.position = CGPointZero;
-////        //tapHere.position = ccp(220, 120);
-////        [self addChild:message z:1];
-////        [self addChild:myTut z:1];
-//    }
+    //    if (showDialog <= 3){
+    //        //message = [CCSprite spriteWithFile: [@"dialog" stringByAppendingFormat:@"%d", showDialog]];
+    //
+    ////
+    ////        message.position = ccp(200, 110);
+    ////        myTut = [CCMenu menuWithItems: tapHere, nil];
+    ////        myTut.position = CGPointZero;
+    ////        //tapHere.position = ccp(220, 120);
+    ////        [self addChild:message z:1];
+    ////        [self addChild:myTut z:1];
+    //    }
     
-    NSLog(@"YEAAAAA");
+    //NSLog(@"YEAAAAA");
 }
 
 //-(void) cannonheadx:(CCMenuItemImage *)menuItem
@@ -1182,5 +1691,12 @@ int counter = 1;
 //
 //}
 
+/*-(void) onExit {
+ //unschedule selectors to get dealloc to fire off
+ [self unscheduleAllSelectors];
+ //remove all textures to free up additional memory. Textures get retained even if the sprite gets released and it doesn't show as a leak. This was my big memory saver
+ [[CCTextureCache sharedTextureCache] removeAllTextures];
+ [super onExit];
+ }*/
 
 @end
