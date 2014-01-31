@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Gold</key>
-	<integer>2</integer>
+	<integer>3</integer>
 	<key>Silver</key>
-	<integer>5</integer>
+	<integer>2</integer>
 	<key>Bronze</key>
 	<integer>1</integer>
 	<key>Obstacles</key>
@@ -64,6 +64,14 @@
 			<integer>100</integer>
 			<key>spriteName</key>
 			<string>orange</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>240</integer>
+			<key>y</key>
+			<integer>50</integer>
+			<key>spriteName</key>
+			<string>lemon</string>
 		</dict>
 	</array>
 </dict>
