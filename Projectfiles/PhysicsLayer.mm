@@ -554,9 +554,7 @@ int tutorial13 = 0;
                 
                 b2Vec2 force = b2Vec2(0, 3);
                 obstacleBody->SetLinearVelocity(force);
-                //_body->ApplyLinearImpulse(force, ballBodyDef.position);
-                //printf("Applying Linear Impulse!");
-                //obstacleBody->ApplyLinearImpulse(force, obstacleBodyDef.position);
+
             }
         }
         
@@ -564,12 +562,10 @@ int tutorial13 = 0;
             NSLog(@"Entering bomb?\n");
             NSArray *bombs= [level objectForKey:@"Bomb"];
             for (NSDictionary *bomb in bombs){
-//                NSString *sName = [bomb objectForKey:@"spriteName"];
                 Bomb *bomb2 = [[Bomb alloc] initWithBomb:@"bomb"];
                 NSNumber *x = [bomb objectForKey:@"x"];
                 NSNumber *y = [bomb objectForKey:@"y"];
                 bomb2.position = CGPointMake([x floatValue] * scaleX, [y floatValue] * scaleY);
-                //obstacle2.tag = 4;
                 bombPos = bomb2.position;
                 [self addChild:bomb2 z:1];
                 // Create block body
@@ -802,10 +798,9 @@ int tutorial13 = 0;
     ballShapeDef.friction = 0.0f;
     ballShapeDef.restitution = 1.0f;
     _body->CreateFixture(&ballShapeDef);
-    NSLog(@"BEFORE %f", angleInDegrees);
+
 //    if (angleInDegrees > 52.0)
 //    {
-//        NSLog(@"SDF:LKJDSLFKJSD:FJSDLFJ");
 //        angleInDegrees = 49.0;
 //    }
 //    if (angleInDegrees < -52.0)
@@ -817,31 +812,9 @@ int tutorial13 = 0;
     //this determines the speed of the ball projectile
     b2Vec2 force = b2Vec2(2 * cos(radianAngle), 2 * sin(radianAngle));
     
-    //_body->ApplyLinearImpulse(force, ballBodyDef.position);
-    printf("Applying Linear Impulse!\n");
-    printf("Angle in Degrees %f,", angleInDegrees);
     
-    [[SimpleAudioEngine sharedEngine] playEffect:@"drop_cannon.wav"];
     //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"drop_cannon.wav" loop:NO];
     _body->ApplyLinearImpulse(force, ballBodyDef.position);
-
-
-//    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Drop Cannon.wav"];
-    //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Drop Cannon.wav" loop:NO];
-    
-    
-    // Move projectile to actual endpoint
-    /*[_nextProjectile runAction:
-     [CCSequence actions:
-     [CCMoveTo actionWithDuration:realMoveDuration position:realDest],
-     [CCCallBlockN actionWithBlock:^(CCNode *node) {
-     [node removeFromParentAndCleanup:YES];
-     }],
-     nil]];*/
-   // bulletCounter--;
-   // [ballCountLabel setString:[NSString stringWithFormat:@" X %d", bulletCounter]];
-    
-    //angleInDegrees = 0;
 
 }
 
@@ -913,7 +886,6 @@ int tutorial13 = 0;
     if (score > bestScore){
         [levelDict setObject:[NSNumber numberWithInt:score] forKey:@"best_score"];
     }
-    NSLog(@"SCORE: %d", score);
     
     [levelDict setObject:[NSNumber numberWithInt: stars] forKey:@"last_stars"];
     if (stars > bestStars){
@@ -926,9 +898,6 @@ int tutorial13 = 0;
     [defaults setObject:levelDict forKey: levelString];
     [defaults synchronize];
     
-    
-    //NSLog(@"After Game: best stars is %d and last star was %d", [[levelDict objectForKey:@"best_stars"] intValue],[[levelDict objectForKey:@"last_stars"] intValue]);
-    
     return YES;
 }
 
@@ -936,7 +905,7 @@ int tickCounter = 0;
 - (void)tick:(ccTime) dt {
     
     mTimeInSec -=dt;
-    NSLog(@"MTIME IN SEC %f", mTimeInSec);
+
     if ((int) mTimeInSec == 0)
     {
         mTimeInSec = 0.0;
@@ -948,7 +917,6 @@ int tickCounter = 0;
     min2 = 1;
     
     sec = (int)digit_sec;
-    //mTimeLbl.string = [@"%.2d:%.2d:%.2d",hours, min,sec];
     
     if (timeCounter == true)
     {
@@ -959,7 +927,7 @@ int tickCounter = 0;
         [mTimeLbl setString: [NSString stringWithFormat:@"%.2d:%.2d",min2, int(mTimeInSec)]];
         timeCounter = true;
     }
-    //[mTimeLbl setString:[NSString stringWithFormat:@"%.2d:%.2d:%.2d",hours, min,sec]];
+
     if (IsIphone5){
     mTimeLbl.position = ccp(500,50);
     }
@@ -980,9 +948,7 @@ int tickCounter = 0;
                 if (sprite.position.x <= 0){
                     toDestroy.push_back(b);
                     cannonCounter = 0;
-                    
-                    //if (bulletCounter == 0){
-                    //[[CCDirector sharedDirector] replaceScene: (CCScene*)[LoseScene sceneWithLevel: currentLevel]];
+
                     [self autoRestart];
                     //}
                 }
@@ -1002,7 +968,6 @@ int tickCounter = 0;
                         b2Vec2 force = b2Vec2(0, velocity);
                         b->SetLinearVelocity(force);
                     }
-                    
                 }
                 
                 // sprite is a squirrel, set bottom boundary
@@ -1013,14 +978,7 @@ int tickCounter = 0;
                         b2Vec2 force = b2Vec2(0, velocity);
                         b->SetLinearVelocity(force);
                     }
-                
-                //NSLog(@"A:KJDSF:DJSFLJSDF:JDSFKSDF:J %f, %f", sprite.position.x, sprite.position.y);
-                    
-            
-            
-            }
-
-                
+                }
             }
         }
     }
@@ -1043,10 +1001,7 @@ int tickCounter = 0;
 {
 	delete world;
     _launchLabel = nil;
-    //_body = NULL;
     _groundBody = NULL;
-    //world = NULL;
-    //delete contactListener;
     delete _contactListener;
 #ifndef KK_ARC_ENABLED
 	[super dealloc];
@@ -1071,9 +1026,6 @@ int tickCounter = 0;
 	UInt32 debugDrawFlags = 0;
 	debugDrawFlags += b2Draw::e_shapeBit;
 	debugDrawFlags += b2Draw::e_jointBit;
-	//debugDrawFlags += b2Draw::e_aabbBit;
-	//debugDrawFlags += b2Draw::e_pairBit;
-	//debugDrawFlags += b2Draw::e_centerOfMassBit;
     
 	if (useBox2DDebugLayer)
 	{
@@ -1186,31 +1138,19 @@ int counter = 1;
 {
     
     CCDirector* director = [CCDirector sharedDirector];
-    
-    //do we have to check the current platform stuff?
-    
+
     //Create an instance called input of Kobold2D's built-in super easy to use touch processor
     KKInput* input = [KKInput sharedInput];
     
     //Create a point, pos, by asking input, our touch processor, where there has been a touch
     CGPoint pos = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
-    //[self updateLevel];
-    
-    //[self updateBallCount];
     int x = pos.x;
     int y = pos.y;
     
     CGPoint location;
-    // CGSize winSize;
+
     if (input.anyTouchBeganThisFrame) //someone's touching the screen!! :O
     {
-        
-        //printf("ANY-TOUCH-BEGAN-THIS-FRAME");
-        
-        
-        //Checking if 3 bullets have already been used - if so, then no more bullet are thrown.
-        //if  (bulletCounter<=0) return;
-        
         _MoveableSpriteTouch = FALSE;
         
         // Choose one of the touches to work with
@@ -1221,7 +1161,6 @@ int counter = 1;
     
     else if (input.anyTouchEndedThisFrame)
     {
-        //printf("ended frame..........\n");
         if (currentLevel == 1 || currentLevel == 2 || currentLevel == 3) // add a list for later
         {
             [self removeChild: message];
@@ -1232,14 +1171,12 @@ int counter = 1;
     
     else if (input.touchesAvailable)
     {
-        //pos.x <= cageLeft
         if (CGRectContainsPoint(_player.boundingBox, pos))
         {
             //make sure the cannon does not move offscreen
             if (pos.y < 238 && pos.y > 20)
             {
-                //NSLog(@"CANNON BEING MOVEDDDD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
-                
+
                 _player.position = ccp(_player.position.x, y+5);
                 _nextProjectile.position = _player.position;
                 cannonHead.position = ccp(cannonHead.position.x, y);
@@ -1251,8 +1188,7 @@ int counter = 1;
         
         if (pos.x>=cageLeft+5 && pos.x <=80 && pos.y > 20 && pos.y < 238)
         {
-            
-            //NSLog(@"CANNON ROTATED??>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
+
             if (cannonCounter ==0 && (pos.y > _player.position.y + 4.0 || pos.y < _player.position.y - 4.0)){}
             else{
             //Steps taken to
@@ -1266,12 +1202,8 @@ int counter = 1;
             float deltaX = pos.x - _player.position.x;
             
                 if (deltaY < 50.0 && deltaY > -55.0) {
-                NSLog(@"DeltaY, %f", deltaY);
-            // Bail out if you are shooting down or backwards
-            //if (offset.x <= 0) return;
+
             angleInDegrees = atan2(deltaY, deltaX) * 180 / M_PI;
-            
-            NSLog(@"angle in degrees %f", angleInDegrees);
             
             if ( angleInDegrees < 70 && angleInDegrees > -70)
             {
@@ -1289,9 +1221,7 @@ int counter = 1;
         }
         }
     }
-    
-    
-    ///I really dont believe we need thisVVVV
+
     
 	if (director.currentPlatformIsIOS)
 	{
@@ -1317,9 +1247,7 @@ int counter = 1;
 			[self addNewSpriteAt:input.mouseLocation];
 		}
 	}
-    
-    
-    
+
 	
 	// The number of iterations influence the accuracy of the physics simulation. With higher values the
 	// body's velocity and position are more accurately tracked but at the cost of speed.
@@ -1374,8 +1302,7 @@ int counter = 1;
                     fruitNum++;
                     [goalProgress setObject:[NSNumber numberWithInt: fruitNum] forKey:fruitName];
                     int fruitNum2 = [[goalProgress objectForKey:fruitName] intValue];
-                    
-                    //[self updateFoodCollect];
+
                 }
             }
             
@@ -1407,7 +1334,6 @@ int counter = 1;
                     BOOL levelCompleted = [self checkLevelCompleted];
                     
                     if (levelCompleted){
-                        //NSLog(@"@SECONDS: %d", seconds);
                         [[CCDirector sharedDirector] replaceScene: (CCScene*)[NextLevelScene sceneWithLevel: currentLevel]];
                         counter = 1;
                         cannonCounter = 0;
@@ -1474,7 +1400,6 @@ int counter = 1;
                     for(NSString *stars in starsArray) {
                         starsEffect = [CCParticleSystemQuad particleWithFile:stars];
                         starsEffect.position = ccp(400,140);
-                        NSLog(@"Before adding child \n");
                         if (lock){
                             [self addChild:starsEffect z:1];
                             [starsEffect setLife:1.5];
@@ -1485,12 +1410,7 @@ int counter = 1;
                     }
             }
             }
-            
-            
-            
-            
-            
-            
+
             //Sprite A = fluffy, Sprite B = ball
             else if ([spriteA isKindOfClass:[Fluffy class]] && spriteB.tag == 1 ) {
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
@@ -1517,8 +1437,6 @@ int counter = 1;
         
     }
     
-
-    //[self displayFoodCollect];
     std::vector<b2Body *>::iterator pos3;
     for (pos3 = toDestroy.begin(); pos3 != toDestroy.end(); ++pos3) {
         b2Body *body = *pos3;
@@ -1543,25 +1461,6 @@ int counter = 1;
 	return ccpMult(CGPointMake(vec.x, vec.y), PTM_RATIO);
 }
 
-/*
- #if DEBUG
- -(void) draw
- {
- [super draw];
- 
- if (debugDraw)
- {
- ccGLEnableVertexAttribs(kCCVertexAttribFlag_Position);
- kmGLPushMatrix();
- world->DrawDebugData();
- kmGLPopMatrix();
- }
- }
- #endif
- */
-
-
-
 -(void) draw
 {
     //draw the cage
@@ -1580,69 +1479,40 @@ int counter = 1;
 }
 
 
--(void) cannonx: (CCMenuItemImage *) menuItem
-{
-    showDialog++;
-    //[self removeChild:tapHere cleanup:YES];
-    [self removeChild:message cleanup:YES];
-    [self removeChild:myTut cleanup: YES];
-    //[tapHere setIsEnabled:NO];
-    
-    if (showDialog == 2)
-    {
-        message = [CCSprite spriteWithFile:@"dialog2.png"];
-        tapHere = [CCMenuItemImage itemWithNormalImage:@"ok2.png" selectedImage: @"ok2.png" target:self selector:@selector(cannonx:)];
-        message.position = ccp(220, 130);
-        tapHere.position = ccp(250, 110);
-        //[tapHere setPosition: _player.position];
-        myTut = [CCMenu menuWithItems: tapHere, nil];
-        myTut.position = CGPointZero;
-        [self addChild:message z:1];
-        [self addChild:myTut z:1];
-    }
-    
-    
-    if (showDialog == 3)
-    {
-        message = [CCSprite spriteWithFile:@"dialog3.png"];
-        tapHere = [CCMenuItemImage itemWithNormalImage:@"ok3.png" selectedImage: @"ok3.png" target:self selector:@selector(cannonx:)];
-        message.position = ccp(230, 150);
-        tapHere.position = ccp(230, 100);
-        
-        myTut = [CCMenu menuWithItems: tapHere, nil];
-        myTut.position = CGPointZero;
-        [self addChild:message z:1];
-        [self addChild:myTut z:1];
-    }
-    
-    //    if (showDialog <= 3){
-    //        //message = [CCSprite spriteWithFile: [@"dialog" stringByAppendingFormat:@"%d", showDialog]];
-    //
-    ////
-    ////        message.position = ccp(200, 110);
-    ////        myTut = [CCMenu menuWithItems: tapHere, nil];
-    ////        myTut.position = CGPointZero;
-    ////        //tapHere.position = ccp(220, 120);
-    ////        [self addChild:message z:1];
-    ////        [self addChild:myTut z:1];
-    //    }
-    
-    //NSLog(@"YEAAAAA");
-}
-
-//-(void) cannonheadx:(CCMenuItemImage *)menuItem
+//-(void) cannonx: (CCMenuItemImage *) menuItem
 //{
+//    showDialog++;
+//    //[self removeChild:tapHere cleanup:YES];
 //    [self removeChild:message cleanup:YES];
 //    [self removeChild:myTut cleanup: YES];
-//
+//    //[tapHere setIsEnabled:NO];
+//    
+//    if (showDialog == 2)
+//    {
+//        message = [CCSprite spriteWithFile:@"dialog2.png"];
+//        tapHere = [CCMenuItemImage itemWithNormalImage:@"ok2.png" selectedImage: @"ok2.png" target:self selector:@selector(cannonx:)];
+//        message.position = ccp(220, 130);
+//        tapHere.position = ccp(250, 110);
+//        //[tapHere setPosition: _player.position];
+//        myTut = [CCMenu menuWithItems: tapHere, nil];
+//        myTut.position = CGPointZero;
+//        [self addChild:message z:1];
+//        [self addChild:myTut z:1];
+//    }
+//    
+//    
+//    if (showDialog == 3)
+//    {
+//        message = [CCSprite spriteWithFile:@"dialog3.png"];
+//        tapHere = [CCMenuItemImage itemWithNormalImage:@"ok3.png" selectedImage: @"ok3.png" target:self selector:@selector(cannonx:)];
+//        message.position = ccp(230, 150);
+//        tapHere.position = ccp(230, 100);
+//        
+//        myTut = [CCMenu menuWithItems: tapHere, nil];
+//        myTut.position = CGPointZero;
+//        [self addChild:message z:1];
+//        [self addChild:myTut z:1];
+//    }
 //}
-
-/*-(void) onExit {
- //unschedule selectors to get dealloc to fire off
- [self unscheduleAllSelectors];
- //remove all textures to free up additional memory. Textures get retained even if the sprite gets released and it doesn't show as a leak. This was my big memory saver
- [[CCTextureCache sharedTextureCache] removeAllTextures];
- [super onExit];
- }*/
 
 @end

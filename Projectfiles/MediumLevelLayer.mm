@@ -8,13 +8,8 @@
 
 #import "MediumLevelLayer.h"
 
-
-//#import "StartMenuLayer.h"
-//#import "PhysicsLayer.h"
-//#import "LevelSelectLayer.h"
-
 #import "PhysicsLayer.h"
-#import "StartMenuLayer.h"
+#import "LevelSelectLayer.h"
 
 
 @implementation MediumLevelLayer
@@ -55,13 +50,6 @@ CCSprite *level2;
     
     for (int i = 12; i < numLevels2+12; i++)
     {
-        //        if (! [NSString stringWithFormat:@"level%dLocked", i])
-        
-        // level = [CCMenuItemImage itemWithNormalImage:@"apple_level.png" selectedImage:@"apple_level.png" target:self selector: @selector(goToLevel:)];
-        
-        //        [NSString stringWithFormat:@"level%d", i].tag = i;
-        //        [NSString stringWithFormat:@"level%d", i].position = (60 + 60*i, 150);
-        //        [myLevels addChild: [NSString stringWithFormat:@"level%d", i]];
         int levelCompleted;
         if (i >= 12){
             NSString *levelString = [@"level" stringByAppendingFormat:@"%d", i];
@@ -83,9 +71,6 @@ CCSprite *level2;
             x = leftMargin2 + 80 * ((i - 12)% numCol2);
         }
         int y =  topMargin2 - ((i - 12)/numCol2)*75;
-        
-        //level.position = ccp(leftMargin2 + 80 * (i % numCol2), topMargin2 - (i/ numCol2) * 60);
-        //[myLevels addChild: level];
         
         if (currentLevelCompleted == 1){
             NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
@@ -135,23 +120,22 @@ CCSprite *level2;
             level2.position = ccp(x, y);
         }
         
-        //        [NSString stringWithFormat:@"level%d", i].tag = i;
-        //        CCLabelTTF * [NSString stringWithFormat:@"Label%d", i]= [CCLabelTTF labelWithString:@"%d", i
-        //                                               fontName:@"Verdana"
-        //                                               fontSize:26];
-        //        levelx.position = ccp(60 + 60*i, 150);
-        //
-        //        }
     }
+
+    CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hard!"
+                                           fontName:@"Marker Felt"
+                                           fontSize:47];
     
-    //CCMenu * myLevels = [CCMenu menuWithItems: level1, level2, level3, level4, level5, nil];
+    if (IsIphone5) { label.position = ccp(284,280);}
+    else{label.position = ccp(240,270); }
+    [self addChild: label];
     
     [self addChild: myLevels z:1];
     
-    CCMenuItemImage *quit = [CCMenuItemImage itemWithNormalImage: @"main_menu.png" selectedImage: @"main_menu2.png" target:self selector:@selector(GoToMainMenu:)];
+    CCMenuItemImage *quit = [CCMenuItemImage itemWithNormalImage: @"level_select.png" selectedImage: @"level_select2.png" target:self selector:@selector(GoToMainMenu:)];
     
-    if (IsIphone5) { quit.position = ccp(284, 20);}
-    else{quit.position = ccp(240, 20);}
+    if (IsIphone5) { quit.position = ccp(60, 290);}
+    else{quit.position = ccp(60, 290);}
     
     [myLevels addChild: quit];
     
@@ -206,7 +190,7 @@ CCSprite *level2;
                                                
                                                transitionWithDuration:1
                                                
-                                               scene:[StartMenuLayer node]]
+                                               scene:[LevelSelectLayer node]]
      ];
     
 }
@@ -217,7 +201,6 @@ CCSprite *level2;
 -(void) onExit {
     //unschedule selectors to get dealloc to fire off
     [self unscheduleAllSelectors];
-    //remove all textures to free up additional memory. Textures get retained even if the sprite gets released and it doesn't show as a leak. This was my big memory saver
     [[CCTextureCache sharedTextureCache] removeAllTextures];
     [super onExit];
 }
