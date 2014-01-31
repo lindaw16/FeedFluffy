@@ -11,6 +11,7 @@
 #import "StartMenuLayer.h"
 #import "LevelSelectLayer.h"
 #import "EasyLevelLayer.h"
+#import "OopsDNE.h"
 
 @implementation NextLevelScene
 
@@ -296,8 +297,18 @@
     int level = sender.tag;
     int nextLevel = level + 1;
     NSLog(@"The level is: %d", level);
+
+    if (level == 16)
+    {
+        NSLog(@"SLFKDJSF:K");
+        [[CCDirector sharedDirector] replaceScene: [CCTransitionFade transitionWithDuration:1 scene:[OopsDNE node]]];
+    }
+    else
+    {
+        [[CCDirector sharedDirector] replaceScene: [CCTransitionFade transitionWithDuration:1 scene:[PhysicsLayer sceneWithLevel:nextLevel]]];
+    }
     //[[CCDirector sharedDirector] replaceScene: (CCScene*)[PhysicsLayer sceneWithLevel:level]];
-    [[CCDirector sharedDirector] replaceScene: [CCTransitionFade transitionWithDuration:1 scene:[PhysicsLayer sceneWithLevel:nextLevel]]];
+
     
 }
 

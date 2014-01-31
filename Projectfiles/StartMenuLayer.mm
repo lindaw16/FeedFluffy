@@ -195,12 +195,12 @@ CCSprite * fluffy;
         
         // Get a pointer to the NSUserDefaults object
         NSUserDefaults * standardDefaults = [NSUserDefaults standardUserDefaults];
-        for (int i = 0; i < NUM_LEVELS; i++){
+        for (int i = 0; i < 17; i++){
             NSString *levelString = [@"level" stringByAppendingFormat:@"%d", i];
             // initialize all levels as not completed
             NSMutableDictionary *levelDict = [[NSMutableDictionary alloc] init];
             //levelDict = [[NSMutableDictionary alloc] init];
-            [levelDict setObject:@NO forKey: @"completed"];
+            [levelDict setObject:@YES forKey: @"completed"];
             [levelDict setObject:@0 forKey: @"last_time"];
             [levelDict setObject:@1000000 forKey: @"best_time"];
             [levelDict setObject:@0 forKey: @"last_stars"];

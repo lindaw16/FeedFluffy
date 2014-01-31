@@ -173,7 +173,7 @@ int tutorial13 = 0;
         tutorial13 = 1;
     }
     
-    
+
     CCSprite * thesnores = [CCSprite spriteWithSpriteFrameName:@"snore1.png"];
     thesnores.anchorPoint = CGPointZero;
     
@@ -207,6 +207,9 @@ int tutorial13 = 0;
 - (id)initWithLevel: (int) level {
     
     if ((self = [super initWithColor:ccc4(255,255,255,255)])) {
+        
+        
+        
         HUDLayer *hud;
         
         _hud = hud;

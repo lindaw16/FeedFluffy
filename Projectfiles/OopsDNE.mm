@@ -30,8 +30,8 @@
 -(void) setUpMenus
 {
 
-    CCMenuItemImage * apple = [CCMenuItemImage itemWithNormalImage:@"apple.png"
-                                                          selectedImage: @"apple.png"
+    CCMenuItemImage * apple = [CCMenuItemImage itemWithNormalImage:@"main_menu.png"
+                                                          selectedImage: @"main_menu.png"
                                                                  target:self
                                                                selector:@selector(goToStart:)];
     
@@ -55,7 +55,7 @@
         //[self scheduleUpdate];
         
         //CCSprite *sprite = [CCSprite spriteWithFile:@"eevee.png"];
-        CCSprite *sprite = [CCSprite spriteWithFile:@"OopsDNE.png"];
+        CCSprite *sprite = [CCSprite spriteWithFile:@"underConstruction.png"];
         sprite.anchorPoint = CGPointZero;
         [self addChild:sprite z:-1];
         

@@ -58,10 +58,6 @@ enum
     //snoring
     CCAction *snore;
     NSMutableArray *snoringFrames;
-    
-    
-
-    
 }
 
 
