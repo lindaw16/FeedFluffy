@@ -137,64 +137,40 @@ int sec;
 	return scene;
 }
 
+int tutorial1 = 0;
+int tutorial4 = 0;
+int tutorial13 = 0;
+
+
 -(void) setUpMenus
 {
-    int tutorial1 = 0;
-    int tutorial4 = 0;
-    int tutorial13 = 0;
-    
+    //we should probably put the pause button and star button here??
     if (currentLevel ==1 && tutorial1 ==0){
-        
         mTimeInSec = 60.0;
-        
         [ModalAlert Tell:@"You must send the orange to Fluffy\n"@"Or else he'll get all in a huff-y.\n"@" Collect more fruits with one ball, \n"@"Or better yet- collect them all, \n"@"And Fluffy will grow up big and buffy. \n\n"@"Drag the cannon or its head to change its position and angle. Press the launch button to go. Good luck!" onLayer:self okBlock:^{
             
-            
-            
         }];
-        
-        
         
         tutorial1 = 1;
-        
-        mTimeInSec = 60.0;
-        
+                mTimeInSec = 60.0;
     }
-    
-    
     
     else if (currentLevel == 4  && tutorial4 == 0)
-        
     {
-        
-        [ModalAlert Tell:@"Watch out for these boulders! You will bounce off of them." onLayer:self okBlock:^{
+            [ModalAlert Tell:@"Watch out for these boulders! You will bounce off of them." onLayer:self okBlock:^{
+                
+            }];
             
-            
-            
-        }];
-        
-        
-        
-        tutorial4 = 1;
-        
+            tutorial4 = 1;
     }
     
-    
-    
     else if (currentLevel == 13 && tutorial13 == 0)
-        
     {
-        
-        [ModalAlert Tell:@"These sneaky squirrel will eat Fluffy's food if they catch them!" onLayer:self okBlock:^{
-            
-            
+        [ModalAlert Tell:@"The sneaky squirrels will eat Fluffy's food if they catch them!" onLayer:self okBlock:^{
             
         }];
         
-        
-        
         tutorial13 = 1;
-        
     }
     
     

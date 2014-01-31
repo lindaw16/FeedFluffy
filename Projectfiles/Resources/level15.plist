@@ -3,38 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>Gold</key>
-	<integer>1</integer>
-	<key>Silver</key>
 	<integer>3</integer>
+	<key>Silver</key>
+	<integer>2</integer>
 	<key>Bronze</key>
-	<integer>6</integer>
-	<key>Obstacles</key>
-	<array>
-		<dict>
-			<key>x</key>
-			<integer>100</integer>
-			<key>y</key>
-			<integer>40</integer>
-			<key>spriteName</key>
-			<string>rock</string>
-		</dict>
-		<dict>
-			<key>x</key>
-			<integer>120</integer>
-			<key>y</key>
-			<integer>220</integer>
-			<key>spriteName</key>
-			<string>rock</string>
-		</dict>
-		<dict>
-			<key>x</key>
-			<integer>220</integer>
-			<key>y</key>
-			<integer>40</integer>
-			<key>spriteName</key>
-			<string>rock</string>
-		</dict>
-	</array>
+	<integer>1</integer>
+	<key>Goal</key>
+	<dict>
+		<key>apple</key>
+		<integer>1</integer>
+	</dict>
 	<key>Fluffy</key>
 	<dict>
 		<key>x</key>
@@ -42,40 +20,54 @@
 		<key>y</key>
 		<integer>190</integer>
 	</dict>
-	<key>Goal</key>
-	<dict>
-		<key>apple</key>
-		<integer>1</integer>
-		<key>orange</key>
-		<integer>1</integer>
-		<key>lemon</key>
-		<integer>1</integer>
-	</dict>
+	<key>Squirrels</key>
+	<array>
+		<dict>
+			<key>x</key>
+			<integer>210</integer>
+			<key>y</key>
+			<integer>20</integer>
+			<key>speed</key>
+			<integer>0</integer>
+			<key>spriteName</key>
+			<string>leftsquirrel</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>300</integer>
+			<key>y</key>
+			<integer>240</integer>
+			<key>speed</key>
+			<integer>0</integer>
+			<key>spriteName</key>
+			<string>leftsquirrel</string>
+		</dict>
+	</array>
 	<key>Fruits</key>
 	<array>
 		<dict>
 			<key>x</key>
-			<integer>400</integer>
+			<integer>255</integer>
 			<key>y</key>
-			<integer>200</integer>
+			<integer>130</integer>
+			<key>spriteName</key>
+			<string>lemon</string>
+		</dict>
+		<dict>
+			<key>x</key>
+			<integer>90</integer>
+			<key>y</key>
+			<integer>130</integer>
 			<key>spriteName</key>
 			<string>orange</string>
 		</dict>
 		<dict>
 			<key>x</key>
-			<integer>270</integer>
-			<key>y</key>
-			<integer>140</integer>
-			<key>spriteName</key>
-			<string>apple</string>
-		</dict>
-		<dict>
-			<key>x</key>
-			<integer>170</integer>
+			<integer>410</integer>
 			<key>y</key>
 			<integer>130</integer>
 			<key>spriteName</key>
-			<string>lemon</string>
+			<string>apple</string>
 		</dict>
 	</array>
 </dict>
