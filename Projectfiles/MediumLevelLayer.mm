@@ -14,6 +14,7 @@
 //#import "LevelSelectLayer.h"
 
 #import "PhysicsLayer.h"
+#import "StartMenuLayer.h"
 
 
 @implementation MediumLevelLayer
@@ -147,6 +148,13 @@ CCSprite *level2;
     
     [self addChild: myLevels z:1];
     
+    CCMenuItemImage *quit = [CCMenuItemImage itemWithNormalImage: @"main_menu.png" selectedImage: @"main_menu2.png" target:self selector:@selector(GoToMainMenu:)];
+    
+    if (IsIphone5) { quit.position = ccp(284, 20);}
+    else{quit.position = ccp(240, 20);}
+    
+    [myLevels addChild: quit];
+    
 }
 
 
@@ -190,6 +198,20 @@ CCSprite *level2;
 - (void) doNothing: (CCMenuItem *) menuItem  {
     
 }
+
+
+-(void) GoToMainMenu: (id) sender {
+    
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade
+                                               
+                                               transitionWithDuration:1
+                                               
+                                               scene:[StartMenuLayer node]]
+     ];
+    
+}
+
+
 
 
 -(void) onExit {
