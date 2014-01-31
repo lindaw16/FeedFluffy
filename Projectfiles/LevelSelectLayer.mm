@@ -11,6 +11,7 @@
 #import "OopsDNE.h"
 #import "EasyLevelLayer.h"
 #import "MediumLevelLayer.h"
+#import "StartMenuLayer.h"
 
 CCMenuItemImage * left;
 CCMenuItemImage * right;
@@ -63,16 +64,13 @@ CGPoint endLocation;
             
             tagCounter+=1;
         }
+
+        CCMenuItemImage *quit = [CCMenuItemImage itemWithNormalImage: @"main_menu.png" selectedImage: @"main_menu2.png" target:self selector:@selector(GoToMainMenu:)];
+        quit.position = ccp(60, 290);
         
-//        left = [CCMenuItemImage itemWithNormalImage:@"goLeft.png" selectedImage: @"goLeft.png" target:self selector:@selector(goLeft:)];
-//        right = [CCMenuItemImage itemWithNormalImage:@"goRight.png" selectedImage: @"goRight.png" target:self selector:@selector(goRight:)];
-//        left.position = ccp(40, 30);
-//        right.position = ccp(440, 30);
-//        [self addChild:left];
-//        [self addChild:right];
-        
-        
-        //NSLog(@"asdfsadf %d, %d", winSize.height, winSize.width);
+        CCMenu *menu= [CCMenu menuWithItems: quit, nil];
+        menu.position = CGPointZero;
+        [self addChild:menu];
         
     }
     self.touchEnabled = YES;
@@ -80,7 +78,13 @@ CGPoint endLocation;
     return self;
 }
 
+-(void) GoToMainMenu: (id) sender {
 
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade
+                                               transitionWithDuration:1
+                                               scene:[StartMenuLayer node]]
+     ];
+}
 - (void)selectSpriteForTouch:(CGPoint)touchLocation {
     
     CCSprite * newSprite = nil;
