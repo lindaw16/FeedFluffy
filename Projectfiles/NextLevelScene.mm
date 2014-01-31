@@ -39,11 +39,17 @@
              [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName: [NSString stringWithFormat:@"fluffy%d.png", i]]];
         }
         
-        
-        
-        CCSprite *bg = [CCSprite spriteWithFile:@"pause_background.png"];
-        bg.anchorPoint = CGPointZero;
-        [self addChild:bg z:-1];
+        if (IsIphone5)
+        {
+            CCSprite *bg = [CCSprite spriteWithFile:@"pause_background.png"];
+            bg.anchorPoint = CGPointZero;
+            [self addChild:bg z:-1];
+        }
+        else{
+            CCSprite *bg = [CCSprite spriteWithFile:@"pause_background35.png"];
+            bg.anchorPoint = CGPointZero;
+            [self addChild:bg z:-1];
+        }
         
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"Level Completed!"
                                                fontName:@"Marker Felt"
@@ -166,12 +172,14 @@
         else if (stars == 2){
             rank = [CCSprite spriteWithFile:@"silver_star_big.png"];
          
-            [rank setScaleX:0.4];
-            [rank setScaleY:0.4];
+            [rank setScaleX:0.6];
+            [rank setScaleY:0.6];
 
         }
         else if (stars == 1){
-            rank = [CCSprite spriteWithFile:@"bronze_star.png"];
+            rank = [CCSprite spriteWithFile:@"bronze_star_big.png"];
+            [rank setScaleX:0.6];
+            [rank setScaleY:0.6];
         }
         
         
