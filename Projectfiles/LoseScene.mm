@@ -27,9 +27,17 @@
 
 -(id)initWithLevel: (int) level{
     if( (self=[super init] )) {
-        CCSprite *bg = [CCSprite spriteWithFile:@"pause_background.png"];
-        bg.anchorPoint = CGPointZero;
-        [self addChild:bg];
+        if (IsIphone5)
+        {
+            CCSprite *bg = [CCSprite spriteWithFile:@"pause_background.png"];
+            bg.anchorPoint = CGPointZero;
+            [self addChild:bg z:-1];
+        }
+        else{
+            CCSprite *bg = [CCSprite spriteWithFile:@"pause_background35.png"];
+            bg.anchorPoint = CGPointZero;
+            [self addChild:bg z:-1];
+        }
         
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"You didn't feed Fluffy!"
                                                fontName:@"Marker Felt"
