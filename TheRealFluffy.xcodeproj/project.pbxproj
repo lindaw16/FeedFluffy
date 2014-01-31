@@ -42,7 +42,7 @@
 		91A400921898A1B20043B996 /* explosion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91A400911898A1B20043B996 /* explosion.plist */; };
 		91A400941898C5770043B996 /* gameBackground2.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A400931898C5770043B996 /* gameBackground2.png */; };
 		91A4009618998AAB0043B996 /* restartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A4009518998AAB0043B996 /* restartButton.png */; };
-		91A4009E1899D72C0043B996 /* level7.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91A4009D1899D72C0043B996 /* level7.plist */; };
+		91A4009E1899D72C0043B996 /* level21.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91A4009D1899D72C0043B996 /* level21.plist */; };
 		91A400AC1899E2510043B996 /* ModalAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A400AB1899E2510043B996 /* ModalAlert.m */; };
 		91A400B21899E2720043B996 /* dialogBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A400AE1899E2720043B996 /* dialogBox.png */; };
 		91A400B31899E2730043B996 /* dialogBox-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A400AF1899E2720043B996 /* dialogBox-hd.png */; };
@@ -77,7 +77,7 @@
 		AB39204D1892205000E4830D /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = AB3920401892205000E4830D /* orange.png */; };
 		AB39204E1892205000E4830D /* silver_star_big.png in Resources */ = {isa = PBXBuildFile; fileRef = AB3920411892205000E4830D /* silver_star_big.png */; };
 		AB39204F1892205000E4830D /* silver_star.png in Resources */ = {isa = PBXBuildFile; fileRef = AB3920421892205000E4830D /* silver_star.png */; };
-		AB5C6D9C189750F200F0C395 /* level8.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB5C6D9B189750F200F0C395 /* level8.plist */; };
+		AB5C6D9C189750F200F0C395 /* level7.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB5C6D9B189750F200F0C395 /* level7.plist */; };
 		AB7821C6188A5515008F51B8 /* PauseScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = AB7821C5188A5515008F51B8 /* PauseScene.mm */; };
 		AB7821C8188A56A7008F51B8 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = AB7821C7188A56A7008F51B8 /* pause.png */; };
 		AB954FE71895BB2100E2993F /* pause_background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = AB954FE51895BB2100E2993F /* pause_background-hd.png */; };
@@ -319,7 +319,7 @@
 		91A400911898A1B20043B996 /* explosion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = explosion.plist; path = Resources/explosion.plist; sourceTree = "<group>"; };
 		91A400931898C5770043B996 /* gameBackground2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameBackground2.png; sourceTree = "<group>"; };
 		91A4009518998AAB0043B996 /* restartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restartButton.png; sourceTree = "<group>"; };
-		91A4009D1899D72C0043B996 /* level7.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level7.plist; sourceTree = "<group>"; };
+		91A4009D1899D72C0043B996 /* level21.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level21.plist; sourceTree = "<group>"; };
 		91A400AA1899E2510043B996 /* ModalAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalAlert.h; sourceTree = "<group>"; };
 		91A400AB1899E2510043B996 /* ModalAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalAlert.m; sourceTree = "<group>"; };
 		91A400AE1899E2720043B996 /* dialogBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialogBox.png; sourceTree = "<group>"; };
@@ -355,7 +355,7 @@
 		AB3920401892205000E4830D /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange.png; sourceTree = "<group>"; };
 		AB3920411892205000E4830D /* silver_star_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = silver_star_big.png; sourceTree = "<group>"; };
 		AB3920421892205000E4830D /* silver_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = silver_star.png; sourceTree = "<group>"; };
-		AB5C6D9B189750F200F0C395 /* level8.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level8.plist; sourceTree = "<group>"; };
+		AB5C6D9B189750F200F0C395 /* level7.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level7.plist; sourceTree = "<group>"; };
 		AB7821C4188A5515008F51B8 /* PauseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseScene.h; sourceTree = "<group>"; };
 		AB7821C5188A5515008F51B8 /* PauseScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PauseScene.mm; sourceTree = "<group>"; };
 		AB7821C7188A56A7008F51B8 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
@@ -980,14 +980,14 @@
 				AB9E13831889CF26001F6EA8 /* levelNothing.plist */,
 				BF7B4B5A189B2DFE00DF2A48 /* level5.plist */,
 				BF7B4B5E189B300200DF2A48 /* level6.plist */,
-				91A4009D1899D72C0043B996 /* level7.plist */,
-				AB5C6D9B189750F200F0C395 /* level8.plist */,
+				AB5C6D9B189750F200F0C395 /* level7.plist */,
 				ABA0B9EC1898A15A00043D1C /* level9.plist */,
 				AB9E45B9189B091A0019524F /* level12.plist */,
 				AB9E45C1189B14600019524F /* level14.plist */,
 				AB9E45C3189B1CCC0019524F /* level13.plist */,
 				AB9E45C1189B14600019524F /* level14.plist */,
 				ABA136051894BADD008D4DCE /* level20.plist */,
+				91A4009D1899D72C0043B996 /* level21.plist */,
 				AB9E13811889CA4B001F6EA8 /* rock.png */,
 				AB954FE91895BB3100E2993F /* rock-hd.png */,
 				AB9E45BB189B09EF0019524F /* rock0-hd.png */,
@@ -1147,7 +1147,7 @@
 				AB3920471892205000E4830D /* gold_star_big.png in Resources */,
 				ABA0E6C71899E9470097FAF5 /* pause_background.png in Resources */,
 				AB9C91031893085200C1A96E /* apple.png in Resources */,
-				91A4009E1899D72C0043B996 /* level7.plist in Resources */,
+				91A4009E1899D72C0043B996 /* level21.plist in Resources */,
 				91A400B41899E2730043B996 /* dialogButton-hd.png in Resources */,
 				DCC1A10B13A94ED5005BD75D /* iTunesArtwork in Resources */,
 				BF7B4B53189B161700DF2A48 /* level2.plist in Resources */,
@@ -1229,7 +1229,7 @@
 				BFB425AE1886FB5D002DD826 /* goRight.png in Resources */,
 				ABB719F11887568D004D2FCA /* watermelon.png in Resources */,
 				AB9FBB8A188B190000992502 /* main_menu_button2.png in Resources */,
-				AB5C6D9C189750F200F0C395 /* level8.plist in Resources */,
+				AB5C6D9C189750F200F0C395 /* level7.plist in Resources */,
 				BF12C2A61894949D00478BCB /* goRight-hd.png in Resources */,
 				AB9E45BE189B09F00019524F /* rock0-hd.png in Resources */,
 				BFB425B1188702D4002DD826 /* level1.png in Resources */,
