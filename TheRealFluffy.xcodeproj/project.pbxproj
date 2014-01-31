@@ -190,8 +190,8 @@
 		BF8FA9A2189B4E40003CAA64 /* level1.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA993189B4E40003CAA64 /* level1.plist */; };
 		BF8FA9A3189B4E40003CAA64 /* level2.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA994189B4E40003CAA64 /* level2.plist */; };
 		BF8FA9A4189B4E40003CAA64 /* level3.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA995189B4E40003CAA64 /* level3.plist */; };
-		BF8FA9A5189B4E40003CAA64 /* level4.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA996189B4E40003CAA64 /* level4.plist */; };
-		BF8FA9A6189B4E40003CAA64 /* level5.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA997189B4E40003CAA64 /* level5.plist */; };
+		BF8FA9A5189B4E40003CAA64 /* level5.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA996189B4E40003CAA64 /* level5.plist */; };
+		BF8FA9A6189B4E40003CAA64 /* level4.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA997189B4E40003CAA64 /* level4.plist */; };
 		BF8FA9A7189B4E40003CAA64 /* level6.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA998189B4E40003CAA64 /* level6.plist */; };
 		BF8FA9A8189B4E40003CAA64 /* level7.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA999189B4E40003CAA64 /* level7.plist */; };
 		BF8FA9A9189B4E40003CAA64 /* level8.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA99A189B4E40003CAA64 /* level8.plist */; };
@@ -199,9 +199,9 @@
 		BF8FA9AB189B4E40003CAA64 /* level10.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA99C189B4E40003CAA64 /* level10.plist */; };
 		BF8FA9AC189B4E40003CAA64 /* level11.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA99D189B4E40003CAA64 /* level11.plist */; };
 		BF8FA9AD189B4E40003CAA64 /* level12.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA99E189B4E40003CAA64 /* level12.plist */; };
-		BF8FA9AE189B4E40003CAA64 /* level19.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA99F189B4E40003CAA64 /* level19.plist */; };
-		BF8FA9AF189B4E40003CAA64 /* level20.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA9A0189B4E40003CAA64 /* level20.plist */; };
-		BF8FA9B0189B4E40003CAA64 /* level21.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA9A1189B4E40003CAA64 /* level21.plist */; };
+		BF8FA9AE189B4E40003CAA64 /* level13.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA99F189B4E40003CAA64 /* level13.plist */; };
+		BF8FA9AF189B4E40003CAA64 /* level14.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA9A0189B4E40003CAA64 /* level14.plist */; };
+		BF8FA9B0189B4E40003CAA64 /* level15.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF8FA9A1189B4E40003CAA64 /* level15.plist */; };
 		BFB4259718862C92002DD826 /* LevelSelectLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB4259618862C92002DD826 /* LevelSelectLayer.mm */; };
 		BFB4259B18862CFA002DD826 /* tutorials.png in Resources */ = {isa = PBXBuildFile; fileRef = BFB4259A18862CFA002DD826 /* tutorials.png */; };
 		BFB425A118862DDE002DD826 /* StartMenuLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFB425A018862DDE002DD826 /* StartMenuLayer.mm */; };
@@ -471,8 +471,8 @@
 		BF8FA993189B4E40003CAA64 /* level1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level1.plist; sourceTree = "<group>"; };
 		BF8FA994189B4E40003CAA64 /* level2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level2.plist; sourceTree = "<group>"; };
 		BF8FA995189B4E40003CAA64 /* level3.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level3.plist; sourceTree = "<group>"; };
-		BF8FA996189B4E40003CAA64 /* level4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level4.plist; sourceTree = "<group>"; };
-		BF8FA997189B4E40003CAA64 /* level5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level5.plist; sourceTree = "<group>"; };
+		BF8FA996189B4E40003CAA64 /* level5.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level5.plist; sourceTree = "<group>"; };
+		BF8FA997189B4E40003CAA64 /* level4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level4.plist; sourceTree = "<group>"; };
 		BF8FA998189B4E40003CAA64 /* level6.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level6.plist; sourceTree = "<group>"; };
 		BF8FA999189B4E40003CAA64 /* level7.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level7.plist; sourceTree = "<group>"; };
 		BF8FA99A189B4E40003CAA64 /* level8.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level8.plist; sourceTree = "<group>"; };
@@ -480,9 +480,9 @@
 		BF8FA99C189B4E40003CAA64 /* level10.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level10.plist; sourceTree = "<group>"; };
 		BF8FA99D189B4E40003CAA64 /* level11.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level11.plist; sourceTree = "<group>"; };
 		BF8FA99E189B4E40003CAA64 /* level12.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level12.plist; sourceTree = "<group>"; };
-		BF8FA99F189B4E40003CAA64 /* level19.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level19.plist; sourceTree = "<group>"; };
-		BF8FA9A0189B4E40003CAA64 /* level20.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level20.plist; sourceTree = "<group>"; };
-		BF8FA9A1189B4E40003CAA64 /* level21.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level21.plist; sourceTree = "<group>"; };
+		BF8FA99F189B4E40003CAA64 /* level13.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level13.plist; sourceTree = "<group>"; };
+		BF8FA9A0189B4E40003CAA64 /* level14.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level14.plist; sourceTree = "<group>"; };
+		BF8FA9A1189B4E40003CAA64 /* level15.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = level15.plist; sourceTree = "<group>"; };
 		BFB4259518862C92002DD826 /* LevelSelectLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSelectLayer.h; sourceTree = "<group>"; };
 		BFB4259618862C92002DD826 /* LevelSelectLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LevelSelectLayer.mm; sourceTree = "<group>"; };
 		BFB4259A18862CFA002DD826 /* tutorials.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorials.png; sourceTree = "<group>"; };
@@ -871,8 +871,8 @@
 				BF8FA993189B4E40003CAA64 /* level1.plist */,
 				BF8FA994189B4E40003CAA64 /* level2.plist */,
 				BF8FA995189B4E40003CAA64 /* level3.plist */,
-				BF8FA996189B4E40003CAA64 /* level4.plist */,
-				BF8FA997189B4E40003CAA64 /* level5.plist */,
+				BF8FA997189B4E40003CAA64 /* level4.plist */,
+				BF8FA996189B4E40003CAA64 /* level5.plist */,
 				BF8FA998189B4E40003CAA64 /* level6.plist */,
 				BF8FA999189B4E40003CAA64 /* level7.plist */,
 				BF8FA99A189B4E40003CAA64 /* level8.plist */,
@@ -880,9 +880,9 @@
 				BF8FA99C189B4E40003CAA64 /* level10.plist */,
 				BF8FA99D189B4E40003CAA64 /* level11.plist */,
 				BF8FA99E189B4E40003CAA64 /* level12.plist */,
-				BF8FA99F189B4E40003CAA64 /* level19.plist */,
-				BF8FA9A0189B4E40003CAA64 /* level20.plist */,
-				BF8FA9A1189B4E40003CAA64 /* level21.plist */,
+				BF8FA99F189B4E40003CAA64 /* level13.plist */,
+				BF8FA9A0189B4E40003CAA64 /* level14.plist */,
+				BF8FA9A1189B4E40003CAA64 /* level15.plist */,
 				91A400BF189A144B0043B996 /* okbutton.png */,
 				91A400AE1899E2720043B996 /* dialogBox.png */,
 				91A400AF1899E2720043B996 /* dialogBox-hd.png */,
@@ -1095,7 +1095,7 @@
 				AB300ABE18939B560055A914 /* cannon-head-cropped-hd.png in Resources */,
 				AB9C90FB1892FBCA00C1A96E /* silver_star-hd.png in Resources */,
 				AB23A8421893185A00127A5D /* restart-hd.png in Resources */,
-				BF8FA9B0189B4E40003CAA64 /* level21.plist in Resources */,
+				BF8FA9B0189B4E40003CAA64 /* level15.plist in Resources */,
 				915693CC18920C4100B5C44A /* launch_button_bigger.png in Resources */,
 				AB39204D1892205000E4830D /* orange.png in Resources */,
 				DCC1A0FC13A94ED5005BD75D /* fps_images.png in Resources */,
@@ -1135,7 +1135,7 @@
 				DCC1A10B13A94ED5005BD75D /* iTunesArtwork in Resources */,
 				AB9C910B18930C0D00C1A96E /* lemon.png in Resources */,
 				AB300ABD18939B560055A914 /* cannon-body2-hd.png in Resources */,
-				BF8FA9AE189B4E40003CAA64 /* level19.plist in Resources */,
+				BF8FA9AE189B4E40003CAA64 /* level13.plist in Resources */,
 				AB9E5980188B261100B7D315 /* resume_button@2x.png in Resources */,
 				BF12C2921893270500478BCB /* rightsquirrel-hd.png in Resources */,
 				BF7B4B341898D58200DF2A48 /* squirrelUp.plist in Resources */,
@@ -1191,10 +1191,10 @@
 				AB39204F1892205000E4830D /* silver_star.png in Resources */,
 				BFB4259B18862CFA002DD826 /* tutorials.png in Resources */,
 				91A4008518987AD60043B996 /* mediumCage-hd.png in Resources */,
-				BF8FA9A6189B4E40003CAA64 /* level5.plist in Resources */,
+				BF8FA9A6189B4E40003CAA64 /* level4.plist in Resources */,
 				BF39176E1887A20400EF99E6 /* bullet.png in Resources */,
 				BF8FA9A3189B4E40003CAA64 /* level2.plist in Resources */,
-				BF8FA9A5189B4E40003CAA64 /* level4.plist in Resources */,
+				BF8FA9A5189B4E40003CAA64 /* level5.plist in Resources */,
 				ABB719E01887565E004D2FCA /* banana-hd.png in Resources */,
 				BF8FA9AD189B4E40003CAA64 /* level12.plist in Resources */,
 				BF30E0081888DDB1000773E5 /* cannon-head.png in Resources */,
@@ -1232,7 +1232,7 @@
 				ABA0B9F11898C08300043D1C /* menu_background_music.mp3 in Resources */,
 				91A4009618998AAB0043B996 /* restartButton.png in Resources */,
 				ABB719F01887568D004D2FCA /* watermelon-hd.png in Resources */,
-				BF8FA9AF189B4E40003CAA64 /* level20.plist in Resources */,
+				BF8FA9AF189B4E40003CAA64 /* level14.plist in Resources */,
 				ABB719E51887566E004D2FCA /* grapes.png in Resources */,
 				AB9C91051893085B00C1A96E /* apple-hd.png in Resources */,
 				BF39176C18879F5C00EF99E6 /* projectile2.png in Resources */,
