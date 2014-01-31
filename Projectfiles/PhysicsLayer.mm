@@ -225,7 +225,7 @@ int dialogCounter = 0;
         
         CGSize size = [[CCDirector sharedDirector] winSize];
         
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"levelMusic.mp3" loop:YES];
+        //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"levelMusic.mp3" loop:YES];
 
         numFruitCollected = 0;
         orangeCollected = NO;
@@ -888,7 +888,7 @@ int dialogCounter = 0;
 
     _body->ApplyLinearImpulse(force, ballBodyDef.position);
 //    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Drop Cannon.wav"];
-    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Drop Cannon.wav" loop:NO];
+    //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Drop Cannon.wav" loop:NO];
     
     
     // Move projectile to actual endpoint
