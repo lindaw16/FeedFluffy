@@ -219,6 +219,8 @@ int tutorial13 = 0;
         CGSize size = [[CCDirector sharedDirector] winSize];
         
         //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"levelMusic.mp3" loop:YES];
+        //[[SimpleAudioEngine sharedEngine] preloadEffect:@"Cannon1.wav"];
+        [[SimpleAudioEngine sharedEngine] preloadEffect:@"explo2.wav"];
 
         numFruitCollected = 0;
         orangeCollected = NO;
@@ -1289,6 +1291,10 @@ int counter = 1;
             //Sprite A = ball, Sprite B = fruit
             if (spriteA.tag == 1 && [spriteB isKindOfClass:[Fruit class]]) {
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyB) == toDestroy.end()) {
+                    
+                    //[[SimpleAudioEngine sharedEngine] playEffect:@"Cannon1.wav"];
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"explo2.wav"];
+                    
                     toDestroy.push_back(bodyB);
                     
                     Fruit *fruit = (Fruit*) spriteB;
@@ -1312,6 +1318,11 @@ int counter = 1;
             //Sprite A = fruit, Sprite B = ball
             else if ([spriteA isKindOfClass:[Fruit class]] && spriteB.tag == 1 ) {
                 if (std::find(toDestroy.begin(), toDestroy.end(), bodyA) == toDestroy.end()) {
+                    
+                    //[[SimpleAudioEngine sharedEngine] playEffect:@"Cannon1.wav"];
+                    [[SimpleAudioEngine sharedEngine] playEffect:@"explo2.wav"];
+                    
+                    
                     toDestroy.push_back(bodyA);
                     Fruit *fruit = (Fruit*) spriteA;
                     NSString *fruitName = fruit.fruitName;

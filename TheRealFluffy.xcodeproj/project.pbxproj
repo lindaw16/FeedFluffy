@@ -169,6 +169,11 @@
 		BF196D20188F8696008CB197 /* tutorial1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196D1D188F8696008CB197 /* tutorial1.png */; };
 		BF196D21188F8696008CB197 /* tutorial2.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196D1E188F8696008CB197 /* tutorial2.png */; };
 		BF196D22188F8696008CB197 /* tutorial3.png in Resources */ = {isa = PBXBuildFile; fileRef = BF196D1F188F8696008CB197 /* tutorial3.png */; };
+		BF2946D5189DA9BE00F8E94B /* rock-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF2946D0189DA9BE00F8E94B /* rock-hd.png */; };
+		BF2946D6189DA9BE00F8E94B /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = BF2946D1189DA9BE00F8E94B /* rock.png */; };
+		BF2946D7189DA9BE00F8E94B /* rock0-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF2946D2189DA9BE00F8E94B /* rock0-hd.png */; };
+		BF2946D8189DA9BE00F8E94B /* rock2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF2946D3189DA9BE00F8E94B /* rock2-hd.png */; };
+		BF2946D9189DA9BE00F8E94B /* rock4-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = BF2946D4189DA9BE00F8E94B /* rock4-hd.png */; };
 		BF30E0071888DDB1000773E5 /* cannon-body.png in Resources */ = {isa = PBXBuildFile; fileRef = BF30E0051888DDB1000773E5 /* cannon-body.png */; };
 		BF30E0081888DDB1000773E5 /* cannon-head.png in Resources */ = {isa = PBXBuildFile; fileRef = BF30E0061888DDB1000773E5 /* cannon-head.png */; };
 		BF39176C18879F5C00EF99E6 /* projectile2.png in Resources */ = {isa = PBXBuildFile; fileRef = BF39176B18879F5C00EF99E6 /* projectile2.png */; };
@@ -223,6 +228,9 @@
 		BFC2DCE41885FE3200A1D673 /* comments in Resources */ = {isa = PBXBuildFile; fileRef = BFC2DCE31885FE3200A1D673 /* comments */; };
 		BFC2DCE8188609E900A1D673 /* apple2.png in Resources */ = {isa = PBXBuildFile; fileRef = BFC2DCE7188609E900A1D673 /* apple2.png */; };
 		BFF451161890D5AA000EF0F6 /* menuBackgroundBig.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF451151890D5AA000EF0F6 /* menuBackgroundBig.png */; };
+		BFF74E00189C3F4A007C88F0 /* Level Complete.wav in Resources */ = {isa = PBXBuildFile; fileRef = BFF74DFF189C3F4A007C88F0 /* Level Complete.wav */; };
+		BFF74E02189C3FB4007C88F0 /* explo2.wav in Resources */ = {isa = PBXBuildFile; fileRef = BFF74E01189C3FB4007C88F0 /* explo2.wav */; };
+		BFF74E04189C40A1007C88F0 /* Cannon1.wav in Resources */ = {isa = PBXBuildFile; fileRef = BFF74E03189C40A1007C88F0 /* Cannon1.wav */; };
 		DC193EB713B692D100500B56 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC193EB313B6872600500B56 /* GLES-Render.mm */; };
 		DC193EB813B692D100500B56 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC193EB313B6872600500B56 /* GLES-Render.mm */; };
 		DC193EBC13B6956F00500B56 /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC193EBB13B6956F00500B56 /* ContactListener.mm */; };
@@ -454,6 +462,11 @@
 		BF196D1D188F8696008CB197 /* tutorial1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial1.png; sourceTree = "<group>"; };
 		BF196D1E188F8696008CB197 /* tutorial2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial2.png; sourceTree = "<group>"; };
 		BF196D1F188F8696008CB197 /* tutorial3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial3.png; sourceTree = "<group>"; };
+		BF2946D0189DA9BE00F8E94B /* rock-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rock-hd.png"; sourceTree = "<group>"; };
+		BF2946D1189DA9BE00F8E94B /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
+		BF2946D2189DA9BE00F8E94B /* rock0-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rock0-hd.png"; sourceTree = "<group>"; };
+		BF2946D3189DA9BE00F8E94B /* rock2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rock2-hd.png"; sourceTree = "<group>"; };
+		BF2946D4189DA9BE00F8E94B /* rock4-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rock4-hd.png"; sourceTree = "<group>"; };
 		BF30E0051888DDB1000773E5 /* cannon-body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cannon-body.png"; sourceTree = "<group>"; };
 		BF30E0061888DDB1000773E5 /* cannon-head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cannon-head.png"; sourceTree = "<group>"; };
 		BF39176B18879F5C00EF99E6 /* projectile2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = projectile2.png; sourceTree = "<group>"; };
@@ -511,6 +524,9 @@
 		BFC2DCE31885FE3200A1D673 /* comments */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = comments; sourceTree = "<group>"; };
 		BFC2DCE7188609E900A1D673 /* apple2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple2.png; sourceTree = "<group>"; };
 		BFF451151890D5AA000EF0F6 /* menuBackgroundBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuBackgroundBig.png; sourceTree = "<group>"; };
+		BFF74DFF189C3F4A007C88F0 /* Level Complete.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Level Complete.wav"; sourceTree = "<group>"; };
+		BFF74E01189C3FB4007C88F0 /* explo2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explo2.wav; sourceTree = "<group>"; };
+		BFF74E03189C40A1007C88F0 /* Cannon1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Cannon1.wav; sourceTree = "<group>"; };
 		DC193EB213B6872600500B56 /* GLES-Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
 		DC193EB313B6872600500B56 /* GLES-Render.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
 		DC193EBA13B6956F00500B56 /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
@@ -875,8 +891,15 @@
 		DCC1A39413A94F1A005BD75D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BF2946D0189DA9BE00F8E94B /* rock-hd.png */,
+				BF2946D1189DA9BE00F8E94B /* rock.png */,
+				BF2946D2189DA9BE00F8E94B /* rock0-hd.png */,
+				BF2946D3189DA9BE00F8E94B /* rock2-hd.png */,
+				BF2946D4189DA9BE00F8E94B /* rock4-hd.png */,
 				910445CB189A1CAD00556B2F /* BlueModal2.png */,
+				BFF74E01189C3FB4007C88F0 /* explo2.wav */,
 				BF8FA9BA189B5E50003CAA64 /* underConstruction.png */,
+				BFF74E03189C40A1007C88F0 /* Cannon1.wav */,
 				BF8FA993189B4E40003CAA64 /* level1.plist */,
 				BF8FA994189B4E40003CAA64 /* level2.plist */,
 				BF8FA995189B4E40003CAA64 /* level3.plist */,
@@ -994,6 +1017,7 @@
 				910445D7189B022900556B2F /* level301.plist */,
 				ABA0E6C61899E9470097FAF5 /* pause_background.png */,
 				AB9E45CD189B51B50019524F /* drop_cannon.wav */,
+				BFF74DFF189C3F4A007C88F0 /* Level Complete.wav */,
 				AB9E45CF189B52AE0019524F /* level_music.mp3 */,
 				DC193EBE13B6969B00500B56 /* David Gervais Tilesets */,
 				DCC1A39513A94F1A005BD75D /* config.lua */,
@@ -1138,6 +1162,7 @@
 				91A400921898A1B20043B996 /* explosion.plist in Resources */,
 				910445CC189A1CAD00556B2F /* BlueModal2.png in Resources */,
 				BF12C2781892357800478BCB /* easyCage-hd.png in Resources */,
+				BF2946D5189DA9BE00F8E94B /* rock-hd.png in Resources */,
 				BF8FA9A8189B4E40003CAA64 /* level7.plist in Resources */,
 				AB3920471892205000E4830D /* gold_star_big.png in Resources */,
 				ABA0E6C71899E9470097FAF5 /* pause_background.png in Resources */,
@@ -1154,6 +1179,7 @@
 				BF8FA9AA189B4E40003CAA64 /* level9.plist in Resources */,
 				ABB719E91887567B004D2FCA /* pineapple.png in Resources */,
 				AB23A84A1893186D00127A5D /* next_level-hd.png in Resources */,
+				BF2946D8189DA9BE00F8E94B /* rock2-hd.png in Resources */,
 				BF196D06188F1CE9008CB197 /* snore1.png in Resources */,
 				AB300AB7189398270055A914 /* ball-hd.png in Resources */,
 				AB9EC44E189475700030B830 /* next_level.png in Resources */,
@@ -1166,6 +1192,7 @@
 				BF63D6EC1884ADF600F3D3F3 /* menuBackground.png in Resources */,
 				DC193EC113B6969B00500B56 /* Author&License.txt in Resources */,
 				AB9EC454189475E50030B830 /* replay2.png in Resources */,
+				BFF74E02189C3FB4007C88F0 /* explo2.wav in Resources */,
 				DC193EC313B6969B00500B56 /* dg_grounds32.png in Resources */,
 				BFC2DCE41885FE3200A1D673 /* comments in Resources */,
 				AB23A8461893186200127A5D /* replay-hd.png in Resources */,
@@ -1182,6 +1209,7 @@
 				BF12C2901893263700478BCB /* squirrel-hd.png in Resources */,
 				AB39204A1892205000E4830D /* lemon-hd.png in Resources */,
 				AB39204B1892205000E4830D /* lemon.png in Resources */,
+				BF2946D6189DA9BE00F8E94B /* rock.png in Resources */,
 				910445D8189B022900556B2F /* level301.plist in Resources */,
 				BF63D6EE1884AFAC00F3D3F3 /* play.png in Resources */,
 				AB9FBB8D188B190000992502 /* resume_button.png in Resources */,
@@ -1196,6 +1224,7 @@
 				BF196D02188EFCAC008CB197 /* ok3.png in Resources */,
 				BFB425B618872304002DD826 /* Achievements.png in Resources */,
 				BFB425BA188783EB002DD826 /* gameBar.png in Resources */,
+				BFF74E04189C40A1007C88F0 /* Cannon1.wav in Resources */,
 				BFB425AA1886600F002DD826 /* levelSelectBackground.png in Resources */,
 				BF12C2621892191500478BCB /* gameBackground-hd.png in Resources */,
 				AB9FBB89188B190000992502 /* main_menu_button.png in Resources */,
@@ -1233,6 +1262,7 @@
 				91A400B31899E2730043B996 /* dialogBox-hd.png in Resources */,
 				AB3920491892205000E4830D /* gold_star.png in Resources */,
 				AB9E597E188B261100B7D315 /* restart_button@2x.png in Resources */,
+				BF2946D7189DA9BE00F8E94B /* rock0-hd.png in Resources */,
 				AB23A836189317A500127A5D /* level_select-hd.png in Resources */,
 				AB9FBB8B188B190000992502 /* restart_button.png in Resources */,
 				BF12C2661892237600478BCB /* menuBackground-hd.png in Resources */,
@@ -1241,6 +1271,7 @@
 				BF8FA9A7189B4E40003CAA64 /* level6.plist in Resources */,
 				AB300ABA1893993D0055A914 /* easyCage.png in Resources */,
 				91A400941898C5770043B996 /* gameBackground2.png in Resources */,
+				BFF74E00189C3F4A007C88F0 /* Level Complete.wav in Resources */,
 				BF12C276189229DF00478BCB /* mediumLevel.png in Resources */,
 				AB9EC4561894767E0030B830 /* restart.png in Resources */,
 				ABA0B9F11898C08300043D1C /* menu_background_music.mp3 in Resources */,
@@ -1281,6 +1312,7 @@
 				BF12C28418930AD300478BCB /* fluffy1.png in Resources */,
 				AB9FBB8E188B190000992502 /* resume_button2.png in Resources */,
 				AB954FE71895BB2100E2993F /* pause_background-hd.png in Resources */,
+				BF2946D9189DA9BE00F8E94B /* rock4-hd.png in Resources */,
 				AB23A83E1893184B00127A5D /* resume-hd.png in Resources */,
 				BF8FA9B2189B5509003CAA64 /* level14.plist in Resources */,
 				914BE9D1188990390085E989 /* cannon-body2.png in Resources */,
