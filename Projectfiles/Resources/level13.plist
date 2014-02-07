@@ -18,11 +18,11 @@
 		</dict>
 	</array>
 	<key>Gold</key>
-	<integer>1</integer>
+	<integer>3</integer>
 	<key>Silver</key>
 	<integer>2</integer>
 	<key>Bronze</key>
-	<integer>3</integer>
+	<integer>1</integer>
 	<key>Goal</key>
 	<dict>
 		<key>apple</key>
